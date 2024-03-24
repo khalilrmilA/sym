@@ -2793,7 +2793,7 @@
     </service>
     <service id="routing.loader.annotation" class="Symfony\Bundle\FrameworkBundle\Routing\AnnotatedRouteControllerLoader">
       <tag name="routing.loader" priority="-10"/>
-      <argument>null</argument>
+      <argument type="service" id="annotations.cached_reader" on-invalid="null"/>
       <argument>dev</argument>
     </service>
     <service id="routing.loader.annotation.directory" class="Symfony\Component\Routing\Loader\AnnotationDirectoryLoader">
@@ -2805,6 +2805,50 @@
       <tag name="routing.loader" priority="-10"/>
       <argument type="service" id="file_locator"/>
       <argument type="service" id="routing.loader.annotation"/>
+    </service>
+    <service id="annotations.reader" class="Doctrine\Common\Annotations\AnnotationReader">
+      <call method="addGlobalIgnoredName">
+        <argument>required</argument>
+        <argument>null</argument>
+      </call>
+    </service>
+    <service id="annotations.cached_reader" class="Doctrine\Common\Annotations\PsrCachedReader">
+      <tag name="annotations.cached_reader"/>
+      <tag name="container.do_not_inline"/>
+      <argument type="service" id="annotations.reader"/>
+      <argument type="service">
+        <service class="Symfony\Component\Cache\Adapter\ArrayAdapter"/>
+      </argument>
+      <argument>true</argument>
+      <argument type="service_closure" id="annotations.cache_adapter"/>
+    </service>
+    <service id="annotations.filesystem_cache_adapter" class="Symfony\Component\Cache\Adapter\FilesystemAdapter">
+      <argument></argument>
+      <argument>0</argument>
+      <argument type="abstract">Cache-Directory</argument>
+    </service>
+    <service id="annotations.filesystem_cache" class="Doctrine\Common\Cache\Psr6\DoctrineProvider">
+      <argument type="service" id="annotations.filesystem_cache_adapter"/>
+      <factory class="Doctrine\Common\Cache\Psr6\DoctrineProvider" method="wrap"/>
+      <deprecated package="symfony/framework-bundle" version="5.4">"%service_id% is deprecated"</deprecated>
+    </service>
+    <service id="annotations.cache_warmer" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\AnnotationsCacheWarmer">
+      <tag name="kernel.cache_warmer"/>
+      <argument type="service" id="annotations.reader"/>
+      <argument>C:\xampp\htdocs\citiezenHub_webapp\var\cache\dev/annotations.php</argument>
+      <argument>#^Symfony\\(?:Component\\HttpKernel\\|Bundle\\FrameworkBundle\\Controller\\(?!.*Controller$))#</argument>
+      <argument>true</argument>
+    </service>
+    <service id="annotations.cache_adapter" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter">
+      <tag name="container.hot_path"/>
+      <argument>C:\xampp\htdocs\citiezenHub_webapp\var\cache\dev/annotations.php</argument>
+      <argument type="service" id="cache.annotations"/>
+      <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create"/>
+    </service>
+    <service id="annotations.cache" class="Doctrine\Common\Cache\Psr6\DoctrineProvider">
+      <argument type="service" id="annotations.cache_adapter"/>
+      <factory class="Doctrine\Common\Cache\Psr6\DoctrineProvider" method="wrap"/>
+      <deprecated package="symfony/framework-bundle" version="5.4">"%service_id% is deprecated"</deprecated>
     </service>
     <service id="property_accessor" class="Symfony\Component\PropertyAccess\PropertyAccessor">
       <argument>3</argument>
@@ -2919,7 +2963,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader">
-            <argument>null</argument>
+            <argument type="service" id="annotations.cached_reader" on-invalid="null"/>
           </service>
         </argument>
       </argument>
@@ -2932,7 +2976,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader">
-            <argument>null</argument>
+            <argument type="service" id="annotations.cached_reader" on-invalid="null"/>
           </service>
         </argument>
       </argument>
@@ -3279,6 +3323,9 @@
       </call>
       <call method="enableAnnotationMapping">
         <argument>true</argument>
+      </call>
+      <call method="setDoctrineAnnotationReader">
+        <argument type="service" id="annotations.cached_reader"/>
       </call>
       <call method="addMethodMapping">
         <argument>loadValidatorMetadata</argument>
@@ -4028,7 +4075,7 @@
     </service>
     <service id="doctrine.dbal.logging_middleware" class="Doctrine\DBAL\Logging\Middleware" abstract="true">
       <tag name="monolog.logger" channel="doctrine"/>
-      <tag name="doctrine.middleware" connection="default"/>
+      <tag name="doctrine.middleware" connection="default" priority="10"/>
       <argument type="service" id="monolog.logger.doctrine"/>
     </service>
     <service id="doctrine.debug_data_holder" class="Doctrine\Bundle\DoctrineBundle\Middleware\BacktraceDebugDataHolder">
@@ -4036,7 +4083,7 @@
       <argument type="collection"/>
     </service>
     <service id="doctrine.dbal.debug_middleware" class="Doctrine\Bundle\DoctrineBundle\Middleware\DebugMiddleware" abstract="true">
-      <tag name="doctrine.middleware" connection="default"/>
+      <tag name="doctrine.middleware" connection="default" priority="10"/>
       <argument type="service" id="doctrine.debug_data_holder"/>
       <argument type="service" id="debug.stopwatch" on-invalid="null"/>
     </service>
@@ -4066,7 +4113,7 @@
       <tag name="doctrine.event_subscriber"/>
       <argument type="tagged_iterator" tag="messenger.receiver"/>
     </service>
-    <service id=".1_ServiceLocator~8S5VLRi" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".1_ServiceLocator~YKDkcfO" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <argument type="collection"/>
     </service>
     <service id="doctrine.orm.proxy_cache_warmer" class="Symfony\Bridge\Doctrine\CacheWarmer\ProxyCacheWarmer">
@@ -4788,11 +4835,11 @@
       <argument type="collection"/>
       <argument>C:\xampp\htdocs\citiezenHub_webapp</argument>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\citiezenHub_webapp\vendor\doctrine\doctrine-bundle/Resources/views</argument>
+        <argument>C:\xampp\htdocs\citiezenHub_webapp\vendor\doctrine\doctrine-bundle/templates</argument>
         <argument>Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\citiezenHub_webapp\vendor\doctrine\doctrine-bundle/Resources/views</argument>
+        <argument>C:\xampp\htdocs\citiezenHub_webapp\vendor\doctrine\doctrine-bundle/templates</argument>
         <argument>!Doctrine</argument>
       </call>
       <call method="addPath">
@@ -5072,7 +5119,7 @@
       <tag name="doctrine.event_listener" event="onFlush"/>
       <tag name="doctrine.event_listener" event="postFlush"/>
       <argument type="service" id="turbo.broadcaster.action_renderer"/>
-      <argument>null</argument>
+      <argument type="service" id="annotations.cached_reader" on-invalid="null"/>
     </service>
     <service id="twig.missing_extension_suggestor" class="Twig\Extra\TwigExtraBundle\MissingExtensionSuggestor"/>
     <service id="security.authorization_checker" class="Symfony\Component\Security\Core\Authorization\AuthorizationChecker" public="true">
@@ -7953,6 +8000,8 @@
     <service id="Symfony\Component\Routing\Matcher\UrlMatcherInterface" alias="router.default"/>
     <service id="Symfony\Component\Routing\RequestContextAwareInterface" alias="router.default"/>
     <service id="Symfony\Component\Routing\RequestContext" alias="router.request_context"/>
+    <service id="annotation_reader" alias="annotations.cached_reader"/>
+    <service id="Doctrine\Common\Annotations\Reader" alias="annotations.cached_reader"/>
     <service id="Symfony\Component\PropertyAccess\PropertyAccessorInterface" alias="property_accessor"/>
     <service id="Symfony\Component\Serializer\SerializerInterface" alias="serializer"/>
     <service id="Symfony\Component\Serializer\Normalizer\NormalizerInterface" alias="serializer"/>
@@ -8009,6 +8058,7 @@
     <service id="doctrine.dbal.event_manager" alias="doctrine.dbal.default_connection.event_manager"/>
     <service id="Doctrine\DBAL\Connection $defaultConnection" alias="doctrine.dbal.default_connection"/>
     <service id="Doctrine\ORM\EntityManagerInterface" alias="doctrine.orm.default_entity_manager"/>
+    <service id="doctrine.orm.metadata.annotation_reader" alias="annotations.cached_reader"/>
     <service id="doctrine.orm.entity_manager" alias="doctrine.orm.default_entity_manager" public="true"/>
     <service id="doctrine.orm.default_metadata_cache" alias="cache.doctrine.orm.default.metadata"/>
     <service id="doctrine.orm.default_result_cache" alias="cache.doctrine.orm.default.result"/>

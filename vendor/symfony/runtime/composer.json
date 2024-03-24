@@ -2,7 +2,6 @@
     "name": "symfony/runtime",
     "type": "composer-plugin",
     "description": "Enables decoupling PHP applications from global state",
-    "keywords": ["runtime"],
     "homepage": "https://symfony.com",
     "license" : "MIT",
     "authors": [
@@ -22,10 +21,10 @@
     },
     "require-dev": {
         "composer/composer": "^1.0.2|^2.0",
-        "symfony/console": "^4.4.30|^5.4.9|^6.0.9",
+        "symfony/console": "^5.4|^6.0",
         "symfony/dotenv": "^5.1|^6.0",
-        "symfony/http-foundation": "^4.4.30|^5.3.7|^6.0",
-        "symfony/http-kernel": "^4.4.30|^5.3.7|^6.0"
+        "symfony/http-foundation": "^4.4|^5.0|^6.0",
+        "symfony/http-kernel": "^4.4|^5.0|^6.0"
     },
     "conflict": {
         "symfony/dotenv": "<5.1"
