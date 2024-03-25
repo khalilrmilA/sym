@@ -15,6 +15,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/assets/images/logo/logo.png">
     <!-- CSS  -->
+    {%block css%}
     <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/vendor/slick.css">
     <link rel="stylesheet" href="/assets/css/vendor/slick-theme.css">
@@ -22,9 +23,9 @@
     <link rel="stylesheet" href="/assets/css/plugins/feature.css">
     <link rel="stylesheet" href="/assets/css/plugins/jquery-ui.min.css">
     <link rel="stylesheet" href="/assets/css/vendor/odometer.css">
-
     <!-- Style css -->
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css"> 
+    {%endblock%}
 </head>
 
 <body class="template-color-1 nft-body-connect">
@@ -352,6 +353,7 @@
     </div>
     <!-- End Top To Bottom Area  -->
     <!-- JS ============================================ -->
+    {% block js %}
     <script src="/assets/js/vendor/jquery.js"></script>
     <script src="/assets/js/vendor/jquery.nice-select.min.js"></script>
     <script src="/assets/js/vendor/jquery-ui.js"></script>
@@ -380,6 +382,7 @@
     <script src="/assets/js/vendor/web3.min.js"></script>
     <script src="/assets/js/vendor/maralis.js"></script>
     <script src="/assets/js/vendor/nft.js"></script>
+    {% endblock %}
 </body>
 
 </html>
