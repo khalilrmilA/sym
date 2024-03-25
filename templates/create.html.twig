@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>citiezenHub</title>
+    <title>{% block title %}citiezenHub{% endblock %}</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,7 +15,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/assets/images/logo/logo.png">
     <!-- CSS  -->
-    {%block css%}
+    {% block stylesheets %}
     <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/vendor/slick.css">
     <link rel="stylesheet" href="/assets/css/vendor/slick-theme.css">
@@ -25,10 +25,11 @@
     <link rel="stylesheet" href="/assets/css/vendor/odometer.css">
     <!-- Style css -->
     <link rel="stylesheet" href="/assets/css/style.css"> 
-    {%endblock%}
+    {% endblock %}
 </head>
 
 <body class="template-color-1 nft-body-connect">
+ {% block body %}
     <!-- Start Header -->
     <header class="rn-header haeder-default header--sticky">
         <div class="container">
@@ -353,7 +354,7 @@
     </div>
     <!-- End Top To Bottom Area  -->
     <!-- JS ============================================ -->
-    {% block js %}
+    {% block javascripts %}
     <script src="/assets/js/vendor/jquery.js"></script>
     <script src="/assets/js/vendor/jquery.nice-select.min.js"></script>
     <script src="/assets/js/vendor/jquery-ui.js"></script>
@@ -383,6 +384,7 @@
     <script src="/assets/js/vendor/maralis.js"></script>
     <script src="/assets/js/vendor/nft.js"></script>
     {% endblock %}
+{% endblock %}
 </body>
 
 </html>
