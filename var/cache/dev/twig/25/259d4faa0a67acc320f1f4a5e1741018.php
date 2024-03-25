@@ -24,16 +24,14 @@ class __TwigTemplate_805c0f361251e003944da440f53295ec extends Template
 
         $this->source = $this->getSourceContext();
 
+        $this->parent = false;
+
         $this->blocks = [
             'title' => [$this, 'block_title'],
+            'stylesheets' => [$this, 'block_stylesheets'],
             'body' => [$this, 'block_body'],
+            'javascripts' => [$this, 'block_javascripts'],
         ];
-    }
-
-    protected function doGetParent(array $context)
-    {
-        // line 1
-        return "base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = [])
@@ -45,8 +43,42 @@ class __TwigTemplate_805c0f361251e003944da440f53295ec extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "reclamation/index.html.twig"));
 
-        $this->parent = $this->loadTemplate("base.html.twig", "reclamation/index.html.twig", 1);
-        $this->parent->display($context, array_merge($this->blocks, $blocks));
+        // line 1
+        echo "<!DOCTYPE html>
+<html lang=\"en\">
+
+<head>
+    <meta charset=\"utf-8\">
+    <meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\">
+    <title>";
+        // line 7
+        $this->displayBlock('title', $context, $blocks);
+        echo "</title>
+    <meta name=\"robots\" content=\"noindex, follow\" />
+    <meta name=\"description\" content>
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
+
+    <meta name=\"theme-style-mode\" content=\"1\">
+    <!-- 0 == light, 1 == dark -->
+
+    <!-- Favicon -->
+    <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/assets/images/logo/logo.png\">
+    <!-- CSS  -->
+    ";
+        // line 18
+        $this->displayBlock('stylesheets', $context, $blocks);
+        // line 29
+        echo "</head>
+
+<body class=\"template-color-1 nft-body-connect\">
+ ";
+        // line 32
+        $this->displayBlock('body', $context, $blocks);
+        // line 388
+        echo "</body>
+
+</html>
+";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
@@ -55,7 +87,7 @@ class __TwigTemplate_805c0f361251e003944da440f53295ec extends Template
 
     }
 
-    // line 3
+    // line 7
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -65,7 +97,7 @@ class __TwigTemplate_805c0f361251e003944da440f53295ec extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        echo "Hello ReclamationController!";
+        echo "citiezenHub";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -74,7 +106,36 @@ class __TwigTemplate_805c0f361251e003944da440f53295ec extends Template
 
     }
 
-    // line 5
+    // line 18
+    public function block_stylesheets($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
+
+        // line 19
+        echo "    <link rel=\"stylesheet\" href=\"/public/assets/css/vendor/bootstrap.min.css\">
+    <link rel=\"stylesheet\" href=\"/assets/css/vendor/slick.css\">
+    <link rel=\"stylesheet\" href=\"/assets/css/vendor/slick-theme.css\">
+    <link rel=\"stylesheet\" href=\"/assets/css/vendor/nice-select.css\">
+    <link rel=\"stylesheet\" href=\"/assets/css/plugins/feature.css\">
+    <link rel=\"stylesheet\" href=\"/assets/css/plugins/jquery-ui.min.css\">
+    <link rel=\"stylesheet\" href=\"/assets/css/vendor/odometer.css\">
+    <!-- Style css -->
+    <link rel=\"stylesheet\" href=\"/assets/css/style.css\"> 
+    ";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    // line 32
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -84,31 +145,381 @@ class __TwigTemplate_805c0f361251e003944da440f53295ec extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 6
-        echo "<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+        // line 33
+        echo "    <!-- Start Header -->
+    <header class=\"rn-header haeder-default header--sticky\">
+        <div class=\"container\">
+            <div class=\"header-inner\">
+                <div class=\"header-left\">
+                    <div class=\"logo-thumbnail logo-custom-css\">
+                        <a class=\"logo-light\" href=\"index.html\"><img src=\"/assets/images/logo/logo.png\" alt=\"nft-logo\"></a>
+                        <a class=\"logo-dark\" href=\"index.html\"><img src=\"/assets/images/logo/logo.png\" alt=\"nft-logo\"></a>
+                    </div>
+                    <div class=\"mainmenu-wrapper\">
+                        <nav id=\"sideNav\" class=\"mainmenu-nav d-none d-xl-block\">
+                            <!-- Start Mainmanu Nav -->
+                            <ul class=\"mainmenu\">
+                                <li class=\"has-droupdown has-menu-child-item\">
+                                    <a href=\"index.html\">Home</a>
+                                    <ul class=\"submenu\">
+                                        <li>
+                                            <a href=\"index.html\">Home page -
+                                                01
+                                                <i class=\"feather-home\"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href=\"about.html\">About</a>
+                                </li>
+                                <li class=\"has-droupdown has-menu-child-item\">
+                                    <a href=\"#\">Explore</a>
+                                    <ul class=\"submenu\">
+                                        <li>
+                                            <a href=\"explore-one.html\">Explore
+                                                Filter<i class=\"feather-fast-forward\"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class=\"with-megamenu\">
+                                    <a href=\"#\">Pages</a>
+                                    <div class=\"rn-megamenu\">
+                                        <div class=\"wrapper\">
+                                            <div class=\"row row--0\">
+                                                <div class=\"col-lg-3 single-mega-item\">
+                                                    <ul class=\"mega-menu-item\">
+                                                        <li>
+                                                            <a href=\"create.html\">Create
+                                                                NFT<i data-feather=\"file-plus\"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class=\"col-lg-3 single-mega-item\">
+                                                    <ul class=\"mega-menu-item\">
+                                                        <li>
+                                                            <a href=\"about.html\">About
+                                                                Us<i data-feather=\"award\"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class=\"has-droupdown has-menu-child-item\">
+                                    <a class=\"down\" href=\"blog.html\">Blog</a>
+                                    <ul class=\"submenu\">
+                                        <li>
+                                            <a href=\"blog-single-col.html\">Blog
+                                                Single Column<i class=\"feather-fast-forward\"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href=\"contact.html\">Contact</a>
+                                </li>
+                            </ul>
+                            <!-- End Mainmanu Nav -->
+                        </nav>
+                    </div>
+                </div>
+                <div class=\"header-right\">
+                    <div class=\"setting-option d-none d-lg-block\">
+                        <form class=\"search-form-wrapper\" action=\"#\">
+                            <input type=\"search\" placeholder=\"Search Here\" aria-label=\"Search\">
+                            <div class=\"search-icon\">
+                                <button>
+                                    <i class=\"feather-search\"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class=\"setting-option rn-icon-list d-block d-lg-none\">
+                        <div class=\"icon-box search-mobile-icon\">
+                            <button>
+                                <i class=\"feather-search\"></i>
+                            </button>
+                        </div>
+                        <form id=\"header-search-1\" action=\"#\" method=\"GET\" class=\"large-mobile-blog-search\">
+                            <div class=\"rn-search-mobile form-group\">
+                                <button type=\"submit\" class=\"search-button\">
+                                    <i class=\"feather-search\"></i>
+                                </button>
+                                <input type=\"text\" placeholder=\"Search ...\">
+                            </div>
+                        </form>
+                    </div>
 
-<div class=\"example-wrapper\">
-    <h1>Hello ";
-        // line 12
-        echo twig_escape_filter($this->env, (isset($context["controller_name"]) || array_key_exists("controller_name", $context) ? $context["controller_name"] : (function () { throw new RuntimeError('Variable "controller_name" does not exist.', 12, $this->source); })()), "html", null, true);
-        echo "! ✅</h1>
+                    <div class=\"setting-option header-btn rbt-site-header\" id=\"rbt-site-header\">
+                        <div class=\"icon-box\">
+                            <a id=\"connectbtn\" class=\"btn btn-primary-alta btn-small\" href=\"connect.html\">Wallet
+                                connect</a>
+                        </div>
+                    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href=\"";
-        // line 16
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("C:/xampp/htdocs/citiezenHub_webapp/src/Controller/ReclamationController.php", 0), "html", null, true);
-        echo "\">src/Controller/ReclamationController.php</a></code></li>
-        <li>Your template at <code><a href=\"";
-        // line 17
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("C:/xampp/htdocs/citiezenHub_webapp/templates/reclamation/index.html.twig", 0), "html", null, true);
-        echo "\">templates/reclamation/index.html.twig</a></code></li>
-    </ul>
-</div>
-";
+                    <div class=\"setting-option rn-icon-list notification-badge\">
+                        <div class=\"icon-box\">
+                            <a href=\"activity.html\">
+                                <i class=\"feather-bell\"></i>
+                                <span class=\"badge\">6</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id=\"my_switcher\" class=\"my_switcher setting-option\">
+                        <ul>
+                            <li>
+                                <a href=\"javascript: void(0);\" data-theme=\"light\" class=\"setColor light\"><img class=\"sun-image\" src=\"/assets/images/icons/sun-01.svg\" alt=\"Sun images\"></a>
+                            </li>
+                            <li>
+                                <a href=\"javascript: void(0);\" data-theme=\"dark\" class=\"setColor dark\"><img class=\"Victor Image\" src=\"/assets/images/icons/vector.svg\" alt=\"Vector Images\"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End Header Area -->
+
+    <!-- start page title area -->
+    <div class=\"rn-breadcrumb-inner ptb--30\">
+        <div class=\"container\">
+            <div class=\"row align-items-center\">
+                <div class=\"col-lg-6 col-md-6 col-12\">
+                    <h5 class=\"title text-center text-md-start\">Add Reclamation
+                    </h5>
+                </div>
+                <div class=\"col-lg-6 col-md-6 col-12\">
+                    <ul class=\"breadcrumb-list\">
+                        <li class=\"item\">
+                            <a href=\"index.html\">Home</a>
+                        </li>
+                        <li class=\"separator\">
+                            <i class=\"feather-chevron-right\"></i>
+                        </li>
+                        <li class=\"item current\">Reclamation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end page title area -->
+
+    <!-- create new product area -->
+    <div class=\"create-area rn-section-gapTop\">
+        <div class=\"container\">
+            <div class=\"row g-5\">
+                <div class=\"col-lg-3 offset-1 ml_md--0 ml_sm--0\">
+                    <!-- file upload area -->
+                    <div class=\"upload-area\">
+
+                        <div class=\"upload-formate mb--30\">
+                            <h6 class=\"title\">
+                                Upload file
+                            </h6>
+                            <p class=\"formate\">
+                                Drag or choose your file to upload
+                            </p>
+                        </div>
+
+                        <div class=\"brows-file-wrapper\">
+                            <!-- actual upload which is hidden -->
+                            <input name=\"createinputfile\" id=\"createinputfile\" type=\"file\" class=\"inputfile\" />
+                            <img id=\"createfileImage\" src=\"/assets/images/portfolio/1.jpeg\" alt data-black-overlay=\"6\">
+                            <!-- our custom upload button -->
+                            <label for=\"createinputfile\" title=\"No File Choosen\">
+                                <i class=\"feather-upload\"></i>
+                                <span class=\"text-center\">Choose a
+                                    File</span>
+                                <p class=\"text-center mt--9\">PNG, GIF,
+                                    WEBP, MP4 or MP3.
+                                    <br>
+                                    Max 1Gb.
+                                </p>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- end upoad file area -->
+
+                    <div class=\"mt--100 mt_sm--30 mt_md--30 d-none d-lg-block\">
+                        <h5>
+                            Note:
+                        </h5>
+                        <span>
+                            enjoy our Service
+                        </span>
+                        <br>
+                        <span>
+                            You will receive our reponse soon
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class=\"col-lg-7\">
+                    <div class=\"form-wrapper-one\">
+                        <form class=\"row\" action=\"#\">
+
+                            <div class=\"col-md-12\">
+                                <div class=\"input-box pb--20\">
+                                    <label for=\"name\" class=\"form-label\">
+                                        Private Key
+                                    </label>
+                                    <input id=\"name\" placeholder=\"automatically generated\">
+                                </div>
+                            </div>
+
+                            <div class=\"col-md-12\">
+                                <div class=\"input-box pb--20\">
+                                    <label for=\"name\" class=\"form-label\">
+                                        Private Key
+                                    </label>
+                                    <input id=\"name\" placeholder=\"automatically generated\">
+                                </div>
+                            </div>
+
+                            <div class=\"col-md-12\">
+                                <div class=\"input-box pb--20\">
+                                    <label for=\"Discription\" class=\"form-label\">Discription</label>
+                                    <textarea id=\"Discription\" rows=\"3\" placeholder=\"describe more feel free ..............\"></textarea>
+                                </div>
+                            </div>
+                            <span>
+                            </span>
+                            <span></span>
+                            <div class=\"col-md-12 col-xl-8 mt_lg--15 mt_md--15 mt_sm--15\">
+                                <div class=\"input-box\">
+                                    <button class=\"btn btn-primary btn-large w-100\">Submit
+                                        Item</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- create new product area -->
+
+    <!-- End Footer Area -->
+    <!-- Start Footer Area -->
+    <div class=\"copy-right-one ptb--20 bg-color--1\">
+        <div class=\"container\">
+            <div class=\"row align-items-center\">
+                <div class=\"col-lg-6 col-md-12 col-sm-12\">
+                    <div class=\"copyright-left\">
+                        <span>©2022 Nuron, Inc. All rights reserved.</span>
+                        <ul class=\"privacy\">
+                            <li>
+                                <a href=\"terms-condition.html\">Terms</a>
+                            </li>
+                            <li>
+                                <a href=\"privacy-policy.html\">Privacy
+                                    Policy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class=\"col-lg-6 col-md-12 col-sm-12\">
+                    <div class=\"copyright-right\">
+                        <ul class=\"social-copyright\">
+                            <li>
+                                <a href=\"#\">
+                                    <i data-feather=\"facebook\"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href=\"#\">
+                                    <i data-feather=\"twitter\"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href=\"#\">
+                                    <i data-feather=\"instagram\"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href=\"#\">
+                                    <i data-feather=\"linkedin\"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href=\"#\">
+                                    <i data-feather=\"mail\"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Footer Area -->
+    <div class=\"mouse-cursor cursor-outer\"></div>
+    <div class=\"mouse-cursor cursor-inner\"></div>
+    <!-- Start Top To Bottom Area  -->
+    <div class=\"rn-progress-parent\">
+        <svg class=\"rn-back-circle svg-inner\" width=\"100%\" height=\"100%\" viewbox=\"-1 -1 102 102\">
+            <path d=\"M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98\" />
+        </svg>
+    </div>
+    <!-- End Top To Bottom Area  -->
+    <!-- JS ============================================ -->
+    ";
+        // line 357
+        $this->displayBlock('javascripts', $context, $blocks);
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    public function block_javascripts($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
+
+        // line 358
+        echo "    <script src=\"/assets/js/vendor/jquery.js\"></script>
+    <script src=\"/assets/js/vendor/jquery.nice-select.min.js\"></script>
+    <script src=\"/assets/js/vendor/jquery-ui.js\"></script>
+    <script src=\"/assets/js/vendor/modernizer.min.js\"></script>
+    <script src=\"/assets/js/vendor/feather.min.js\"></script>
+    <script src=\"/assets/js/vendor/slick.min.js\"></script>
+    <script src=\"/assets/js/vendor/bootstrap.min.js\"></script>
+    <script src=\"/assets/js/vendor/sal.min.js\"></script>
+    <script src=\"/assets/js/vendor/particles.js\"></script>
+    <script src=\"/assets/js/vendor/jquery.style.swicher.js\"></script>
+    <script src=\"/assets/js/vendor/js.cookie.js\"></script>
+    <script src=\"/assets/js/vendor/count-down.js\"></script>
+    <script src=\"/assets/js/vendor/isotop.js\"></script>
+    <script src=\"/assets/js/vendor/imageloaded.js\"></script>
+    <script src=\"/assets/js/vendor/backtoTop.js\"></script>
+    <script src=\"/assets/js/vendor/odometer.js\"></script>
+    <script src=\"/assets/js/vendor/jquery-appear.js\"></script>
+    <script src=\"/assets/js/vendor/scrolltrigger.js\"></script>
+    <script src=\"/assets/js/vendor/jquery.custom-file-input.js\"></script>
+    <script src=\"/assets/js/vendor/savePopup.js\"></script>
+    <script src=\"/assets/js/vendor/vanilla.tilt.js\"></script>
+
+    <!-- main JS -->
+    <script src=\"/assets/js/main.js\"></script>
+    <!-- Meta Mask  -->
+    <script src=\"/assets/js/vendor/web3.min.js\"></script>
+    <script src=\"/assets/js/vendor/maralis.js\"></script>
+    <script src=\"/assets/js/vendor/nft.js\"></script>
+    ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -128,41 +539,403 @@ class __TwigTemplate_805c0f361251e003944da440f53295ec extends Template
     /**
      * @codeCoverageIgnore
      */
-    public function isTraitable()
-    {
-        return false;
-    }
-
-    /**
-     * @codeCoverageIgnore
-     */
     public function getDebugInfo()
     {
-        return array (  107 => 17,  103 => 16,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  494 => 358,  475 => 357,  149 => 33,  139 => 32,  120 => 19,  110 => 18,  91 => 7,  78 => 388,  76 => 32,  71 => 29,  69 => 18,  55 => 7,  47 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("{% extends 'base.html.twig' %}
+        return new Source("<!DOCTYPE html>
+<html lang=\"en\">
 
-{% block title %}Hello ReclamationController!{% endblock %}
+<head>
+    <meta charset=\"utf-8\">
+    <meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\">
+    <title>{% block title %}citiezenHub{% endblock %}</title>
+    <meta name=\"robots\" content=\"noindex, follow\" />
+    <meta name=\"description\" content>
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <meta name=\"theme-style-mode\" content=\"1\">
+    <!-- 0 == light, 1 == dark -->
 
-<div class=\"example-wrapper\">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <!-- Favicon -->
+    <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/assets/images/logo/logo.png\">
+    <!-- CSS  -->
+    {% block stylesheets %}
+    <link rel=\"stylesheet\" href=\"/public/assets/css/vendor/bootstrap.min.css\">
+    <link rel=\"stylesheet\" href=\"/assets/css/vendor/slick.css\">
+    <link rel=\"stylesheet\" href=\"/assets/css/vendor/slick-theme.css\">
+    <link rel=\"stylesheet\" href=\"/assets/css/vendor/nice-select.css\">
+    <link rel=\"stylesheet\" href=\"/assets/css/plugins/feature.css\">
+    <link rel=\"stylesheet\" href=\"/assets/css/plugins/jquery-ui.min.css\">
+    <link rel=\"stylesheet\" href=\"/assets/css/vendor/odometer.css\">
+    <!-- Style css -->
+    <link rel=\"stylesheet\" href=\"/assets/css/style.css\"> 
+    {% endblock %}
+</head>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href=\"{{ 'C:/xampp/htdocs/citiezenHub_webapp/src/Controller/ReclamationController.php'|file_link(0) }}\">src/Controller/ReclamationController.php</a></code></li>
-        <li>Your template at <code><a href=\"{{ 'C:/xampp/htdocs/citiezenHub_webapp/templates/reclamation/index.html.twig'|file_link(0) }}\">templates/reclamation/index.html.twig</a></code></li>
-    </ul>
-</div>
+<body class=\"template-color-1 nft-body-connect\">
+ {% block body %}
+    <!-- Start Header -->
+    <header class=\"rn-header haeder-default header--sticky\">
+        <div class=\"container\">
+            <div class=\"header-inner\">
+                <div class=\"header-left\">
+                    <div class=\"logo-thumbnail logo-custom-css\">
+                        <a class=\"logo-light\" href=\"index.html\"><img src=\"/assets/images/logo/logo.png\" alt=\"nft-logo\"></a>
+                        <a class=\"logo-dark\" href=\"index.html\"><img src=\"/assets/images/logo/logo.png\" alt=\"nft-logo\"></a>
+                    </div>
+                    <div class=\"mainmenu-wrapper\">
+                        <nav id=\"sideNav\" class=\"mainmenu-nav d-none d-xl-block\">
+                            <!-- Start Mainmanu Nav -->
+                            <ul class=\"mainmenu\">
+                                <li class=\"has-droupdown has-menu-child-item\">
+                                    <a href=\"index.html\">Home</a>
+                                    <ul class=\"submenu\">
+                                        <li>
+                                            <a href=\"index.html\">Home page -
+                                                01
+                                                <i class=\"feather-home\"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href=\"about.html\">About</a>
+                                </li>
+                                <li class=\"has-droupdown has-menu-child-item\">
+                                    <a href=\"#\">Explore</a>
+                                    <ul class=\"submenu\">
+                                        <li>
+                                            <a href=\"explore-one.html\">Explore
+                                                Filter<i class=\"feather-fast-forward\"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class=\"with-megamenu\">
+                                    <a href=\"#\">Pages</a>
+                                    <div class=\"rn-megamenu\">
+                                        <div class=\"wrapper\">
+                                            <div class=\"row row--0\">
+                                                <div class=\"col-lg-3 single-mega-item\">
+                                                    <ul class=\"mega-menu-item\">
+                                                        <li>
+                                                            <a href=\"create.html\">Create
+                                                                NFT<i data-feather=\"file-plus\"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class=\"col-lg-3 single-mega-item\">
+                                                    <ul class=\"mega-menu-item\">
+                                                        <li>
+                                                            <a href=\"about.html\">About
+                                                                Us<i data-feather=\"award\"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class=\"has-droupdown has-menu-child-item\">
+                                    <a class=\"down\" href=\"blog.html\">Blog</a>
+                                    <ul class=\"submenu\">
+                                        <li>
+                                            <a href=\"blog-single-col.html\">Blog
+                                                Single Column<i class=\"feather-fast-forward\"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href=\"contact.html\">Contact</a>
+                                </li>
+                            </ul>
+                            <!-- End Mainmanu Nav -->
+                        </nav>
+                    </div>
+                </div>
+                <div class=\"header-right\">
+                    <div class=\"setting-option d-none d-lg-block\">
+                        <form class=\"search-form-wrapper\" action=\"#\">
+                            <input type=\"search\" placeholder=\"Search Here\" aria-label=\"Search\">
+                            <div class=\"search-icon\">
+                                <button>
+                                    <i class=\"feather-search\"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class=\"setting-option rn-icon-list d-block d-lg-none\">
+                        <div class=\"icon-box search-mobile-icon\">
+                            <button>
+                                <i class=\"feather-search\"></i>
+                            </button>
+                        </div>
+                        <form id=\"header-search-1\" action=\"#\" method=\"GET\" class=\"large-mobile-blog-search\">
+                            <div class=\"rn-search-mobile form-group\">
+                                <button type=\"submit\" class=\"search-button\">
+                                    <i class=\"feather-search\"></i>
+                                </button>
+                                <input type=\"text\" placeholder=\"Search ...\">
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class=\"setting-option header-btn rbt-site-header\" id=\"rbt-site-header\">
+                        <div class=\"icon-box\">
+                            <a id=\"connectbtn\" class=\"btn btn-primary-alta btn-small\" href=\"connect.html\">Wallet
+                                connect</a>
+                        </div>
+                    </div>
+
+                    <div class=\"setting-option rn-icon-list notification-badge\">
+                        <div class=\"icon-box\">
+                            <a href=\"activity.html\">
+                                <i class=\"feather-bell\"></i>
+                                <span class=\"badge\">6</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id=\"my_switcher\" class=\"my_switcher setting-option\">
+                        <ul>
+                            <li>
+                                <a href=\"javascript: void(0);\" data-theme=\"light\" class=\"setColor light\"><img class=\"sun-image\" src=\"/assets/images/icons/sun-01.svg\" alt=\"Sun images\"></a>
+                            </li>
+                            <li>
+                                <a href=\"javascript: void(0);\" data-theme=\"dark\" class=\"setColor dark\"><img class=\"Victor Image\" src=\"/assets/images/icons/vector.svg\" alt=\"Vector Images\"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End Header Area -->
+
+    <!-- start page title area -->
+    <div class=\"rn-breadcrumb-inner ptb--30\">
+        <div class=\"container\">
+            <div class=\"row align-items-center\">
+                <div class=\"col-lg-6 col-md-6 col-12\">
+                    <h5 class=\"title text-center text-md-start\">Add Reclamation
+                    </h5>
+                </div>
+                <div class=\"col-lg-6 col-md-6 col-12\">
+                    <ul class=\"breadcrumb-list\">
+                        <li class=\"item\">
+                            <a href=\"index.html\">Home</a>
+                        </li>
+                        <li class=\"separator\">
+                            <i class=\"feather-chevron-right\"></i>
+                        </li>
+                        <li class=\"item current\">Reclamation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end page title area -->
+
+    <!-- create new product area -->
+    <div class=\"create-area rn-section-gapTop\">
+        <div class=\"container\">
+            <div class=\"row g-5\">
+                <div class=\"col-lg-3 offset-1 ml_md--0 ml_sm--0\">
+                    <!-- file upload area -->
+                    <div class=\"upload-area\">
+
+                        <div class=\"upload-formate mb--30\">
+                            <h6 class=\"title\">
+                                Upload file
+                            </h6>
+                            <p class=\"formate\">
+                                Drag or choose your file to upload
+                            </p>
+                        </div>
+
+                        <div class=\"brows-file-wrapper\">
+                            <!-- actual upload which is hidden -->
+                            <input name=\"createinputfile\" id=\"createinputfile\" type=\"file\" class=\"inputfile\" />
+                            <img id=\"createfileImage\" src=\"/assets/images/portfolio/1.jpeg\" alt data-black-overlay=\"6\">
+                            <!-- our custom upload button -->
+                            <label for=\"createinputfile\" title=\"No File Choosen\">
+                                <i class=\"feather-upload\"></i>
+                                <span class=\"text-center\">Choose a
+                                    File</span>
+                                <p class=\"text-center mt--9\">PNG, GIF,
+                                    WEBP, MP4 or MP3.
+                                    <br>
+                                    Max 1Gb.
+                                </p>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- end upoad file area -->
+
+                    <div class=\"mt--100 mt_sm--30 mt_md--30 d-none d-lg-block\">
+                        <h5>
+                            Note:
+                        </h5>
+                        <span>
+                            enjoy our Service
+                        </span>
+                        <br>
+                        <span>
+                            You will receive our reponse soon
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class=\"col-lg-7\">
+                    <div class=\"form-wrapper-one\">
+                        <form class=\"row\" action=\"#\">
+
+                            <div class=\"col-md-12\">
+                                <div class=\"input-box pb--20\">
+                                    <label for=\"name\" class=\"form-label\">
+                                        Private Key
+                                    </label>
+                                    <input id=\"name\" placeholder=\"automatically generated\">
+                                </div>
+                            </div>
+
+                            <div class=\"col-md-12\">
+                                <div class=\"input-box pb--20\">
+                                    <label for=\"name\" class=\"form-label\">
+                                        Private Key
+                                    </label>
+                                    <input id=\"name\" placeholder=\"automatically generated\">
+                                </div>
+                            </div>
+
+                            <div class=\"col-md-12\">
+                                <div class=\"input-box pb--20\">
+                                    <label for=\"Discription\" class=\"form-label\">Discription</label>
+                                    <textarea id=\"Discription\" rows=\"3\" placeholder=\"describe more feel free ..............\"></textarea>
+                                </div>
+                            </div>
+                            <span>
+                            </span>
+                            <span></span>
+                            <div class=\"col-md-12 col-xl-8 mt_lg--15 mt_md--15 mt_sm--15\">
+                                <div class=\"input-box\">
+                                    <button class=\"btn btn-primary btn-large w-100\">Submit
+                                        Item</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- create new product area -->
+
+    <!-- End Footer Area -->
+    <!-- Start Footer Area -->
+    <div class=\"copy-right-one ptb--20 bg-color--1\">
+        <div class=\"container\">
+            <div class=\"row align-items-center\">
+                <div class=\"col-lg-6 col-md-12 col-sm-12\">
+                    <div class=\"copyright-left\">
+                        <span>©2022 Nuron, Inc. All rights reserved.</span>
+                        <ul class=\"privacy\">
+                            <li>
+                                <a href=\"terms-condition.html\">Terms</a>
+                            </li>
+                            <li>
+                                <a href=\"privacy-policy.html\">Privacy
+                                    Policy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class=\"col-lg-6 col-md-12 col-sm-12\">
+                    <div class=\"copyright-right\">
+                        <ul class=\"social-copyright\">
+                            <li>
+                                <a href=\"#\">
+                                    <i data-feather=\"facebook\"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href=\"#\">
+                                    <i data-feather=\"twitter\"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href=\"#\">
+                                    <i data-feather=\"instagram\"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href=\"#\">
+                                    <i data-feather=\"linkedin\"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href=\"#\">
+                                    <i data-feather=\"mail\"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Footer Area -->
+    <div class=\"mouse-cursor cursor-outer\"></div>
+    <div class=\"mouse-cursor cursor-inner\"></div>
+    <!-- Start Top To Bottom Area  -->
+    <div class=\"rn-progress-parent\">
+        <svg class=\"rn-back-circle svg-inner\" width=\"100%\" height=\"100%\" viewbox=\"-1 -1 102 102\">
+            <path d=\"M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98\" />
+        </svg>
+    </div>
+    <!-- End Top To Bottom Area  -->
+    <!-- JS ============================================ -->
+    {% block javascripts %}
+    <script src=\"/assets/js/vendor/jquery.js\"></script>
+    <script src=\"/assets/js/vendor/jquery.nice-select.min.js\"></script>
+    <script src=\"/assets/js/vendor/jquery-ui.js\"></script>
+    <script src=\"/assets/js/vendor/modernizer.min.js\"></script>
+    <script src=\"/assets/js/vendor/feather.min.js\"></script>
+    <script src=\"/assets/js/vendor/slick.min.js\"></script>
+    <script src=\"/assets/js/vendor/bootstrap.min.js\"></script>
+    <script src=\"/assets/js/vendor/sal.min.js\"></script>
+    <script src=\"/assets/js/vendor/particles.js\"></script>
+    <script src=\"/assets/js/vendor/jquery.style.swicher.js\"></script>
+    <script src=\"/assets/js/vendor/js.cookie.js\"></script>
+    <script src=\"/assets/js/vendor/count-down.js\"></script>
+    <script src=\"/assets/js/vendor/isotop.js\"></script>
+    <script src=\"/assets/js/vendor/imageloaded.js\"></script>
+    <script src=\"/assets/js/vendor/backtoTop.js\"></script>
+    <script src=\"/assets/js/vendor/odometer.js\"></script>
+    <script src=\"/assets/js/vendor/jquery-appear.js\"></script>
+    <script src=\"/assets/js/vendor/scrolltrigger.js\"></script>
+    <script src=\"/assets/js/vendor/jquery.custom-file-input.js\"></script>
+    <script src=\"/assets/js/vendor/savePopup.js\"></script>
+    <script src=\"/assets/js/vendor/vanilla.tilt.js\"></script>
+
+    <!-- main JS -->
+    <script src=\"/assets/js/main.js\"></script>
+    <!-- Meta Mask  -->
+    <script src=\"/assets/js/vendor/web3.min.js\"></script>
+    <script src=\"/assets/js/vendor/maralis.js\"></script>
+    <script src=\"/assets/js/vendor/nft.js\"></script>
+    {% endblock %}
 {% endblock %}
+</body>
+
+</html>
 ", "reclamation/index.html.twig", "C:\\xampp\\htdocs\\citiezenHub_webapp\\templates\\reclamation\\index.html.twig");
     }
 }
