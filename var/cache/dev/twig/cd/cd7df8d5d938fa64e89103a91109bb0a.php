@@ -29,8 +29,8 @@ class __TwigTemplate_05b3b48814c166e2343b651ae96c9c7d extends Template
         $this->blocks = [
             'title' => [$this, 'block_title'],
             'stylesheets' => [$this, 'block_stylesheets'],
-            'body' => [$this, 'block_body'],
             'javascripts' => [$this, 'block_javascripts'],
+            'body' => [$this, 'block_body'],
         ];
     }
 
@@ -45,39 +45,36 @@ class __TwigTemplate_05b3b48814c166e2343b651ae96c9c7d extends Template
 
         // line 1
         echo "<!DOCTYPE html>
-<html lang=\"en\">
-
-<head>
-    <meta charset=\"utf-8\">
-    <meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\">
-    <title>";
-        // line 7
+<html>
+\t<head>
+\t\t<meta charset=\"UTF-8\">
+\t\t<title>
+\t\t\t";
+        // line 6
         $this->displayBlock('title', $context, $blocks);
-        echo "</title>
-    <meta name=\"robots\" content=\"noindex, follow\" />
-    <meta name=\"description\" content>
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
-
-    <meta name=\"theme-style-mode\" content=\"1\">
-    <!-- 0 == light, 1 == dark -->
-
-    <!-- Favicon -->
-    <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/assets/images/logo/logo.png\">
-    <!-- CSS  -->
-    ";
-        // line 18
+        // line 8
+        echo "\t\t</title>
+\t\t<link
+\t\trel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>\">
+\t\t";
+        // line 12
+        echo "\t\t";
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 29
-        echo "</head>
-
-<body class=\"template-color-1 nft-body-connect\">
- ";
-        // line 32
+        // line 26
+        echo "
+\t\t";
+        // line 27
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 58
+        echo "\t</head>
+\t<body>
+\t\t";
+        // line 60
         $this->displayBlock('body', $context, $blocks);
-        // line 388
-        echo "</body>
-
-</html>";
+        // line 61
+        echo "\t</body>
+</html>
+";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
@@ -86,7 +83,7 @@ class __TwigTemplate_05b3b48814c166e2343b651ae96c9c7d extends Template
 
     }
 
-    // line 7
+    // line 6
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -96,7 +93,8 @@ class __TwigTemplate_05b3b48814c166e2343b651ae96c9c7d extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        echo "citiezenHub";
+        echo "Welcome!
+\t\t\t";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -105,7 +103,7 @@ class __TwigTemplate_05b3b48814c166e2343b651ae96c9c7d extends Template
 
     }
 
-    // line 18
+    // line 12
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -115,17 +113,49 @@ class __TwigTemplate_05b3b48814c166e2343b651ae96c9c7d extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
+        // line 13
+        echo "\t\t\t";
+        echo $this->extensions['Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension']->renderWebpackLinkTags("app");
+        echo "
+\t\t\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"";
+        // line 14
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/images/logo/logo.png"), "html", null, true);
+        echo "\">
+\t\t\t<link rel=\"stylesheet\" href=\"";
+        // line 15
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/css/vendor/bootstrap.min.css"), "html", null, true);
+        echo "\">
+\t\t\t<link rel=\"stylesheet\" href=\"";
+        // line 16
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/css/vendor/slick.css"), "html", null, true);
+        echo "\">
+\t\t\t<link rel=\"stylesheet\" href=\"";
+        // line 17
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/css/vendor/slick-theme.css"), "html", null, true);
+        echo "\">
+\t\t\t<link rel=\"stylesheet\" href=\"";
+        // line 18
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/css/vendor/nice-select.css"), "html", null, true);
+        echo "\">
+\t\t\t<link rel=\"stylesheet\" href=\"";
         // line 19
-        echo "    <link rel=\"stylesheet\" href=\"/assets/css/vendor/bootstrap.min.css\">
-    <link rel=\"stylesheet\" href=\"/assets/css/vendor/slick.css\">
-    <link rel=\"stylesheet\" href=\"/assets/css/vendor/slick-theme.css\">
-    <link rel=\"stylesheet\" href=\"/assets/css/vendor/nice-select.css\">
-    <link rel=\"stylesheet\" href=\"/assets/css/plugins/feature.css\">
-    <link rel=\"stylesheet\" href=\"/assets/css/plugins/jquery-ui.min.css\">
-    <link rel=\"stylesheet\" href=\"/assets/css/vendor/odometer.css\">
-    <!-- Style css -->
-    <link rel=\"stylesheet\" href=\"/assets/css/style.css\"> 
-    ";
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/css/plugins/feature.css"), "html", null, true);
+        echo "\">
+\t\t\t<link rel=\"stylesheet\" href=\"";
+        // line 20
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/css/plugins/jquery-ui.min.css"), "html", null, true);
+        echo "\">
+\t\t\t<link
+\t\t\trel=\"stylesheet\" href=\"";
+        // line 22
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/css/vendor/odometer.css"), "html", null, true);
+        echo "\">
+\t\t\t<!-- Style css -->
+\t\t\t<link rel=\"stylesheet\" href=\"";
+        // line 24
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/css/style.css"), "html", null, true);
+        echo "\">
+\t\t";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -134,352 +164,7 @@ class __TwigTemplate_05b3b48814c166e2343b651ae96c9c7d extends Template
 
     }
 
-    // line 32
-    public function block_body($context, array $blocks = [])
-    {
-        $macros = $this->macros;
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
-
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
-
-        // line 33
-        echo "    <!-- Start Header -->
-    <header class=\"rn-header haeder-default header--sticky\">
-        <div class=\"container\">
-            <div class=\"header-inner\">
-                <div class=\"header-left\">
-                    <div class=\"logo-thumbnail logo-custom-css\">
-                        <a class=\"logo-light\" href=\"index.html\"><img src=\"/assets/images/logo/logo.png\" alt=\"nft-logo\"></a>
-                        <a class=\"logo-dark\" href=\"index.html\"><img src=\"/assets/images/logo/logo.png\" alt=\"nft-logo\"></a>
-                    </div>
-                    <div class=\"mainmenu-wrapper\">
-                        <nav id=\"sideNav\" class=\"mainmenu-nav d-none d-xl-block\">
-                            <!-- Start Mainmanu Nav -->
-                            <ul class=\"mainmenu\">
-                                <li class=\"has-droupdown has-menu-child-item\">
-                                    <a href=\"index.html\">Home</a>
-                                    <ul class=\"submenu\">
-                                        <li>
-                                            <a href=\"index.html\">Home page -
-                                                01
-                                                <i class=\"feather-home\"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href=\"about.html\">About</a>
-                                </li>
-                                <li class=\"has-droupdown has-menu-child-item\">
-                                    <a href=\"#\">Explore</a>
-                                    <ul class=\"submenu\">
-                                        <li>
-                                            <a href=\"explore-one.html\">Explore
-                                                Filter<i class=\"feather-fast-forward\"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class=\"with-megamenu\">
-                                    <a href=\"#\">Pages</a>
-                                    <div class=\"rn-megamenu\">
-                                        <div class=\"wrapper\">
-                                            <div class=\"row row--0\">
-                                                <div class=\"col-lg-3 single-mega-item\">
-                                                    <ul class=\"mega-menu-item\">
-                                                        <li>
-                                                            <a href=\"create.html\">Create
-                                                                NFT<i data-feather=\"file-plus\"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class=\"col-lg-3 single-mega-item\">
-                                                    <ul class=\"mega-menu-item\">
-                                                        <li>
-                                                            <a href=\"about.html\">About
-                                                                Us<i data-feather=\"award\"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class=\"has-droupdown has-menu-child-item\">
-                                    <a class=\"down\" href=\"blog.html\">Blog</a>
-                                    <ul class=\"submenu\">
-                                        <li>
-                                            <a href=\"blog-single-col.html\">Blog
-                                                Single Column<i class=\"feather-fast-forward\"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href=\"contact.html\">Contact</a>
-                                </li>
-                            </ul>
-                            <!-- End Mainmanu Nav -->
-                        </nav>
-                    </div>
-                </div>
-                <div class=\"header-right\">
-                    <div class=\"setting-option d-none d-lg-block\">
-                        <form class=\"search-form-wrapper\" action=\"#\">
-                            <input type=\"search\" placeholder=\"Search Here\" aria-label=\"Search\">
-                            <div class=\"search-icon\">
-                                <button>
-                                    <i class=\"feather-search\"></i>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class=\"setting-option rn-icon-list d-block d-lg-none\">
-                        <div class=\"icon-box search-mobile-icon\">
-                            <button>
-                                <i class=\"feather-search\"></i>
-                            </button>
-                        </div>
-                        <form id=\"header-search-1\" action=\"#\" method=\"GET\" class=\"large-mobile-blog-search\">
-                            <div class=\"rn-search-mobile form-group\">
-                                <button type=\"submit\" class=\"search-button\">
-                                    <i class=\"feather-search\"></i>
-                                </button>
-                                <input type=\"text\" placeholder=\"Search ...\">
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class=\"setting-option header-btn rbt-site-header\" id=\"rbt-site-header\">
-                        <div class=\"icon-box\">
-                            <a id=\"connectbtn\" class=\"btn btn-primary-alta btn-small\" href=\"connect.html\">Wallet
-                                connect</a>
-                        </div>
-                    </div>
-
-                    <div class=\"setting-option rn-icon-list notification-badge\">
-                        <div class=\"icon-box\">
-                            <a href=\"activity.html\">
-                                <i class=\"feather-bell\"></i>
-                                <span class=\"badge\">6</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div id=\"my_switcher\" class=\"my_switcher setting-option\">
-                        <ul>
-                            <li>
-                                <a href=\"javascript: void(0);\" data-theme=\"light\" class=\"setColor light\"><img class=\"sun-image\" src=\"/assets/images/icons/sun-01.svg\" alt=\"Sun images\"></a>
-                            </li>
-                            <li>
-                                <a href=\"javascript: void(0);\" data-theme=\"dark\" class=\"setColor dark\"><img class=\"Victor Image\" src=\"/assets/images/icons/vector.svg\" alt=\"Vector Images\"></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- End Header Area -->
-
-    <!-- start page title area -->
-    <div class=\"rn-breadcrumb-inner ptb--30\">
-        <div class=\"container\">
-            <div class=\"row align-items-center\">
-                <div class=\"col-lg-6 col-md-6 col-12\">
-                    <h5 class=\"title text-center text-md-start\">Add Reclamation
-                    </h5>
-                </div>
-                <div class=\"col-lg-6 col-md-6 col-12\">
-                    <ul class=\"breadcrumb-list\">
-                        <li class=\"item\">
-                            <a href=\"index.html\">Home</a>
-                        </li>
-                        <li class=\"separator\">
-                            <i class=\"feather-chevron-right\"></i>
-                        </li>
-                        <li class=\"item current\">Reclamation</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end page title area -->
-
-    <!-- create new product area -->
-    <div class=\"create-area rn-section-gapTop\">
-        <div class=\"container\">
-            <div class=\"row g-5\">
-                <div class=\"col-lg-3 offset-1 ml_md--0 ml_sm--0\">
-                    <!-- file upload area -->
-                    <div class=\"upload-area\">
-
-                        <div class=\"upload-formate mb--30\">
-                            <h6 class=\"title\">
-                                Upload file
-                            </h6>
-                            <p class=\"formate\">
-                                Drag or choose your file to upload
-                            </p>
-                        </div>
-
-                        <div class=\"brows-file-wrapper\">
-                            <!-- actual upload which is hidden -->
-                            <input name=\"createinputfile\" id=\"createinputfile\" type=\"file\" class=\"inputfile\" />
-                            <img id=\"createfileImage\" src=\"/assets/images/portfolio/1.jpeg\" alt data-black-overlay=\"6\">
-                            <!-- our custom upload button -->
-                            <label for=\"createinputfile\" title=\"No File Choosen\">
-                                <i class=\"feather-upload\"></i>
-                                <span class=\"text-center\">Choose a
-                                    File</span>
-                                <p class=\"text-center mt--9\">PNG, GIF,
-                                    WEBP, MP4 or MP3.
-                                    <br>
-                                    Max 1Gb.
-                                </p>
-                            </label>
-                        </div>
-                    </div>
-                    <!-- end upoad file area -->
-
-                    <div class=\"mt--100 mt_sm--30 mt_md--30 d-none d-lg-block\">
-                        <h5>
-                            Note:
-                        </h5>
-                        <span>
-                            enjoy our Service
-                        </span>
-                        <br>
-                        <span>
-                            You will receive our reponse soon
-                        </span>
-                    </div>
-
-                </div>
-
-                <div class=\"col-lg-7\">
-                    <div class=\"form-wrapper-one\">
-                        <form class=\"row\" action=\"#\">
-
-                            <div class=\"col-md-12\">
-                                <div class=\"input-box pb--20\">
-                                    <label for=\"name\" class=\"form-label\">
-                                        Private Key
-                                    </label>
-                                    <input id=\"name\" placeholder=\"automatically generated\">
-                                </div>
-                            </div>
-
-                            <div class=\"col-md-12\">
-                                <div class=\"input-box pb--20\">
-                                    <label for=\"name\" class=\"form-label\">
-                                        Private Key
-                                    </label>
-                                    <input id=\"name\" placeholder=\"automatically generated\">
-                                </div>
-                            </div>
-
-                            <div class=\"col-md-12\">
-                                <div class=\"input-box pb--20\">
-                                    <label for=\"Discription\" class=\"form-label\">Discription</label>
-                                    <textarea id=\"Discription\" rows=\"3\" placeholder=\"describe more feel free ..............\"></textarea>
-                                </div>
-                            </div>
-                            <span>
-                            </span>
-                            <span></span>
-                            <div class=\"col-md-12 col-xl-8 mt_lg--15 mt_md--15 mt_sm--15\">
-                                <div class=\"input-box\">
-                                    <button class=\"btn btn-primary btn-large w-100\">Submit
-                                        Item</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- create new product area -->
-
-    <!-- End Footer Area -->
-    <!-- Start Footer Area -->
-    <div class=\"copy-right-one ptb--20 bg-color--1\">
-        <div class=\"container\">
-            <div class=\"row align-items-center\">
-                <div class=\"col-lg-6 col-md-12 col-sm-12\">
-                    <div class=\"copyright-left\">
-                        <span>©2022 Nuron, Inc. All rights reserved.</span>
-                        <ul class=\"privacy\">
-                            <li>
-                                <a href=\"terms-condition.html\">Terms</a>
-                            </li>
-                            <li>
-                                <a href=\"privacy-policy.html\">Privacy
-                                    Policy</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class=\"col-lg-6 col-md-12 col-sm-12\">
-                    <div class=\"copyright-right\">
-                        <ul class=\"social-copyright\">
-                            <li>
-                                <a href=\"#\">
-                                    <i data-feather=\"facebook\"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href=\"#\">
-                                    <i data-feather=\"twitter\"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href=\"#\">
-                                    <i data-feather=\"instagram\"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href=\"#\">
-                                    <i data-feather=\"linkedin\"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href=\"#\">
-                                    <i data-feather=\"mail\"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Footer Area -->
-    <div class=\"mouse-cursor cursor-outer\"></div>
-    <div class=\"mouse-cursor cursor-inner\"></div>
-    <!-- Start Top To Bottom Area  -->
-    <div class=\"rn-progress-parent\">
-        <svg class=\"rn-back-circle svg-inner\" width=\"100%\" height=\"100%\" viewbox=\"-1 -1 102 102\">
-            <path d=\"M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98\" />
-        </svg>
-    </div>
-    <!-- End Top To Bottom Area  -->
-    <!-- JS ============================================ -->
-    ";
-        // line 357
-        $this->displayBlock('javascripts', $context, $blocks);
-        
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
-
-        
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
-
-    }
-
+    // line 27
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -489,36 +174,132 @@ class __TwigTemplate_05b3b48814c166e2343b651ae96c9c7d extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 358
-        echo "    <script src=\"/assets/js/vendor/jquery.js\"></script>
-    <script src=\"/assets/js/vendor/jquery.nice-select.min.js\"></script>
-    <script src=\"/assets/js/vendor/jquery-ui.js\"></script>
-    <script src=\"/assets/js/vendor/modernizer.min.js\"></script>
-    <script src=\"/assets/js/vendor/feather.min.js\"></script>
-    <script src=\"/assets/js/vendor/slick.min.js\"></script>
-    <script src=\"/assets/js/vendor/bootstrap.min.js\"></script>
-    <script src=\"/assets/js/vendor/sal.min.js\"></script>
-    <script src=\"/assets/js/vendor/particles.js\"></script>
-    <script src=\"/assets/js/vendor/jquery.style.swicher.js\"></script>
-    <script src=\"/assets/js/vendor/js.cookie.js\"></script>
-    <script src=\"/assets/js/vendor/count-down.js\"></script>
-    <script src=\"/assets/js/vendor/isotop.js\"></script>
-    <script src=\"/assets/js/vendor/imageloaded.js\"></script>
-    <script src=\"/assets/js/vendor/backtoTop.js\"></script>
-    <script src=\"/assets/js/vendor/odometer.js\"></script>
-    <script src=\"/assets/js/vendor/jquery-appear.js\"></script>
-    <script src=\"/assets/js/vendor/scrolltrigger.js\"></script>
-    <script src=\"/assets/js/vendor/jquery.custom-file-input.js\"></script>
-    <script src=\"/assets/js/vendor/savePopup.js\"></script>
-    <script src=\"/assets/js/vendor/vanilla.tilt.js\"></script>
+        // line 28
+        echo "\t\t\t";
+        echo $this->extensions['Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension']->renderWebpackScriptTags("app");
+        echo "
+\t\t\t<script src=\"";
+        // line 29
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/jquery.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 30
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/jquery.nice-select.min.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 31
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/jquery-ui.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 32
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/modernizer.min.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 33
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/feather.min.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 34
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/slick.min.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 35
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/bootstrap.min.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 36
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/sal.min.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 37
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/particles.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 38
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/jquery.style.swicher.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 39
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/js.cookie.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 40
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/count-down.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 41
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/isotop.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 42
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/imageloaded.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 43
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/backtoTop.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 44
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/odometer.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 45
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/jquery-appear.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 46
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/scrolltrigger.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 47
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/jquery.custom-file-input.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 48
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/savePopup.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 49
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/vanilla.tilt.js"), "html", null, true);
+        echo "\"></script>
 
-    <!-- main JS -->
-    <script src=\"/assets/js/main.js\"></script>
-    <!-- Meta Mask  -->
-    <script src=\"/assets/js/vendor/web3.min.js\"></script>
-    <script src=\"/assets/js/vendor/maralis.js\"></script>
-    <script src=\"/assets/js/vendor/nft.js\"></script>
-    ";
+\t\t\t<!-- main JS -->
+\t\t\t<script src=\"";
+        // line 52
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/main.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<!-- Meta Mask  -->
+\t\t\t<script src=\"";
+        // line 54
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/web3.min.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 55
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/maralis.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 56
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/nft.js"), "html", null, true);
+        echo "\"></script>
+\t\t";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    // line 60
+    public function block_body($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -540,400 +321,73 @@ class __TwigTemplate_05b3b48814c166e2343b651ae96c9c7d extends Template
      */
     public function getDebugInfo()
     {
-        return array (  493 => 358,  474 => 357,  148 => 33,  138 => 32,  119 => 19,  109 => 18,  90 => 7,  78 => 388,  76 => 32,  71 => 29,  69 => 18,  55 => 7,  47 => 1,);
+        return array (  294 => 60,  282 => 56,  278 => 55,  274 => 54,  269 => 52,  263 => 49,  259 => 48,  255 => 47,  251 => 46,  247 => 45,  243 => 44,  239 => 43,  235 => 42,  231 => 41,  227 => 40,  223 => 39,  219 => 38,  215 => 37,  211 => 36,  207 => 35,  203 => 34,  199 => 33,  195 => 32,  191 => 31,  187 => 30,  183 => 29,  178 => 28,  168 => 27,  156 => 24,  151 => 22,  146 => 20,  142 => 19,  138 => 18,  134 => 17,  130 => 16,  126 => 15,  122 => 14,  117 => 13,  107 => 12,  87 => 6,  75 => 61,  73 => 60,  69 => 58,  67 => 27,  64 => 26,  61 => 12,  56 => 8,  54 => 6,  47 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("<!DOCTYPE html>
-<html lang=\"en\">
+<html>
+\t<head>
+\t\t<meta charset=\"UTF-8\">
+\t\t<title>
+\t\t\t{% block title %}Welcome!
+\t\t\t{% endblock %}
+\t\t</title>
+\t\t<link
+\t\trel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>\">
+\t\t{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+\t\t{% block stylesheets %}
+\t\t\t{{ encore_entry_link_tags('app') }}
+\t\t\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"{{asset('/assets/images/logo/logo.png')}}\">
+\t\t\t<link rel=\"stylesheet\" href=\"{{asset('/assets/css/vendor/bootstrap.min.css')}}\">
+\t\t\t<link rel=\"stylesheet\" href=\"{{asset('/assets/css/vendor/slick.css')}}\">
+\t\t\t<link rel=\"stylesheet\" href=\"{{asset('/assets/css/vendor/slick-theme.css')}}\">
+\t\t\t<link rel=\"stylesheet\" href=\"{{asset('/assets/css/vendor/nice-select.css')}}\">
+\t\t\t<link rel=\"stylesheet\" href=\"{{asset('/assets/css/plugins/feature.css')}}\">
+\t\t\t<link rel=\"stylesheet\" href=\"{{asset('/assets/css/plugins/jquery-ui.min.css')}}\">
+\t\t\t<link
+\t\t\trel=\"stylesheet\" href=\"{{asset('/assets/css/vendor/odometer.css')}}\">
+\t\t\t<!-- Style css -->
+\t\t\t<link rel=\"stylesheet\" href=\"{{asset('/assets/css/style.css')}}\">
+\t\t{% endblock %}
 
-<head>
-    <meta charset=\"utf-8\">
-    <meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\">
-    <title>{% block title %}citiezenHub{% endblock %}</title>
-    <meta name=\"robots\" content=\"noindex, follow\" />
-    <meta name=\"description\" content>
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
+\t\t{% block javascripts %}
+\t\t\t{{ encore_entry_script_tags('app') }}
+\t\t\t<script src=\"{{asset('/assets/js/vendor/jquery.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/jquery.nice-select.min.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/jquery-ui.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/modernizer.min.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/feather.min.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/slick.min.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/bootstrap.min.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/sal.min.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/particles.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/jquery.style.swicher.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/js.cookie.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/count-down.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/isotop.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/imageloaded.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/backtoTop.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/odometer.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/jquery-appear.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/scrolltrigger.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/jquery.custom-file-input.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/savePopup.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/vanilla.tilt.js')}}\"></script>
 
-    <meta name=\"theme-style-mode\" content=\"1\">
-    <!-- 0 == light, 1 == dark -->
-
-    <!-- Favicon -->
-    <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/assets/images/logo/logo.png\">
-    <!-- CSS  -->
-    {% block stylesheets %}
-    <link rel=\"stylesheet\" href=\"/assets/css/vendor/bootstrap.min.css\">
-    <link rel=\"stylesheet\" href=\"/assets/css/vendor/slick.css\">
-    <link rel=\"stylesheet\" href=\"/assets/css/vendor/slick-theme.css\">
-    <link rel=\"stylesheet\" href=\"/assets/css/vendor/nice-select.css\">
-    <link rel=\"stylesheet\" href=\"/assets/css/plugins/feature.css\">
-    <link rel=\"stylesheet\" href=\"/assets/css/plugins/jquery-ui.min.css\">
-    <link rel=\"stylesheet\" href=\"/assets/css/vendor/odometer.css\">
-    <!-- Style css -->
-    <link rel=\"stylesheet\" href=\"/assets/css/style.css\"> 
-    {% endblock %}
-</head>
-
-<body class=\"template-color-1 nft-body-connect\">
- {% block body %}
-    <!-- Start Header -->
-    <header class=\"rn-header haeder-default header--sticky\">
-        <div class=\"container\">
-            <div class=\"header-inner\">
-                <div class=\"header-left\">
-                    <div class=\"logo-thumbnail logo-custom-css\">
-                        <a class=\"logo-light\" href=\"index.html\"><img src=\"/assets/images/logo/logo.png\" alt=\"nft-logo\"></a>
-                        <a class=\"logo-dark\" href=\"index.html\"><img src=\"/assets/images/logo/logo.png\" alt=\"nft-logo\"></a>
-                    </div>
-                    <div class=\"mainmenu-wrapper\">
-                        <nav id=\"sideNav\" class=\"mainmenu-nav d-none d-xl-block\">
-                            <!-- Start Mainmanu Nav -->
-                            <ul class=\"mainmenu\">
-                                <li class=\"has-droupdown has-menu-child-item\">
-                                    <a href=\"index.html\">Home</a>
-                                    <ul class=\"submenu\">
-                                        <li>
-                                            <a href=\"index.html\">Home page -
-                                                01
-                                                <i class=\"feather-home\"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href=\"about.html\">About</a>
-                                </li>
-                                <li class=\"has-droupdown has-menu-child-item\">
-                                    <a href=\"#\">Explore</a>
-                                    <ul class=\"submenu\">
-                                        <li>
-                                            <a href=\"explore-one.html\">Explore
-                                                Filter<i class=\"feather-fast-forward\"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class=\"with-megamenu\">
-                                    <a href=\"#\">Pages</a>
-                                    <div class=\"rn-megamenu\">
-                                        <div class=\"wrapper\">
-                                            <div class=\"row row--0\">
-                                                <div class=\"col-lg-3 single-mega-item\">
-                                                    <ul class=\"mega-menu-item\">
-                                                        <li>
-                                                            <a href=\"create.html\">Create
-                                                                NFT<i data-feather=\"file-plus\"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class=\"col-lg-3 single-mega-item\">
-                                                    <ul class=\"mega-menu-item\">
-                                                        <li>
-                                                            <a href=\"about.html\">About
-                                                                Us<i data-feather=\"award\"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class=\"has-droupdown has-menu-child-item\">
-                                    <a class=\"down\" href=\"blog.html\">Blog</a>
-                                    <ul class=\"submenu\">
-                                        <li>
-                                            <a href=\"blog-single-col.html\">Blog
-                                                Single Column<i class=\"feather-fast-forward\"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href=\"contact.html\">Contact</a>
-                                </li>
-                            </ul>
-                            <!-- End Mainmanu Nav -->
-                        </nav>
-                    </div>
-                </div>
-                <div class=\"header-right\">
-                    <div class=\"setting-option d-none d-lg-block\">
-                        <form class=\"search-form-wrapper\" action=\"#\">
-                            <input type=\"search\" placeholder=\"Search Here\" aria-label=\"Search\">
-                            <div class=\"search-icon\">
-                                <button>
-                                    <i class=\"feather-search\"></i>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class=\"setting-option rn-icon-list d-block d-lg-none\">
-                        <div class=\"icon-box search-mobile-icon\">
-                            <button>
-                                <i class=\"feather-search\"></i>
-                            </button>
-                        </div>
-                        <form id=\"header-search-1\" action=\"#\" method=\"GET\" class=\"large-mobile-blog-search\">
-                            <div class=\"rn-search-mobile form-group\">
-                                <button type=\"submit\" class=\"search-button\">
-                                    <i class=\"feather-search\"></i>
-                                </button>
-                                <input type=\"text\" placeholder=\"Search ...\">
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class=\"setting-option header-btn rbt-site-header\" id=\"rbt-site-header\">
-                        <div class=\"icon-box\">
-                            <a id=\"connectbtn\" class=\"btn btn-primary-alta btn-small\" href=\"connect.html\">Wallet
-                                connect</a>
-                        </div>
-                    </div>
-
-                    <div class=\"setting-option rn-icon-list notification-badge\">
-                        <div class=\"icon-box\">
-                            <a href=\"activity.html\">
-                                <i class=\"feather-bell\"></i>
-                                <span class=\"badge\">6</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div id=\"my_switcher\" class=\"my_switcher setting-option\">
-                        <ul>
-                            <li>
-                                <a href=\"javascript: void(0);\" data-theme=\"light\" class=\"setColor light\"><img class=\"sun-image\" src=\"/assets/images/icons/sun-01.svg\" alt=\"Sun images\"></a>
-                            </li>
-                            <li>
-                                <a href=\"javascript: void(0);\" data-theme=\"dark\" class=\"setColor dark\"><img class=\"Victor Image\" src=\"/assets/images/icons/vector.svg\" alt=\"Vector Images\"></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- End Header Area -->
-
-    <!-- start page title area -->
-    <div class=\"rn-breadcrumb-inner ptb--30\">
-        <div class=\"container\">
-            <div class=\"row align-items-center\">
-                <div class=\"col-lg-6 col-md-6 col-12\">
-                    <h5 class=\"title text-center text-md-start\">Add Reclamation
-                    </h5>
-                </div>
-                <div class=\"col-lg-6 col-md-6 col-12\">
-                    <ul class=\"breadcrumb-list\">
-                        <li class=\"item\">
-                            <a href=\"index.html\">Home</a>
-                        </li>
-                        <li class=\"separator\">
-                            <i class=\"feather-chevron-right\"></i>
-                        </li>
-                        <li class=\"item current\">Reclamation</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end page title area -->
-
-    <!-- create new product area -->
-    <div class=\"create-area rn-section-gapTop\">
-        <div class=\"container\">
-            <div class=\"row g-5\">
-                <div class=\"col-lg-3 offset-1 ml_md--0 ml_sm--0\">
-                    <!-- file upload area -->
-                    <div class=\"upload-area\">
-
-                        <div class=\"upload-formate mb--30\">
-                            <h6 class=\"title\">
-                                Upload file
-                            </h6>
-                            <p class=\"formate\">
-                                Drag or choose your file to upload
-                            </p>
-                        </div>
-
-                        <div class=\"brows-file-wrapper\">
-                            <!-- actual upload which is hidden -->
-                            <input name=\"createinputfile\" id=\"createinputfile\" type=\"file\" class=\"inputfile\" />
-                            <img id=\"createfileImage\" src=\"/assets/images/portfolio/1.jpeg\" alt data-black-overlay=\"6\">
-                            <!-- our custom upload button -->
-                            <label for=\"createinputfile\" title=\"No File Choosen\">
-                                <i class=\"feather-upload\"></i>
-                                <span class=\"text-center\">Choose a
-                                    File</span>
-                                <p class=\"text-center mt--9\">PNG, GIF,
-                                    WEBP, MP4 or MP3.
-                                    <br>
-                                    Max 1Gb.
-                                </p>
-                            </label>
-                        </div>
-                    </div>
-                    <!-- end upoad file area -->
-
-                    <div class=\"mt--100 mt_sm--30 mt_md--30 d-none d-lg-block\">
-                        <h5>
-                            Note:
-                        </h5>
-                        <span>
-                            enjoy our Service
-                        </span>
-                        <br>
-                        <span>
-                            You will receive our reponse soon
-                        </span>
-                    </div>
-
-                </div>
-
-                <div class=\"col-lg-7\">
-                    <div class=\"form-wrapper-one\">
-                        <form class=\"row\" action=\"#\">
-
-                            <div class=\"col-md-12\">
-                                <div class=\"input-box pb--20\">
-                                    <label for=\"name\" class=\"form-label\">
-                                        Private Key
-                                    </label>
-                                    <input id=\"name\" placeholder=\"automatically generated\">
-                                </div>
-                            </div>
-
-                            <div class=\"col-md-12\">
-                                <div class=\"input-box pb--20\">
-                                    <label for=\"name\" class=\"form-label\">
-                                        Private Key
-                                    </label>
-                                    <input id=\"name\" placeholder=\"automatically generated\">
-                                </div>
-                            </div>
-
-                            <div class=\"col-md-12\">
-                                <div class=\"input-box pb--20\">
-                                    <label for=\"Discription\" class=\"form-label\">Discription</label>
-                                    <textarea id=\"Discription\" rows=\"3\" placeholder=\"describe more feel free ..............\"></textarea>
-                                </div>
-                            </div>
-                            <span>
-                            </span>
-                            <span></span>
-                            <div class=\"col-md-12 col-xl-8 mt_lg--15 mt_md--15 mt_sm--15\">
-                                <div class=\"input-box\">
-                                    <button class=\"btn btn-primary btn-large w-100\">Submit
-                                        Item</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- create new product area -->
-
-    <!-- End Footer Area -->
-    <!-- Start Footer Area -->
-    <div class=\"copy-right-one ptb--20 bg-color--1\">
-        <div class=\"container\">
-            <div class=\"row align-items-center\">
-                <div class=\"col-lg-6 col-md-12 col-sm-12\">
-                    <div class=\"copyright-left\">
-                        <span>©2022 Nuron, Inc. All rights reserved.</span>
-                        <ul class=\"privacy\">
-                            <li>
-                                <a href=\"terms-condition.html\">Terms</a>
-                            </li>
-                            <li>
-                                <a href=\"privacy-policy.html\">Privacy
-                                    Policy</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class=\"col-lg-6 col-md-12 col-sm-12\">
-                    <div class=\"copyright-right\">
-                        <ul class=\"social-copyright\">
-                            <li>
-                                <a href=\"#\">
-                                    <i data-feather=\"facebook\"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href=\"#\">
-                                    <i data-feather=\"twitter\"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href=\"#\">
-                                    <i data-feather=\"instagram\"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href=\"#\">
-                                    <i data-feather=\"linkedin\"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href=\"#\">
-                                    <i data-feather=\"mail\"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Footer Area -->
-    <div class=\"mouse-cursor cursor-outer\"></div>
-    <div class=\"mouse-cursor cursor-inner\"></div>
-    <!-- Start Top To Bottom Area  -->
-    <div class=\"rn-progress-parent\">
-        <svg class=\"rn-back-circle svg-inner\" width=\"100%\" height=\"100%\" viewbox=\"-1 -1 102 102\">
-            <path d=\"M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98\" />
-        </svg>
-    </div>
-    <!-- End Top To Bottom Area  -->
-    <!-- JS ============================================ -->
-    {% block javascripts %}
-    <script src=\"/assets/js/vendor/jquery.js\"></script>
-    <script src=\"/assets/js/vendor/jquery.nice-select.min.js\"></script>
-    <script src=\"/assets/js/vendor/jquery-ui.js\"></script>
-    <script src=\"/assets/js/vendor/modernizer.min.js\"></script>
-    <script src=\"/assets/js/vendor/feather.min.js\"></script>
-    <script src=\"/assets/js/vendor/slick.min.js\"></script>
-    <script src=\"/assets/js/vendor/bootstrap.min.js\"></script>
-    <script src=\"/assets/js/vendor/sal.min.js\"></script>
-    <script src=\"/assets/js/vendor/particles.js\"></script>
-    <script src=\"/assets/js/vendor/jquery.style.swicher.js\"></script>
-    <script src=\"/assets/js/vendor/js.cookie.js\"></script>
-    <script src=\"/assets/js/vendor/count-down.js\"></script>
-    <script src=\"/assets/js/vendor/isotop.js\"></script>
-    <script src=\"/assets/js/vendor/imageloaded.js\"></script>
-    <script src=\"/assets/js/vendor/backtoTop.js\"></script>
-    <script src=\"/assets/js/vendor/odometer.js\"></script>
-    <script src=\"/assets/js/vendor/jquery-appear.js\"></script>
-    <script src=\"/assets/js/vendor/scrolltrigger.js\"></script>
-    <script src=\"/assets/js/vendor/jquery.custom-file-input.js\"></script>
-    <script src=\"/assets/js/vendor/savePopup.js\"></script>
-    <script src=\"/assets/js/vendor/vanilla.tilt.js\"></script>
-
-    <!-- main JS -->
-    <script src=\"/assets/js/main.js\"></script>
-    <!-- Meta Mask  -->
-    <script src=\"/assets/js/vendor/web3.min.js\"></script>
-    <script src=\"/assets/js/vendor/maralis.js\"></script>
-    <script src=\"/assets/js/vendor/nft.js\"></script>
-    {% endblock %}
-{% endblock %}
-</body>
-
-</html>", "base.html.twig", "C:\\xampp\\htdocs\\citiezenHub_webapp\\templates\\base.html.twig");
+\t\t\t<!-- main JS -->
+\t\t\t<script src=\"{{asset('/assets/js/main.js')}}\"></script>
+\t\t\t<!-- Meta Mask  -->
+\t\t\t<script src=\"{{asset('/assets/js/vendor/web3.min.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/maralis.js')}}\"></script>
+\t\t\t<script src=\"{{asset('/assets/js/vendor/nft.js')}}\"></script>
+\t\t{% endblock %}
+\t</head>
+\t<body>
+\t\t{% block body %}{% endblock %}
+\t</body>
+</html>
+", "base.html.twig", "C:\\xampp\\htdocs\\citiezenHub_webapp\\templates\\base.html.twig");
     }
 }
