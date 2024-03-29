@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\Dotenv\Command;
 
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -22,9 +23,17 @@ use Symfony\Component\Dotenv\Dotenv;
  *
  * @author Christopher Hertel <mail@christopher-hertel.de>
  */
+#[AsCommand(name: 'debug:dotenv', description: 'Lists all dotenv files with variables and values')]
 final class DebugCommand extends Command
 {
+    /**
+     * @deprecated since Symfony 6.1
+     */
     protected static $defaultName = 'debug:dotenv';
+
+    /**
+     * @deprecated since Symfony 6.1
+     */
     protected static $defaultDescription = 'Lists all dotenv files with variables and values';
 
     private $kernelEnvironment;
@@ -82,13 +91,7 @@ final class DebugCommand extends Command
 
     private function getVariables(array $envFiles): array
     {
-        $dotenvVars = $_SERVER['SYMFONY_DOTENV_VARS'] ?? '';
-
-        if ('' === $dotenvVars) {
-            return [];
-        }
-
-        $vars = explode(',', $dotenvVars);
+        $vars = explode(',', $_SERVER['SYMFONY_DOTENV_VARS'] ?? '');
         sort($vars);
 
         $output = [];
@@ -97,7 +100,7 @@ final class DebugCommand extends Command
             $realValue = $_SERVER[$var];
             $varDetails = [$var, $realValue];
             foreach ($envFiles as $envFile) {
-                $values = $fileValues[$envFile] ?? $fileValues[$envFile] = $this->loadValues($envFile);
+                $values = $fileValues[$envFile] ??= $this->loadValues($envFile);
 
                 $varString = $values[$var] ?? '<fg=yellow>n/a</>';
                 $shortenedVar = $this->getHelper('formatter')->truncate($varString, 30);

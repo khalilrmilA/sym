@@ -31,16 +31,16 @@ use Symfony\Component\Mime\RawMessage;
  */
 class SmtpTransport extends AbstractTransport
 {
-    private $started = false;
-    private $restartThreshold = 100;
-    private $restartThresholdSleep = 0;
-    private $restartCounter;
-    private $pingThreshold = 100;
-    private $lastMessageTime = 0;
-    private $stream;
-    private $domain = '[127.0.0.1]';
+    private bool $started = false;
+    private int $restartThreshold = 100;
+    private int $restartThresholdSleep = 0;
+    private int $restartCounter = 0;
+    private int $pingThreshold = 100;
+    private float $lastMessageTime = 0;
+    private AbstractStream $stream;
+    private string $domain = '[127.0.0.1]';
 
-    public function __construct(?AbstractStream $stream = null, ?EventDispatcherInterface $dispatcher = null, ?LoggerInterface $logger = null)
+    public function __construct(AbstractStream $stream = null, EventDispatcherInterface $dispatcher = null, LoggerInterface $logger = null)
     {
         parent::__construct($dispatcher, $logger);
 
@@ -62,7 +62,7 @@ class SmtpTransport extends AbstractTransport
      *
      * @return $this
      */
-    public function setRestartThreshold(int $threshold, int $sleep = 0): self
+    public function setRestartThreshold(int $threshold, int $sleep = 0): static
     {
         $this->restartThreshold = $threshold;
         $this->restartThresholdSleep = $sleep;
@@ -85,7 +85,7 @@ class SmtpTransport extends AbstractTransport
      *
      * @return $this
      */
-    public function setPingThreshold(int $seconds): self
+    public function setPingThreshold(int $seconds): static
     {
         $this->pingThreshold = $seconds;
 
@@ -104,7 +104,7 @@ class SmtpTransport extends AbstractTransport
      *
      * @return $this
      */
-    public function setLocalDomain(string $domain): self
+    public function setLocalDomain(string $domain): static
     {
         if ('' !== $domain && '[' !== $domain[0]) {
             if (filter_var($domain, \FILTER_VALIDATE_IP, \FILTER_FLAG_IPV4)) {
@@ -130,7 +130,7 @@ class SmtpTransport extends AbstractTransport
         return $this->domain;
     }
 
-    public function send(RawMessage $message, ?Envelope $envelope = null): ?SentMessage
+    public function send(RawMessage $message, Envelope $envelope = null): ?SentMessage
     {
         try {
             $message = parent::send($message, $envelope);
@@ -138,7 +138,7 @@ class SmtpTransport extends AbstractTransport
             if ($this->started) {
                 try {
                     $this->executeCommand("RSET\r\n", [250]);
-                } catch (TransportExceptionInterface $_) {
+                } catch (TransportExceptionInterface) {
                     // ignore this exception as it probably means that the server error was final
                 }
             }
@@ -172,8 +172,6 @@ class SmtpTransport extends AbstractTransport
      * @param int[] $codes
      *
      * @throws TransportException when an invalid response if received
-     *
-     * @internal
      */
     public function executeCommand(string $command, array $codes): string
     {
@@ -225,6 +223,10 @@ class SmtpTransport extends AbstractTransport
         }
     }
 
+    /**
+     * @internal since version 6.1, to be made private in 7.0
+     * @final since version 6.1, to be made private in 7.0
+     */
     protected function doHeloCommand(): void
     {
         $this->executeCommand(sprintf("HELO %s\r\n", $this->domain), [250]);
@@ -240,7 +242,7 @@ class SmtpTransport extends AbstractTransport
         $this->executeCommand(sprintf("RCPT TO:<%s>\r\n", $address), [250, 251, 252]);
     }
 
-    private function start(): void
+    public function start(): void
     {
         if ($this->started) {
             return;
@@ -257,7 +259,14 @@ class SmtpTransport extends AbstractTransport
         $this->getLogger()->debug(sprintf('Email transport "%s" started', __CLASS__));
     }
 
-    private function stop(): void
+    /**
+     * Manually disconnect from the SMTP server.
+     *
+     * In most cases this is not necessary since the disconnect happens automatically on termination.
+     * In cases of long-running scripts, this might however make sense to avoid keeping an open
+     * connection to the SMTP server in between sending emails.
+     */
+    public function stop(): void
     {
         if (!$this->started) {
             return;
@@ -267,7 +276,7 @@ class SmtpTransport extends AbstractTransport
 
         try {
             $this->executeCommand("QUIT\r\n", [221]);
-        } catch (TransportExceptionInterface $e) {
+        } catch (TransportExceptionInterface) {
         } finally {
             $this->stream->terminate();
             $this->started = false;
@@ -283,7 +292,7 @@ class SmtpTransport extends AbstractTransport
 
         try {
             $this->executeCommand("NOOP\r\n", [250]);
-        } catch (TransportExceptionInterface $e) {
+        } catch (TransportExceptionInterface) {
             $this->stop();
         }
     }
@@ -341,10 +350,7 @@ class SmtpTransport extends AbstractTransport
         $this->restartCounter = 0;
     }
 
-    /**
-     * @return array
-     */
-    public function __sleep()
+    public function __sleep(): array
     {
         throw new \BadMethodCallException('Cannot serialize '.__CLASS__);
     }

@@ -27,9 +27,10 @@ class TwigExtraConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     private $_usedProperties = [];
 
     /**
+     * @default {"enabled":false}
      * @return \Symfony\Config\TwigExtra\CacheConfig|$this
      */
-    public function cache($value = [])
+    public function cache(mixed $value = []): \Symfony\Config\TwigExtra\CacheConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['cache'] = true;
@@ -49,9 +50,10 @@ class TwigExtraConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
+     * @default {"enabled":false}
      * @return \Symfony\Config\TwigExtra\HtmlConfig|$this
      */
-    public function html($value = [])
+    public function html(mixed $value = []): \Symfony\Config\TwigExtra\HtmlConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['html'] = true;
@@ -71,9 +73,10 @@ class TwigExtraConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
+     * @default {"enabled":false}
      * @return \Symfony\Config\TwigExtra\MarkdownConfig|$this
      */
-    public function markdown($value = [])
+    public function markdown(mixed $value = []): \Symfony\Config\TwigExtra\MarkdownConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['markdown'] = true;
@@ -93,9 +96,10 @@ class TwigExtraConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
+     * @default {"enabled":false}
      * @return \Symfony\Config\TwigExtra\IntlConfig|$this
      */
-    public function intl($value = [])
+    public function intl(mixed $value = []): \Symfony\Config\TwigExtra\IntlConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['intl'] = true;
@@ -115,9 +119,10 @@ class TwigExtraConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
+     * @default {"enabled":false}
      * @return \Symfony\Config\TwigExtra\CssinlinerConfig|$this
      */
-    public function cssinliner($value = [])
+    public function cssinliner(mixed $value = []): \Symfony\Config\TwigExtra\CssinlinerConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['cssinliner'] = true;
@@ -137,9 +142,10 @@ class TwigExtraConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
+     * @default {"enabled":false}
      * @return \Symfony\Config\TwigExtra\InkyConfig|$this
      */
-    public function inky($value = [])
+    public function inky(mixed $value = []): \Symfony\Config\TwigExtra\InkyConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['inky'] = true;
@@ -159,9 +165,10 @@ class TwigExtraConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
+     * @default {"enabled":false}
      * @return \Symfony\Config\TwigExtra\StringConfig|$this
      */
-    public function string($value = [])
+    public function string(mixed $value = []): \Symfony\Config\TwigExtra\StringConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['string'] = true;

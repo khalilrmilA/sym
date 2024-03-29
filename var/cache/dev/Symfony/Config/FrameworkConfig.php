@@ -25,6 +25,7 @@ require_once __DIR__.\DIRECTORY_SEPARATOR.'Framework'.\DIRECTORY_SEPARATOR.'PhpE
 require_once __DIR__.\DIRECTORY_SEPARATOR.'Framework'.\DIRECTORY_SEPARATOR.'ExceptionConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'Framework'.\DIRECTORY_SEPARATOR.'WebLinkConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'Framework'.\DIRECTORY_SEPARATOR.'LockConfig.php';
+require_once __DIR__.\DIRECTORY_SEPARATOR.'Framework'.\DIRECTORY_SEPARATOR.'SemaphoreConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'Framework'.\DIRECTORY_SEPARATOR.'MessengerConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'Framework'.\DIRECTORY_SEPARATOR.'HttpClientConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'Framework'.\DIRECTORY_SEPARATOR.'MailerConfig.php';
@@ -32,6 +33,7 @@ require_once __DIR__.\DIRECTORY_SEPARATOR.'Framework'.\DIRECTORY_SEPARATOR.'Secr
 require_once __DIR__.\DIRECTORY_SEPARATOR.'Framework'.\DIRECTORY_SEPARATOR.'NotifierConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'Framework'.\DIRECTORY_SEPARATOR.'RateLimiterConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'Framework'.\DIRECTORY_SEPARATOR.'UidConfig.php';
+require_once __DIR__.\DIRECTORY_SEPARATOR.'Framework'.\DIRECTORY_SEPARATOR.'HtmlSanitizerConfig.php';
 
 use Symfony\Component\Config\Loader\ParamConfigurator;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
@@ -43,6 +45,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
 {
     private $secret;
     private $httpMethodOverride;
+    private $trustXSendfileTypeHeader;
     private $ide;
     private $test;
     private $defaultLocale;
@@ -76,6 +79,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     private $exceptions;
     private $webLink;
     private $lock;
+    private $semaphore;
     private $messenger;
     private $disallowSearchEngineIndex;
     private $httpClient;
@@ -84,6 +88,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     private $notifier;
     private $rateLimiter;
     private $uid;
+    private $htmlSanitizer;
     private $_usedProperties = [];
 
     /**
@@ -91,7 +96,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function secret($value): self
+    public function secret($value): static
     {
         $this->_usedProperties['secret'] = true;
         $this->secret = $value;
@@ -101,11 +106,11 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
 
     /**
      * Set true to enable support for the '_method' request parameter to determine the intended HTTP method on POST requests. Note: When using the HttpCache, you need to call the method in your front controller instead
-     * @default true
-     * @param ParamConfigurator|mixed $value
+     * @default null
+     * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function httpMethodOverride($value): self
+    public function httpMethodOverride($value): static
     {
         $this->_usedProperties['httpMethodOverride'] = true;
         $this->httpMethodOverride = $value;
@@ -114,11 +119,25 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
-     * @default null
+     * Set true to enable support for xsendfile in binary file responses.
+     * @default false
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function ide($value): self
+    public function trustXSendfileTypeHeader($value): static
+    {
+        $this->_usedProperties['trustXSendfileTypeHeader'] = true;
+        $this->trustXSendfileTypeHeader = $value;
+
+        return $this;
+    }
+
+    /**
+     * @default '%env(default::SYMFONY_IDE)%'
+     * @param ParamConfigurator|mixed $value
+     * @return $this
+     */
+    public function ide($value): static
     {
         $this->_usedProperties['ide'] = true;
         $this->ide = $value;
@@ -131,7 +150,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function test($value): self
+    public function test($value): static
     {
         $this->_usedProperties['test'] = true;
         $this->test = $value;
@@ -144,7 +163,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function defaultLocale($value): self
+    public function defaultLocale($value): static
     {
         $this->_usedProperties['defaultLocale'] = true;
         $this->defaultLocale = $value;
@@ -158,7 +177,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function setLocaleFromAcceptLanguage($value): self
+    public function setLocaleFromAcceptLanguage($value): static
     {
         $this->_usedProperties['setLocaleFromAcceptLanguage'] = true;
         $this->setLocaleFromAcceptLanguage = $value;
@@ -172,7 +191,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function setContentLanguageFromLocale($value): self
+    public function setContentLanguageFromLocale($value): static
     {
         $this->_usedProperties['setContentLanguageFromLocale'] = true;
         $this->setContentLanguageFromLocale = $value;
@@ -181,10 +200,11 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
+     *
      * @return $this
      */
-    public function enabledLocales($value): self
+    public function enabledLocales(ParamConfigurator|array $value): static
     {
         $this->_usedProperties['enabledLocales'] = true;
         $this->enabledLocales = $value;
@@ -193,10 +213,11 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param mixed $value
+     *
      * @return $this
      */
-    public function trustedHosts($value): self
+    public function trustedHosts(mixed $value): static
     {
         $this->_usedProperties['trustedHosts'] = true;
         $this->trustedHosts = $value;
@@ -209,7 +230,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function trustedProxies($value): self
+    public function trustedProxies($value): static
     {
         $this->_usedProperties['trustedProxies'] = true;
         $this->trustedProxies = $value;
@@ -218,10 +239,11 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param mixed $value
+     *
      * @return $this
      */
-    public function trustedHeaders($value): self
+    public function trustedHeaders(mixed $value): static
     {
         $this->_usedProperties['trustedHeaders'] = true;
         $this->trustedHeaders = $value;
@@ -234,7 +256,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function errorController($value): self
+    public function errorController($value): static
     {
         $this->_usedProperties['errorController'] = true;
         $this->errorController = $value;
@@ -242,6 +264,9 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this;
     }
 
+    /**
+     * @default {"enabled":null}
+    */
     public function csrfProtection(array $value = []): \Symfony\Config\Framework\CsrfProtectionConfig
     {
         if (null === $this->csrfProtection) {
@@ -254,6 +279,10 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->csrfProtection;
     }
 
+    /**
+     * form configuration
+     * @default {"enabled":true,"csrf_protection":{"enabled":null,"field_name":"_token"}}
+    */
     public function form(array $value = []): \Symfony\Config\Framework\FormConfig
     {
         if (null === $this->form) {
@@ -267,9 +296,11 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
+     * HTTP cache configuration
+     * @default {"enabled":false,"debug":"%kernel.debug%","private_headers":[]}
      * @return \Symfony\Config\Framework\HttpCacheConfig|$this
      */
-    public function httpCache($value = [])
+    public function httpCache(mixed $value = []): \Symfony\Config\Framework\HttpCacheConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['httpCache'] = true;
@@ -289,9 +320,11 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
+     * esi configuration
+     * @default {"enabled":false}
      * @return \Symfony\Config\Framework\EsiConfig|$this
      */
-    public function esi($value = [])
+    public function esi(mixed $value = []): \Symfony\Config\Framework\EsiConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['esi'] = true;
@@ -311,9 +344,11 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
+     * ssi configuration
+     * @default {"enabled":false}
      * @return \Symfony\Config\Framework\SsiConfig|$this
      */
-    public function ssi($value = [])
+    public function ssi(mixed $value = []): \Symfony\Config\Framework\SsiConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['ssi'] = true;
@@ -333,9 +368,11 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
+     * fragments configuration
+     * @default {"enabled":false,"hinclude_default_template":null,"path":"\/_fragment"}
      * @return \Symfony\Config\Framework\FragmentsConfig|$this
      */
-    public function fragments($value = [])
+    public function fragments(mixed $value = []): \Symfony\Config\Framework\FragmentsConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['fragments'] = true;
@@ -355,9 +392,11 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
+     * profiler configuration
+     * @default {"enabled":false,"collect":true,"collect_parameter":null,"only_exceptions":false,"only_main_requests":false,"dsn":"file:%kernel.cache_dir%\/profiler","collect_serializer_data":false}
      * @return \Symfony\Config\Framework\ProfilerConfig|$this
      */
-    public function profiler($value = [])
+    public function profiler(mixed $value = []): \Symfony\Config\Framework\ProfilerConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['profiler'] = true;
@@ -377,9 +416,10 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
+     * @default {"enabled":false,"workflows":[]}
      * @return \Symfony\Config\Framework\WorkflowsConfig|$this
      */
-    public function workflows($value = [])
+    public function workflows(mixed $value = []): \Symfony\Config\Framework\WorkflowsConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['workflows'] = true;
@@ -399,9 +439,11 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
+     * router configuration
+     * @default {"enabled":false,"default_uri":null,"http_port":80,"https_port":443,"strict_requirements":true,"utf8":true}
      * @return \Symfony\Config\Framework\RouterConfig|$this
      */
-    public function router($value = [])
+    public function router(mixed $value = []): \Symfony\Config\Framework\RouterConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['router'] = true;
@@ -421,9 +463,11 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
+     * session configuration
+     * @default {"enabled":false,"storage_factory_id":"session.storage.factory.native","handler_id":"session.handler.native_file","cookie_httponly":true,"cookie_samesite":null,"gc_probability":1,"save_path":"%kernel.cache_dir%\/sessions","metadata_update_threshold":0}
      * @return \Symfony\Config\Framework\SessionConfig|$this
      */
-    public function session($value = [])
+    public function session(mixed $value = []): \Symfony\Config\Framework\SessionConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['session'] = true;
@@ -443,9 +487,11 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
+     * request configuration
+     * @default {"enabled":false,"formats":[]}
      * @return \Symfony\Config\Framework\RequestConfig|$this
      */
-    public function request($value = [])
+    public function request(mixed $value = []): \Symfony\Config\Framework\RequestConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['request'] = true;
@@ -464,6 +510,10 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->request;
     }
 
+    /**
+     * assets configuration
+     * @default {"enabled":true,"strict_mode":false,"version_strategy":null,"version":null,"version_format":"%%s?%%s","json_manifest_path":null,"base_path":"","base_urls":[],"packages":[]}
+    */
     public function assets(array $value = []): \Symfony\Config\Framework\AssetsConfig
     {
         if (null === $this->assets) {
@@ -476,6 +526,10 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->assets;
     }
 
+    /**
+     * translator configuration
+     * @default {"enabled":true,"fallbacks":[],"logging":false,"formatter":"translator.formatter.default","cache_dir":"%kernel.cache_dir%\/translations","default_path":"%kernel.project_dir%\/translations","paths":[],"pseudo_localization":{"enabled":false,"accents":true,"expansion_factor":1,"brackets":true,"parse_html":false,"localizable_html_attributes":[]},"providers":[]}
+    */
     public function translator(array $value = []): \Symfony\Config\Framework\TranslatorConfig
     {
         if (null === $this->translator) {
@@ -488,6 +542,10 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->translator;
     }
 
+    /**
+     * validation configuration
+     * @default {"enabled":true,"enable_annotations":true,"static_method":["loadValidatorMetadata"],"translation_domain":"validators","mapping":{"paths":[]},"not_compromised_password":{"enabled":true,"endpoint":null},"auto_mapping":[]}
+    */
     public function validation(array $value = []): \Symfony\Config\Framework\ValidationConfig
     {
         if (null === $this->validation) {
@@ -500,9 +558,21 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->validation;
     }
 
-    public function annotations(array $value = []): \Symfony\Config\Framework\AnnotationsConfig
+    /**
+     * annotation configuration
+     * @default {"enabled":false,"cache":"php_array","file_cache_dir":"%kernel.cache_dir%\/annotations","debug":true}
+     * @return \Symfony\Config\Framework\AnnotationsConfig|$this
+     */
+    public function annotations(mixed $value = []): \Symfony\Config\Framework\AnnotationsConfig|static
     {
-        if (null === $this->annotations) {
+        if (!\is_array($value)) {
+            $this->_usedProperties['annotations'] = true;
+            $this->annotations = $value;
+
+            return $this;
+        }
+
+        if (!$this->annotations instanceof \Symfony\Config\Framework\AnnotationsConfig) {
             $this->_usedProperties['annotations'] = true;
             $this->annotations = new \Symfony\Config\Framework\AnnotationsConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -512,6 +582,10 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->annotations;
     }
 
+    /**
+     * serializer configuration
+     * @default {"enabled":true,"enable_annotations":true,"mapping":{"paths":[]},"default_context":[]}
+    */
     public function serializer(array $value = []): \Symfony\Config\Framework\SerializerConfig
     {
         if (null === $this->serializer) {
@@ -524,6 +598,10 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->serializer;
     }
 
+    /**
+     * Property access configuration
+     * @default {"enabled":true,"magic_call":false,"magic_get":true,"magic_set":true,"throw_exception_on_invalid_index":false,"throw_exception_on_invalid_property_path":true}
+    */
     public function propertyAccess(array $value = []): \Symfony\Config\Framework\PropertyAccessConfig
     {
         if (null === $this->propertyAccess) {
@@ -536,6 +614,10 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->propertyAccess;
     }
 
+    /**
+     * Property info configuration
+     * @default {"enabled":true}
+    */
     public function propertyInfo(array $value = []): \Symfony\Config\Framework\PropertyInfoConfig
     {
         if (null === $this->propertyInfo) {
@@ -548,6 +630,10 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->propertyInfo;
     }
 
+    /**
+     * Cache configuration
+     * @default {"prefix_seed":"_%kernel.project_dir%.%kernel.container_class%","app":"cache.adapter.filesystem","system":"cache.adapter.system","directory":"%kernel.cache_dir%\/pools\/app","default_redis_provider":"redis:\/\/localhost","default_memcached_provider":"memcached:\/\/localhost","default_doctrine_dbal_provider":"database_connection","default_pdo_provider":null,"pools":[]}
+    */
     public function cache(array $value = []): \Symfony\Config\Framework\CacheConfig
     {
         if (null === $this->cache) {
@@ -560,6 +646,10 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->cache;
     }
 
+    /**
+     * PHP errors handling configuration
+     * @default {"log":true,"throw":true}
+    */
     public function phpErrors(array $value = []): \Symfony\Config\Framework\PhpErrorsConfig
     {
         if (null === $this->phpErrors) {
@@ -573,9 +663,10 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
+     * Exception handling configuration
      * @return \Symfony\Config\Framework\ExceptionConfig|$this
      */
-    public function exception(string $class, $value = [])
+    public function exception(string $class, mixed $value = []): \Symfony\Config\Framework\ExceptionConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['exceptions'] = true;
@@ -594,6 +685,10 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->exceptions[$class];
     }
 
+    /**
+     * web links configuration
+     * @default {"enabled":true}
+    */
     public function webLink(array $value = []): \Symfony\Config\Framework\WebLinkConfig
     {
         if (null === $this->webLink) {
@@ -607,9 +702,11 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
+     * Lock configuration
+     * @default {"enabled":false,"resources":{"default":["flock"]}}
      * @return \Symfony\Config\Framework\LockConfig|$this
      */
-    public function lock($value = [])
+    public function lock(mixed $value = []): \Symfony\Config\Framework\LockConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['lock'] = true;
@@ -628,6 +725,34 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->lock;
     }
 
+    /**
+     * Semaphore configuration
+     * @default {"enabled":false,"resources":[]}
+     * @return \Symfony\Config\Framework\SemaphoreConfig|$this
+     */
+    public function semaphore(mixed $value = []): \Symfony\Config\Framework\SemaphoreConfig|static
+    {
+        if (!\is_array($value)) {
+            $this->_usedProperties['semaphore'] = true;
+            $this->semaphore = $value;
+
+            return $this;
+        }
+
+        if (!$this->semaphore instanceof \Symfony\Config\Framework\SemaphoreConfig) {
+            $this->_usedProperties['semaphore'] = true;
+            $this->semaphore = new \Symfony\Config\Framework\SemaphoreConfig($value);
+        } elseif (0 < \func_num_args()) {
+            throw new InvalidConfigurationException('The node created by "semaphore()" has already been initialized. You cannot pass values the second time you call semaphore().');
+        }
+
+        return $this->semaphore;
+    }
+
+    /**
+     * Messenger configuration
+     * @default {"enabled":true,"routing":[],"serializer":{"default_serializer":"messenger.transport.native_php_serializer","symfony_serializer":{"format":"json","context":[]}},"transports":[],"failure_transport":null,"reset_on_message":true,"default_bus":null,"buses":{"messenger.bus.default":{"default_middleware":true,"middleware":[]}}}
+    */
     public function messenger(array $value = []): \Symfony\Config\Framework\MessengerConfig
     {
         if (null === $this->messenger) {
@@ -646,7 +771,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function disallowSearchEngineIndex($value): self
+    public function disallowSearchEngineIndex($value): static
     {
         $this->_usedProperties['disallowSearchEngineIndex'] = true;
         $this->disallowSearchEngineIndex = $value;
@@ -655,9 +780,11 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
+     * HTTP Client configuration
+     * @default {"enabled":true,"scoped_clients":[]}
      * @return \Symfony\Config\Framework\HttpClientConfig|$this
      */
-    public function httpClient($value = [])
+    public function httpClient(mixed $value = []): \Symfony\Config\Framework\HttpClientConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['httpClient'] = true;
@@ -676,6 +803,10 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->httpClient;
     }
 
+    /**
+     * Mailer configuration
+     * @default {"enabled":true,"message_bus":null,"dsn":null,"transports":[],"headers":[]}
+    */
     public function mailer(array $value = []): \Symfony\Config\Framework\MailerConfig
     {
         if (null === $this->mailer) {
@@ -688,6 +819,9 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->mailer;
     }
 
+    /**
+     * @default {"enabled":true,"vault_directory":"%kernel.project_dir%\/config\/secrets\/%kernel.runtime_environment%","local_dotenv_file":"%kernel.project_dir%\/.env.%kernel.environment%.local","decryption_env_var":"base64:default::SYMFONY_DECRYPTION_SECRET"}
+    */
     public function secrets(array $value = []): \Symfony\Config\Framework\SecretsConfig
     {
         if (null === $this->secrets) {
@@ -700,6 +834,10 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->secrets;
     }
 
+    /**
+     * Notifier configuration
+     * @default {"enabled":true,"chatter_transports":[],"texter_transports":[],"notification_on_failed_messages":false,"channel_policy":[],"admin_recipients":[]}
+    */
     public function notifier(array $value = []): \Symfony\Config\Framework\NotifierConfig
     {
         if (null === $this->notifier) {
@@ -713,9 +851,11 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
+     * Rate limiter configuration
+     * @default {"enabled":false,"limiters":[]}
      * @return \Symfony\Config\Framework\RateLimiterConfig|$this
      */
-    public function rateLimiter($value = [])
+    public function rateLimiter(mixed $value = []): \Symfony\Config\Framework\RateLimiterConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['rateLimiter'] = true;
@@ -735,18 +875,12 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
-     * @return \Symfony\Config\Framework\UidConfig|$this
-     */
-    public function uid($value = [])
+     * Uid configuration
+     * @default {"enabled":true,"default_uuid_version":6,"name_based_uuid_version":5,"time_based_uuid_version":6}
+    */
+    public function uid(array $value = []): \Symfony\Config\Framework\UidConfig
     {
-        if (!\is_array($value)) {
-            $this->_usedProperties['uid'] = true;
-            $this->uid = $value;
-
-            return $this;
-        }
-
-        if (!$this->uid instanceof \Symfony\Config\Framework\UidConfig) {
+        if (null === $this->uid) {
             $this->_usedProperties['uid'] = true;
             $this->uid = new \Symfony\Config\Framework\UidConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -754,6 +888,30 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         }
 
         return $this->uid;
+    }
+
+    /**
+     * HtmlSanitizer configuration
+     * @default {"enabled":false,"sanitizers":[]}
+     * @return \Symfony\Config\Framework\HtmlSanitizerConfig|$this
+     */
+    public function htmlSanitizer(mixed $value = []): \Symfony\Config\Framework\HtmlSanitizerConfig|static
+    {
+        if (!\is_array($value)) {
+            $this->_usedProperties['htmlSanitizer'] = true;
+            $this->htmlSanitizer = $value;
+
+            return $this;
+        }
+
+        if (!$this->htmlSanitizer instanceof \Symfony\Config\Framework\HtmlSanitizerConfig) {
+            $this->_usedProperties['htmlSanitizer'] = true;
+            $this->htmlSanitizer = new \Symfony\Config\Framework\HtmlSanitizerConfig($value);
+        } elseif (0 < \func_num_args()) {
+            throw new InvalidConfigurationException('The node created by "htmlSanitizer()" has already been initialized. You cannot pass values the second time you call htmlSanitizer().');
+        }
+
+        return $this->htmlSanitizer;
     }
 
     public function getExtensionAlias(): string
@@ -773,6 +931,12 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
             $this->_usedProperties['httpMethodOverride'] = true;
             $this->httpMethodOverride = $value['http_method_override'];
             unset($value['http_method_override']);
+        }
+
+        if (array_key_exists('trust_x_sendfile_type_header', $value)) {
+            $this->_usedProperties['trustXSendfileTypeHeader'] = true;
+            $this->trustXSendfileTypeHeader = $value['trust_x_sendfile_type_header'];
+            unset($value['trust_x_sendfile_type_header']);
         }
 
         if (array_key_exists('ide', $value)) {
@@ -921,7 +1085,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
 
         if (array_key_exists('annotations', $value)) {
             $this->_usedProperties['annotations'] = true;
-            $this->annotations = new \Symfony\Config\Framework\AnnotationsConfig($value['annotations']);
+            $this->annotations = \is_array($value['annotations']) ? new \Symfony\Config\Framework\AnnotationsConfig($value['annotations']) : $value['annotations'];
             unset($value['annotations']);
         }
 
@@ -973,6 +1137,12 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
             unset($value['lock']);
         }
 
+        if (array_key_exists('semaphore', $value)) {
+            $this->_usedProperties['semaphore'] = true;
+            $this->semaphore = \is_array($value['semaphore']) ? new \Symfony\Config\Framework\SemaphoreConfig($value['semaphore']) : $value['semaphore'];
+            unset($value['semaphore']);
+        }
+
         if (array_key_exists('messenger', $value)) {
             $this->_usedProperties['messenger'] = true;
             $this->messenger = new \Symfony\Config\Framework\MessengerConfig($value['messenger']);
@@ -1017,8 +1187,14 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
 
         if (array_key_exists('uid', $value)) {
             $this->_usedProperties['uid'] = true;
-            $this->uid = \is_array($value['uid']) ? new \Symfony\Config\Framework\UidConfig($value['uid']) : $value['uid'];
+            $this->uid = new \Symfony\Config\Framework\UidConfig($value['uid']);
             unset($value['uid']);
+        }
+
+        if (array_key_exists('html_sanitizer', $value)) {
+            $this->_usedProperties['htmlSanitizer'] = true;
+            $this->htmlSanitizer = \is_array($value['html_sanitizer']) ? new \Symfony\Config\Framework\HtmlSanitizerConfig($value['html_sanitizer']) : $value['html_sanitizer'];
+            unset($value['html_sanitizer']);
         }
 
         if ([] !== $value) {
@@ -1034,6 +1210,9 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         }
         if (isset($this->_usedProperties['httpMethodOverride'])) {
             $output['http_method_override'] = $this->httpMethodOverride;
+        }
+        if (isset($this->_usedProperties['trustXSendfileTypeHeader'])) {
+            $output['trust_x_sendfile_type_header'] = $this->trustXSendfileTypeHeader;
         }
         if (isset($this->_usedProperties['ide'])) {
             $output['ide'] = $this->ide;
@@ -1108,7 +1287,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
             $output['validation'] = $this->validation->toArray();
         }
         if (isset($this->_usedProperties['annotations'])) {
-            $output['annotations'] = $this->annotations->toArray();
+            $output['annotations'] = $this->annotations instanceof \Symfony\Config\Framework\AnnotationsConfig ? $this->annotations->toArray() : $this->annotations;
         }
         if (isset($this->_usedProperties['serializer'])) {
             $output['serializer'] = $this->serializer->toArray();
@@ -1134,6 +1313,9 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         if (isset($this->_usedProperties['lock'])) {
             $output['lock'] = $this->lock instanceof \Symfony\Config\Framework\LockConfig ? $this->lock->toArray() : $this->lock;
         }
+        if (isset($this->_usedProperties['semaphore'])) {
+            $output['semaphore'] = $this->semaphore instanceof \Symfony\Config\Framework\SemaphoreConfig ? $this->semaphore->toArray() : $this->semaphore;
+        }
         if (isset($this->_usedProperties['messenger'])) {
             $output['messenger'] = $this->messenger->toArray();
         }
@@ -1156,7 +1338,10 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
             $output['rate_limiter'] = $this->rateLimiter instanceof \Symfony\Config\Framework\RateLimiterConfig ? $this->rateLimiter->toArray() : $this->rateLimiter;
         }
         if (isset($this->_usedProperties['uid'])) {
-            $output['uid'] = $this->uid instanceof \Symfony\Config\Framework\UidConfig ? $this->uid->toArray() : $this->uid;
+            $output['uid'] = $this->uid->toArray();
+        }
+        if (isset($this->_usedProperties['htmlSanitizer'])) {
+            $output['html_sanitizer'] = $this->htmlSanitizer instanceof \Symfony\Config\Framework\HtmlSanitizerConfig ? $this->htmlSanitizer->toArray() : $this->htmlSanitizer;
         }
 
         return $output;

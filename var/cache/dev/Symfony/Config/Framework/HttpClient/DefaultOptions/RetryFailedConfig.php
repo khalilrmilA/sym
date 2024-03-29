@@ -27,7 +27,7 @@ class RetryFailedConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): self
+    public function enabled($value): static
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -41,7 +41,7 @@ class RetryFailedConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function retryStrategy($value): self
+    public function retryStrategy($value): static
     {
         $this->_usedProperties['retryStrategy'] = true;
         $this->retryStrategy = $value;
@@ -50,9 +50,10 @@ class RetryFailedConfig
     }
 
     /**
+     * A list of HTTP status code that triggers a retry
      * @return \Symfony\Config\Framework\HttpClient\DefaultOptions\RetryFailed\HttpCodeConfig|$this
      */
-    public function httpCode(string $code, $value = [])
+    public function httpCode(string $code, mixed $value = []): \Symfony\Config\Framework\HttpClient\DefaultOptions\RetryFailed\HttpCodeConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['httpCodes'] = true;
@@ -76,7 +77,7 @@ class RetryFailedConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function maxRetries($value): self
+    public function maxRetries($value): static
     {
         $this->_usedProperties['maxRetries'] = true;
         $this->maxRetries = $value;
@@ -90,7 +91,7 @@ class RetryFailedConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function delay($value): self
+    public function delay($value): static
     {
         $this->_usedProperties['delay'] = true;
         $this->delay = $value;
@@ -104,7 +105,7 @@ class RetryFailedConfig
      * @param ParamConfigurator|float $value
      * @return $this
      */
-    public function multiplier($value): self
+    public function multiplier($value): static
     {
         $this->_usedProperties['multiplier'] = true;
         $this->multiplier = $value;
@@ -118,7 +119,7 @@ class RetryFailedConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function maxDelay($value): self
+    public function maxDelay($value): static
     {
         $this->_usedProperties['maxDelay'] = true;
         $this->maxDelay = $value;
@@ -132,7 +133,7 @@ class RetryFailedConfig
      * @param ParamConfigurator|float $value
      * @return $this
      */
-    public function jitter($value): self
+    public function jitter($value): static
     {
         $this->_usedProperties['jitter'] = true;
         $this->jitter = $value;

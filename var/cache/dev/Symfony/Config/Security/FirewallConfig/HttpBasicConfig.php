@@ -19,7 +19,7 @@ class HttpBasicConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function provider($value): self
+    public function provider($value): static
     {
         $this->_usedProperties['provider'] = true;
         $this->provider = $value;
@@ -32,7 +32,7 @@ class HttpBasicConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function realm($value): self
+    public function realm($value): static
     {
         $this->_usedProperties['realm'] = true;
         $this->realm = $value;

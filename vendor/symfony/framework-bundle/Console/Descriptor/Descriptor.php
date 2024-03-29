@@ -38,7 +38,7 @@ abstract class Descriptor implements DescriptorInterface
     /**
      * {@inheritdoc}
      */
-    public function describe(OutputInterface $output, $object, array $options = [])
+    public function describe(OutputInterface $output, mixed $object, array $options = [])
     {
         $this->output = $output;
 
@@ -113,7 +113,7 @@ abstract class Descriptor implements DescriptorInterface
      *
      * @param Definition|Alias|object $service
      */
-    abstract protected function describeContainerService(object $service, array $options = [], ?ContainerBuilder $builder = null);
+    abstract protected function describeContainerService(object $service, array $options = [], ContainerBuilder $builder = null);
 
     /**
      * Describes container services.
@@ -127,9 +127,9 @@ abstract class Descriptor implements DescriptorInterface
 
     abstract protected function describeContainerDefinition(Definition $definition, array $options = []);
 
-    abstract protected function describeContainerAlias(Alias $alias, array $options = [], ?ContainerBuilder $builder = null);
+    abstract protected function describeContainerAlias(Alias $alias, array $options = [], ContainerBuilder $builder = null);
 
-    abstract protected function describeContainerParameter($parameter, array $options = []);
+    abstract protected function describeContainerParameter(mixed $parameter, array $options = []);
 
     abstract protected function describeContainerEnvVars(array $envs, array $options = []);
 
@@ -141,19 +141,9 @@ abstract class Descriptor implements DescriptorInterface
      */
     abstract protected function describeEventDispatcherListeners(EventDispatcherInterface $eventDispatcher, array $options = []);
 
-    /**
-     * Describes a callable.
-     *
-     * @param mixed $callable
-     */
-    abstract protected function describeCallable($callable, array $options = []);
+    abstract protected function describeCallable(mixed $callable, array $options = []);
 
-    /**
-     * Formats a value as string.
-     *
-     * @param mixed $value
-     */
-    protected function formatValue($value): string
+    protected function formatValue(mixed $value): string
     {
         if ($value instanceof \UnitEnum) {
             return ltrim(var_export($value, true), '\\');
@@ -170,12 +160,7 @@ abstract class Descriptor implements DescriptorInterface
         return preg_replace("/\n\s*/s", '', var_export($value, true));
     }
 
-    /**
-     * Formats a parameter.
-     *
-     * @param mixed $value
-     */
-    protected function formatParameter($value): string
+    protected function formatParameter(mixed $value): string
     {
         if ($value instanceof \UnitEnum) {
             return ltrim(var_export($value, true), '\\');
@@ -204,10 +189,7 @@ abstract class Descriptor implements DescriptorInterface
         return (string) $value;
     }
 
-    /**
-     * @return mixed
-     */
-    protected function resolveServiceDefinition(ContainerBuilder $builder, string $serviceId)
+    protected function resolveServiceDefinition(ContainerBuilder $builder, string $serviceId): mixed
     {
         if ($builder->hasDefinition($serviceId)) {
             return $builder->getDefinition($serviceId);
@@ -304,7 +286,7 @@ abstract class Descriptor implements DescriptorInterface
         return $tag;
     }
 
-    public static function getClassDescription(string $class, ?string &$resolvedClass = null): string
+    public static function getClassDescription(string $class, string &$resolvedClass = null): string
     {
         $resolvedClass = $class;
         try {
@@ -321,7 +303,7 @@ abstract class Descriptor implements DescriptorInterface
 
                 return trim(preg_replace('#\s*\n\s*\*\s*#', ' ', $docComment));
             }
-        } catch (\ReflectionException $e) {
+        } catch (\ReflectionException) {
         }
 
         return '';
@@ -348,7 +330,6 @@ abstract class Descriptor implements DescriptorInterface
         $getDefaultParameter = $getDefaultParameter->bindTo($bag, \get_class($bag));
 
         $getEnvReflection = new \ReflectionMethod($container, 'getEnv');
-        $getEnvReflection->setAccessible(true);
 
         $envs = [];
 

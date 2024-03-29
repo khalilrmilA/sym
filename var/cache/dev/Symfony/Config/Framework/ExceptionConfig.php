@@ -20,7 +20,7 @@ class ExceptionConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function logLevel($value): self
+    public function logLevel($value): static
     {
         $this->_usedProperties['logLevel'] = true;
         $this->logLevel = $value;
@@ -34,7 +34,7 @@ class ExceptionConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function statusCode($value): self
+    public function statusCode($value): static
     {
         $this->_usedProperties['statusCode'] = true;
         $this->statusCode = $value;

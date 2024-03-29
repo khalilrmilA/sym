@@ -25,7 +25,7 @@ class PackageConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function strictMode($value): self
+    public function strictMode($value): static
     {
         $this->_usedProperties['strictMode'] = true;
         $this->strictMode = $value;
@@ -38,7 +38,7 @@ class PackageConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function versionStrategy($value): self
+    public function versionStrategy($value): static
     {
         $this->_usedProperties['versionStrategy'] = true;
         $this->versionStrategy = $value;
@@ -51,7 +51,7 @@ class PackageConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function version($value): self
+    public function version($value): static
     {
         $this->_usedProperties['version'] = true;
         $this->version = $value;
@@ -64,7 +64,7 @@ class PackageConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function versionFormat($value): self
+    public function versionFormat($value): static
     {
         $this->_usedProperties['versionFormat'] = true;
         $this->versionFormat = $value;
@@ -77,7 +77,7 @@ class PackageConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function jsonManifestPath($value): self
+    public function jsonManifestPath($value): static
     {
         $this->_usedProperties['jsonManifestPath'] = true;
         $this->jsonManifestPath = $value;
@@ -89,7 +89,7 @@ class PackageConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function basePath($value): self
+    public function basePath($value): static
     {
         $this->_usedProperties['basePath'] = true;
         $this->basePath = $value;
@@ -98,10 +98,11 @@ class PackageConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param mixed $value
+     *
      * @return $this
      */
-    public function baseUrls($value): self
+    public function baseUrls(mixed $value): static
     {
         $this->_usedProperties['baseUrls'] = true;
         $this->baseUrls = $value;

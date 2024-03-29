@@ -92,6 +92,7 @@ return [
         'IE' => 'Ayalandi',
         'IL' => 'Israeli',
         'IN' => 'India',
+        'IO' => 'Eneo la Uingereza katika Bahari Hindi',
         'IQ' => 'Iraki',
         'IR' => 'Uajemi',
         'IS' => 'Aislandi',

@@ -23,6 +23,7 @@ return [
         'GT' => 'Gwatemala',
         'GU' => 'Guami',
         'HR' => 'Kroashia',
+        'IO' => 'Himaya ya Uingereza katika Bahari Hindi',
         'JO' => 'Yordani',
         'LA' => 'Laosi',
         'LB' => 'Lebanoni',

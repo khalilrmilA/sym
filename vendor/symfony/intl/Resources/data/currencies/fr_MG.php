@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'MGA' => [
-            'Ar',
-            'ariary malgache',
+            0 => 'Ar',
+            1 => 'ariary malgache',
         ],
     ],
 ];

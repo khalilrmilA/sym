@@ -42,9 +42,10 @@ class EntityManagerConfig
     private $_usedProperties = [];
 
     /**
+     * @default {"type":null}
      * @return \Symfony\Config\Doctrine\Orm\EntityManagerConfig\QueryCacheDriverConfig|$this
      */
-    public function queryCacheDriver($value = [])
+    public function queryCacheDriver(mixed $value = []): \Symfony\Config\Doctrine\Orm\EntityManagerConfig\QueryCacheDriverConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['queryCacheDriver'] = true;
@@ -66,7 +67,7 @@ class EntityManagerConfig
     /**
      * @return \Symfony\Config\Doctrine\Orm\EntityManagerConfig\MetadataCacheDriverConfig|$this
      */
-    public function metadataCacheDriver($value = [])
+    public function metadataCacheDriver(mixed $value = []): \Symfony\Config\Doctrine\Orm\EntityManagerConfig\MetadataCacheDriverConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['metadataCacheDriver'] = true;
@@ -86,9 +87,10 @@ class EntityManagerConfig
     }
 
     /**
+     * @default {"type":null}
      * @return \Symfony\Config\Doctrine\Orm\EntityManagerConfig\ResultCacheDriverConfig|$this
      */
-    public function resultCacheDriver($value = [])
+    public function resultCacheDriver(mixed $value = []): \Symfony\Config\Doctrine\Orm\EntityManagerConfig\ResultCacheDriverConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['resultCacheDriver'] = true;
@@ -110,7 +112,7 @@ class EntityManagerConfig
     /**
      * @return \Symfony\Config\Doctrine\Orm\EntityManagerConfig\EntityListenersConfig|$this
      */
-    public function entityListeners($value = [])
+    public function entityListeners(mixed $value = []): \Symfony\Config\Doctrine\Orm\EntityManagerConfig\EntityListenersConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['entityListeners'] = true;
@@ -134,7 +136,7 @@ class EntityManagerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function connection($value): self
+    public function connection($value): static
     {
         $this->_usedProperties['connection'] = true;
         $this->connection = $value;
@@ -147,7 +149,7 @@ class EntityManagerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function classMetadataFactoryName($value): self
+    public function classMetadataFactoryName($value): static
     {
         $this->_usedProperties['classMetadataFactoryName'] = true;
         $this->classMetadataFactoryName = $value;
@@ -160,7 +162,7 @@ class EntityManagerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function defaultRepositoryClass($value): self
+    public function defaultRepositoryClass($value): static
     {
         $this->_usedProperties['defaultRepositoryClass'] = true;
         $this->defaultRepositoryClass = $value;
@@ -173,7 +175,7 @@ class EntityManagerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function autoMapping($value): self
+    public function autoMapping($value): static
     {
         $this->_usedProperties['autoMapping'] = true;
         $this->autoMapping = $value;
@@ -186,7 +188,7 @@ class EntityManagerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function namingStrategy($value): self
+    public function namingStrategy($value): static
     {
         $this->_usedProperties['namingStrategy'] = true;
         $this->namingStrategy = $value;
@@ -199,7 +201,7 @@ class EntityManagerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function quoteStrategy($value): self
+    public function quoteStrategy($value): static
     {
         $this->_usedProperties['quoteStrategy'] = true;
         $this->quoteStrategy = $value;
@@ -212,7 +214,7 @@ class EntityManagerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function entityListenerResolver($value): self
+    public function entityListenerResolver($value): static
     {
         $this->_usedProperties['entityListenerResolver'] = true;
         $this->entityListenerResolver = $value;
@@ -225,7 +227,7 @@ class EntityManagerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function repositoryFactory($value): self
+    public function repositoryFactory($value): static
     {
         $this->_usedProperties['repositoryFactory'] = true;
         $this->repositoryFactory = $value;
@@ -234,10 +236,11 @@ class EntityManagerConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
+     *
      * @return $this
      */
-    public function schemaIgnoreClasses($value): self
+    public function schemaIgnoreClasses(ParamConfigurator|array $value): static
     {
         $this->_usedProperties['schemaIgnoreClasses'] = true;
         $this->schemaIgnoreClasses = $value;
@@ -251,7 +254,7 @@ class EntityManagerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function reportFieldsWhereDeclared($value): self
+    public function reportFieldsWhereDeclared($value): static
     {
         $this->_usedProperties['reportFieldsWhereDeclared'] = true;
         $this->reportFieldsWhereDeclared = $value;
@@ -265,7 +268,7 @@ class EntityManagerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function validateXmlMapping($value): self
+    public function validateXmlMapping($value): static
     {
         $this->_usedProperties['validateXmlMapping'] = true;
         $this->validateXmlMapping = $value;
@@ -286,10 +289,9 @@ class EntityManagerConfig
     }
 
     /**
-     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function hydrator(string $name, $value): self
+    public function hydrator(string $name, mixed $value): static
     {
         $this->_usedProperties['hydrators'] = true;
         $this->hydrators[$name] = $value;
@@ -300,7 +302,7 @@ class EntityManagerConfig
     /**
      * @return \Symfony\Config\Doctrine\Orm\EntityManagerConfig\MappingConfig|$this
      */
-    public function mapping(string $name, $value = [])
+    public function mapping(string $name, mixed $value = []): \Symfony\Config\Doctrine\Orm\EntityManagerConfig\MappingConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['mappings'] = true;
@@ -332,9 +334,10 @@ class EntityManagerConfig
     }
 
     /**
+     * Register SQL Filters in the entity manager
      * @return \Symfony\Config\Doctrine\Orm\EntityManagerConfig\FilterConfig|$this
      */
-    public function filter(string $name, $value = [])
+    public function filter(string $name, mixed $value = []): \Symfony\Config\Doctrine\Orm\EntityManagerConfig\FilterConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['filters'] = true;

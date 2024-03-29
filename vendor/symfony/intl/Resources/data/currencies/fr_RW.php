@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'RWF' => [
-            'RF',
-            'franc rwandais',
+            0 => 'RF',
+            1 => 'franc rwandais',
         ],
     ],
 ];

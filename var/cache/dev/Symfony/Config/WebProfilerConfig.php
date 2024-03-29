@@ -20,7 +20,7 @@ class WebProfilerConfig implements \Symfony\Component\Config\Builder\ConfigBuild
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function toolbar($value): self
+    public function toolbar($value): static
     {
         $this->_usedProperties['toolbar'] = true;
         $this->toolbar = $value;
@@ -33,7 +33,7 @@ class WebProfilerConfig implements \Symfony\Component\Config\Builder\ConfigBuild
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function interceptRedirects($value): self
+    public function interceptRedirects($value): static
     {
         $this->_usedProperties['interceptRedirects'] = true;
         $this->interceptRedirects = $value;
@@ -46,7 +46,7 @@ class WebProfilerConfig implements \Symfony\Component\Config\Builder\ConfigBuild
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function excludedAjaxPaths($value): self
+    public function excludedAjaxPaths($value): static
     {
         $this->_usedProperties['excludedAjaxPaths'] = true;
         $this->excludedAjaxPaths = $value;

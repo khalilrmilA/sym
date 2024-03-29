@@ -4,5 +4,6 @@ return [
     'Names' => [
         'da' => 'الدنماركية',
     ],
-    'LocalizedNames' => [],
+    'LocalizedNames' => [
+    ],
 ];

@@ -32,8 +32,8 @@ class HandleMessageMiddleware implements MiddlewareInterface
 {
     use LoggerAwareTrait;
 
-    private $handlersLocator;
-    private $allowNoHandlers;
+    private HandlersLocatorInterface $handlersLocator;
+    private bool $allowNoHandlers;
 
     public function __construct(HandlersLocatorInterface $handlersLocator, bool $allowNoHandlers = false)
     {
@@ -70,7 +70,7 @@ class HandleMessageMiddleware implements MiddlewareInterface
 
                 /** @var AckStamp $ackStamp */
                 if ($batchHandler && $ackStamp = $envelope->last(AckStamp::class)) {
-                    $ack = new Acknowledger(get_debug_type($batchHandler), static function (?\Throwable $e = null, $result = null) use ($envelope, $ackStamp, $handlerDescriptor) {
+                    $ack = new Acknowledger(get_debug_type($batchHandler), static function (\Throwable $e = null, $result = null) use ($envelope, $ackStamp, $handlerDescriptor) {
                         if (null !== $e) {
                             $e = new HandlerFailedException($envelope, [$e]);
                         } else {

@@ -25,9 +25,10 @@ class SecondLevelCacheConfig
     private $_usedProperties = [];
 
     /**
+     * @default {"type":null}
      * @return \Symfony\Config\Doctrine\Orm\EntityManagerConfig\SecondLevelCache\RegionCacheDriverConfig|$this
      */
-    public function regionCacheDriver($value = [])
+    public function regionCacheDriver(mixed $value = []): \Symfony\Config\Doctrine\Orm\EntityManagerConfig\SecondLevelCache\RegionCacheDriverConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['regionCacheDriver'] = true;
@@ -51,7 +52,7 @@ class SecondLevelCacheConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function regionLockLifetime($value): self
+    public function regionLockLifetime($value): static
     {
         $this->_usedProperties['regionLockLifetime'] = true;
         $this->regionLockLifetime = $value;
@@ -64,7 +65,7 @@ class SecondLevelCacheConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function logEnabled($value): self
+    public function logEnabled($value): static
     {
         $this->_usedProperties['logEnabled'] = true;
         $this->logEnabled = $value;
@@ -77,7 +78,7 @@ class SecondLevelCacheConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function regionLifetime($value): self
+    public function regionLifetime($value): static
     {
         $this->_usedProperties['regionLifetime'] = true;
         $this->regionLifetime = $value;
@@ -90,7 +91,7 @@ class SecondLevelCacheConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): self
+    public function enabled($value): static
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -103,7 +104,7 @@ class SecondLevelCacheConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function factory($value): self
+    public function factory($value): static
     {
         $this->_usedProperties['factory'] = true;
         $this->factory = $value;

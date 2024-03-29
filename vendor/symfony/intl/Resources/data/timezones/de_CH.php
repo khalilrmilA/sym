@@ -7,5 +7,6 @@ return [
         'Europe/Saratov' => 'Moskauer Zeit (Saratov)',
         'Pacific/Guadalcanal' => 'Salomoninseln-Zeit (Guadalcanal)',
     ],
-    'Meta' => [],
+    'Meta' => [
+    ],
 ];

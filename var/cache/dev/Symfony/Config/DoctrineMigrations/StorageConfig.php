@@ -14,6 +14,10 @@ class StorageConfig
     private $tableStorage;
     private $_usedProperties = [];
 
+    /**
+     * The default metadata storage, implemented as a table in the database.
+     * @default {"table_name":null,"version_column_name":null,"version_column_length":null,"executed_at_column_name":null,"execution_time_column_name":null}
+    */
     public function tableStorage(array $value = []): \Symfony\Config\DoctrineMigrations\Storage\TableStorageConfig
     {
         if (null === $this->tableStorage) {

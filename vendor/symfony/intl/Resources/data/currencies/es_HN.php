@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'HNL' => [
-            'L',
-            'lempira hondureño',
+            0 => 'L',
+            1 => 'lempira hondureño',
         ],
     ],
 ];

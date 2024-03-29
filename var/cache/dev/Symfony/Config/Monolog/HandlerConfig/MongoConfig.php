@@ -24,7 +24,7 @@ class MongoConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function id($value): self
+    public function id($value): static
     {
         $this->_usedProperties['id'] = true;
         $this->id = $value;
@@ -37,7 +37,7 @@ class MongoConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function host($value): self
+    public function host($value): static
     {
         $this->_usedProperties['host'] = true;
         $this->host = $value;
@@ -50,7 +50,7 @@ class MongoConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function port($value): self
+    public function port($value): static
     {
         $this->_usedProperties['port'] = true;
         $this->port = $value;
@@ -63,7 +63,7 @@ class MongoConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function user($value): self
+    public function user($value): static
     {
         $this->_usedProperties['user'] = true;
         $this->user = $value;
@@ -76,7 +76,7 @@ class MongoConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function pass($value): self
+    public function pass($value): static
     {
         $this->_usedProperties['pass'] = true;
         $this->pass = $value;
@@ -89,7 +89,7 @@ class MongoConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function database($value): self
+    public function database($value): static
     {
         $this->_usedProperties['database'] = true;
         $this->database = $value;
@@ -102,7 +102,7 @@ class MongoConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function collection($value): self
+    public function collection($value): static
     {
         $this->_usedProperties['collection'] = true;
         $this->collection = $value;

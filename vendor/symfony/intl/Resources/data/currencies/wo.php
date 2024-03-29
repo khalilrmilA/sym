@@ -3,40 +3,40 @@
 return [
     'Names' => [
         'BRL' => [
-            'R$',
-            'Real bu Bresil',
+            0 => 'R$',
+            1 => 'Real bu Bresil',
         ],
         'CNY' => [
-            'CN¥',
-            'Yuan bu Siin',
+            0 => 'CN¥',
+            1 => 'Yuan bu Siin',
         ],
         'EUR' => [
-            '€',
-            'Euro',
+            0 => '€',
+            1 => 'Euro',
         ],
         'GBP' => [
-            '£',
-            'Pound bu Grànd Brëtaañ',
+            0 => '£',
+            1 => 'Pound bu Grànd Brëtaañ',
         ],
         'INR' => [
-            '₹',
-            'Rupee bu End',
+            0 => '₹',
+            1 => 'Rupee bu End',
         ],
         'JPY' => [
-            'JP¥',
-            'Yen bu Sapoŋ',
+            0 => 'JP¥',
+            1 => 'Yen bu Sapoŋ',
         ],
         'RUB' => [
-            'RUB',
-            'Ruble bi Rsis',
+            0 => 'RUB',
+            1 => 'Ruble bi Rsis',
         ],
         'USD' => [
-            '$',
-            'Dolaaru US',
+            0 => '$',
+            1 => 'Dolaaru US',
         ],
         'XOF' => [
-            'F CFA',
-            'Franc CFA bu Afrik Sowwu-jant',
+            0 => 'F CFA',
+            1 => 'Franc CFA bu Afrik Sowwu-jant',
         ],
     ],
 ];

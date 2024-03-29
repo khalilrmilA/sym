@@ -25,7 +25,7 @@ class NotifierConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): self
+    public function enabled($value): static
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -34,10 +34,9 @@ class NotifierConfig
     }
 
     /**
-     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function chatterTransport(string $name, $value): self
+    public function chatterTransport(string $name, mixed $value): static
     {
         $this->_usedProperties['chatterTransports'] = true;
         $this->chatterTransports[$name] = $value;
@@ -46,10 +45,9 @@ class NotifierConfig
     }
 
     /**
-     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function texterTransport(string $name, $value): self
+    public function texterTransport(string $name, mixed $value): static
     {
         $this->_usedProperties['texterTransports'] = true;
         $this->texterTransports[$name] = $value;
@@ -62,7 +60,7 @@ class NotifierConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function notificationOnFailedMessages($value): self
+    public function notificationOnFailedMessages($value): static
     {
         $this->_usedProperties['notificationOnFailedMessages'] = true;
         $this->notificationOnFailedMessages = $value;
@@ -71,10 +69,9 @@ class NotifierConfig
     }
 
     /**
-     * @param ParamConfigurator|array $value
      * @return $this
      */
-    public function channelPolicy(string $name, $value): self
+    public function channelPolicy(string $name, mixed $value): static
     {
         $this->_usedProperties['channelPolicy'] = true;
         $this->channelPolicy[$name] = $value;

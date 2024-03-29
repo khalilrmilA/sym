@@ -10,6 +10,7 @@ use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
  */
 class AccessControlConfig 
 {
+    private $requestMatcher;
     private $requiresChannel;
     private $path;
     private $host;
@@ -25,7 +26,20 @@ class AccessControlConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function requiresChannel($value): self
+    public function requestMatcher($value): static
+    {
+        $this->_usedProperties['requestMatcher'] = true;
+        $this->requestMatcher = $value;
+
+        return $this;
+    }
+
+    /**
+     * @default null
+     * @param ParamConfigurator|mixed $value
+     * @return $this
+     */
+    public function requiresChannel($value): static
     {
         $this->_usedProperties['requiresChannel'] = true;
         $this->requiresChannel = $value;
@@ -40,7 +54,7 @@ class AccessControlConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function path($value): self
+    public function path($value): static
     {
         $this->_usedProperties['path'] = true;
         $this->path = $value;
@@ -53,7 +67,7 @@ class AccessControlConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function host($value): self
+    public function host($value): static
     {
         $this->_usedProperties['host'] = true;
         $this->host = $value;
@@ -66,7 +80,7 @@ class AccessControlConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function port($value): self
+    public function port($value): static
     {
         $this->_usedProperties['port'] = true;
         $this->port = $value;
@@ -75,10 +89,11 @@ class AccessControlConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param mixed $value
+     *
      * @return $this
      */
-    public function ips($value): self
+    public function ips(mixed $value): static
     {
         $this->_usedProperties['ips'] = true;
         $this->ips = $value;
@@ -87,10 +102,11 @@ class AccessControlConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param mixed $value
+     *
      * @return $this
      */
-    public function methods($value): self
+    public function methods(mixed $value): static
     {
         $this->_usedProperties['methods'] = true;
         $this->methods = $value;
@@ -103,7 +119,7 @@ class AccessControlConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function allowIf($value): self
+    public function allowIf($value): static
     {
         $this->_usedProperties['allowIf'] = true;
         $this->allowIf = $value;
@@ -112,10 +128,11 @@ class AccessControlConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param mixed $value
+     *
      * @return $this
      */
-    public function roles($value): self
+    public function roles(mixed $value): static
     {
         $this->_usedProperties['roles'] = true;
         $this->roles = $value;
@@ -125,6 +142,12 @@ class AccessControlConfig
 
     public function __construct(array $value = [])
     {
+        if (array_key_exists('request_matcher', $value)) {
+            $this->_usedProperties['requestMatcher'] = true;
+            $this->requestMatcher = $value['request_matcher'];
+            unset($value['request_matcher']);
+        }
+
         if (array_key_exists('requires_channel', $value)) {
             $this->_usedProperties['requiresChannel'] = true;
             $this->requiresChannel = $value['requires_channel'];
@@ -181,6 +204,9 @@ class AccessControlConfig
     public function toArray(): array
     {
         $output = [];
+        if (isset($this->_usedProperties['requestMatcher'])) {
+            $output['request_matcher'] = $this->requestMatcher;
+        }
         if (isset($this->_usedProperties['requiresChannel'])) {
             $output['requires_channel'] = $this->requiresChannel;
         }

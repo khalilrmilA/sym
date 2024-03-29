@@ -3,12 +3,12 @@
 return [
     'Names' => [
         'CLP' => [
-            '$',
-            'Peso chileno',
+            0 => '$',
+            1 => 'Peso chileno',
         ],
         'USD' => [
-            'US$',
-            'dólar estadounidense',
+            0 => 'US$',
+            1 => 'dólar estadounidense',
         ],
     ],
 ];

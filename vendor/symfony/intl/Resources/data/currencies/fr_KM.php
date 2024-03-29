@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'KMF' => [
-            'CF',
-            'franc comorien',
+            0 => 'CF',
+            1 => 'franc comorien',
         ],
     ],
 ];

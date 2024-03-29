@@ -119,7 +119,7 @@ class AttributeMetadata implements AttributeMetadataInterface
     /**
      * {@inheritdoc}
      */
-    public function getMaxDepth()
+    public function getMaxDepth(): ?int
     {
         return $this->maxDepth;
     }
@@ -127,7 +127,7 @@ class AttributeMetadata implements AttributeMetadataInterface
     /**
      * {@inheritdoc}
      */
-    public function setSerializedName(?string $serializedName = null)
+    public function setSerializedName(string $serializedName = null)
     {
         $this->serializedName = $serializedName;
     }
@@ -261,7 +261,7 @@ class AttributeMetadata implements AttributeMetadataInterface
      *
      * @return string[]
      */
-    public function __sleep()
+    public function __sleep(): array
     {
         return ['name', 'groups', 'maxDepth', 'serializedName', 'ignore', 'normalizationContexts', 'denormalizationContexts'];
     }

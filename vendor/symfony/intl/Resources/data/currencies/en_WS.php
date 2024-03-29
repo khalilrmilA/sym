@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'WST' => [
-            'WS$',
-            'Samoan Tala',
+            0 => 'WS$',
+            1 => 'Samoan Tala',
         ],
     ],
 ];

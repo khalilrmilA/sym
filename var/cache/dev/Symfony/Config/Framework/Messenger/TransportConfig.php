@@ -24,7 +24,7 @@ class TransportConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function dsn($value): self
+    public function dsn($value): static
     {
         $this->_usedProperties['dsn'] = true;
         $this->dsn = $value;
@@ -38,7 +38,7 @@ class TransportConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function serializer($value): self
+    public function serializer($value): static
     {
         $this->_usedProperties['serializer'] = true;
         $this->serializer = $value;
@@ -47,10 +47,11 @@ class TransportConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
+     *
      * @return $this
      */
-    public function options($value): self
+    public function options(ParamConfigurator|array $value): static
     {
         $this->_usedProperties['options'] = true;
         $this->options = $value;
@@ -64,7 +65,7 @@ class TransportConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function failureTransport($value): self
+    public function failureTransport($value): static
     {
         $this->_usedProperties['failureTransport'] = true;
         $this->failureTransport = $value;
@@ -73,9 +74,10 @@ class TransportConfig
     }
 
     /**
+     * @default {"service":null,"max_retries":3,"delay":1000,"multiplier":2,"max_delay":0}
      * @return \Symfony\Config\Framework\Messenger\TransportConfig\RetryStrategyConfig|$this
      */
-    public function retryStrategy($value = [])
+    public function retryStrategy(mixed $value = []): \Symfony\Config\Framework\Messenger\TransportConfig\RetryStrategyConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['retryStrategy'] = true;

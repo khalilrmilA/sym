@@ -3,40 +3,40 @@
 return [
     'Names' => [
         'BRL' => [
-            'R$',
-            'Brazilian Real',
+            0 => 'R$',
+            1 => 'Brazilian Real',
         ],
         'CNY' => [
-            'CN¥',
-            'Chinese Yuan Renminbi',
+            0 => 'CN¥',
+            1 => 'Chinese Yuan Renminbi',
         ],
         'ETB' => [
-            'Br',
-            'Itoophiyaa Birrii',
+            0 => 'Br',
+            1 => 'Itoophiyaa Birrii',
         ],
         'EUR' => [
-            '€',
-            'Euro',
+            0 => '€',
+            1 => 'Euro',
         ],
         'GBP' => [
-            '£',
-            'British Pound',
+            0 => '£',
+            1 => 'British Pound',
         ],
         'INR' => [
-            '₹',
-            'Indian Rupee',
+            0 => '₹',
+            1 => 'Indian Rupee',
         ],
         'JPY' => [
-            'JP¥',
-            'Japanese Yen',
+            0 => 'JP¥',
+            1 => 'Japanese Yen',
         ],
         'RUB' => [
-            'RUB',
-            'Russian Ruble',
+            0 => 'RUB',
+            1 => 'Russian Ruble',
         ],
         'USD' => [
-            'US$',
-            'US Dollar',
+            0 => 'US$',
+            1 => 'US Dollar',
         ],
     ],
 ];

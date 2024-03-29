@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'BOB' => [
-            'Bs',
-            'boliviano',
+            0 => 'Bs',
+            1 => 'boliviano',
         ],
     ],
 ];

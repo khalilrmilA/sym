@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'ZAR' => [
-            'R',
-            'South African Rand',
+            0 => 'R',
+            1 => 'South African Rand',
         ],
     ],
 ];

@@ -25,11 +25,9 @@ class StreamWrapper
     /** @var resource|null */
     public $context;
 
-    /** @var HttpClientInterface */
-    private $client;
+    private HttpClientInterface|ResponseInterface $client;
 
-    /** @var ResponseInterface */
-    private $response;
+    private ResponseInterface $response;
 
     /** @var resource|string|null */
     private $content;
@@ -37,17 +35,17 @@ class StreamWrapper
     /** @var resource|null */
     private $handle;
 
-    private $blocking = true;
-    private $timeout;
-    private $eof = false;
-    private $offset = 0;
+    private bool $blocking = true;
+    private ?float $timeout = null;
+    private bool $eof = false;
+    private ?int $offset = 0;
 
     /**
      * Creates a PHP stream resource from a ResponseInterface.
      *
      * @return resource
      */
-    public static function createResource(ResponseInterface $response, ?HttpClientInterface $client = null)
+    public static function createResource(ResponseInterface $response, HttpClientInterface $client = null)
     {
         if ($response instanceof StreamableInterface) {
             $stack = debug_backtrace(\DEBUG_BACKTRACE_PROVIDE_OBJECT | \DEBUG_BACKTRACE_IGNORE_ARGS, 2);
@@ -118,7 +116,7 @@ class StreamWrapper
         return false;
     }
 
-    public function stream_read(int $count)
+    public function stream_read(int $count): string|false
     {
         if (\is_resource($this->content)) {
             // Empty the internal activity list

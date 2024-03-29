@@ -22,7 +22,7 @@ class MonologConfig implements \Symfony\Component\Config\Builder\ConfigBuilderIn
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function useMicroseconds($value): self
+    public function useMicroseconds($value): static
     {
         $this->_usedProperties['useMicroseconds'] = true;
         $this->useMicroseconds = $value;
@@ -31,10 +31,11 @@ class MonologConfig implements \Symfony\Component\Config\Builder\ConfigBuilderIn
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
+     *
      * @return $this
      */
-    public function channels($value): self
+    public function channels(ParamConfigurator|array $value): static
     {
         $this->_usedProperties['channels'] = true;
         $this->channels = $value;
@@ -43,9 +44,12 @@ class MonologConfig implements \Symfony\Component\Config\Builder\ConfigBuilderIn
     }
 
     /**
+     * @example {"type":"stream","path":"\/var\/log\/symfony.log","level":"ERROR","bubble":"false","formatter":"my_formatter"}
+     * @example {"type":"fingers_crossed","action_level":"WARNING","buffer_size":30,"handler":"custom"}
+     * @example {"type":"service","id":"my_handler"}
      * @return \Symfony\Config\Monolog\HandlerConfig|$this
      */
-    public function handler(string $name, $value = [])
+    public function handler(string $name, mixed $value = []): \Symfony\Config\Monolog\HandlerConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['handlers'] = true;

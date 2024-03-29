@@ -22,7 +22,7 @@ use Twig\TwigFunction;
  */
 final class AssetExtension extends AbstractExtension
 {
-    private $packages;
+    private Packages $packages;
 
     public function __construct(Packages $packages)
     {
@@ -35,8 +35,8 @@ final class AssetExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('asset', [$this, 'getAssetUrl']),
-            new TwigFunction('asset_version', [$this, 'getAssetVersion']),
+            new TwigFunction('asset', $this->getAssetUrl(...)),
+            new TwigFunction('asset_version', $this->getAssetVersion(...)),
         ];
     }
 
@@ -46,7 +46,7 @@ final class AssetExtension extends AbstractExtension
      * If the package used to generate the path is an instance of
      * UrlPackage, you will always get a URL and not a path.
      */
-    public function getAssetUrl(string $path, ?string $packageName = null): string
+    public function getAssetUrl(string $path, string $packageName = null): string
     {
         return $this->packages->getUrl($path, $packageName);
     }
@@ -54,7 +54,7 @@ final class AssetExtension extends AbstractExtension
     /**
      * Returns the version of an asset.
      */
-    public function getAssetVersion(string $path, ?string $packageName = null): string
+    public function getAssetVersion(string $path, string $packageName = null): string
     {
         return $this->packages->getVersion($path, $packageName);
     }

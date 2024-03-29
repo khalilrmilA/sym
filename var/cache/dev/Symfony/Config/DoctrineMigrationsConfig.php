@@ -28,10 +28,9 @@ class DoctrineMigrationsConfig implements \Symfony\Component\Config\Builder\Conf
     private $_usedProperties = [];
 
     /**
-     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function migrationsPath(string $namespace, $value): self
+    public function migrationsPath(string $namespace, mixed $value): static
     {
         $this->_usedProperties['migrationsPaths'] = true;
         $this->migrationsPaths[$namespace] = $value;
@@ -40,10 +39,9 @@ class DoctrineMigrationsConfig implements \Symfony\Component\Config\Builder\Conf
     }
 
     /**
-     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function services(string $service, $value): self
+    public function services(string $service, mixed $value): static
     {
         $this->_usedProperties['services'] = true;
         $this->services[$service] = $value;
@@ -52,10 +50,9 @@ class DoctrineMigrationsConfig implements \Symfony\Component\Config\Builder\Conf
     }
 
     /**
-     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function factories(string $factory, $value): self
+    public function factories(string $factory, mixed $value): static
     {
         $this->_usedProperties['factories'] = true;
         $this->factories[$factory] = $value;
@@ -63,6 +60,10 @@ class DoctrineMigrationsConfig implements \Symfony\Component\Config\Builder\Conf
         return $this;
     }
 
+    /**
+     * Storage to use for migration status metadata.
+     * @default {"table_storage":{"table_name":null,"version_column_name":null,"version_column_length":null,"executed_at_column_name":null,"execution_time_column_name":null}}
+    */
     public function storage(array $value = []): \Symfony\Config\DoctrineMigrations\StorageConfig
     {
         if (null === $this->storage) {
@@ -76,10 +77,11 @@ class DoctrineMigrationsConfig implements \Symfony\Component\Config\Builder\Conf
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
+     *
      * @return $this
      */
-    public function migrations($value): self
+    public function migrations(ParamConfigurator|array $value): static
     {
         $this->_usedProperties['migrations'] = true;
         $this->migrations = $value;
@@ -93,7 +95,7 @@ class DoctrineMigrationsConfig implements \Symfony\Component\Config\Builder\Conf
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function connection($value): self
+    public function connection($value): static
     {
         $this->_usedProperties['connection'] = true;
         $this->connection = $value;
@@ -107,7 +109,7 @@ class DoctrineMigrationsConfig implements \Symfony\Component\Config\Builder\Conf
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function em($value): self
+    public function em($value): static
     {
         $this->_usedProperties['em'] = true;
         $this->em = $value;
@@ -121,7 +123,7 @@ class DoctrineMigrationsConfig implements \Symfony\Component\Config\Builder\Conf
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function allOrNothing($value): self
+    public function allOrNothing($value): static
     {
         $this->_usedProperties['allOrNothing'] = true;
         $this->allOrNothing = $value;
@@ -135,7 +137,7 @@ class DoctrineMigrationsConfig implements \Symfony\Component\Config\Builder\Conf
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function checkDatabasePlatform($value): self
+    public function checkDatabasePlatform($value): static
     {
         $this->_usedProperties['checkDatabasePlatform'] = true;
         $this->checkDatabasePlatform = $value;
@@ -149,7 +151,7 @@ class DoctrineMigrationsConfig implements \Symfony\Component\Config\Builder\Conf
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function customTemplate($value): self
+    public function customTemplate($value): static
     {
         $this->_usedProperties['customTemplate'] = true;
         $this->customTemplate = $value;
@@ -163,7 +165,7 @@ class DoctrineMigrationsConfig implements \Symfony\Component\Config\Builder\Conf
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function organizeMigrations($value): self
+    public function organizeMigrations($value): static
     {
         $this->_usedProperties['organizeMigrations'] = true;
         $this->organizeMigrations = $value;
@@ -177,7 +179,7 @@ class DoctrineMigrationsConfig implements \Symfony\Component\Config\Builder\Conf
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enableProfiler($value): self
+    public function enableProfiler($value): static
     {
         $this->_usedProperties['enableProfiler'] = true;
         $this->enableProfiler = $value;
@@ -191,7 +193,7 @@ class DoctrineMigrationsConfig implements \Symfony\Component\Config\Builder\Conf
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function transactional($value): self
+    public function transactional($value): static
     {
         $this->_usedProperties['transactional'] = true;
         $this->transactional = $value;

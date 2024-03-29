@@ -19,7 +19,7 @@ class UserConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function password($value): self
+    public function password($value): static
     {
         $this->_usedProperties['password'] = true;
         $this->password = $value;
@@ -28,10 +28,11 @@ class UserConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param mixed $value
+     *
      * @return $this
      */
-    public function roles($value): self
+    public function roles(mixed $value): static
     {
         $this->_usedProperties['roles'] = true;
         $this->roles = $value;

@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'GNF' => [
-            'FG',
-            'franc guinéen',
+            0 => 'FG',
+            1 => 'franc guinéen',
         ],
     ],
 ];

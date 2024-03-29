@@ -53,7 +53,7 @@ return [
         'CO' => 'Kolombiya',
         'CR' => 'Kosta Rika',
         'CU' => 'Küba',
-        'CV' => 'Cabo Verde',
+        'CV' => 'Cape Verde',
         'CW' => 'Curaçao',
         'CX' => 'Christmas Adası',
         'CY' => 'Kıbrıs',

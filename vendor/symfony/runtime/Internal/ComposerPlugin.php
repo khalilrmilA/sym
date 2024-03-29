@@ -58,7 +58,7 @@ class ComposerPlugin implements PluginInterface, EventSubscriberInterface
 
     public function updateAutoloadFile(): void
     {
-        $vendorDir = $this->composer->getConfig()->get('vendor-dir');
+        $vendorDir = realpath($this->composer->getConfig()->get('vendor-dir'));
 
         if (!is_file($autoloadFile = $vendorDir.'/autoload.php')
             || false === $extra = $this->composer->getPackage()->getExtra()['runtime'] ?? []
@@ -84,7 +84,7 @@ class ComposerPlugin implements PluginInterface, EventSubscriberInterface
         $projectDir = $fs->makePathRelative($projectDir, $vendorDir);
         $nestingLevel = 0;
 
-        while (0 === strpos($projectDir, '../')) {
+        while (str_starts_with($projectDir, '../')) {
             ++$nestingLevel;
             $projectDir = substr($projectDir, 3);
         }

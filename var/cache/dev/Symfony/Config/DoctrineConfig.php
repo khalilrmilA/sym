@@ -19,7 +19,7 @@ class DoctrineConfig implements \Symfony\Component\Config\Builder\ConfigBuilderI
     /**
      * @return \Symfony\Config\Doctrine\DbalConfig|$this
      */
-    public function dbal($value = [])
+    public function dbal(mixed $value = []): \Symfony\Config\Doctrine\DbalConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['dbal'] = true;
@@ -41,7 +41,7 @@ class DoctrineConfig implements \Symfony\Component\Config\Builder\ConfigBuilderI
     /**
      * @return \Symfony\Config\Doctrine\OrmConfig|$this
      */
-    public function orm($value = [])
+    public function orm(mixed $value = []): \Symfony\Config\Doctrine\OrmConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['orm'] = true;

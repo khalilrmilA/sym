@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'XCD' => [
-            '$',
-            'East Caribbean Dollar',
+            0 => '$',
+            1 => 'East Caribbean Dollar',
         ],
     ],
 ];

@@ -21,7 +21,7 @@ class DeleteCookieConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function path($value): self
+    public function path($value): static
     {
         $this->_usedProperties['path'] = true;
         $this->path = $value;
@@ -34,7 +34,7 @@ class DeleteCookieConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function domain($value): self
+    public function domain($value): static
     {
         $this->_usedProperties['domain'] = true;
         $this->domain = $value;
@@ -47,7 +47,7 @@ class DeleteCookieConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function secure($value): self
+    public function secure($value): static
     {
         $this->_usedProperties['secure'] = true;
         $this->secure = $value;
@@ -60,7 +60,7 @@ class DeleteCookieConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function samesite($value): self
+    public function samesite($value): static
     {
         $this->_usedProperties['samesite'] = true;
         $this->samesite = $value;

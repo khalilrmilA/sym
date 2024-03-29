@@ -1,11 +1,10 @@
 CHANGELOG
 =========
 
-5.4.21
-------
+6.1
+---
 
- * [BC BREAK] The following data providers for `TransportTestCase` are now static: `toStringProvider()`, `supportedMessagesProvider()` and `unsupportedMessagesProvider()`
- * [BC BREAK] `TransportTestCase::createTransport()` is now static
+ * Use importance level to set flash message type
 
 5.4
 ---

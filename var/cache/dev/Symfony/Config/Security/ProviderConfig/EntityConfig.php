@@ -21,7 +21,7 @@ class EntityConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function class($value): self
+    public function class($value): static
     {
         $this->_usedProperties['class'] = true;
         $this->class = $value;
@@ -34,7 +34,7 @@ class EntityConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function property($value): self
+    public function property($value): static
     {
         $this->_usedProperties['property'] = true;
         $this->property = $value;
@@ -47,7 +47,7 @@ class EntityConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function managerName($value): self
+    public function managerName($value): static
     {
         $this->_usedProperties['managerName'] = true;
         $this->managerName = $value;

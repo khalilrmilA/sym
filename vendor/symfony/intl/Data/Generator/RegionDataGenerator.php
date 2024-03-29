@@ -44,7 +44,6 @@ class RegionDataGenerator extends AbstractDataGenerator
         // Exceptional reservations
         'AC' => true, // Ascension Island
         'CP' => true, // Clipperton Island
-        'CQ' => true, // Island of Sark
         'DG' => true, // Diego Garcia
         'EA' => true, // Ceuta & Melilla
         'EU' => true, // European Union
@@ -66,9 +65,9 @@ class RegionDataGenerator extends AbstractDataGenerator
      *
      * @var string[]
      */
-    private $regionCodes = [];
+    private array $regionCodes = [];
 
-    public static function isValidCountryCode($region)
+    public static function isValidCountryCode(int|string|null $region)
     {
         if (isset(self::DENYLIST[$region])) {
             return false;

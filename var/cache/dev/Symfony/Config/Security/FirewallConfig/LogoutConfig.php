@@ -17,10 +17,8 @@ class LogoutConfig
     private $csrfTokenId;
     private $path;
     private $target;
-    private $successHandler;
     private $invalidateSession;
     private $deleteCookies;
-    private $handlers;
     private $_usedProperties = [];
 
     /**
@@ -28,7 +26,7 @@ class LogoutConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function csrfParameter($value): self
+    public function csrfParameter($value): static
     {
         $this->_usedProperties['csrfParameter'] = true;
         $this->csrfParameter = $value;
@@ -41,7 +39,7 @@ class LogoutConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function csrfTokenGenerator($value): self
+    public function csrfTokenGenerator($value): static
     {
         $this->_usedProperties['csrfTokenGenerator'] = true;
         $this->csrfTokenGenerator = $value;
@@ -54,7 +52,7 @@ class LogoutConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function csrfTokenId($value): self
+    public function csrfTokenId($value): static
     {
         $this->_usedProperties['csrfTokenId'] = true;
         $this->csrfTokenId = $value;
@@ -67,7 +65,7 @@ class LogoutConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function path($value): self
+    public function path($value): static
     {
         $this->_usedProperties['path'] = true;
         $this->path = $value;
@@ -80,24 +78,10 @@ class LogoutConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function target($value): self
+    public function target($value): static
     {
         $this->_usedProperties['target'] = true;
         $this->target = $value;
-
-        return $this;
-    }
-
-    /**
-     * @default null
-     * @param ParamConfigurator|mixed $value
-     * @deprecated The "success_handler" at path "logout" is deprecated, register a listener on the "Symfony\Component\Security\Http\Event\LogoutEvent" event instead.
-     * @return $this
-     */
-    public function successHandler($value): self
-    {
-        $this->_usedProperties['successHandler'] = true;
-        $this->successHandler = $value;
 
         return $this;
     }
@@ -107,7 +91,7 @@ class LogoutConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function invalidateSession($value): self
+    public function invalidateSession($value): static
     {
         $this->_usedProperties['invalidateSession'] = true;
         $this->invalidateSession = $value;
@@ -118,7 +102,7 @@ class LogoutConfig
     /**
      * @return \Symfony\Config\Security\FirewallConfig\Logout\DeleteCookieConfig|$this
      */
-    public function deleteCookie(string $name, $value = [])
+    public function deleteCookie(string $name, mixed $value = []): \Symfony\Config\Security\FirewallConfig\Logout\DeleteCookieConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['deleteCookies'] = true;
@@ -135,18 +119,6 @@ class LogoutConfig
         }
 
         return $this->deleteCookies[$name];
-    }
-
-    /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
-     * @return $this
-     */
-    public function handlers($value): self
-    {
-        $this->_usedProperties['handlers'] = true;
-        $this->handlers = $value;
-
-        return $this;
     }
 
     public function __construct(array $value = [])
@@ -181,12 +153,6 @@ class LogoutConfig
             unset($value['target']);
         }
 
-        if (array_key_exists('success_handler', $value)) {
-            $this->_usedProperties['successHandler'] = true;
-            $this->successHandler = $value['success_handler'];
-            unset($value['success_handler']);
-        }
-
         if (array_key_exists('invalidate_session', $value)) {
             $this->_usedProperties['invalidateSession'] = true;
             $this->invalidateSession = $value['invalidate_session'];
@@ -197,12 +163,6 @@ class LogoutConfig
             $this->_usedProperties['deleteCookies'] = true;
             $this->deleteCookies = array_map(function ($v) { return \is_array($v) ? new \Symfony\Config\Security\FirewallConfig\Logout\DeleteCookieConfig($v) : $v; }, $value['delete_cookies']);
             unset($value['delete_cookies']);
-        }
-
-        if (array_key_exists('handlers', $value)) {
-            $this->_usedProperties['handlers'] = true;
-            $this->handlers = $value['handlers'];
-            unset($value['handlers']);
         }
 
         if ([] !== $value) {
@@ -228,17 +188,11 @@ class LogoutConfig
         if (isset($this->_usedProperties['target'])) {
             $output['target'] = $this->target;
         }
-        if (isset($this->_usedProperties['successHandler'])) {
-            $output['success_handler'] = $this->successHandler;
-        }
         if (isset($this->_usedProperties['invalidateSession'])) {
             $output['invalidate_session'] = $this->invalidateSession;
         }
         if (isset($this->_usedProperties['deleteCookies'])) {
             $output['delete_cookies'] = array_map(function ($v) { return $v instanceof \Symfony\Config\Security\FirewallConfig\Logout\DeleteCookieConfig ? $v->toArray() : $v; }, $this->deleteCookies);
-        }
-        if (isset($this->_usedProperties['handlers'])) {
-            $output['handlers'] = $this->handlers;
         }
 
         return $output;

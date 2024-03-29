@@ -12,6 +12,7 @@
 namespace Symfony\Bundle\FrameworkBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Console\Descriptor\Descriptor;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Completion\CompletionInput;
 use Symfony\Component\Console\Completion\CompletionSuggestions;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
@@ -29,15 +30,13 @@ use Symfony\Component\HttpKernel\Debug\FileLinkFormatter;
  *
  * @internal
  */
+#[AsCommand(name: 'debug:autowiring', description: 'List classes/interfaces you can use for autowiring')]
 class DebugAutowiringCommand extends ContainerDebugCommand
 {
-    protected static $defaultName = 'debug:autowiring';
-    protected static $defaultDescription = 'List classes/interfaces you can use for autowiring';
+    private bool $supportsHref;
+    private ?FileLinkFormatter $fileLinkFormatter;
 
-    private $supportsHref;
-    private $fileLinkFormatter;
-
-    public function __construct(?string $name = null, ?FileLinkFormatter $fileLinkFormatter = null)
+    public function __construct(string $name = null, FileLinkFormatter $fileLinkFormatter = null)
     {
         $this->supportsHref = method_exists(OutputFormatterStyle::class, 'setHref');
         $this->fileLinkFormatter = $fileLinkFormatter;
@@ -54,7 +53,6 @@ class DebugAutowiringCommand extends ContainerDebugCommand
                 new InputArgument('search', InputArgument::OPTIONAL, 'A search filter'),
                 new InputOption('all', null, InputOption::VALUE_NONE, 'Show also services that are not aliased'),
             ])
-            ->setDescription(self::$defaultDescription)
             ->setHelp(<<<'EOF'
 The <info>%command.name%</info> command displays the classes and interfaces that
 you can use as type-hints for autowiring:
@@ -80,7 +78,7 @@ EOF
 
         $builder = $this->getContainerBuilder($this->getApplication()->getKernel());
         $serviceIds = $builder->getServiceIds();
-        $serviceIds = array_filter($serviceIds, [$this, 'filterToServiceTypes']);
+        $serviceIds = array_filter($serviceIds, $this->filterToServiceTypes(...));
 
         if ($search = $input->getArgument('search')) {
             $searchNormalized = preg_replace('/[^a-zA-Z0-9\x7f-\xff $]++/', '', $search);
@@ -171,7 +169,7 @@ EOF
         if ($input->mustSuggestArgumentValuesFor('search')) {
             $builder = $this->getContainerBuilder($this->getApplication()->getKernel());
 
-            $suggestions->suggestValues(array_filter($builder->getServiceIds(), [$this, 'filterToServiceTypes']));
+            $suggestions->suggestValues(array_filter($builder->getServiceIds(), $this->filterToServiceTypes(...)));
         }
     }
 }

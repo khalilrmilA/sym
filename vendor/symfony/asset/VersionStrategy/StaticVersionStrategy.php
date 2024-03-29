@@ -18,14 +18,14 @@ namespace Symfony\Component\Asset\VersionStrategy;
  */
 class StaticVersionStrategy implements VersionStrategyInterface
 {
-    private $version;
-    private $format;
+    private string $version;
+    private string $format;
 
     /**
      * @param string $version Version number
      * @param string $format  Url format
      */
-    public function __construct(string $version, ?string $format = null)
+    public function __construct(string $version, string $format = null)
     {
         $this->version = $version;
         $this->format = $format ?: '%s?%s';
@@ -34,7 +34,7 @@ class StaticVersionStrategy implements VersionStrategyInterface
     /**
      * {@inheritdoc}
      */
-    public function getVersion(string $path)
+    public function getVersion(string $path): string
     {
         return $this->version;
     }
@@ -42,7 +42,7 @@ class StaticVersionStrategy implements VersionStrategyInterface
     /**
      * {@inheritdoc}
      */
-    public function applyVersion(string $path)
+    public function applyVersion(string $path): string
     {
         $versionized = sprintf($this->format, ltrim($path, '/'), $this->getVersion($path));
 

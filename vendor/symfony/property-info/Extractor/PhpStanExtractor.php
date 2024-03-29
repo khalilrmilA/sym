@@ -11,7 +11,6 @@
 
 namespace Symfony\Component\PropertyInfo\Extractor;
 
-use phpDocumentor\Reflection\Types\ContextFactory;
 use PHPStan\PhpDocParser\Ast\PhpDoc\InvalidTagValueNode;
 use PHPStan\PhpDocParser\Ast\PhpDoc\ParamTagValueNode;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocNode;
@@ -58,16 +57,8 @@ final class PhpStanExtractor implements PropertyTypeExtractorInterface, Construc
      * @param list<string>|null $accessorPrefixes
      * @param list<string>|null $arrayMutatorPrefixes
      */
-    public function __construct(?array $mutatorPrefixes = null, ?array $accessorPrefixes = null, ?array $arrayMutatorPrefixes = null)
+    public function __construct(array $mutatorPrefixes = null, array $accessorPrefixes = null, array $arrayMutatorPrefixes = null)
     {
-        if (!class_exists(ContextFactory::class)) {
-            throw new \LogicException(sprintf('Unable to use the "%s" class as the "phpdocumentor/type-resolver" package is not installed. Try running composer require "phpdocumentor/type-resolver".', __CLASS__));
-        }
-
-        if (!class_exists(PhpDocParser::class)) {
-            throw new \LogicException(sprintf('Unable to use the "%s" class as the "phpstan/phpdoc-parser" package is not installed. Try running composer require "phpstan/phpdoc-parser".', __CLASS__));
-        }
-
         $this->phpStanTypeHelper = new PhpStanTypeHelper();
         $this->mutatorPrefixes = $mutatorPrefixes ?? ReflectionExtractor::$defaultMutatorPrefixes;
         $this->accessorPrefixes = $accessorPrefixes ?? ReflectionExtractor::$defaultAccessorPrefixes;
@@ -108,6 +99,14 @@ final class PhpStanExtractor implements PropertyTypeExtractorInterface, Construc
                 continue;
             }
 
+            if (
+                $tagDocNode->value instanceof ParamTagValueNode
+                && null === $prefix
+                && $tagDocNode->value->parameterName !== '$'.$property
+            ) {
+                continue;
+            }
+
             foreach ($this->phpStanTypeHelper->getTypes($tagDocNode->value, $nameScope) as $type) {
                 switch ($type->getClassName()) {
                     case 'self':
@@ -116,7 +115,7 @@ final class PhpStanExtractor implements PropertyTypeExtractorInterface, Construc
                         break;
 
                     case 'parent':
-                        if (false !== $resolvedClass = $parentClass ?? $parentClass = get_parent_class($class)) {
+                        if (false !== $resolvedClass = $parentClass ??= get_parent_class($class)) {
                             break;
                         }
                         // no break
@@ -163,7 +162,7 @@ final class PhpStanExtractor implements PropertyTypeExtractorInterface, Construc
     {
         try {
             $reflectionClass = new \ReflectionClass($class);
-        } catch (\ReflectionException $e) {
+        } catch (\ReflectionException) {
             return null;
         }
 
@@ -171,10 +170,7 @@ final class PhpStanExtractor implements PropertyTypeExtractorInterface, Construc
             return null;
         }
 
-        if (!$rawDocNode = $reflectionConstructor->getDocComment()) {
-            return null;
-        }
-
+        $rawDocNode = $reflectionConstructor->getDocComment();
         $tokens = new TokenIterator($this->lexer->tokenize($rawDocNode));
         $phpDocNode = $this->phpDocParser->parse($tokens);
         $tokens->consumeTokenType(Lexer::TOKEN_END);
@@ -208,8 +204,8 @@ final class PhpStanExtractor implements PropertyTypeExtractorInterface, Construc
 
         $ucFirstProperty = ucfirst($property);
 
-        if ([$docBlock, $declaringClass] = $this->getDocBlockFromProperty($class, $property)) {
-            $data = [$docBlock, self::PROPERTY, null, $declaringClass];
+        if ([$docBlock, $source, $declaringClass] = $this->getDocBlockFromProperty($class, $property)) {
+            $data = [$docBlock, $source, null, $declaringClass];
         } elseif ([$docBlock, $_, $declaringClass] = $this->getDocBlockFromMethod($class, $ucFirstProperty, self::ACCESSOR)) {
             $data = [$docBlock, self::ACCESSOR, null, $declaringClass];
         } elseif ([$docBlock, $prefix, $declaringClass] = $this->getDocBlockFromMethod($class, $ucFirstProperty, self::MUTATOR)) {
@@ -222,18 +218,28 @@ final class PhpStanExtractor implements PropertyTypeExtractorInterface, Construc
     }
 
     /**
-     * @return array{PhpDocNode, string}|null
+     * @return array{PhpDocNode, int, string}|null
      */
     private function getDocBlockFromProperty(string $class, string $property): ?array
     {
         // Use a ReflectionProperty instead of $class to get the parent class if applicable
         try {
             $reflectionProperty = new \ReflectionProperty($class, $property);
-        } catch (\ReflectionException $e) {
+        } catch (\ReflectionException) {
             return null;
         }
 
-        if (null === $rawDocNode = $reflectionProperty->getDocComment() ?: null) {
+        $source = self::PROPERTY;
+
+        if ($reflectionProperty->isPromoted()) {
+            $constructor = new \ReflectionMethod($class, '__construct');
+            $rawDocNode = $constructor->getDocComment();
+            $source = self::MUTATOR;
+        } else {
+            $rawDocNode = $reflectionProperty->getDocComment();
+        }
+
+        if (!$rawDocNode) {
             return null;
         }
 
@@ -241,7 +247,7 @@ final class PhpStanExtractor implements PropertyTypeExtractorInterface, Construc
         $phpDocNode = $this->phpDocParser->parse($tokens);
         $tokens->consumeTokenType(Lexer::TOKEN_END);
 
-        return [$phpDocNode, $reflectionProperty->class];
+        return [$phpDocNode, $source, $reflectionProperty->class];
     }
 
     /**
@@ -267,7 +273,7 @@ final class PhpStanExtractor implements PropertyTypeExtractorInterface, Construc
                 ) {
                     break;
                 }
-            } catch (\ReflectionException $e) {
+            } catch (\ReflectionException) {
                 // Try the next prefix if the method doesn't exist
             }
         }

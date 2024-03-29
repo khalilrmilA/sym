@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'BWP' => [
-            'P',
-            'Botswanan Pula',
+            0 => 'P',
+            1 => 'Botswanan Pula',
         ],
     ],
 ];

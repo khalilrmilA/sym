@@ -26,10 +26,8 @@ use Symfony\Component\Messenger\Middleware\StackInterface;
 class DoctrineOpenTransactionLoggerMiddleware extends AbstractDoctrineMiddleware
 {
     private $logger;
-    /** @var bool */
-    private $isHandling = false;
 
-    public function __construct(ManagerRegistry $managerRegistry, ?string $entityManagerName = null, ?LoggerInterface $logger = null)
+    public function __construct(ManagerRegistry $managerRegistry, string $entityManagerName = null, LoggerInterface $logger = null)
     {
         parent::__construct($managerRegistry, $entityManagerName);
 
@@ -38,12 +36,6 @@ class DoctrineOpenTransactionLoggerMiddleware extends AbstractDoctrineMiddleware
 
     protected function handleForManager(EntityManagerInterface $entityManager, Envelope $envelope, StackInterface $stack): Envelope
     {
-        if ($this->isHandling) {
-            return $stack->next()->handle($envelope, $stack);
-        }
-
-        $this->isHandling = true;
-
         try {
             return $stack->next()->handle($envelope, $stack);
         } finally {
@@ -52,7 +44,6 @@ class DoctrineOpenTransactionLoggerMiddleware extends AbstractDoctrineMiddleware
                     'message' => $envelope->getMessage(),
                 ]);
             }
-            $this->isHandling = false;
         }
     }
 }

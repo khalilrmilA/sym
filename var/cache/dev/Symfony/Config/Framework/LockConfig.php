@@ -19,7 +19,7 @@ class LockConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): self
+    public function enabled($value): static
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -28,10 +28,9 @@ class LockConfig
     }
 
     /**
-     * @param ParamConfigurator|array $value
      * @return $this
      */
-    public function resource(string $name, $value): self
+    public function resource(string $name, mixed $value): static
     {
         $this->_usedProperties['resources'] = true;
         $this->resources[$name] = $value;

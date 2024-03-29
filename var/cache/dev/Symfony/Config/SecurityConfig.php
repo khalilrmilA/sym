@@ -3,7 +3,6 @@
 namespace Symfony\Config;
 
 require_once __DIR__.\DIRECTORY_SEPARATOR.'Security'.\DIRECTORY_SEPARATOR.'AccessDecisionManagerConfig.php';
-require_once __DIR__.\DIRECTORY_SEPARATOR.'Security'.\DIRECTORY_SEPARATOR.'EncoderConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'Security'.\DIRECTORY_SEPARATOR.'PasswordHasherConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'Security'.\DIRECTORY_SEPARATOR.'ProviderConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'Security'.\DIRECTORY_SEPARATOR.'FirewallConfig.php';
@@ -20,11 +19,9 @@ class SecurityConfig implements \Symfony\Component\Config\Builder\ConfigBuilderI
     private $accessDeniedUrl;
     private $sessionFixationStrategy;
     private $hideUserNotFound;
-    private $alwaysAuthenticateBeforeGranting;
     private $eraseCredentials;
     private $enableAuthenticatorManager;
     private $accessDecisionManager;
-    private $encoders;
     private $passwordHashers;
     private $providers;
     private $firewalls;
@@ -38,7 +35,7 @@ class SecurityConfig implements \Symfony\Component\Config\Builder\ConfigBuilderI
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function accessDeniedUrl($value): self
+    public function accessDeniedUrl($value): static
     {
         $this->_usedProperties['accessDeniedUrl'] = true;
         $this->accessDeniedUrl = $value;
@@ -51,7 +48,7 @@ class SecurityConfig implements \Symfony\Component\Config\Builder\ConfigBuilderI
      * @param ParamConfigurator|'none'|'migrate'|'invalidate' $value
      * @return $this
      */
-    public function sessionFixationStrategy($value): self
+    public function sessionFixationStrategy($value): static
     {
         $this->_usedProperties['sessionFixationStrategy'] = true;
         $this->sessionFixationStrategy = $value;
@@ -64,24 +61,10 @@ class SecurityConfig implements \Symfony\Component\Config\Builder\ConfigBuilderI
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function hideUserNotFound($value): self
+    public function hideUserNotFound($value): static
     {
         $this->_usedProperties['hideUserNotFound'] = true;
         $this->hideUserNotFound = $value;
-
-        return $this;
-    }
-
-    /**
-     * @default false
-     * @param ParamConfigurator|bool $value
-     * @deprecated The child node "always_authenticate_before_granting" at path "security" is deprecated.
-     * @return $this
-     */
-    public function alwaysAuthenticateBeforeGranting($value): self
-    {
-        $this->_usedProperties['alwaysAuthenticateBeforeGranting'] = true;
-        $this->alwaysAuthenticateBeforeGranting = $value;
 
         return $this;
     }
@@ -91,7 +74,7 @@ class SecurityConfig implements \Symfony\Component\Config\Builder\ConfigBuilderI
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function eraseCredentials($value): self
+    public function eraseCredentials($value): static
     {
         $this->_usedProperties['eraseCredentials'] = true;
         $this->eraseCredentials = $value;
@@ -100,12 +83,11 @@ class SecurityConfig implements \Symfony\Component\Config\Builder\ConfigBuilderI
     }
 
     /**
-     * Enables the new Symfony Security system based on Authenticators, all used authenticators must support this before enabling this.
-     * @default false
+     * @default true
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enableAuthenticatorManager($value): self
+    public function enableAuthenticatorManager($value): static
     {
         $this->_usedProperties['enableAuthenticatorManager'] = true;
         $this->enableAuthenticatorManager = $value;
@@ -113,6 +95,9 @@ class SecurityConfig implements \Symfony\Component\Config\Builder\ConfigBuilderI
         return $this;
     }
 
+    /**
+     * @default {"allow_if_all_abstain":false,"allow_if_equal_granted_denied":true}
+    */
     public function accessDecisionManager(array $value = []): \Symfony\Config\Security\AccessDecisionManagerConfig
     {
         if (null === $this->accessDecisionManager) {
@@ -126,31 +111,11 @@ class SecurityConfig implements \Symfony\Component\Config\Builder\ConfigBuilderI
     }
 
     /**
-     * @return \Symfony\Config\Security\EncoderConfig|$this
-     */
-    public function encoder(string $class, $value = [])
-    {
-        if (!\is_array($value)) {
-            $this->_usedProperties['encoders'] = true;
-            $this->encoders[$class] = $value;
-
-            return $this;
-        }
-
-        if (!isset($this->encoders[$class]) || !$this->encoders[$class] instanceof \Symfony\Config\Security\EncoderConfig) {
-            $this->_usedProperties['encoders'] = true;
-            $this->encoders[$class] = new \Symfony\Config\Security\EncoderConfig($value);
-        } elseif (1 < \func_num_args()) {
-            throw new InvalidConfigurationException('The node created by "encoder()" has already been initialized. You cannot pass values the second time you call encoder().');
-        }
-
-        return $this->encoders[$class];
-    }
-
-    /**
+     * @example "auto"
+     * @example {"algorithm":"auto","time_cost":8,"cost":13}
      * @return \Symfony\Config\Security\PasswordHasherConfig|$this
      */
-    public function passwordHasher(string $class, $value = [])
+    public function passwordHasher(string $class, mixed $value = []): \Symfony\Config\Security\PasswordHasherConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['passwordHashers'] = true;
@@ -169,6 +134,10 @@ class SecurityConfig implements \Symfony\Component\Config\Builder\ConfigBuilderI
         return $this->passwordHashers[$class];
     }
 
+    /**
+     * @example {"memory":{"users":{"foo":{"password":"foo","roles":"ROLE_USER"},"bar":{"password":"bar","roles":"[ROLE_USER, ROLE_ADMIN]"}}}}
+     * @example {"entity":{"class":"SecurityBundle:User","property":"username"}}
+    */
     public function provider(string $name, array $value = []): \Symfony\Config\Security\ProviderConfig
     {
         if (!isset($this->providers[$name])) {
@@ -201,10 +170,9 @@ class SecurityConfig implements \Symfony\Component\Config\Builder\ConfigBuilderI
     }
 
     /**
-     * @param ParamConfigurator|array $value
      * @return $this
      */
-    public function roleHierarchy(string $id, $value): self
+    public function roleHierarchy(string $id, mixed $value): static
     {
         $this->_usedProperties['roleHierarchy'] = true;
         $this->roleHierarchy[$id] = $value;
@@ -237,12 +205,6 @@ class SecurityConfig implements \Symfony\Component\Config\Builder\ConfigBuilderI
             unset($value['hide_user_not_found']);
         }
 
-        if (array_key_exists('always_authenticate_before_granting', $value)) {
-            $this->_usedProperties['alwaysAuthenticateBeforeGranting'] = true;
-            $this->alwaysAuthenticateBeforeGranting = $value['always_authenticate_before_granting'];
-            unset($value['always_authenticate_before_granting']);
-        }
-
         if (array_key_exists('erase_credentials', $value)) {
             $this->_usedProperties['eraseCredentials'] = true;
             $this->eraseCredentials = $value['erase_credentials'];
@@ -259,12 +221,6 @@ class SecurityConfig implements \Symfony\Component\Config\Builder\ConfigBuilderI
             $this->_usedProperties['accessDecisionManager'] = true;
             $this->accessDecisionManager = new \Symfony\Config\Security\AccessDecisionManagerConfig($value['access_decision_manager']);
             unset($value['access_decision_manager']);
-        }
-
-        if (array_key_exists('encoders', $value)) {
-            $this->_usedProperties['encoders'] = true;
-            $this->encoders = array_map(function ($v) { return \is_array($v) ? new \Symfony\Config\Security\EncoderConfig($v) : $v; }, $value['encoders']);
-            unset($value['encoders']);
         }
 
         if (array_key_exists('password_hashers', $value)) {
@@ -314,9 +270,6 @@ class SecurityConfig implements \Symfony\Component\Config\Builder\ConfigBuilderI
         if (isset($this->_usedProperties['hideUserNotFound'])) {
             $output['hide_user_not_found'] = $this->hideUserNotFound;
         }
-        if (isset($this->_usedProperties['alwaysAuthenticateBeforeGranting'])) {
-            $output['always_authenticate_before_granting'] = $this->alwaysAuthenticateBeforeGranting;
-        }
         if (isset($this->_usedProperties['eraseCredentials'])) {
             $output['erase_credentials'] = $this->eraseCredentials;
         }
@@ -325,9 +278,6 @@ class SecurityConfig implements \Symfony\Component\Config\Builder\ConfigBuilderI
         }
         if (isset($this->_usedProperties['accessDecisionManager'])) {
             $output['access_decision_manager'] = $this->accessDecisionManager->toArray();
-        }
-        if (isset($this->_usedProperties['encoders'])) {
-            $output['encoders'] = array_map(function ($v) { return $v instanceof \Symfony\Config\Security\EncoderConfig ? $v->toArray() : $v; }, $this->encoders);
         }
         if (isset($this->_usedProperties['passwordHashers'])) {
             $output['password_hashers'] = array_map(function ($v) { return $v instanceof \Symfony\Config\Security\PasswordHasherConfig ? $v->toArray() : $v; }, $this->passwordHashers);

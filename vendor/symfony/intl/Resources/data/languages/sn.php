@@ -48,5 +48,6 @@ return [
         'zh' => 'chiChinese',
         'zu' => 'chiZulu',
     ],
-    'LocalizedNames' => [],
+    'LocalizedNames' => [
+    ],
 ];

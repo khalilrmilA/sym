@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'ETB' => [
-            'Br',
-            'Birta Itoobbiya',
+            0 => 'Br',
+            1 => 'Birta Itoobbiya',
         ],
     ],
 ];

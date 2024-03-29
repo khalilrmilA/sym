@@ -19,7 +19,7 @@ class ChannelsConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function type($value): self
+    public function type($value): static
     {
         $this->_usedProperties['type'] = true;
         $this->type = $value;
@@ -28,10 +28,11 @@ class ChannelsConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
+     *
      * @return $this
      */
-    public function elements($value): self
+    public function elements(ParamConfigurator|array $value): static
     {
         $this->_usedProperties['elements'] = true;
         $this->elements = $value;

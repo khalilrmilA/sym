@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'NGN' => [
-            '₦',
-            'Nayraa Nijeriyaa',
+            0 => '₦',
+            1 => 'Nayraa Nijeriyaa',
         ],
     ],
 ];

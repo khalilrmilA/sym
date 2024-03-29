@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'TTD' => [
-            '$',
-            'Trinidad & Tobago Dollar',
+            0 => '$',
+            1 => 'Trinidad & Tobago Dollar',
         ],
     ],
 ];

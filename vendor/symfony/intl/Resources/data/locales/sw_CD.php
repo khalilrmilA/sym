@@ -60,7 +60,7 @@ return [
         'uz_AF' => 'Kiuzbeki (Afuganistani)',
         'uz_Arab_AF' => 'Kiuzbeki (Kiarabu, Afuganistani)',
         'yi' => 'Kiyidi',
-        'yi_UA' => 'Kiyidi (Ukraine)',
+        'yi_001' => 'Kiyidi (Dunia)',
         'yo_BJ' => 'Kiyoruba (Benini)',
         'yo_NG' => 'Kiyoruba (Nijeria)',
     ],

@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'CRC' => [
-            '₡',
-            'colón costarricense',
+            0 => '₡',
+            1 => 'colón costarricense',
         ],
     ],
 ];

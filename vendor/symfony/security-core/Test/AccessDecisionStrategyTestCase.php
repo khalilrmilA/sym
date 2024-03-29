@@ -40,41 +40,32 @@ abstract class AccessDecisionStrategyTestCase extends TestCase
     /**
      * @return iterable<array{AccessDecisionStrategyInterface, VoterInterface[], bool}>
      */
-    abstract public static function provideStrategyTests(): iterable;
+    abstract public function provideStrategyTests(): iterable;
 
     /**
      * @return VoterInterface[]
      */
-    final protected static function getVoters(int $grants, int $denies, int $abstains): array
+    final protected function getVoters(int $grants, int $denies, int $abstains): array
     {
         $voters = [];
         for ($i = 0; $i < $grants; ++$i) {
-            $voters[] = static::getVoter(VoterInterface::ACCESS_GRANTED);
+            $voters[] = $this->getVoter(VoterInterface::ACCESS_GRANTED);
         }
         for ($i = 0; $i < $denies; ++$i) {
-            $voters[] = static::getVoter(VoterInterface::ACCESS_DENIED);
+            $voters[] = $this->getVoter(VoterInterface::ACCESS_DENIED);
         }
         for ($i = 0; $i < $abstains; ++$i) {
-            $voters[] = static::getVoter(VoterInterface::ACCESS_ABSTAIN);
+            $voters[] = $this->getVoter(VoterInterface::ACCESS_ABSTAIN);
         }
 
         return $voters;
     }
 
-    final protected static function getVoter(int $vote): VoterInterface
+    final protected function getVoter(int $vote): VoterInterface
     {
-        return new class($vote) implements VoterInterface {
-            private $vote;
+        $voter = $this->createMock(VoterInterface::class);
+        $voter->method('vote')->willReturn($vote);
 
-            public function __construct(int $vote)
-            {
-                $this->vote = $vote;
-            }
-
-            public function vote(TokenInterface $token, $subject, array $attributes): int
-            {
-                return $this->vote;
-            }
-        };
+        return $voter;
     }
 }

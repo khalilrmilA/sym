@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'ANG' => [
-            'NAf.',
-            'Netherlands Antillean Guilder',
+            0 => 'NAf.',
+            1 => 'Netherlands Antillean Guilder',
         ],
     ],
 ];

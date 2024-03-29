@@ -7,7 +7,6 @@ return [
         'arp' => 'arapaho',
         'ars' => 'árabe najdi',
         'bax' => 'bamun',
-        'bgc' => 'hariana',
         'bho' => 'bhojpuri',
         'bla' => 'siksika',
         'bua' => 'buriat',

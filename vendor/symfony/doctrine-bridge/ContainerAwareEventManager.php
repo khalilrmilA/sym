@@ -28,13 +28,12 @@ class ContainerAwareEventManager extends EventManager
      *
      * <event> => <listeners>
      */
-    private $listeners = [];
-    private $subscribers;
-    private $initialized = [];
-    private $initializedSubscribers = false;
-    private $initializedHashMapping = [];
-    private $methods = [];
-    private $container;
+    private array $listeners = [];
+    private array $subscribers;
+    private array $initialized = [];
+    private bool $initializedSubscribers = false;
+    private array $methods = [];
+    private ContainerInterface $container;
 
     /**
      * @param list<string|EventSubscriber|array{string[], string|object}> $subscriberIds List of subscribers, subscriber ids, or [events, listener] tuples
@@ -47,10 +46,8 @@ class ContainerAwareEventManager extends EventManager
 
     /**
      * {@inheritdoc}
-     *
-     * @return void
      */
-    public function dispatchEvent($eventName, ?EventArgs $eventArgs = null)
+    public function dispatchEvent($eventName, EventArgs $eventArgs = null): void
     {
         if (!$this->initializedSubscribers) {
             $this->initializeSubscribers();
@@ -59,7 +56,7 @@ class ContainerAwareEventManager extends EventManager
             return;
         }
 
-        $eventArgs = $eventArgs ?? EventArgs::getEmptyInstance();
+        $eventArgs ??= EventArgs::getEmptyInstance();
 
         if (!isset($this->initialized[$eventName])) {
             $this->initializeListeners($eventName);
@@ -75,7 +72,7 @@ class ContainerAwareEventManager extends EventManager
      *
      * @return object[][]
      */
-    public function getListeners($event = null)
+    public function getListeners($event = null): array
     {
         if (null === $event) {
             return $this->getAllListeners();
@@ -107,10 +104,8 @@ class ContainerAwareEventManager extends EventManager
 
     /**
      * {@inheritdoc}
-     *
-     * @return bool
      */
-    public function hasListeners($event)
+    public function hasListeners($event): bool
     {
         if (!$this->initializedSubscribers) {
             $this->initializeSubscribers();
@@ -121,10 +116,8 @@ class ContainerAwareEventManager extends EventManager
 
     /**
      * {@inheritdoc}
-     *
-     * @return void
      */
-    public function addEventListener($events, $listener)
+    public function addEventListener($events, $listener): void
     {
         if (!$this->initializedSubscribers) {
             $this->initializeSubscribers();
@@ -139,7 +132,6 @@ class ContainerAwareEventManager extends EventManager
 
             if (\is_string($listener)) {
                 unset($this->initialized[$event]);
-                unset($this->initializedHashMapping[$event][$hash]);
             } else {
                 $this->methods[$event][$hash] = $this->getMethod($listener, $event);
             }
@@ -148,10 +140,8 @@ class ContainerAwareEventManager extends EventManager
 
     /**
      * {@inheritdoc}
-     *
-     * @return void
      */
-    public function removeEventListener($events, $listener)
+    public function removeEventListener($events, $listener): void
     {
         if (!$this->initializedSubscribers) {
             $this->initializeSubscribers();
@@ -160,11 +150,6 @@ class ContainerAwareEventManager extends EventManager
         $hash = $this->getHash($listener);
 
         foreach ((array) $events as $event) {
-            if (isset($this->initializedHashMapping[$event][$hash])) {
-                $hash = $this->initializedHashMapping[$event][$hash];
-                unset($this->initializedHashMapping[$event][$hash]);
-            }
-
             // Check if we actually have this listener associated
             if (isset($this->listeners[$event][$hash])) {
                 unset($this->listeners[$event][$hash]);
@@ -197,25 +182,13 @@ class ContainerAwareEventManager extends EventManager
     private function initializeListeners(string $eventName)
     {
         $this->initialized[$eventName] = true;
-
-        // We'll refill the whole array in order to keep the same order
-        $listeners = [];
         foreach ($this->listeners[$eventName] as $hash => $listener) {
             if (\is_string($listener)) {
-                $listener = $this->container->get($listener);
-                $newHash = $this->getHash($listener);
+                $this->listeners[$eventName][$hash] = $listener = $this->container->get($listener);
 
-                $this->initializedHashMapping[$eventName][$hash] = $newHash;
-
-                $listeners[$newHash] = $listener;
-
-                $this->methods[$eventName][$newHash] = $this->getMethod($listener, $eventName);
-            } else {
-                $listeners[$hash] = $listener;
+                $this->methods[$eventName][$hash] = $this->getMethod($listener, $eventName);
             }
         }
-
-        $this->listeners[$eventName] = $listeners;
     }
 
     private function initializeSubscribers()
@@ -234,10 +207,7 @@ class ContainerAwareEventManager extends EventManager
         $this->subscribers = [];
     }
 
-    /**
-     * @param string|object $listener
-     */
-    private function getHash($listener): string
+    private function getHash(string|object $listener): string
     {
         if (\is_string($listener)) {
             return '_service_'.$listener;

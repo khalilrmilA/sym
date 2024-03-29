@@ -3,12 +3,12 @@
 return [
     'Names' => [
         'PEN' => [
-            'PEN',
-            'Sol Peruano',
+            0 => 'PEN',
+            1 => 'Sol Peruano',
         ],
         'USD' => [
-            '$',
-            'Dólar Americano',
+            0 => '$',
+            1 => 'Dólar Americano',
         ],
     ],
 ];

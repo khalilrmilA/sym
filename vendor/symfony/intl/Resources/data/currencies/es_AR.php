@@ -3,12 +3,12 @@
 return [
     'Names' => [
         'ARS' => [
-            '$',
-            'peso argentino',
+            0 => '$',
+            1 => 'peso argentino',
         ],
         'USD' => [
-            'US$',
-            'dólar estadounidense',
+            0 => 'US$',
+            1 => 'dólar estadounidense',
         ],
     ],
 ];

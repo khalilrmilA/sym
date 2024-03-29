@@ -13,5 +13,6 @@ return [
         'ru' => 'ꊉꇩꉙ',
         'zh' => 'ꍏꇩꉙ',
     ],
-    'LocalizedNames' => [],
+    'LocalizedNames' => [
+    ],
 ];

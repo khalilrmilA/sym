@@ -56,7 +56,36 @@
 			<script src="{{asset('/assets/js/vendor/nft.js')}}"></script>
 		{% endblock %}
 	</head>
+	{% include 'parts/header.html.twig' %}
 	<body>
 		{% block body %}{% endblock %}
+		
+		<script>
+		  (function() {
+			const form = document.getElementById('form');
+			const submitButton = document.getElementById('submit-button');
+
+			submitButton.addEventListener('click', (e) => {
+			  e.preventDefault();
+
+			  const formData = new FormData(form);
+
+			  fetch('/reclamation', {
+				method: 'POST',
+				body: formData,
+			  })
+			  .then(response => response.text())
+			  .then(data => {
+				// Handle the response from the server
+				console.log(data);
+			  })
+			  .catch(error => {
+				// Handle any errors that occur
+				console.error(error);
+			  });
+			});
+		  })();
+		</script>
 	</body>
+	{% include 'parts/footer.html.twig' %}
 </html>

@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'MOP' => [
-            'MOP$',
-            'Macanese Pataca',
+            0 => 'MOP$',
+            1 => 'Macanese Pataca',
         ],
     ],
 ];

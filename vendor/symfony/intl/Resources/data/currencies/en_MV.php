@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'MVR' => [
-            'Rf',
-            'Maldivian Rufiyaa',
+            0 => 'Rf',
+            1 => 'Maldivian Rufiyaa',
         ],
     ],
 ];

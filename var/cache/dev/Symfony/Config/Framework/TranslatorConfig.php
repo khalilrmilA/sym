@@ -20,7 +20,6 @@ class TranslatorConfig
     private $cacheDir;
     private $defaultPath;
     private $paths;
-    private $enabledLocales;
     private $pseudoLocalization;
     private $providers;
     private $_usedProperties = [];
@@ -30,7 +29,7 @@ class TranslatorConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): self
+    public function enabled($value): static
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -39,10 +38,11 @@ class TranslatorConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param mixed $value
+     *
      * @return $this
      */
-    public function fallbacks($value): self
+    public function fallbacks(mixed $value): static
     {
         $this->_usedProperties['fallbacks'] = true;
         $this->fallbacks = $value;
@@ -55,7 +55,7 @@ class TranslatorConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function logging($value): self
+    public function logging($value): static
     {
         $this->_usedProperties['logging'] = true;
         $this->logging = $value;
@@ -68,7 +68,7 @@ class TranslatorConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function formatter($value): self
+    public function formatter($value): static
     {
         $this->_usedProperties['formatter'] = true;
         $this->formatter = $value;
@@ -81,7 +81,7 @@ class TranslatorConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function cacheDir($value): self
+    public function cacheDir($value): static
     {
         $this->_usedProperties['cacheDir'] = true;
         $this->cacheDir = $value;
@@ -95,7 +95,7 @@ class TranslatorConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function defaultPath($value): self
+    public function defaultPath($value): static
     {
         $this->_usedProperties['defaultPath'] = true;
         $this->defaultPath = $value;
@@ -104,10 +104,11 @@ class TranslatorConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
+     *
      * @return $this
      */
-    public function paths($value): self
+    public function paths(ParamConfigurator|array $value): static
     {
         $this->_usedProperties['paths'] = true;
         $this->paths = $value;
@@ -116,21 +117,10 @@ class TranslatorConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
-     * @return $this
-     */
-    public function enabledLocales($value): self
-    {
-        $this->_usedProperties['enabledLocales'] = true;
-        $this->enabledLocales = $value;
-
-        return $this;
-    }
-
-    /**
+     * @default {"enabled":false,"accents":true,"expansion_factor":1,"brackets":true,"parse_html":false,"localizable_html_attributes":[]}
      * @return \Symfony\Config\Framework\Translator\PseudoLocalizationConfig|$this
      */
-    public function pseudoLocalization($value = [])
+    public function pseudoLocalization(mixed $value = []): \Symfony\Config\Framework\Translator\PseudoLocalizationConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['pseudoLocalization'] = true;
@@ -149,6 +139,9 @@ class TranslatorConfig
         return $this->pseudoLocalization;
     }
 
+    /**
+     * Translation providers you can read/write your translations from
+    */
     public function provider(string $name, array $value = []): \Symfony\Config\Framework\Translator\ProviderConfig
     {
         if (!isset($this->providers[$name])) {
@@ -205,12 +198,6 @@ class TranslatorConfig
             unset($value['paths']);
         }
 
-        if (array_key_exists('enabled_locales', $value)) {
-            $this->_usedProperties['enabledLocales'] = true;
-            $this->enabledLocales = $value['enabled_locales'];
-            unset($value['enabled_locales']);
-        }
-
         if (array_key_exists('pseudo_localization', $value)) {
             $this->_usedProperties['pseudoLocalization'] = true;
             $this->pseudoLocalization = \is_array($value['pseudo_localization']) ? new \Symfony\Config\Framework\Translator\PseudoLocalizationConfig($value['pseudo_localization']) : $value['pseudo_localization'];
@@ -251,9 +238,6 @@ class TranslatorConfig
         }
         if (isset($this->_usedProperties['paths'])) {
             $output['paths'] = $this->paths;
-        }
-        if (isset($this->_usedProperties['enabledLocales'])) {
-            $output['enabled_locales'] = $this->enabledLocales;
         }
         if (isset($this->_usedProperties['pseudoLocalization'])) {
             $output['pseudo_localization'] = $this->pseudoLocalization instanceof \Symfony\Config\Framework\Translator\PseudoLocalizationConfig ? $this->pseudoLocalization->toArray() : $this->pseudoLocalization;

@@ -21,7 +21,7 @@ class WorkflowsConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): self
+    public function enabled($value): static
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -32,7 +32,7 @@ class WorkflowsConfig
     /**
      * @return \Symfony\Config\Framework\Workflows\WorkflowsConfig|$this
      */
-    public function workflows(string $name, $value = [])
+    public function workflows(string $name, mixed $value = []): \Symfony\Config\Framework\Workflows\WorkflowsConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['workflows'] = true;

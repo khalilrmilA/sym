@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'SCR' => [
-            'SR',
-            'roupie des Seychelles',
+            0 => 'SR',
+            1 => 'roupie des Seychelles',
         ],
     ],
 ];

@@ -19,11 +19,11 @@ class UidConfig
     private $_usedProperties = [];
 
     /**
-     * @default false
+     * @default true
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): self
+    public function enabled($value): static
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -36,7 +36,7 @@ class UidConfig
      * @param ParamConfigurator|6|4|1 $value
      * @return $this
      */
-    public function defaultUuidVersion($value): self
+    public function defaultUuidVersion($value): static
     {
         $this->_usedProperties['defaultUuidVersion'] = true;
         $this->defaultUuidVersion = $value;
@@ -49,7 +49,7 @@ class UidConfig
      * @param ParamConfigurator|5|3 $value
      * @return $this
      */
-    public function nameBasedUuidVersion($value): self
+    public function nameBasedUuidVersion($value): static
     {
         $this->_usedProperties['nameBasedUuidVersion'] = true;
         $this->nameBasedUuidVersion = $value;
@@ -62,7 +62,7 @@ class UidConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function nameBasedUuidNamespace($value): self
+    public function nameBasedUuidNamespace($value): static
     {
         $this->_usedProperties['nameBasedUuidNamespace'] = true;
         $this->nameBasedUuidNamespace = $value;
@@ -75,7 +75,7 @@ class UidConfig
      * @param ParamConfigurator|6|1 $value
      * @return $this
      */
-    public function timeBasedUuidVersion($value): self
+    public function timeBasedUuidVersion($value): static
     {
         $this->_usedProperties['timeBasedUuidVersion'] = true;
         $this->timeBasedUuidVersion = $value;
@@ -88,7 +88,7 @@ class UidConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function timeBasedUuidNode($value): self
+    public function timeBasedUuidNode($value): static
     {
         $this->_usedProperties['timeBasedUuidNode'] = true;
         $this->timeBasedUuidNode = $value;

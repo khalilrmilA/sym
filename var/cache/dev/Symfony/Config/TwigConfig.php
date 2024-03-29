@@ -27,16 +27,18 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
     private $autoReload;
     private $optimizations;
     private $defaultPath;
+    private $fileNamePattern;
     private $paths;
     private $date;
     private $numberFormat;
     private $_usedProperties = [];
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
+     *
      * @return $this
      */
-    public function formThemes($value): self
+    public function formThemes(ParamConfigurator|array $value): static
     {
         $this->_usedProperties['formThemes'] = true;
         $this->formThemes = $value;
@@ -45,9 +47,11 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
     }
 
     /**
+     * @example "@bar"
+     * @example 3.14
      * @return \Symfony\Config\Twig\GlobalConfig|$this
      */
-    public function global(string $key, $value = [])
+    public function global(string $key, mixed $value = []): \Symfony\Config\Twig\GlobalConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['globals'] = true;
@@ -69,9 +73,11 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
     /**
      * @default 'name'
      * @param ParamConfigurator|mixed $value
+     * @deprecated Option "autoescape" at "twig" is deprecated, use autoescape_service[_method] instead.
+     *
      * @return $this
      */
-    public function autoescape($value = 'name'): self
+    public function autoescape(mixed $value = 'name'): static
     {
         $this->_usedProperties['autoescape'] = true;
         $this->autoescape = $value;
@@ -84,7 +90,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function autoescapeService($value): self
+    public function autoescapeService($value): static
     {
         $this->_usedProperties['autoescapeService'] = true;
         $this->autoescapeService = $value;
@@ -97,7 +103,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function autoescapeServiceMethod($value): self
+    public function autoescapeServiceMethod($value): static
     {
         $this->_usedProperties['autoescapeServiceMethod'] = true;
         $this->autoescapeServiceMethod = $value;
@@ -111,7 +117,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function baseTemplateClass($value): self
+    public function baseTemplateClass($value): static
     {
         $this->_usedProperties['baseTemplateClass'] = true;
         $this->baseTemplateClass = $value;
@@ -124,7 +130,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function cache($value): self
+    public function cache($value): static
     {
         $this->_usedProperties['cache'] = true;
         $this->cache = $value;
@@ -137,7 +143,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function charset($value): self
+    public function charset($value): static
     {
         $this->_usedProperties['charset'] = true;
         $this->charset = $value;
@@ -150,7 +156,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function debug($value): self
+    public function debug($value): static
     {
         $this->_usedProperties['debug'] = true;
         $this->debug = $value;
@@ -163,7 +169,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function strictVariables($value): self
+    public function strictVariables($value): static
     {
         $this->_usedProperties['strictVariables'] = true;
         $this->strictVariables = $value;
@@ -176,7 +182,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function autoReload($value): self
+    public function autoReload($value): static
     {
         $this->_usedProperties['autoReload'] = true;
         $this->autoReload = $value;
@@ -189,7 +195,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function optimizations($value): self
+    public function optimizations($value): static
     {
         $this->_usedProperties['optimizations'] = true;
         $this->optimizations = $value;
@@ -203,7 +209,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function defaultPath($value): self
+    public function defaultPath($value): static
     {
         $this->_usedProperties['defaultPath'] = true;
         $this->defaultPath = $value;
@@ -212,10 +218,22 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
     }
 
     /**
-     * @param ParamConfigurator|mixed $value
+     * @param mixed $value
+     *
      * @return $this
      */
-    public function path(string $paths, $value): self
+    public function fileNamePattern(mixed $value): static
+    {
+        $this->_usedProperties['fileNamePattern'] = true;
+        $this->fileNamePattern = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function path(string $paths, mixed $value): static
     {
         $this->_usedProperties['paths'] = true;
         $this->paths[$paths] = $value;
@@ -223,6 +241,10 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
         return $this;
     }
 
+    /**
+     * The default format options used by the date filter
+     * @default {"format":"F j, Y H:i","interval_format":"%d days","timezone":null}
+    */
     public function date(array $value = []): \Symfony\Config\Twig\DateConfig
     {
         if (null === $this->date) {
@@ -235,6 +257,10 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
         return $this->date;
     }
 
+    /**
+     * The default format options for the number_format filter
+     * @default {"decimals":0,"decimal_point":".","thousands_separator":","}
+    */
     public function numberFormat(array $value = []): \Symfony\Config\Twig\NumberFormatConfig
     {
         if (null === $this->numberFormat) {
@@ -332,6 +358,12 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
             unset($value['default_path']);
         }
 
+        if (array_key_exists('file_name_pattern', $value)) {
+            $this->_usedProperties['fileNamePattern'] = true;
+            $this->fileNamePattern = $value['file_name_pattern'];
+            unset($value['file_name_pattern']);
+        }
+
         if (array_key_exists('paths', $value)) {
             $this->_usedProperties['paths'] = true;
             $this->paths = $value['paths'];
@@ -396,6 +428,9 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
         }
         if (isset($this->_usedProperties['defaultPath'])) {
             $output['default_path'] = $this->defaultPath;
+        }
+        if (isset($this->_usedProperties['fileNamePattern'])) {
+            $output['file_name_pattern'] = $this->fileNamePattern;
         }
         if (isset($this->_usedProperties['paths'])) {
             $output['paths'] = $this->paths;

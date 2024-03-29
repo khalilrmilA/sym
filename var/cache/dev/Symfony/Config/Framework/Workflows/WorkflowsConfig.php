@@ -28,9 +28,10 @@ class WorkflowsConfig
     private $_usedProperties = [];
 
     /**
+     * @default {"enabled":false}
      * @return \Symfony\Config\Framework\Workflows\WorkflowsConfig\AuditTrailConfig|$this
      */
-    public function auditTrail($value = [])
+    public function auditTrail(mixed $value = []): \Symfony\Config\Framework\Workflows\WorkflowsConfig\AuditTrailConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['auditTrail'] = true;
@@ -54,7 +55,7 @@ class WorkflowsConfig
      * @param ParamConfigurator|'workflow'|'state_machine' $value
      * @return $this
      */
-    public function type($value): self
+    public function type($value): static
     {
         $this->_usedProperties['type'] = true;
         $this->type = $value;
@@ -75,10 +76,11 @@ class WorkflowsConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param mixed $value
+     *
      * @return $this
      */
-    public function supports($value): self
+    public function supports(mixed $value): static
     {
         $this->_usedProperties['supports'] = true;
         $this->supports = $value;
@@ -91,7 +93,7 @@ class WorkflowsConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function supportStrategy($value): self
+    public function supportStrategy($value): static
     {
         $this->_usedProperties['supportStrategy'] = true;
         $this->supportStrategy = $value;
@@ -100,10 +102,11 @@ class WorkflowsConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param mixed $value
+     *
      * @return $this
      */
-    public function initialMarking($value): self
+    public function initialMarking(mixed $value): static
     {
         $this->_usedProperties['initialMarking'] = true;
         $this->initialMarking = $value;
@@ -117,9 +120,10 @@ class WorkflowsConfig
      * @example workflow.transition
      * @default null
      * @param ParamConfigurator|mixed $value
+     *
      * @return $this
      */
-    public function eventsToDispatch($value = NULL): self
+    public function eventsToDispatch(mixed $value = NULL): static
     {
         $this->_usedProperties['eventsToDispatch'] = true;
         $this->eventsToDispatch = $value;
@@ -130,7 +134,7 @@ class WorkflowsConfig
     /**
      * @return \Symfony\Config\Framework\Workflows\WorkflowsConfig\PlaceConfig|$this
      */
-    public function place($value = [])
+    public function place(mixed $value = []): \Symfony\Config\Framework\Workflows\WorkflowsConfig\PlaceConfig|static
     {
         $this->_usedProperties['places'] = true;
         if (!\is_array($value)) {
@@ -145,7 +149,7 @@ class WorkflowsConfig
     /**
      * @return \Symfony\Config\Framework\Workflows\WorkflowsConfig\TransitionConfig|$this
      */
-    public function transition($value = [])
+    public function transition(mixed $value = []): \Symfony\Config\Framework\Workflows\WorkflowsConfig\TransitionConfig|static
     {
         $this->_usedProperties['transitions'] = true;
         if (!\is_array($value)) {
@@ -158,10 +162,11 @@ class WorkflowsConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
+     *
      * @return $this
      */
-    public function metadata($value): self
+    public function metadata(ParamConfigurator|array $value): static
     {
         $this->_usedProperties['metadata'] = true;
         $this->metadata = $value;

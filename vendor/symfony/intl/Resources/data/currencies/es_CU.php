@@ -3,12 +3,12 @@
 return [
     'Names' => [
         'CUP' => [
-            '$',
-            'peso cubano',
+            0 => '$',
+            1 => 'peso cubano',
         ],
         'USD' => [
-            'US$',
-            'dólar estadounidense',
+            0 => 'US$',
+            1 => 'dólar estadounidense',
         ],
     ],
 ];

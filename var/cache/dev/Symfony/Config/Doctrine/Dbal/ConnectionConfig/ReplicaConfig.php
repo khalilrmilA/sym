@@ -48,7 +48,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function url($value): self
+    public function url($value): static
     {
         $this->_usedProperties['url'] = true;
         $this->url = $value;
@@ -61,7 +61,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function dbname($value): self
+    public function dbname($value): static
     {
         $this->_usedProperties['dbname'] = true;
         $this->dbname = $value;
@@ -75,7 +75,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function host($value): self
+    public function host($value): static
     {
         $this->_usedProperties['host'] = true;
         $this->host = $value;
@@ -89,7 +89,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function port($value): self
+    public function port($value): static
     {
         $this->_usedProperties['port'] = true;
         $this->port = $value;
@@ -103,7 +103,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function user($value): self
+    public function user($value): static
     {
         $this->_usedProperties['user'] = true;
         $this->user = $value;
@@ -117,7 +117,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function password($value): self
+    public function password($value): static
     {
         $this->_usedProperties['password'] = true;
         $this->password = $value;
@@ -131,7 +131,7 @@ class ReplicaConfig
      * @deprecated The "doctrine.dbal.override_url" configuration key is deprecated.
      * @return $this
      */
-    public function overrideUrl($value): self
+    public function overrideUrl($value): static
     {
         $this->_usedProperties['overrideUrl'] = true;
         $this->overrideUrl = $value;
@@ -144,7 +144,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function dbnameSuffix($value): self
+    public function dbnameSuffix($value): static
     {
         $this->_usedProperties['dbnameSuffix'] = true;
         $this->dbnameSuffix = $value;
@@ -157,7 +157,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function applicationName($value): self
+    public function applicationName($value): static
     {
         $this->_usedProperties['applicationName'] = true;
         $this->applicationName = $value;
@@ -170,7 +170,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function charset($value): self
+    public function charset($value): static
     {
         $this->_usedProperties['charset'] = true;
         $this->charset = $value;
@@ -183,7 +183,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function path($value): self
+    public function path($value): static
     {
         $this->_usedProperties['path'] = true;
         $this->path = $value;
@@ -196,7 +196,7 @@ class ReplicaConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function memory($value): self
+    public function memory($value): static
     {
         $this->_usedProperties['memory'] = true;
         $this->memory = $value;
@@ -210,7 +210,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function unixSocket($value): self
+    public function unixSocket($value): static
     {
         $this->_usedProperties['unixSocket'] = true;
         $this->unixSocket = $value;
@@ -224,7 +224,7 @@ class ReplicaConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function persistent($value): self
+    public function persistent($value): static
     {
         $this->_usedProperties['persistent'] = true;
         $this->persistent = $value;
@@ -238,7 +238,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function protocol($value): self
+    public function protocol($value): static
     {
         $this->_usedProperties['protocol'] = true;
         $this->protocol = $value;
@@ -252,7 +252,7 @@ class ReplicaConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function service($value): self
+    public function service($value): static
     {
         $this->_usedProperties['service'] = true;
         $this->service = $value;
@@ -266,7 +266,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function servicename($value): self
+    public function servicename($value): static
     {
         $this->_usedProperties['servicename'] = true;
         $this->servicename = $value;
@@ -280,7 +280,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function sessionMode($value): self
+    public function sessionMode($value): static
     {
         $this->_usedProperties['sessionMode'] = true;
         $this->sessionMode = $value;
@@ -294,7 +294,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function server($value): self
+    public function server($value): static
     {
         $this->_usedProperties['server'] = true;
         $this->server = $value;
@@ -308,7 +308,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function defaultDbname($value): self
+    public function defaultDbname($value): static
     {
         $this->_usedProperties['defaultDbname'] = true;
         $this->defaultDbname = $value;
@@ -322,7 +322,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function sslmode($value): self
+    public function sslmode($value): static
     {
         $this->_usedProperties['sslmode'] = true;
         $this->sslmode = $value;
@@ -336,7 +336,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function sslrootcert($value): self
+    public function sslrootcert($value): static
     {
         $this->_usedProperties['sslrootcert'] = true;
         $this->sslrootcert = $value;
@@ -350,7 +350,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function sslcert($value): self
+    public function sslcert($value): static
     {
         $this->_usedProperties['sslcert'] = true;
         $this->sslcert = $value;
@@ -364,7 +364,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function sslkey($value): self
+    public function sslkey($value): static
     {
         $this->_usedProperties['sslkey'] = true;
         $this->sslkey = $value;
@@ -378,7 +378,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function sslcrl($value): self
+    public function sslcrl($value): static
     {
         $this->_usedProperties['sslcrl'] = true;
         $this->sslcrl = $value;
@@ -392,7 +392,7 @@ class ReplicaConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function pooled($value): self
+    public function pooled($value): static
     {
         $this->_usedProperties['pooled'] = true;
         $this->pooled = $value;
@@ -406,7 +406,7 @@ class ReplicaConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function multipleActiveResultSets($value): self
+    public function multipleActiveResultSets($value): static
     {
         $this->_usedProperties['multipleActiveResultSets'] = true;
         $this->multipleActiveResultSets = $value;
@@ -420,7 +420,7 @@ class ReplicaConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function useSavepoints($value): self
+    public function useSavepoints($value): static
     {
         $this->_usedProperties['useSavepoints'] = true;
         $this->useSavepoints = $value;
@@ -434,7 +434,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function instancename($value): self
+    public function instancename($value): static
     {
         $this->_usedProperties['instancename'] = true;
         $this->instancename = $value;
@@ -448,7 +448,7 @@ class ReplicaConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function connectstring($value): self
+    public function connectstring($value): static
     {
         $this->_usedProperties['connectstring'] = true;
         $this->connectstring = $value;

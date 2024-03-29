@@ -19,7 +19,7 @@ class EventConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function type($value): self
+    public function type($value): static
     {
         $this->_usedProperties['type'] = true;
         $this->type = $value;
@@ -32,7 +32,7 @@ class EventConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function method($value): self
+    public function method($value): static
     {
         $this->_usedProperties['method'] = true;
         $this->method = $value;

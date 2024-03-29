@@ -16,9 +16,10 @@ class HeaderConfig
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
+     *
      * @return $this
      */
-    public function value($value): self
+    public function value(mixed $value): static
     {
         $this->_usedProperties['value'] = true;
         $this->value = $value;

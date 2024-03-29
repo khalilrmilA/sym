@@ -84,5 +84,6 @@ return [
         'Europe/Volgograd' => 'ꊉꇆꌦ (Volgograd)',
         'Pacific/Honolulu' => 'ꂰꇩ (Honolulu)',
     ],
-    'Meta' => [],
+    'Meta' => [
+    ],
 ];

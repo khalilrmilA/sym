@@ -1,6 +1,20 @@
 CHANGELOG
 =========
 
+6.1
+---
+
+ * Add `SerializedMessageStamp` to avoid serializing a message when a retry occurs
+ * Automatically resolve handled message type when method different from `__invoke` is used as handler
+ * Allow `#[AsMessageHandler]` attribute on methods
+
+6.0
+---
+
+ * Remove deprecated classes `Symfony/Component/Messenger/Transport/AmqpExt`, `Symfony/Component/Messenger/Transport/Doctrine` and `Symfony/Component/Messenger/Transport/Redis`.
+ * Class `MessengerPass` cannot be configured with constructor arguments
+ * Remove constructor arguments and getters for `RedeliveryStamp`'s properties `exceptionMessage` and `flattenException`
+
 5.4
 ---
 
@@ -29,6 +43,7 @@ CHANGELOG
  * Added factory methods `DelayStamp::delayFor(\DateInterval)` and `DelayStamp::delayUntil(\DateTimeInterface)`.
  * Removed the exception when dispatching a message with a `DispatchAfterCurrentBusStamp` and not in a context of another dispatch call
  * Added `WorkerMessageRetriedEvent`
+ * Added `WorkerMessageReceivedEvent::setEnvelope()` and made event mutable
 
 5.1.0
 -----

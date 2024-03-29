@@ -92,6 +92,7 @@ return [
         'IE' => 'Irilandi',
         'IL' => 'Isirayeli',
         'IN' => 'Ɛndujamana',
+        'IO' => 'Angilɛ ka ɛndu dugukolo',
         'IQ' => 'Iraki',
         'IR' => 'Iraŋ',
         'IS' => 'Isilandi',

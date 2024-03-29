@@ -3,12 +3,12 @@
 return [
     'Names' => [
         'FRF' => [
-            'FRF',
-            'franc français',
+            0 => 'FRF',
+            1 => 'franc français',
         ],
         'LUF' => [
-            'F',
-            'franc luxembourgeois',
+            0 => 'F',
+            1 => 'franc luxembourgeois',
         ],
     ],
 ];

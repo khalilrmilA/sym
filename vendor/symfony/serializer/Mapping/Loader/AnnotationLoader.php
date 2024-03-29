@@ -43,7 +43,7 @@ class AnnotationLoader implements LoaderInterface
 
     private $reader;
 
-    public function __construct(?Reader $reader = null)
+    public function __construct(Reader $reader = null)
     {
         $this->reader = $reader;
     }
@@ -51,7 +51,7 @@ class AnnotationLoader implements LoaderInterface
     /**
      * {@inheritdoc}
      */
-    public function loadClassMetadata(ClassMetadataInterface $classMetadata)
+    public function loadClassMetadata(ClassMetadataInterface $classMetadata): bool
     {
         $reflectionClass = $classMetadata->getReflectionClass();
         $className = $reflectionClass->name;
@@ -163,10 +163,22 @@ class AnnotationLoader implements LoaderInterface
      */
     public function loadAnnotations(object $reflector): iterable
     {
-        if (\PHP_VERSION_ID >= 80000) {
-            foreach ($reflector->getAttributes() as $attribute) {
-                if ($this->isKnownAttribute($attribute->getName())) {
+        foreach ($reflector->getAttributes() as $attribute) {
+            if ($this->isKnownAttribute($attribute->getName())) {
+                try {
                     yield $attribute->newInstance();
+                } catch (\Error $e) {
+                    if (\Error::class !== $e::class) {
+                        throw $e;
+                    }
+                    $on = match (true) {
+                        $reflector instanceof \ReflectionClass => ' on class '.$reflector->name,
+                        $reflector instanceof \ReflectionMethod => sprintf(' on "%s::%s()"', $reflector->getDeclaringClass()->name, $reflector->name),
+                        $reflector instanceof \ReflectionProperty => sprintf(' on "%s::$%s"', $reflector->getDeclaringClass()->name, $reflector->name),
+                        default => '',
+                    };
+
+                    throw new MappingException(sprintf('Could not instantiate attribute "%s"%s.', $attribute->getName(), $on), 0, $e);
                 }
             }
         }

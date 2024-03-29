@@ -15,17 +15,20 @@ use Symfony\Component\Notifier\Bridge\AllMySms\AllMySmsTransportFactory;
 use Symfony\Component\Notifier\Bridge\AmazonSns\AmazonSnsTransportFactory;
 use Symfony\Component\Notifier\Bridge\Clickatell\ClickatellTransportFactory;
 use Symfony\Component\Notifier\Bridge\Discord\DiscordTransportFactory;
+use Symfony\Component\Notifier\Bridge\Engagespot\EngagespotTransportFactory;
 use Symfony\Component\Notifier\Bridge\Esendex\EsendexTransportFactory;
 use Symfony\Component\Notifier\Bridge\Expo\ExpoTransportFactory;
 use Symfony\Component\Notifier\Bridge\FakeChat\FakeChatTransportFactory;
 use Symfony\Component\Notifier\Bridge\FakeSms\FakeSmsTransportFactory;
 use Symfony\Component\Notifier\Bridge\Firebase\FirebaseTransportFactory;
+use Symfony\Component\Notifier\Bridge\FortySixElks\FortySixElksTransportFactory;
 use Symfony\Component\Notifier\Bridge\FreeMobile\FreeMobileTransportFactory;
 use Symfony\Component\Notifier\Bridge\GatewayApi\GatewayApiTransportFactory;
 use Symfony\Component\Notifier\Bridge\Gitter\GitterTransportFactory;
 use Symfony\Component\Notifier\Bridge\GoogleChat\GoogleChatTransportFactory;
 use Symfony\Component\Notifier\Bridge\Infobip\InfobipTransportFactory;
 use Symfony\Component\Notifier\Bridge\Iqsms\IqsmsTransportFactory;
+use Symfony\Component\Notifier\Bridge\KazInfoTeh\KazInfoTehTransportFactory;
 use Symfony\Component\Notifier\Bridge\LightSms\LightSmsTransportFactory;
 use Symfony\Component\Notifier\Bridge\LinkedIn\LinkedInTransportFactory;
 use Symfony\Component\Notifier\Bridge\Mailjet\MailjetTransportFactory;
@@ -35,11 +38,12 @@ use Symfony\Component\Notifier\Bridge\MessageBird\MessageBirdTransportFactory;
 use Symfony\Component\Notifier\Bridge\MessageMedia\MessageMediaTransportFactory;
 use Symfony\Component\Notifier\Bridge\MicrosoftTeams\MicrosoftTeamsTransportFactory;
 use Symfony\Component\Notifier\Bridge\Mobyt\MobytTransportFactory;
-use Symfony\Component\Notifier\Bridge\Nexmo\NexmoTransportFactory;
 use Symfony\Component\Notifier\Bridge\Octopush\OctopushTransportFactory;
 use Symfony\Component\Notifier\Bridge\OneSignal\OneSignalTransportFactory;
+use Symfony\Component\Notifier\Bridge\OrangeSms\OrangeSmsTransportFactory;
 use Symfony\Component\Notifier\Bridge\OvhCloud\OvhCloudTransportFactory;
 use Symfony\Component\Notifier\Bridge\RocketChat\RocketChatTransportFactory;
+use Symfony\Component\Notifier\Bridge\Sendberry\SendberryTransportFactory;
 use Symfony\Component\Notifier\Bridge\Sendinblue\SendinblueTransportFactory;
 use Symfony\Component\Notifier\Bridge\Sinch\SinchTransportFactory;
 use Symfony\Component\Notifier\Bridge\Slack\SlackTransportFactory;
@@ -60,32 +64,6 @@ use Symfony\Component\Notifier\Transport\NullTransportFactory;
 
 return static function (ContainerConfigurator $container) {
     $container->services()
-        ->alias('notifier.transport_factory.allmysms', 'notifier.transport_factory.all-my-sms')
-            ->deprecate('symfony/framework-bundle', '5.4', 'The "%alias_id% service is deprecated, use "notifier.transport_factory.all-my-sms" instead.')
-        ->alias('notifier.transport_factory.fakechat', 'notifier.transport_factory.fake-chat')
-            ->deprecate('symfony/framework-bundle', '5.4', 'The "%alias_id% service is deprecated, use "notifier.transport_factory.fake-chat" instead.')
-        ->alias('notifier.transport_factory.fakesms', 'notifier.transport_factory.fake-sms')
-            ->deprecate('symfony/framework-bundle', '5.4', 'The "%alias_id% service is deprecated, use "notifier.transport_factory.fake-sms" instead.')
-        ->alias('notifier.transport_factory.freemobile', 'notifier.transport_factory.free-mobile')
-            ->deprecate('symfony/framework-bundle', '5.4', 'The "%alias_id% service is deprecated, use "notifier.transport_factory.free-mobile" instead.')
-        ->alias('notifier.transport_factory.gatewayapi', 'notifier.transport_factory.gateway-api')
-            ->deprecate('symfony/framework-bundle', '5.4', 'The "%alias_id% service is deprecated, use "notifier.transport_factory.gateway-api" instead.')
-        ->alias('notifier.transport_factory.googlechat', 'notifier.transport_factory.google-chat')
-            ->deprecate('symfony/framework-bundle', '5.4', 'The "%alias_id% service is deprecated, use "notifier.transport_factory.google-chat" instead.')
-        ->alias('notifier.transport_factory.lightsms', 'notifier.transport_factory.light-sms')
-            ->deprecate('symfony/framework-bundle', '5.4', 'The "%alias_id% service is deprecated, use "notifier.transport_factory.light-sms" instead.')
-        ->alias('notifier.transport_factory.linkedin', 'notifier.transport_factory.linked-in')
-            ->deprecate('symfony/framework-bundle', '5.4', 'The "%alias_id% service is deprecated, use "notifier.transport_factory.linked-in" instead.')
-        ->alias('notifier.transport_factory.microsoftteams', 'notifier.transport_factory.microsoft-teams')
-            ->deprecate('symfony/framework-bundle', '5.4', 'The "%alias_id% service is deprecated, use "notifier.transport_factory.microsoft-teams" instead.')
-        ->alias('notifier.transport_factory.onesignal', 'notifier.transport_factory.one-signal')
-            ->deprecate('symfony/framework-bundle', '5.4', 'The "%alias_id% service is deprecated, use "notifier.transport_factory.one-signal" instead.')
-        ->alias('notifier.transport_factory.ovhcloud', 'notifier.transport_factory.ovh-cloud')
-            ->deprecate('symfony/framework-bundle', '5.4', 'The "%alias_id% service is deprecated, use "notifier.transport_factory.ovh-cloud" instead.')
-        ->alias('notifier.transport_factory.rocketchat', 'notifier.transport_factory.rocket-chat')
-            ->deprecate('symfony/framework-bundle', '5.4', 'The "%alias_id% service is deprecated, use "notifier.transport_factory.rocket-chat" instead.')
-        ->alias('notifier.transport_factory.spothit', 'notifier.transport_factory.spot-hit')
-            ->deprecate('symfony/framework-bundle', '5.4', 'The "%alias_id% service is deprecated, use "notifier.transport_factory.spot-hit" instead.')
 
         ->set('notifier.transport_factory.abstract', AbstractTransportFactory::class)
             ->abstract()
@@ -106,11 +84,6 @@ return static function (ContainerConfigurator $container) {
         ->set('notifier.transport_factory.mattermost', MattermostTransportFactory::class)
             ->parent('notifier.transport_factory.abstract')
             ->tag('chatter.transport_factory')
-
-        ->set('notifier.transport_factory.nexmo', NexmoTransportFactory::class)
-            ->parent('notifier.transport_factory.abstract')
-            ->tag('texter.transport_factory')
-            ->deprecate('symfony/framework-bundle', '5.4', 'The "%service_id% service is deprecated, use "notifier.transport_factory.vonage" instead.')
 
         ->set('notifier.transport_factory.vonage', VonageTransportFactory::class)
             ->parent('notifier.transport_factory.abstract')
@@ -135,6 +108,10 @@ return static function (ContainerConfigurator $container) {
         ->set('notifier.transport_factory.firebase', FirebaseTransportFactory::class)
             ->parent('notifier.transport_factory.abstract')
             ->tag('chatter.transport_factory')
+
+        ->set('notifier.transport_factory.forty-six-elks', FortySixElksTransportFactory::class)
+            ->parent('notifier.transport_factory.abstract')
+            ->tag('texter.transport_factory')
 
         ->set('notifier.transport_factory.free-mobile', FreeMobileTransportFactory::class)
             ->parent('notifier.transport_factory.abstract')
@@ -177,6 +154,10 @@ return static function (ContainerConfigurator $container) {
             ->tag('texter.transport_factory')
 
         ->set('notifier.transport_factory.esendex', EsendexTransportFactory::class)
+            ->parent('notifier.transport_factory.abstract')
+            ->tag('texter.transport_factory')
+
+        ->set('notifier.transport_factory.sendberry', SendberryTransportFactory::class)
             ->parent('notifier.transport_factory.abstract')
             ->tag('texter.transport_factory')
 
@@ -270,7 +251,19 @@ return static function (ContainerConfigurator $container) {
             ->parent('notifier.transport_factory.abstract')
             ->tag('texter.transport_factory')
 
+        ->set('notifier.transport_factory.orange-sms', OrangeSmsTransportFactory::class)
+            ->parent('notifier.transport_factory.abstract')
+            ->tag('texter.transport_factory')
+
         ->set('notifier.transport_factory.expo', ExpoTransportFactory::class)
+            ->parent('notifier.transport_factory.abstract')
+            ->tag('texter.transport_factory')
+
+        ->set('notifier.transport_factory.kaz-info-teh', KazInfoTehTransportFactory::class)
+            ->parent('notifier.transport_factory.abstract')
+            ->tag('texter.transport_factory')
+
+        ->set('notifier.transport_factory.engagespot', EngagespotTransportFactory::class)
             ->parent('notifier.transport_factory.abstract')
             ->tag('texter.transport_factory')
     ;

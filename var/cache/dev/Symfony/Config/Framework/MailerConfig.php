@@ -26,7 +26,7 @@ class MailerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): self
+    public function enabled($value): static
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -40,7 +40,7 @@ class MailerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function messageBus($value): self
+    public function messageBus($value): static
     {
         $this->_usedProperties['messageBus'] = true;
         $this->messageBus = $value;
@@ -53,7 +53,7 @@ class MailerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function dsn($value): self
+    public function dsn($value): static
     {
         $this->_usedProperties['dsn'] = true;
         $this->dsn = $value;
@@ -62,10 +62,9 @@ class MailerConfig
     }
 
     /**
-     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function transport(string $name, $value): self
+    public function transport(string $name, mixed $value): static
     {
         $this->_usedProperties['transports'] = true;
         $this->transports[$name] = $value;
@@ -73,6 +72,9 @@ class MailerConfig
         return $this;
     }
 
+    /**
+     * Mailer Envelope configuration
+    */
     public function envelope(array $value = []): \Symfony\Config\Framework\Mailer\EnvelopeConfig
     {
         if (null === $this->envelope) {
@@ -88,7 +90,7 @@ class MailerConfig
     /**
      * @return \Symfony\Config\Framework\Mailer\HeaderConfig|$this
      */
-    public function header(string $name, $value = [])
+    public function header(string $name, mixed $value = []): \Symfony\Config\Framework\Mailer\HeaderConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['headers'] = true;

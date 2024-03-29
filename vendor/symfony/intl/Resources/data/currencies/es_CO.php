@@ -3,12 +3,12 @@
 return [
     'Names' => [
         'COP' => [
-            '$',
-            'peso colombiano',
+            0 => '$',
+            1 => 'peso colombiano',
         ],
         'USD' => [
-            'US$',
-            'dólar estadounidense',
+            0 => 'US$',
+            1 => 'dólar estadounidense',
         ],
     ],
 ];

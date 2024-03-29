@@ -19,27 +19,22 @@ use Symfony\Component\Form\ChoiceList\ChoiceListInterface;
  */
 abstract class AbstractChoiceLoader implements ChoiceLoaderInterface
 {
-    /**
-     * The loaded choices.
-     *
-     * @var iterable|null
-     */
-    private $choices;
+    private ?iterable $choices;
 
     /**
      * @final
      *
      * {@inheritdoc}
      */
-    public function loadChoiceList(?callable $value = null): ChoiceListInterface
+    public function loadChoiceList(callable $value = null): ChoiceListInterface
     {
-        return new ArrayChoiceList($this->choices ?? $this->choices = $this->loadChoices(), $value);
+        return new ArrayChoiceList($this->choices ??= $this->loadChoices(), $value);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function loadChoicesForValues(array $values, ?callable $value = null)
+    public function loadChoicesForValues(array $values, callable $value = null): array
     {
         if (!$values) {
             return [];
@@ -51,7 +46,7 @@ abstract class AbstractChoiceLoader implements ChoiceLoaderInterface
     /**
      * {@inheritdoc}
      */
-    public function loadValuesForChoices(array $choices, ?callable $value = null)
+    public function loadValuesForChoices(array $choices, callable $value = null): array
     {
         if (!$choices) {
             return [];
@@ -59,7 +54,7 @@ abstract class AbstractChoiceLoader implements ChoiceLoaderInterface
 
         if ($value) {
             // if a value callback exists, use it
-            return array_map(function ($item) use ($value) { return (string) $value($item); }, $choices);
+            return array_map($value, $choices);
         }
 
         return $this->doLoadValuesForChoices($choices);

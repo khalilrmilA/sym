@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'HTG' => [
-            'G',
-            'gourde haïtienne',
+            0 => 'G',
+            1 => 'gourde haïtienne',
         ],
     ],
 ];

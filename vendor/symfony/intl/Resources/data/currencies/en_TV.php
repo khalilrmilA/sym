@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'AUD' => [
-            '$',
-            'Australian Dollar',
+            0 => '$',
+            1 => 'Australian Dollar',
         ],
     ],
 ];

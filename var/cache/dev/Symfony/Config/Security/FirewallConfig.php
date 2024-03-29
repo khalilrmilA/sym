@@ -4,7 +4,6 @@ namespace Symfony\Config\Security;
 
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'LogoutConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'SwitchUserConfig.php';
-require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'GuardConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'LoginThrottlingConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'X509Config.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'RemoteUserConfig.php';
@@ -16,7 +15,6 @@ require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'HttpBasicConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'HttpBasicLdapConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'RememberMeConfig.php';
-require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'AnonymousConfig.php';
 
 use Symfony\Component\Config\Loader\ParamConfigurator;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
@@ -42,7 +40,6 @@ class FirewallConfig
     private $logout;
     private $switchUser;
     private $requiredBadges;
-    private $guard;
     private $customAuthenticators;
     private $loginThrottling;
     private $x509;
@@ -55,7 +52,6 @@ class FirewallConfig
     private $httpBasic;
     private $httpBasicLdap;
     private $rememberMe;
-    private $anonymous;
     private $_usedProperties = [];
 
     /**
@@ -63,7 +59,7 @@ class FirewallConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function pattern($value): self
+    public function pattern($value): static
     {
         $this->_usedProperties['pattern'] = true;
         $this->pattern = $value;
@@ -76,7 +72,7 @@ class FirewallConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function host($value): self
+    public function host($value): static
     {
         $this->_usedProperties['host'] = true;
         $this->host = $value;
@@ -85,10 +81,11 @@ class FirewallConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param mixed $value
+     *
      * @return $this
      */
-    public function methods($value): self
+    public function methods(mixed $value): static
     {
         $this->_usedProperties['methods'] = true;
         $this->methods = $value;
@@ -101,7 +98,7 @@ class FirewallConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function security($value): self
+    public function security($value): static
     {
         $this->_usedProperties['security'] = true;
         $this->security = $value;
@@ -115,7 +112,7 @@ class FirewallConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function userChecker($value): self
+    public function userChecker($value): static
     {
         $this->_usedProperties['userChecker'] = true;
         $this->userChecker = $value;
@@ -128,7 +125,7 @@ class FirewallConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function requestMatcher($value): self
+    public function requestMatcher($value): static
     {
         $this->_usedProperties['requestMatcher'] = true;
         $this->requestMatcher = $value;
@@ -141,7 +138,7 @@ class FirewallConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function accessDeniedUrl($value): self
+    public function accessDeniedUrl($value): static
     {
         $this->_usedProperties['accessDeniedUrl'] = true;
         $this->accessDeniedUrl = $value;
@@ -154,7 +151,7 @@ class FirewallConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function accessDeniedHandler($value): self
+    public function accessDeniedHandler($value): static
     {
         $this->_usedProperties['accessDeniedHandler'] = true;
         $this->accessDeniedHandler = $value;
@@ -168,7 +165,7 @@ class FirewallConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function entryPoint($value): self
+    public function entryPoint($value): static
     {
         $this->_usedProperties['entryPoint'] = true;
         $this->entryPoint = $value;
@@ -181,7 +178,7 @@ class FirewallConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function provider($value): self
+    public function provider($value): static
     {
         $this->_usedProperties['provider'] = true;
         $this->provider = $value;
@@ -194,7 +191,7 @@ class FirewallConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function stateless($value): self
+    public function stateless($value): static
     {
         $this->_usedProperties['stateless'] = true;
         $this->stateless = $value;
@@ -207,7 +204,7 @@ class FirewallConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function lazy($value): self
+    public function lazy($value): static
     {
         $this->_usedProperties['lazy'] = true;
         $this->lazy = $value;
@@ -220,7 +217,7 @@ class FirewallConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function context($value): self
+    public function context($value): static
     {
         $this->_usedProperties['context'] = true;
         $this->context = $value;
@@ -253,10 +250,11 @@ class FirewallConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
+     *
      * @return $this
      */
-    public function requiredBadges($value): self
+    public function requiredBadges(ParamConfigurator|array $value): static
     {
         $this->_usedProperties['requiredBadges'] = true;
         $this->requiredBadges = $value;
@@ -264,23 +262,12 @@ class FirewallConfig
         return $this;
     }
 
-    public function guard(array $value = []): \Symfony\Config\Security\FirewallConfig\GuardConfig
-    {
-        if (null === $this->guard) {
-            $this->_usedProperties['guard'] = true;
-            $this->guard = new \Symfony\Config\Security\FirewallConfig\GuardConfig($value);
-        } elseif (0 < \func_num_args()) {
-            throw new InvalidConfigurationException('The node created by "guard()" has already been initialized. You cannot pass values the second time you call guard().');
-        }
-
-        return $this->guard;
-    }
-
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
+     *
      * @return $this
      */
-    public function customAuthenticators($value): self
+    public function customAuthenticators(ParamConfigurator|array $value): static
     {
         $this->_usedProperties['customAuthenticators'] = true;
         $this->customAuthenticators = $value;
@@ -420,28 +407,6 @@ class FirewallConfig
         return $this->rememberMe;
     }
 
-    /**
-     * @return \Symfony\Config\Security\FirewallConfig\AnonymousConfig|$this
-     */
-    public function anonymous($value = [])
-    {
-        if (!\is_array($value)) {
-            $this->_usedProperties['anonymous'] = true;
-            $this->anonymous = $value;
-
-            return $this;
-        }
-
-        if (!$this->anonymous instanceof \Symfony\Config\Security\FirewallConfig\AnonymousConfig) {
-            $this->_usedProperties['anonymous'] = true;
-            $this->anonymous = new \Symfony\Config\Security\FirewallConfig\AnonymousConfig($value);
-        } elseif (0 < \func_num_args()) {
-            throw new InvalidConfigurationException('The node created by "anonymous()" has already been initialized. You cannot pass values the second time you call anonymous().');
-        }
-
-        return $this->anonymous;
-    }
-
     public function __construct(array $value = [])
     {
         if (array_key_exists('pattern', $value)) {
@@ -540,12 +505,6 @@ class FirewallConfig
             unset($value['required_badges']);
         }
 
-        if (array_key_exists('guard', $value)) {
-            $this->_usedProperties['guard'] = true;
-            $this->guard = new \Symfony\Config\Security\FirewallConfig\GuardConfig($value['guard']);
-            unset($value['guard']);
-        }
-
         if (array_key_exists('custom_authenticators', $value)) {
             $this->_usedProperties['customAuthenticators'] = true;
             $this->customAuthenticators = $value['custom_authenticators'];
@@ -618,12 +577,6 @@ class FirewallConfig
             unset($value['remember_me']);
         }
 
-        if (array_key_exists('anonymous', $value)) {
-            $this->_usedProperties['anonymous'] = true;
-            $this->anonymous = \is_array($value['anonymous']) ? new \Symfony\Config\Security\FirewallConfig\AnonymousConfig($value['anonymous']) : $value['anonymous'];
-            unset($value['anonymous']);
-        }
-
         if ([] !== $value) {
             throw new InvalidConfigurationException(sprintf('The following keys are not supported by "%s": ', __CLASS__).implode(', ', array_keys($value)));
         }
@@ -680,9 +633,6 @@ class FirewallConfig
         if (isset($this->_usedProperties['requiredBadges'])) {
             $output['required_badges'] = $this->requiredBadges;
         }
-        if (isset($this->_usedProperties['guard'])) {
-            $output['guard'] = $this->guard->toArray();
-        }
         if (isset($this->_usedProperties['customAuthenticators'])) {
             $output['custom_authenticators'] = $this->customAuthenticators;
         }
@@ -718,9 +668,6 @@ class FirewallConfig
         }
         if (isset($this->_usedProperties['rememberMe'])) {
             $output['remember_me'] = $this->rememberMe->toArray();
-        }
-        if (isset($this->_usedProperties['anonymous'])) {
-            $output['anonymous'] = $this->anonymous instanceof \Symfony\Config\Security\FirewallConfig\AnonymousConfig ? $this->anonymous->toArray() : $this->anonymous;
         }
 
         return $output;

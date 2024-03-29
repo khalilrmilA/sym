@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'MUR' => [
-            'Rs',
-            'roupie mauricienne',
+            0 => 'Rs',
+            1 => 'roupie mauricienne',
         ],
     ],
 ];

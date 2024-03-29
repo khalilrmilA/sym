@@ -22,9 +22,10 @@ class RegionConfig
     private $_usedProperties = [];
 
     /**
+     * @default {"type":null}
      * @return \Symfony\Config\Doctrine\Orm\EntityManagerConfig\SecondLevelCache\RegionConfig\CacheDriverConfig|$this
      */
-    public function cacheDriver($value = [])
+    public function cacheDriver(mixed $value = []): \Symfony\Config\Doctrine\Orm\EntityManagerConfig\SecondLevelCache\RegionConfig\CacheDriverConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['cacheDriver'] = true;
@@ -48,7 +49,7 @@ class RegionConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function lockPath($value): self
+    public function lockPath($value): static
     {
         $this->_usedProperties['lockPath'] = true;
         $this->lockPath = $value;
@@ -61,7 +62,7 @@ class RegionConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function lockLifetime($value): self
+    public function lockLifetime($value): static
     {
         $this->_usedProperties['lockLifetime'] = true;
         $this->lockLifetime = $value;
@@ -74,7 +75,7 @@ class RegionConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function type($value): self
+    public function type($value): static
     {
         $this->_usedProperties['type'] = true;
         $this->type = $value;
@@ -87,7 +88,7 @@ class RegionConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function lifetime($value): self
+    public function lifetime($value): static
     {
         $this->_usedProperties['lifetime'] = true;
         $this->lifetime = $value;
@@ -100,7 +101,7 @@ class RegionConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function service($value): self
+    public function service($value): static
     {
         $this->_usedProperties['service'] = true;
         $this->service = $value;
@@ -113,7 +114,7 @@ class RegionConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function name($value): self
+    public function name($value): static
     {
         $this->_usedProperties['name'] = true;
         $this->name = $value;

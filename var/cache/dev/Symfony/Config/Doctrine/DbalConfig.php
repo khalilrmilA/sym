@@ -24,7 +24,7 @@ class DbalConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function defaultConnection($value): self
+    public function defaultConnection($value): static
     {
         $this->_usedProperties['defaultConnection'] = true;
         $this->defaultConnection = $value;
@@ -35,7 +35,7 @@ class DbalConfig
     /**
      * @return \Symfony\Config\Doctrine\Dbal\TypeConfig|$this
      */
-    public function type(string $name, $value = [])
+    public function type(string $name, mixed $value = []): \Symfony\Config\Doctrine\Dbal\TypeConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['types'] = true;
@@ -55,10 +55,9 @@ class DbalConfig
     }
 
     /**
-     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function driverScheme(string $scheme, $value): self
+    public function driverScheme(string $scheme, mixed $value): static
     {
         $this->_usedProperties['driverSchemes'] = true;
         $this->driverSchemes[$scheme] = $value;
@@ -69,7 +68,7 @@ class DbalConfig
     /**
      * @return \Symfony\Config\Doctrine\Dbal\ConnectionConfig|$this
      */
-    public function connection(string $name, $value = [])
+    public function connection(string $name, mixed $value = []): \Symfony\Config\Doctrine\Dbal\ConnectionConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['connections'] = true;

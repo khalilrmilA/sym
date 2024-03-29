@@ -40,7 +40,7 @@ class ProfilerController
     private $cspHandler;
     private $baseDir;
 
-    public function __construct(UrlGeneratorInterface $generator, ?Profiler $profiler, Environment $twig, array $templates, ?ContentSecurityPolicyHandler $cspHandler = null, ?string $baseDir = null)
+    public function __construct(UrlGeneratorInterface $generator, Profiler $profiler = null, Environment $twig, array $templates, ContentSecurityPolicyHandler $cspHandler = null, string $baseDir = null)
     {
         $this->generator = $generator;
         $this->profiler = $profiler;
@@ -71,9 +71,7 @@ class ProfilerController
     {
         $this->denyAccessIfProfilerDisabled();
 
-        if (null !== $this->cspHandler) {
-            $this->cspHandler->disableCsp();
-        }
+        $this->cspHandler?->disableCsp();
 
         $panel = $request->query->get('panel');
         $page = $request->query->get('page', 'home');
@@ -124,7 +122,7 @@ class ProfilerController
      *
      * @throws NotFoundHttpException
      */
-    public function toolbarAction(Request $request, ?string $token = null): Response
+    public function toolbarAction(Request $request, string $token = null): Response
     {
         if (null === $this->profiler) {
             throw new NotFoundHttpException('The profiler must be enabled.');
@@ -148,7 +146,7 @@ class ProfilerController
         $url = null;
         try {
             $url = $this->generator->generate('_profiler', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             // the profiler is not enabled
         }
 
@@ -172,9 +170,7 @@ class ProfilerController
     {
         $this->denyAccessIfProfilerDisabled();
 
-        if (null !== $this->cspHandler) {
-            $this->cspHandler->disableCsp();
-        }
+        $this->cspHandler?->disableCsp();
 
         if (!$request->hasSession()) {
             $ip =
@@ -224,9 +220,7 @@ class ProfilerController
     {
         $this->denyAccessIfProfilerDisabled();
 
-        if (null !== $this->cspHandler) {
-            $this->cspHandler->disableCsp();
-        }
+        $this->cspHandler?->disableCsp();
 
         $profile = $this->profiler->loadProfile($token);
 
@@ -312,15 +306,35 @@ class ProfilerController
     {
         $this->denyAccessIfProfilerDisabled();
 
-        if (null !== $this->cspHandler) {
-            $this->cspHandler->disableCsp();
-        }
+        $this->cspHandler?->disableCsp();
 
         ob_start();
         phpinfo();
         $phpinfo = ob_get_clean();
 
         return new Response($phpinfo, 200, ['Content-Type' => 'text/html']);
+    }
+
+    /**
+     * Displays the Xdebug info.
+     *
+     * @throws NotFoundHttpException
+     */
+    public function xdebugAction(): Response
+    {
+        $this->denyAccessIfProfilerDisabled();
+
+        if (!\function_exists('xdebug_info')) {
+            throw new NotFoundHttpException('Xdebug must be installed in version 3.');
+        }
+
+        $this->cspHandler?->disableCsp();
+
+        ob_start();
+        xdebug_info();
+        $xdebugInfo = ob_get_clean();
+
+        return new Response($xdebugInfo, 200, ['Content-Type' => 'text/html']);
     }
 
     /**
@@ -334,9 +348,7 @@ class ProfilerController
             throw new NotFoundHttpException('The base dir should be set.');
         }
 
-        if ($this->profiler) {
-            $this->profiler->disable();
-        }
+        $this->profiler?->disable();
 
         $file = $request->query->get('file');
         $line = $request->query->get('line');
@@ -354,9 +366,6 @@ class ProfilerController
         ]);
     }
 
-    /**
-     * Gets the Template Manager.
-     */
     protected function getTemplateManager(): TemplateManager
     {
         if (null === $this->templateManager) {

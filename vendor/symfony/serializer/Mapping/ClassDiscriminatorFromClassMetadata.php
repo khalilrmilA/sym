@@ -44,7 +44,7 @@ class ClassDiscriminatorFromClassMetadata implements ClassDiscriminatorResolverI
     /**
      * {@inheritdoc}
      */
-    public function getMappingForMappedObject($object): ?ClassDiscriminatorMapping
+    public function getMappingForMappedObject(object|string $object): ?ClassDiscriminatorMapping
     {
         if ($this->classMetadataFactory->hasMetadataFor($object)) {
             $metadata = $this->classMetadataFactory->getMetadataFor($object);
@@ -65,7 +65,7 @@ class ClassDiscriminatorFromClassMetadata implements ClassDiscriminatorResolverI
     /**
      * {@inheritdoc}
      */
-    public function getTypeForMappedObject($object): ?string
+    public function getTypeForMappedObject(object|string $object): ?string
     {
         if (null === $mapping = $this->getMappingForMappedObject($object)) {
             return null;
@@ -74,13 +74,11 @@ class ClassDiscriminatorFromClassMetadata implements ClassDiscriminatorResolverI
         return $mapping->getMappedObjectType($object);
     }
 
-    private function resolveMappingForMappedObject($object)
+    private function resolveMappingForMappedObject(object|string $object)
     {
         $reflectionClass = new \ReflectionClass($object);
         if ($parentClass = $reflectionClass->getParentClass()) {
-            if (null !== ($parentMapping = $this->getMappingForMappedObject($parentClass->getName()))) {
-                return $parentMapping;
-            }
+            return $this->getMappingForMappedObject($parentClass->getName());
         }
 
         foreach ($reflectionClass->getInterfaceNames() as $interfaceName) {

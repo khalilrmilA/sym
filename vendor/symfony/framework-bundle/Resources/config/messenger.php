@@ -140,7 +140,6 @@ return static function (ContainerConfigurator $container) {
             ->args([
                 service('logger')->ignoreOnInvalid(),
             ])
-            ->tag('monolog.logger', ['channel' => 'messenger'])
 
         ->set('messenger.transport.beanstalkd.factory', BeanstalkdTransportFactory::class)
 
@@ -198,7 +197,6 @@ return static function (ContainerConfigurator $container) {
                 service('logger')->ignoreOnInvalid(),
             ])
             ->tag('kernel.event_subscriber')
-            ->tag('monolog.logger', ['channel' => 'messenger'])
 
         ->set('messenger.listener.stop_worker_on_stop_exception_listener', StopWorkerOnCustomStopExceptionListener::class)
             ->tag('kernel.event_subscriber')

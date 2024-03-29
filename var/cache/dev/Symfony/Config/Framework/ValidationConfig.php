@@ -30,7 +30,7 @@ class ValidationConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): self
+    public function enabled($value): static
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -43,7 +43,7 @@ class ValidationConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function cache($value): self
+    public function cache($value): static
     {
         $this->_usedProperties['cache'] = true;
         $this->cache = $value;
@@ -56,7 +56,7 @@ class ValidationConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enableAnnotations($value): self
+    public function enableAnnotations($value): static
     {
         $this->_usedProperties['enableAnnotations'] = true;
         $this->enableAnnotations = $value;
@@ -65,10 +65,11 @@ class ValidationConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
+     *
      * @return $this
      */
-    public function staticMethod($value): self
+    public function staticMethod(ParamConfigurator|array $value): static
     {
         $this->_usedProperties['staticMethod'] = true;
         $this->staticMethod = $value;
@@ -81,7 +82,7 @@ class ValidationConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function translationDomain($value): self
+    public function translationDomain($value): static
     {
         $this->_usedProperties['translationDomain'] = true;
         $this->translationDomain = $value;
@@ -94,7 +95,7 @@ class ValidationConfig
      * @param ParamConfigurator|'html5'|'loose'|'strict' $value
      * @return $this
      */
-    public function emailValidationMode($value): self
+    public function emailValidationMode($value): static
     {
         $this->_usedProperties['emailValidationMode'] = true;
         $this->emailValidationMode = $value;
@@ -102,6 +103,9 @@ class ValidationConfig
         return $this;
     }
 
+    /**
+     * @default {"paths":[]}
+    */
     public function mapping(array $value = []): \Symfony\Config\Framework\Validation\MappingConfig
     {
         if (null === $this->mapping) {
@@ -114,6 +118,9 @@ class ValidationConfig
         return $this->mapping;
     }
 
+    /**
+     * @default {"enabled":true,"endpoint":null}
+    */
     public function notCompromisedPassword(array $value = []): \Symfony\Config\Framework\Validation\NotCompromisedPasswordConfig
     {
         if (null === $this->notCompromisedPassword) {
@@ -127,9 +134,12 @@ class ValidationConfig
     }
 
     /**
+     * A collection of namespaces for which auto-mapping will be enabled by default, or null to opt-in with the EnableAutoMapping constraint.
+     * @example []
+     * @example ["validator.property_info_loader"]
      * @return \Symfony\Config\Framework\Validation\AutoMappingConfig|$this
      */
-    public function autoMapping(string $namespace, $value = [])
+    public function autoMapping(string $namespace, mixed $value = []): \Symfony\Config\Framework\Validation\AutoMappingConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['autoMapping'] = true;

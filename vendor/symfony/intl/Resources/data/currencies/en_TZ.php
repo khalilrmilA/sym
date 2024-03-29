@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'TZS' => [
-            'TSh',
-            'Tanzanian Shilling',
+            0 => 'TSh',
+            1 => 'Tanzanian Shilling',
         ],
     ],
 ];

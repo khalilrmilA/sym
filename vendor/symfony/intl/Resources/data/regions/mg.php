@@ -92,6 +92,7 @@ return [
         'IE' => 'Irlandy',
         'IL' => 'Israely',
         'IN' => 'Indy',
+        'IO' => 'Faridranomasina indiana britanika',
         'IQ' => 'Irak',
         'IR' => 'Iran',
         'IS' => 'Islandy',

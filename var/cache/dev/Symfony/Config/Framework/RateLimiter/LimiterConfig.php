@@ -27,7 +27,7 @@ class LimiterConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function lockFactory($value): self
+    public function lockFactory($value): static
     {
         $this->_usedProperties['lockFactory'] = true;
         $this->lockFactory = $value;
@@ -41,7 +41,7 @@ class LimiterConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function cachePool($value): self
+    public function cachePool($value): static
     {
         $this->_usedProperties['cachePool'] = true;
         $this->cachePool = $value;
@@ -55,7 +55,7 @@ class LimiterConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function storageService($value): self
+    public function storageService($value): static
     {
         $this->_usedProperties['storageService'] = true;
         $this->storageService = $value;
@@ -69,7 +69,7 @@ class LimiterConfig
      * @param ParamConfigurator|'fixed_window'|'token_bucket'|'sliding_window'|'no_limit' $value
      * @return $this
      */
-    public function policy($value): self
+    public function policy($value): static
     {
         $this->_usedProperties['policy'] = true;
         $this->policy = $value;
@@ -83,7 +83,7 @@ class LimiterConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function limit($value): self
+    public function limit($value): static
     {
         $this->_usedProperties['limit'] = true;
         $this->limit = $value;
@@ -97,7 +97,7 @@ class LimiterConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function interval($value): self
+    public function interval($value): static
     {
         $this->_usedProperties['interval'] = true;
         $this->interval = $value;
@@ -105,6 +105,9 @@ class LimiterConfig
         return $this;
     }
 
+    /**
+     * Configures the fill rate if "policy" is set to "token_bucket"
+    */
     public function rate(array $value = []): \Symfony\Config\Framework\RateLimiter\LimiterConfig\RateConfig
     {
         if (null === $this->rate) {

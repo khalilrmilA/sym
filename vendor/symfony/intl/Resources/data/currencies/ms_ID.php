@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'IDR' => [
-            'Rp',
-            'Rupiah Indonesia',
+            0 => 'Rp',
+            1 => 'Rupiah Indonesia',
         ],
     ],
 ];

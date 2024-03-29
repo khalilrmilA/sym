@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'UGX' => [
-            'USh',
-            'Shilingi ya Uganda',
+            0 => 'USh',
+            1 => 'Shilingi ya Uganda',
         ],
     ],
 ];

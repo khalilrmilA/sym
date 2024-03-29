@@ -3,44 +3,44 @@
 return [
     'Names' => [
         'AUD' => [
-            'AUD$',
-            'Tola fakaʻaositelēlia',
+            0 => 'AUD$',
+            1 => 'Tola fakaʻaositelēlia',
         ],
         'EUR' => [
-            '€',
-            'ʻEulo',
+            0 => '€',
+            1 => 'ʻEulo',
         ],
         'FJD' => [
-            'FJD',
-            'Tola fakafisi',
+            0 => 'FJD',
+            1 => 'Tola fakafisi',
         ],
         'NZD' => [
-            'NZD$',
-            'Tola fakanuʻusila',
+            0 => 'NZD$',
+            1 => 'Tola fakanuʻusila',
         ],
         'PGK' => [
-            'PGK',
-            'Kina fakapapuaniukini',
+            0 => 'PGK',
+            1 => 'Kina fakapapuaniukini',
         ],
         'SBD' => [
-            'SBD',
-            'Tola fakaʻotusolomone',
+            0 => 'SBD',
+            1 => 'Tola fakaʻotusolomone',
         ],
         'TOP' => [
-            'T$',
-            'Paʻanga fakatonga',
+            0 => 'T$',
+            1 => 'Paʻanga fakatonga',
         ],
         'VUV' => [
-            'VUV',
-            'Vatu fakavanuatu',
+            0 => 'VUV',
+            1 => 'Vatu fakavanuatu',
         ],
         'WST' => [
-            'WST',
-            'Tala fakahaʻamoa',
+            0 => 'WST',
+            1 => 'Tala fakahaʻamoa',
         ],
         'XPF' => [
-            'CFPF',
-            'Falaniki fakapasifika',
+            0 => 'CFPF',
+            1 => 'Falaniki fakapasifika',
         ],
     ],
 ];

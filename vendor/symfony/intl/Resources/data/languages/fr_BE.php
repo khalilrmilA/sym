@@ -7,5 +7,6 @@ return [
         'gu' => 'gujarati',
         'njo' => 'ao',
     ],
-    'LocalizedNames' => [],
+    'LocalizedNames' => [
+    ],
 ];

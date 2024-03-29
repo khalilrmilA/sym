@@ -28,7 +28,7 @@ use Symfony\Component\Notifier\Recipient\SmsRecipientInterface;
  */
 class LoginLinkNotification extends Notification implements EmailNotificationInterface, SmsNotificationInterface
 {
-    private $loginLinkDetails;
+    private LoginLinkDetails $loginLinkDetails;
 
     public function __construct(LoginLinkDetails $loginLinkDetails, string $subject, array $channels = [])
     {
@@ -37,7 +37,7 @@ class LoginLinkNotification extends Notification implements EmailNotificationInt
         $this->loginLinkDetails = $loginLinkDetails;
     }
 
-    public function asEmailMessage(EmailRecipientInterface $recipient, ?string $transport = null): ?EmailMessage
+    public function asEmailMessage(EmailRecipientInterface $recipient, string $transport = null): ?EmailMessage
     {
         if (!class_exists(NotificationEmail::class)) {
             throw new \LogicException(sprintf('The "%s" method requires "symfony/twig-bridge:>4.4".', __METHOD__));
@@ -53,7 +53,7 @@ class LoginLinkNotification extends Notification implements EmailNotificationInt
         return new EmailMessage($email);
     }
 
-    public function asSmsMessage(SmsRecipientInterface $recipient, ?string $transport = null): ?SmsMessage
+    public function asSmsMessage(SmsRecipientInterface $recipient, string $transport = null): ?SmsMessage
     {
         return new SmsMessage($recipient->getPhone(), $this->getDefaultContent('link').' '.$this->loginLinkDetails->getUrl());
     }

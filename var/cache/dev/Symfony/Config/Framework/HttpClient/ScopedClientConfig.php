@@ -46,7 +46,7 @@ class ScopedClientConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function scope($value): self
+    public function scope($value): static
     {
         $this->_usedProperties['scope'] = true;
         $this->scope = $value;
@@ -60,7 +60,7 @@ class ScopedClientConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function baseUri($value): self
+    public function baseUri($value): static
     {
         $this->_usedProperties['baseUri'] = true;
         $this->baseUri = $value;
@@ -74,7 +74,7 @@ class ScopedClientConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function authBasic($value): self
+    public function authBasic($value): static
     {
         $this->_usedProperties['authBasic'] = true;
         $this->authBasic = $value;
@@ -88,7 +88,7 @@ class ScopedClientConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function authBearer($value): self
+    public function authBearer($value): static
     {
         $this->_usedProperties['authBearer'] = true;
         $this->authBearer = $value;
@@ -102,7 +102,7 @@ class ScopedClientConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function authNtlm($value): self
+    public function authNtlm($value): static
     {
         $this->_usedProperties['authNtlm'] = true;
         $this->authNtlm = $value;
@@ -111,10 +111,9 @@ class ScopedClientConfig
     }
 
     /**
-     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function query(string $key, $value): self
+    public function query(string $key, mixed $value): static
     {
         $this->_usedProperties['query'] = true;
         $this->query[$key] = $value;
@@ -123,10 +122,9 @@ class ScopedClientConfig
     }
 
     /**
-     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function header(string $name, $value): self
+    public function header(string $name, mixed $value): static
     {
         $this->_usedProperties['headers'] = true;
         $this->headers[$name] = $value;
@@ -140,7 +138,7 @@ class ScopedClientConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function maxRedirects($value): self
+    public function maxRedirects($value): static
     {
         $this->_usedProperties['maxRedirects'] = true;
         $this->maxRedirects = $value;
@@ -154,7 +152,7 @@ class ScopedClientConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function httpVersion($value): self
+    public function httpVersion($value): static
     {
         $this->_usedProperties['httpVersion'] = true;
         $this->httpVersion = $value;
@@ -163,10 +161,9 @@ class ScopedClientConfig
     }
 
     /**
-     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function resolve(string $host, $value): self
+    public function resolve(string $host, mixed $value): static
     {
         $this->_usedProperties['resolve'] = true;
         $this->resolve[$host] = $value;
@@ -180,7 +177,7 @@ class ScopedClientConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function proxy($value): self
+    public function proxy($value): static
     {
         $this->_usedProperties['proxy'] = true;
         $this->proxy = $value;
@@ -194,7 +191,7 @@ class ScopedClientConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function noProxy($value): self
+    public function noProxy($value): static
     {
         $this->_usedProperties['noProxy'] = true;
         $this->noProxy = $value;
@@ -208,7 +205,7 @@ class ScopedClientConfig
      * @param ParamConfigurator|float $value
      * @return $this
      */
-    public function timeout($value): self
+    public function timeout($value): static
     {
         $this->_usedProperties['timeout'] = true;
         $this->timeout = $value;
@@ -222,7 +219,7 @@ class ScopedClientConfig
      * @param ParamConfigurator|float $value
      * @return $this
      */
-    public function maxDuration($value): self
+    public function maxDuration($value): static
     {
         $this->_usedProperties['maxDuration'] = true;
         $this->maxDuration = $value;
@@ -236,7 +233,7 @@ class ScopedClientConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function bindto($value): self
+    public function bindto($value): static
     {
         $this->_usedProperties['bindto'] = true;
         $this->bindto = $value;
@@ -250,7 +247,7 @@ class ScopedClientConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function verifyPeer($value): self
+    public function verifyPeer($value): static
     {
         $this->_usedProperties['verifyPeer'] = true;
         $this->verifyPeer = $value;
@@ -264,7 +261,7 @@ class ScopedClientConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function verifyHost($value): self
+    public function verifyHost($value): static
     {
         $this->_usedProperties['verifyHost'] = true;
         $this->verifyHost = $value;
@@ -278,7 +275,7 @@ class ScopedClientConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function cafile($value): self
+    public function cafile($value): static
     {
         $this->_usedProperties['cafile'] = true;
         $this->cafile = $value;
@@ -292,7 +289,7 @@ class ScopedClientConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function capath($value): self
+    public function capath($value): static
     {
         $this->_usedProperties['capath'] = true;
         $this->capath = $value;
@@ -306,7 +303,7 @@ class ScopedClientConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function localCert($value): self
+    public function localCert($value): static
     {
         $this->_usedProperties['localCert'] = true;
         $this->localCert = $value;
@@ -320,7 +317,7 @@ class ScopedClientConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function localPk($value): self
+    public function localPk($value): static
     {
         $this->_usedProperties['localPk'] = true;
         $this->localPk = $value;
@@ -334,7 +331,7 @@ class ScopedClientConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function passphrase($value): self
+    public function passphrase($value): static
     {
         $this->_usedProperties['passphrase'] = true;
         $this->passphrase = $value;
@@ -348,7 +345,7 @@ class ScopedClientConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function ciphers($value): self
+    public function ciphers($value): static
     {
         $this->_usedProperties['ciphers'] = true;
         $this->ciphers = $value;
@@ -356,6 +353,9 @@ class ScopedClientConfig
         return $this;
     }
 
+    /**
+     * Associative array: hashing algorithm => hash(es).
+    */
     public function peerFingerprint(array $value = []): \Symfony\Config\Framework\HttpClient\ScopedClientConfig\PeerFingerprintConfig
     {
         if (null === $this->peerFingerprint) {
@@ -369,9 +369,10 @@ class ScopedClientConfig
     }
 
     /**
+     * @default {"enabled":false,"retry_strategy":null,"http_codes":[],"max_retries":3,"delay":1000,"multiplier":2,"max_delay":0,"jitter":0.1}
      * @return \Symfony\Config\Framework\HttpClient\ScopedClientConfig\RetryFailedConfig|$this
      */
-    public function retryFailed($value = [])
+    public function retryFailed(mixed $value = []): \Symfony\Config\Framework\HttpClient\ScopedClientConfig\RetryFailedConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['retryFailed'] = true;

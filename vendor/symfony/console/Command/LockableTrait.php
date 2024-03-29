@@ -24,13 +24,12 @@ use Symfony\Component\Lock\Store\SemaphoreStore;
  */
 trait LockableTrait
 {
-    /** @var LockInterface|null */
-    private $lock;
+    private ?LockInterface $lock = null;
 
     /**
      * Locks a command.
      */
-    private function lock(?string $name = null, bool $blocking = false): bool
+    private function lock(string $name = null, bool $blocking = false): bool
     {
         if (!class_exists(SemaphoreStore::class)) {
             throw new LogicException('To enable the locking feature you must install the symfony/lock component.');

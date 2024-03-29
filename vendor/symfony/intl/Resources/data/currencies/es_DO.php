@@ -3,12 +3,12 @@
 return [
     'Names' => [
         'DOP' => [
-            'RD$',
-            'peso dominicano',
+            0 => 'RD$',
+            1 => 'peso dominicano',
         ],
         'USD' => [
-            'US$',
-            'dólar estadounidense',
+            0 => 'US$',
+            1 => 'dólar estadounidense',
         ],
     ],
 ];

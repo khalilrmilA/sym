@@ -45,7 +45,6 @@ return [
         'bem' => 'bemba',
         'bez' => 'bena',
         'bg' => 'bolqar',
-        'bgc' => 'Haryanvi',
         'bgn' => 'qərbi bəluc',
         'bho' => 'bxoçpuri',
         'bi' => 'bislama',

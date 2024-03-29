@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'STN' => [
-            'Db',
-            'dobra de São Tomé e Príncipe',
+            0 => 'Db',
+            1 => 'dobra de São Tomé e Príncipe',
         ],
     ],
 ];

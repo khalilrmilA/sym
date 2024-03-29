@@ -202,7 +202,7 @@ return [
         'SG' => 'Singapore',
         'SH' => 'Saint Helena',
         'SI' => 'Slovenia',
-        'SJ' => 'Huippuvuoret ja Jan Mayen',
+        'SJ' => 'Svalbard ja Jan Mayen',
         'SK' => 'Slovakia',
         'SL' => 'Sierra Leone',
         'SM' => 'San Marino',

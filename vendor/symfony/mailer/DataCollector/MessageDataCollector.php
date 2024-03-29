@@ -22,7 +22,7 @@ use Symfony\Component\Mailer\EventListener\MessageLoggerListener;
  */
 final class MessageDataCollector extends DataCollector
 {
-    private $events;
+    private MessageEvents $events;
 
     public function __construct(MessageLoggerListener $logger)
     {
@@ -32,7 +32,7 @@ final class MessageDataCollector extends DataCollector
     /**
      * {@inheritdoc}
      */
-    public function collect(Request $request, Response $response, ?\Throwable $exception = null)
+    public function collect(Request $request, Response $response, \Throwable $exception = null)
     {
         $this->data['events'] = $this->events;
     }

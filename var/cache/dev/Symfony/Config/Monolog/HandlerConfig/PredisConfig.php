@@ -19,7 +19,7 @@ class PredisConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function id($value): self
+    public function id($value): static
     {
         $this->_usedProperties['id'] = true;
         $this->id = $value;
@@ -32,7 +32,7 @@ class PredisConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function host($value): self
+    public function host($value): static
     {
         $this->_usedProperties['host'] = true;
         $this->host = $value;

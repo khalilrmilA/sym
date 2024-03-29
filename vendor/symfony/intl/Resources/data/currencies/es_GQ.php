@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'XAF' => [
-            'FCFA',
-            'franco CFA de África Central',
+            0 => 'FCFA',
+            1 => 'franco CFA de África Central',
         ],
     ],
 ];

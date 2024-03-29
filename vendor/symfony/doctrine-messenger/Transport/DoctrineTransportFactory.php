@@ -13,7 +13,6 @@ namespace Symfony\Component\Messenger\Bridge\Doctrine\Transport;
 
 use Doctrine\DBAL\Platforms\PostgreSQLPlatform;
 use Doctrine\Persistence\ConnectionRegistry;
-use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\Messenger\Exception\TransportException;
 use Symfony\Component\Messenger\Transport\Serialization\SerializerInterface;
 use Symfony\Component\Messenger\Transport\TransportFactoryInterface;
@@ -24,20 +23,13 @@ use Symfony\Component\Messenger\Transport\TransportInterface;
  */
 class DoctrineTransportFactory implements TransportFactoryInterface
 {
-    private $registry;
+    private ConnectionRegistry $registry;
 
-    public function __construct($registry)
+    public function __construct(ConnectionRegistry $registry)
     {
-        if (!$registry instanceof RegistryInterface && !$registry instanceof ConnectionRegistry) {
-            throw new \TypeError(sprintf('Expected an instance of "%s" or "%s", but got "%s".', RegistryInterface::class, ConnectionRegistry::class, get_debug_type($registry)));
-        }
-
         $this->registry = $registry;
     }
 
-    /**
-     * @param array $options You can set 'use_notify' to false to not use LISTEN/NOTIFY with postgresql
-     */
     public function createTransport(string $dsn, array $options, SerializerInterface $serializer): TransportInterface
     {
         $useNotify = ($options['use_notify'] ?? true);
@@ -48,7 +40,7 @@ class DoctrineTransportFactory implements TransportFactoryInterface
         try {
             $driverConnection = $this->registry->getConnection($configuration['connection']);
         } catch (\InvalidArgumentException $e) {
-            throw new TransportException('Could not find Doctrine connection from Messenger DSN.', 0, $e);
+            throw new TransportException(sprintf('Could not find Doctrine connection from Messenger DSN "%s".', $dsn), 0, $e);
         }
 
         if ($useNotify && $driverConnection->getDatabasePlatform() instanceof PostgreSQLPlatform) {
@@ -62,10 +54,6 @@ class DoctrineTransportFactory implements TransportFactoryInterface
 
     public function supports(string $dsn, array $options): bool
     {
-        return 0 === strpos($dsn, 'doctrine://');
+        return str_starts_with($dsn, 'doctrine://');
     }
-}
-
-if (!class_exists(\Symfony\Component\Messenger\Transport\Doctrine\DoctrineTransportFactory::class, false)) {
-    class_alias(DoctrineTransportFactory::class, \Symfony\Component\Messenger\Transport\Doctrine\DoctrineTransportFactory::class);
 }

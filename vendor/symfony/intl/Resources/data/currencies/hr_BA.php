@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'BAM' => [
-            'KM',
-            'konvertibilna marka',
+            0 => 'KM',
+            1 => 'konvertibilna marka',
         ],
     ],
 ];

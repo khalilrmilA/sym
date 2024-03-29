@@ -14,10 +14,11 @@ class AutoMappingConfig
     private $_usedProperties = [];
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
+     *
      * @return $this
      */
-    public function services($value): self
+    public function services(ParamConfigurator|array $value): static
     {
         $this->_usedProperties['services'] = true;
         $this->services = $value;

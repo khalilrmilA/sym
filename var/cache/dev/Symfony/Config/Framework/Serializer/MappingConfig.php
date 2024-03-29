@@ -14,10 +14,11 @@ class MappingConfig
     private $_usedProperties = [];
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
+     *
      * @return $this
      */
-    public function paths($value): self
+    public function paths(ParamConfigurator|array $value): static
     {
         $this->_usedProperties['paths'] = true;
         $this->paths = $value;

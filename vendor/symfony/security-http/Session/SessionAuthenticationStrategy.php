@@ -31,10 +31,10 @@ class SessionAuthenticationStrategy implements SessionAuthenticationStrategyInte
     public const MIGRATE = 'migrate';
     public const INVALIDATE = 'invalidate';
 
-    private $strategy;
-    private $csrfTokenStorage = null;
+    private string $strategy;
+    private ?ClearableTokenStorageInterface $csrfTokenStorage = null;
 
-    public function __construct(string $strategy, ?ClearableTokenStorageInterface $csrfTokenStorage = null)
+    public function __construct(string $strategy, ClearableTokenStorageInterface $csrfTokenStorage = null)
     {
         $this->strategy = $strategy;
 

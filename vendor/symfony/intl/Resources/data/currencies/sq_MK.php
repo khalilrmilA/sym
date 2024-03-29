@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'MKD' => [
-            'den',
-            'Denari maqedonas',
+            0 => 'den',
+            1 => 'Denari maqedonas',
         ],
     ],
 ];

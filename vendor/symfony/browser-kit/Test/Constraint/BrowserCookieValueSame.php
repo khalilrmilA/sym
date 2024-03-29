@@ -16,13 +16,13 @@ use Symfony\Component\BrowserKit\AbstractBrowser;
 
 final class BrowserCookieValueSame extends Constraint
 {
-    private $name;
-    private $value;
-    private $raw;
-    private $path;
-    private $domain;
+    private string $name;
+    private string $value;
+    private bool $raw;
+    private string $path;
+    private ?string $domain;
 
-    public function __construct(string $name, string $value, bool $raw = false, string $path = '/', ?string $domain = null)
+    public function __construct(string $name, string $value, bool $raw = false, string $path = '/', string $domain = null)
     {
         $this->name = $name;
         $this->path = $path;

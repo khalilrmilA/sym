@@ -3,28 +3,28 @@
 return [
     'Names' => [
         'CRC' => [
-            'CRC',
-            'Costa Rican colon',
+            0 => 'CRC',
+            1 => 'Costa Rican colon',
         ],
         'ISK' => [
-            'ISK',
-            'Icelandic krona',
+            0 => 'ISK',
+            1 => 'Icelandic krona',
         ],
         'NIO' => [
-            'NIO',
-            'Nicaraguan cordoba',
+            0 => 'NIO',
+            1 => 'Nicaraguan cordoba',
         ],
         'RUB' => [
-            'RUB',
-            'Russian ruble',
+            0 => 'RUB',
+            1 => 'Russian ruble',
         ],
         'STN' => [
-            'STN',
-            'Sao Tome & Principe Dobra',
+            0 => 'STN',
+            1 => 'Sao Tome & Principe Dobra',
         ],
         'VES' => [
-            'VES',
-            'Venezuelan bolivar',
+            0 => 'VES',
+            1 => 'Venezuelan bolivar',
         ],
     ],
 ];

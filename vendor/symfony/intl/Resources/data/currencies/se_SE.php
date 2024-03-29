@@ -3,12 +3,12 @@
 return [
     'Names' => [
         'NOK' => [
-            'Nkr',
-            'norgga kruvdno',
+            0 => 'Nkr',
+            1 => 'norgga kruvdno',
         ],
         'SEK' => [
-            'kr',
-            'ruoŧŧa kruvdno',
+            0 => 'kr',
+            1 => 'ruoŧŧa kruvdno',
         ],
     ],
 ];

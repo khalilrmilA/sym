@@ -96,7 +96,7 @@ class LanguageDataGenerator extends AbstractDataGenerator
      *
      * @var string[]
      */
-    private $languageCodes = [];
+    private array $languageCodes = [];
 
     /**
      * {@inheritdoc}
@@ -243,7 +243,7 @@ class LanguageDataGenerator extends AbstractDataGenerator
 
         foreach ($metadataBundle['alias']['language'] as $alias => $data) {
             $language = $data['replacement'];
-            if (2 === \strlen($language) && 3 === \strlen($alias) && \in_array($data['reason'], ['overlong', 'bibliographic'], true)) {
+            if (2 === \strlen($language) && 3 === \strlen($alias) && 'overlong' === $data['reason']) {
                 $alpha3ToAlpha2[$alias] = $language;
             }
         }

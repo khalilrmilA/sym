@@ -6,5 +6,6 @@ return [
         'ps' => 'پشتو',
         'uz' => 'اوزبیک',
     ],
-    'LocalizedNames' => [],
+    'LocalizedNames' => [
+    ],
 ];

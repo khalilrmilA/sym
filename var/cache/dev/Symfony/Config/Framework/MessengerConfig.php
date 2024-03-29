@@ -30,7 +30,7 @@ class MessengerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): self
+    public function enabled($value): static
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -41,7 +41,7 @@ class MessengerConfig
     /**
      * @return \Symfony\Config\Framework\Messenger\RoutingConfig|$this
      */
-    public function routing(string $message_class, $value = [])
+    public function routing(string $message_class, mixed $value = []): \Symfony\Config\Framework\Messenger\RoutingConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['routing'] = true;
@@ -60,6 +60,9 @@ class MessengerConfig
         return $this->routing[$message_class];
     }
 
+    /**
+     * @default {"default_serializer":"messenger.transport.native_php_serializer","symfony_serializer":{"format":"json","context":[]}}
+    */
     public function serializer(array $value = []): \Symfony\Config\Framework\Messenger\SerializerConfig
     {
         if (null === $this->serializer) {
@@ -75,7 +78,7 @@ class MessengerConfig
     /**
      * @return \Symfony\Config\Framework\Messenger\TransportConfig|$this
      */
-    public function transport(string $name, $value = [])
+    public function transport(string $name, mixed $value = []): \Symfony\Config\Framework\Messenger\TransportConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['transports'] = true;
@@ -100,7 +103,7 @@ class MessengerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function failureTransport($value): self
+    public function failureTransport($value): static
     {
         $this->_usedProperties['failureTransport'] = true;
         $this->failureTransport = $value;
@@ -110,11 +113,12 @@ class MessengerConfig
 
     /**
      * Reset container services after each message.
-     * @default null
+     * @default true
      * @param ParamConfigurator|bool $value
+     * @deprecated Option "reset_on_message" at "messenger" is deprecated. It does nothing and will be removed in version 7.0.
      * @return $this
      */
-    public function resetOnMessage($value): self
+    public function resetOnMessage($value): static
     {
         $this->_usedProperties['resetOnMessage'] = true;
         $this->resetOnMessage = $value;
@@ -127,7 +131,7 @@ class MessengerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function defaultBus($value): self
+    public function defaultBus($value): static
     {
         $this->_usedProperties['defaultBus'] = true;
         $this->defaultBus = $value;
@@ -135,6 +139,9 @@ class MessengerConfig
         return $this;
     }
 
+    /**
+     * @default {"messenger.bus.default":{"default_middleware":true,"middleware":[]}}
+    */
     public function bus(string $name, array $value = []): \Symfony\Config\Framework\Messenger\BusConfig
     {
         if (!isset($this->buses[$name])) {

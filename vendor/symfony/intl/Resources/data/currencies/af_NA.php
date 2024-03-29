@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'NAD' => [
-            '$',
-            'Namibiese dollar',
+            0 => '$',
+            1 => 'Namibiese dollar',
         ],
     ],
 ];

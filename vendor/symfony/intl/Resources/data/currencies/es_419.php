@@ -3,48 +3,48 @@
 return [
     'Names' => [
         'ANG' => [
-            'ANG',
-            'florín de las Antillas Neerlandesas',
+            0 => 'ANG',
+            1 => 'florín de las Antillas Neerlandesas',
         ],
         'BMD' => [
-            'BMD',
-            'dólar de Bermudas',
+            0 => 'BMD',
+            1 => 'dólar de Bermudas',
         ],
         'EUR' => [
-            'EUR',
-            'euro',
+            0 => 'EUR',
+            1 => 'euro',
         ],
         'HTG' => [
-            'HTG',
-            'gourde haitiano',
+            0 => 'HTG',
+            1 => 'gourde haitiano',
         ],
         'KZT' => [
-            'KZT',
-            'tenge kazajo',
+            0 => 'KZT',
+            1 => 'tenge kazajo',
         ],
         'MWK' => [
-            'MWK',
-            'kwacha malauí',
+            0 => 'MWK',
+            1 => 'kwacha malauí',
         ],
         'NIO' => [
-            'NIO',
-            'córdoba nicaragüense',
+            0 => 'NIO',
+            1 => 'córdoba nicaragüense',
         ],
         'THB' => [
-            'THB',
-            'baht tailandes',
+            0 => 'THB',
+            1 => 'baht tailandes',
         ],
         'USD' => [
-            'USD',
-            'dólar estadounidense',
+            0 => 'USD',
+            1 => 'dólar estadounidense',
         ],
         'UZS' => [
-            'UZS',
-            'som uzbeko',
+            0 => 'UZS',
+            1 => 'som uzbeko',
         ],
         'VND' => [
-            'VND',
-            'dong',
+            0 => 'VND',
+            1 => 'dong',
         ],
     ],
 ];

@@ -110,7 +110,7 @@ return static function (ContainerConfigurator $container) {
         ->set('url_helper', UrlHelper::class)
             ->args([
                 service('request_stack'),
-                service('router')->ignoreOnInvalid(),
+                service('router.request_context')->ignoreOnInvalid(),
             ])
         ->alias(UrlHelper::class, 'url_helper')
 
@@ -124,11 +124,9 @@ return static function (ContainerConfigurator $container) {
             ->tag('container.no_preload')
 
         ->set('cache_clearer', ChainCacheClearer::class)
-            ->public()
             ->args([
                 tagged_iterator('kernel.cache_clearer'),
             ])
-            ->tag('container.private', ['package' => 'symfony/framework-bundle', 'version' => '5.2'])
 
         ->set('kernel')
             ->synthetic()
@@ -136,8 +134,6 @@ return static function (ContainerConfigurator $container) {
         ->alias(KernelInterface::class, 'kernel')
 
         ->set('filesystem', Filesystem::class)
-            ->public()
-            ->tag('container.private', ['package' => 'symfony/framework-bundle', 'version' => '5.2'])
         ->alias(Filesystem::class, 'filesystem')
 
         ->set('file_locator', FileLocator::class)
@@ -203,6 +199,14 @@ return static function (ContainerConfigurator $container) {
                 [service('service_container'), 'getEnv'],
             ])
             ->tag('routing.expression_language_function', ['function' => 'env'])
+
+        ->set('container.get_routing_condition_service', \Closure::class)
+            ->public()
+            ->factory([\Closure::class, 'fromCallable'])
+            ->args([
+                [tagged_locator('routing.condition_service', 'alias'), 'get'],
+            ])
+            ->tag('routing.expression_language_function', ['function' => 'service'])
 
         // inherit from this service to lazily access env vars
         ->set('container.env', LazyString::class)

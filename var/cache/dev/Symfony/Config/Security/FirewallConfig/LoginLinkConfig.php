@@ -35,7 +35,7 @@ class LoginLinkConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function checkRoute($value): self
+    public function checkRoute($value): static
     {
         $this->_usedProperties['checkRoute'] = true;
         $this->checkRoute = $value;
@@ -49,7 +49,7 @@ class LoginLinkConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function checkPostOnly($value): self
+    public function checkPostOnly($value): static
     {
         $this->_usedProperties['checkPostOnly'] = true;
         $this->checkPostOnly = $value;
@@ -58,10 +58,11 @@ class LoginLinkConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
+     *
      * @return $this
      */
-    public function signatureProperties($value): self
+    public function signatureProperties(ParamConfigurator|array $value): static
     {
         $this->_usedProperties['signatureProperties'] = true;
         $this->signatureProperties = $value;
@@ -75,7 +76,7 @@ class LoginLinkConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function lifetime($value): self
+    public function lifetime($value): static
     {
         $this->_usedProperties['lifetime'] = true;
         $this->lifetime = $value;
@@ -89,7 +90,7 @@ class LoginLinkConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function maxUses($value): self
+    public function maxUses($value): static
     {
         $this->_usedProperties['maxUses'] = true;
         $this->maxUses = $value;
@@ -103,7 +104,7 @@ class LoginLinkConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function usedLinkCache($value): self
+    public function usedLinkCache($value): static
     {
         $this->_usedProperties['usedLinkCache'] = true;
         $this->usedLinkCache = $value;
@@ -117,7 +118,7 @@ class LoginLinkConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function successHandler($value): self
+    public function successHandler($value): static
     {
         $this->_usedProperties['successHandler'] = true;
         $this->successHandler = $value;
@@ -131,7 +132,7 @@ class LoginLinkConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function failureHandler($value): self
+    public function failureHandler($value): static
     {
         $this->_usedProperties['failureHandler'] = true;
         $this->failureHandler = $value;
@@ -145,7 +146,7 @@ class LoginLinkConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function provider($value): self
+    public function provider($value): static
     {
         $this->_usedProperties['provider'] = true;
         $this->provider = $value;
@@ -158,7 +159,7 @@ class LoginLinkConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function alwaysUseDefaultTargetPath($value): self
+    public function alwaysUseDefaultTargetPath($value): static
     {
         $this->_usedProperties['alwaysUseDefaultTargetPath'] = true;
         $this->alwaysUseDefaultTargetPath = $value;
@@ -171,7 +172,7 @@ class LoginLinkConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function defaultTargetPath($value): self
+    public function defaultTargetPath($value): static
     {
         $this->_usedProperties['defaultTargetPath'] = true;
         $this->defaultTargetPath = $value;
@@ -184,7 +185,7 @@ class LoginLinkConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function loginPath($value): self
+    public function loginPath($value): static
     {
         $this->_usedProperties['loginPath'] = true;
         $this->loginPath = $value;
@@ -197,7 +198,7 @@ class LoginLinkConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function targetPathParameter($value): self
+    public function targetPathParameter($value): static
     {
         $this->_usedProperties['targetPathParameter'] = true;
         $this->targetPathParameter = $value;
@@ -210,7 +211,7 @@ class LoginLinkConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function useReferer($value): self
+    public function useReferer($value): static
     {
         $this->_usedProperties['useReferer'] = true;
         $this->useReferer = $value;
@@ -223,7 +224,7 @@ class LoginLinkConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function failurePath($value): self
+    public function failurePath($value): static
     {
         $this->_usedProperties['failurePath'] = true;
         $this->failurePath = $value;
@@ -236,7 +237,7 @@ class LoginLinkConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function failureForward($value): self
+    public function failureForward($value): static
     {
         $this->_usedProperties['failureForward'] = true;
         $this->failureForward = $value;
@@ -249,7 +250,7 @@ class LoginLinkConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function failurePathParameter($value): self
+    public function failurePathParameter($value): static
     {
         $this->_usedProperties['failurePathParameter'] = true;
         $this->failurePathParameter = $value;

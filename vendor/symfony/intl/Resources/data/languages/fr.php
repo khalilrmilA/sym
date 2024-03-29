@@ -61,7 +61,6 @@ return [
         'bfd' => 'bafut',
         'bfq' => 'badaga',
         'bg' => 'bulgare',
-        'bgc' => 'haryanvi',
         'bgn' => 'baloutchi occidental',
         'bho' => 'bhodjpouri',
         'bi' => 'bichelamar',

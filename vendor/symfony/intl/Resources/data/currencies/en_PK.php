@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'PKR' => [
-            'Rs',
-            'Pakistani Rupee',
+            0 => 'Rs',
+            1 => 'Pakistani Rupee',
         ],
     ],
 ];

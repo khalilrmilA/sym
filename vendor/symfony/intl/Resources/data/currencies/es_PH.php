@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'PHP' => [
-            '₱',
-            'peso filipino',
+            0 => '₱',
+            1 => 'peso filipino',
         ],
     ],
 ];

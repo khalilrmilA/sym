@@ -11,7 +11,6 @@ use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 class SessionConfig 
 {
     private $enabled;
-    private $storageId;
     private $storageFactoryId;
     private $handlerId;
     private $name;
@@ -36,7 +35,7 @@ class SessionConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): self
+    public function enabled($value): static
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -45,24 +44,11 @@ class SessionConfig
     }
 
     /**
-     * @default 'session.storage.native'
+     * @default 'session.storage.factory.native'
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function storageId($value): self
-    {
-        $this->_usedProperties['storageId'] = true;
-        $this->storageId = $value;
-
-        return $this;
-    }
-
-    /**
-     * @default null
-     * @param ParamConfigurator|mixed $value
-     * @return $this
-     */
-    public function storageFactoryId($value): self
+    public function storageFactoryId($value): static
     {
         $this->_usedProperties['storageFactoryId'] = true;
         $this->storageFactoryId = $value;
@@ -75,7 +61,7 @@ class SessionConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function handlerId($value): self
+    public function handlerId($value): static
     {
         $this->_usedProperties['handlerId'] = true;
         $this->handlerId = $value;
@@ -88,7 +74,7 @@ class SessionConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function name($value): self
+    public function name($value): static
     {
         $this->_usedProperties['name'] = true;
         $this->name = $value;
@@ -101,7 +87,7 @@ class SessionConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function cookieLifetime($value): self
+    public function cookieLifetime($value): static
     {
         $this->_usedProperties['cookieLifetime'] = true;
         $this->cookieLifetime = $value;
@@ -114,7 +100,7 @@ class SessionConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function cookiePath($value): self
+    public function cookiePath($value): static
     {
         $this->_usedProperties['cookiePath'] = true;
         $this->cookiePath = $value;
@@ -127,7 +113,7 @@ class SessionConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function cookieDomain($value): self
+    public function cookieDomain($value): static
     {
         $this->_usedProperties['cookieDomain'] = true;
         $this->cookieDomain = $value;
@@ -140,7 +126,7 @@ class SessionConfig
      * @param ParamConfigurator|true|false|'auto' $value
      * @return $this
      */
-    public function cookieSecure($value): self
+    public function cookieSecure($value): static
     {
         $this->_usedProperties['cookieSecure'] = true;
         $this->cookieSecure = $value;
@@ -153,7 +139,7 @@ class SessionConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function cookieHttponly($value): self
+    public function cookieHttponly($value): static
     {
         $this->_usedProperties['cookieHttponly'] = true;
         $this->cookieHttponly = $value;
@@ -166,7 +152,7 @@ class SessionConfig
      * @param ParamConfigurator|NULL|'lax'|'strict'|'none' $value
      * @return $this
      */
-    public function cookieSamesite($value): self
+    public function cookieSamesite($value): static
     {
         $this->_usedProperties['cookieSamesite'] = true;
         $this->cookieSamesite = $value;
@@ -179,7 +165,7 @@ class SessionConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function useCookies($value): self
+    public function useCookies($value): static
     {
         $this->_usedProperties['useCookies'] = true;
         $this->useCookies = $value;
@@ -192,7 +178,7 @@ class SessionConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function gcDivisor($value): self
+    public function gcDivisor($value): static
     {
         $this->_usedProperties['gcDivisor'] = true;
         $this->gcDivisor = $value;
@@ -205,7 +191,7 @@ class SessionConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function gcProbability($value): self
+    public function gcProbability($value): static
     {
         $this->_usedProperties['gcProbability'] = true;
         $this->gcProbability = $value;
@@ -218,7 +204,7 @@ class SessionConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function gcMaxlifetime($value): self
+    public function gcMaxlifetime($value): static
     {
         $this->_usedProperties['gcMaxlifetime'] = true;
         $this->gcMaxlifetime = $value;
@@ -231,7 +217,7 @@ class SessionConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function savePath($value): self
+    public function savePath($value): static
     {
         $this->_usedProperties['savePath'] = true;
         $this->savePath = $value;
@@ -245,7 +231,7 @@ class SessionConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function metadataUpdateThreshold($value): self
+    public function metadataUpdateThreshold($value): static
     {
         $this->_usedProperties['metadataUpdateThreshold'] = true;
         $this->metadataUpdateThreshold = $value;
@@ -258,7 +244,7 @@ class SessionConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function sidLength($value): self
+    public function sidLength($value): static
     {
         $this->_usedProperties['sidLength'] = true;
         $this->sidLength = $value;
@@ -271,7 +257,7 @@ class SessionConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function sidBitsPerCharacter($value): self
+    public function sidBitsPerCharacter($value): static
     {
         $this->_usedProperties['sidBitsPerCharacter'] = true;
         $this->sidBitsPerCharacter = $value;
@@ -285,12 +271,6 @@ class SessionConfig
             $this->_usedProperties['enabled'] = true;
             $this->enabled = $value['enabled'];
             unset($value['enabled']);
-        }
-
-        if (array_key_exists('storage_id', $value)) {
-            $this->_usedProperties['storageId'] = true;
-            $this->storageId = $value['storage_id'];
-            unset($value['storage_id']);
         }
 
         if (array_key_exists('storage_factory_id', $value)) {
@@ -405,9 +385,6 @@ class SessionConfig
         $output = [];
         if (isset($this->_usedProperties['enabled'])) {
             $output['enabled'] = $this->enabled;
-        }
-        if (isset($this->_usedProperties['storageId'])) {
-            $output['storage_id'] = $this->storageId;
         }
         if (isset($this->_usedProperties['storageFactoryId'])) {
             $output['storage_factory_id'] = $this->storageFactoryId;

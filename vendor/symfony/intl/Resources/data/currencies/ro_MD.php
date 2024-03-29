@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'MDL' => [
-            'L',
-            'leu moldovenesc',
+            0 => 'L',
+            1 => 'leu moldovenesc',
         ],
     ],
 ];

@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'TOP' => [
-            'T$',
-            'Tongan Paʻanga',
+            0 => 'T$',
+            1 => 'Tongan Paʻanga',
         ],
     ],
 ];

@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'GHS' => [
-            'GH₵',
-            'Ghanaian Cedi',
+            0 => 'GH₵',
+            1 => 'Ghanaian Cedi',
         ],
     ],
 ];

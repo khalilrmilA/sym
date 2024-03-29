@@ -15,7 +15,6 @@ use Symfony\Component\Form\Exception\UnexpectedTypeException;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\RequestHandlerInterface;
-use Symfony\Component\Form\Util\FormUtil;
 use Symfony\Component\Form\Util\ServerParams;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -29,9 +28,9 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class HttpFoundationRequestHandler implements RequestHandlerInterface
 {
-    private $serverParams;
+    private ServerParams $serverParams;
 
-    public function __construct(?ServerParams $serverParams = null)
+    public function __construct(ServerParams $serverParams = null)
     {
         $this->serverParams = $serverParams ?? new ServerParams();
     }
@@ -39,10 +38,10 @@ class HttpFoundationRequestHandler implements RequestHandlerInterface
     /**
      * {@inheritdoc}
      */
-    public function handleRequest(FormInterface $form, $request = null)
+    public function handleRequest(FormInterface $form, mixed $request = null)
     {
         if (!$request instanceof Request) {
-            throw new UnexpectedTypeException($request, 'Symfony\Component\HttpFoundation\Request');
+            throw new UnexpectedTypeException($request, Request::class);
         }
 
         $name = $form->getName();
@@ -96,7 +95,7 @@ class HttpFoundationRequestHandler implements RequestHandlerInterface
             }
 
             if (\is_array($params) && \is_array($files)) {
-                $data = FormUtil::mergeParamsAndFiles($params, $files);
+                $data = array_replace_recursive($params, $files);
             } else {
                 $data = $params ?: $files;
             }
@@ -113,15 +112,12 @@ class HttpFoundationRequestHandler implements RequestHandlerInterface
     /**
      * {@inheritdoc}
      */
-    public function isFileUpload($data)
+    public function isFileUpload(mixed $data): bool
     {
         return $data instanceof File;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getUploadFileError($data)
+    public function getUploadFileError(mixed $data): ?int
     {
         if (!$data instanceof UploadedFile || $data->isValid()) {
             return null;

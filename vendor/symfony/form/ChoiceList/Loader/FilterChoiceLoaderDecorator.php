@@ -18,13 +18,13 @@ namespace Symfony\Component\Form\ChoiceList\Loader;
  */
 class FilterChoiceLoaderDecorator extends AbstractChoiceLoader
 {
-    private $decoratedLoader;
-    private $filter;
+    private ChoiceLoaderInterface $decoratedLoader;
+    private \Closure $filter;
 
     public function __construct(ChoiceLoaderInterface $loader, callable $filter)
     {
         $this->decoratedLoader = $loader;
-        $this->filter = $filter;
+        $this->filter = $filter(...);
     }
 
     protected function loadChoices(): iterable
@@ -55,7 +55,7 @@ class FilterChoiceLoaderDecorator extends AbstractChoiceLoader
     /**
      * {@inheritdoc}
      */
-    public function loadChoicesForValues(array $values, ?callable $value = null): array
+    public function loadChoicesForValues(array $values, callable $value = null): array
     {
         return array_filter($this->decoratedLoader->loadChoicesForValues($values, $value), $this->filter);
     }
@@ -63,7 +63,7 @@ class FilterChoiceLoaderDecorator extends AbstractChoiceLoader
     /**
      * {@inheritdoc}
      */
-    public function loadValuesForChoices(array $choices, ?callable $value = null): array
+    public function loadValuesForChoices(array $choices, callable $value = null): array
     {
         return $this->decoratedLoader->loadValuesForChoices(array_filter($choices, $this->filter), $value);
     }

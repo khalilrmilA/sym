@@ -14,16 +14,18 @@ namespace Symfony\Bridge\Doctrine\Middleware\Debug;
 use Doctrine\DBAL\Driver\Connection as ConnectionInterface;
 use Doctrine\DBAL\Driver\Middleware\AbstractConnectionMiddleware;
 use Doctrine\DBAL\Driver\Result;
+use Doctrine\DBAL\Driver\Statement as DriverStatement;
 use Symfony\Component\Stopwatch\Stopwatch;
 
 /**
  * @author Laurent VOULLEMIER <laurent.voullemier@gmail.com>
- * @author Alexander M. Turek <me@derrabus.de>
  *
  * @internal
  */
 final class Connection extends AbstractConnectionMiddleware
 {
+    private int $nestingLevel = 0;
+
     public function __construct(
         ConnectionInterface $connection,
         private DebugDataHolder $debugDataHolder,
@@ -33,14 +35,13 @@ final class Connection extends AbstractConnectionMiddleware
         parent::__construct($connection);
     }
 
-    public function prepare(string $sql): Statement
+    public function prepare(string $sql): DriverStatement
     {
         return new Statement(
             parent::prepare($sql),
             $this->debugDataHolder,
             $this->connectionName,
             $sql,
-            $this->stopwatch,
         );
     }
 
@@ -52,11 +53,13 @@ final class Connection extends AbstractConnectionMiddleware
         $query->start();
 
         try {
-            return parent::query($sql);
+            $result = parent::query($sql);
         } finally {
             $query->stop();
             $this->stopwatch?->stop('doctrine');
         }
+
+        return $result;
     }
 
     public function exec(string $sql): int
@@ -76,51 +79,63 @@ final class Connection extends AbstractConnectionMiddleware
         return $affectedRows;
     }
 
-    public function beginTransaction(): void
+    public function beginTransaction(): bool
     {
-        $query = new Query('"START TRANSACTION"');
-        $this->debugDataHolder->addQuery($this->connectionName, $query);
+        $query = null;
+        if (1 === ++$this->nestingLevel) {
+            $this->debugDataHolder->addQuery($this->connectionName, $query = new Query('"START TRANSACTION"'));
+        }
 
         $this->stopwatch?->start('doctrine', 'doctrine');
-        $query->start();
+        $query?->start();
 
         try {
-            parent::beginTransaction();
+            $ret = parent::beginTransaction();
         } finally {
-            $query->stop();
+            $query?->stop();
             $this->stopwatch?->stop('doctrine');
         }
+
+        return $ret;
     }
 
-    public function commit(): void
+    public function commit(): bool
     {
-        $query = new Query('"COMMIT"');
-        $this->debugDataHolder->addQuery($this->connectionName, $query);
+        $query = null;
+        if (1 === $this->nestingLevel--) {
+            $this->debugDataHolder->addQuery($this->connectionName, $query = new Query('"COMMIT"'));
+        }
 
         $this->stopwatch?->start('doctrine', 'doctrine');
-        $query->start();
+        $query?->start();
 
         try {
-            parent::commit();
+            $ret = parent::commit();
         } finally {
-            $query->stop();
+            $query?->stop();
             $this->stopwatch?->stop('doctrine');
         }
+
+        return $ret;
     }
 
-    public function rollBack(): void
+    public function rollBack(): bool
     {
-        $query = new Query('"ROLLBACK"');
-        $this->debugDataHolder->addQuery($this->connectionName, $query);
+        $query = null;
+        if (1 === $this->nestingLevel--) {
+            $this->debugDataHolder->addQuery($this->connectionName, $query = new Query('"ROLLBACK"'));
+        }
 
         $this->stopwatch?->start('doctrine', 'doctrine');
-        $query->start();
+        $query?->start();
 
         try {
-            parent::rollBack();
+            $ret = parent::rollBack();
         } finally {
-            $query->stop();
+            $query?->stop();
             $this->stopwatch?->stop('doctrine');
         }
+
+        return $ret;
     }
 }

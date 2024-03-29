@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'SLE' => [
-            'Le',
-            'Sierra Leonean Leone',
+            0 => 'Le',
+            1 => 'Sierra Leonean Leone',
         ],
     ],
 ];

@@ -3,44 +3,44 @@
 return [
     'Names' => [
         'CDF' => [
-            'FC',
-            'Faranga ya Kongo',
+            0 => 'FC',
+            1 => 'Faranga ya Kongo',
         ],
         'CNY' => [
-            'CN¥',
-            'Yuan Renminbi ya China',
+            0 => 'CN¥',
+            1 => 'Yuan Renminbi ya China',
         ],
         'ETB' => [
-            'ETB',
-            'Bir ya Uhabeshi',
+            0 => 'ETB',
+            1 => 'Bir ya Uhabeshi',
         ],
         'JPY' => [
-            'JP¥',
-            'Sarafu ya Kijapani',
+            0 => 'JP¥',
+            1 => 'Sarafu ya Kijapani',
         ],
         'MGA' => [
-            'MGA',
-            'Ariary ya Bukini',
+            0 => 'MGA',
+            1 => 'Ariary ya Bukini',
         ],
         'MRO' => [
-            'MRO',
-            'Ugwiya ya Moritania (1973–2017)',
+            0 => 'MRO',
+            1 => 'Ugwiya ya Moritania (1973–2017)',
         ],
         'MRU' => [
-            'MRU',
-            'Ugwiya ya Moritania',
+            0 => 'MRU',
+            1 => 'Ugwiya ya Moritania',
         ],
         'SCR' => [
-            'SCR',
-            'Rupia ya Shelisheli',
+            0 => 'SCR',
+            1 => 'Rupia ya Shelisheli',
         ],
         'XAF' => [
-            'FCFA',
-            'Faranga CFA BEAC',
+            0 => 'FCFA',
+            1 => 'Faranga CFA BEAC',
         ],
         'XOF' => [
-            'F CFA',
-            'Faranga CFA BCEAO',
+            0 => 'F CFA',
+            1 => 'Faranga CFA BCEAO',
         ],
     ],
 ];

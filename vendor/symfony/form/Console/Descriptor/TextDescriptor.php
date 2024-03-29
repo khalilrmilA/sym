@@ -24,9 +24,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class TextDescriptor extends Descriptor
 {
-    private $fileLinkFormatter;
+    private ?FileLinkFormatter $fileLinkFormatter;
 
-    public function __construct(?FileLinkFormatter $fileLinkFormatter = null)
+    public function __construct(FileLinkFormatter $fileLinkFormatter = null)
     {
         $this->fileLinkFormatter = $fileLinkFormatter;
     }
@@ -45,18 +45,18 @@ class TextDescriptor extends Descriptor
 
         if ($options['service_types']) {
             $this->output->section('Service form types');
-            $this->output->listing(array_map([$this, 'formatClassLink'], $options['service_types']));
+            $this->output->listing(array_map($this->formatClassLink(...), $options['service_types']));
         }
 
         if (!$options['show_deprecated']) {
             if ($options['extensions']) {
                 $this->output->section('Type extensions');
-                $this->output->listing(array_map([$this, 'formatClassLink'], $options['extensions']));
+                $this->output->listing(array_map($this->formatClassLink(...), $options['extensions']));
             }
 
             if ($options['guessers']) {
                 $this->output->section('Type guessers');
-                $this->output->listing(array_map([$this, 'formatClassLink'], $options['guessers']));
+                $this->output->listing(array_map($this->formatClassLink(...), $options['guessers']));
             }
         }
     }
@@ -92,12 +92,12 @@ class TextDescriptor extends Descriptor
 
         if ($this->parents) {
             $this->output->section('Parent types');
-            $this->output->listing(array_map([$this, 'formatClassLink'], $this->parents));
+            $this->output->listing(array_map($this->formatClassLink(...), $this->parents));
         }
 
         if ($this->extensions) {
             $this->output->section('Type extensions');
-            $this->output->listing(array_map([$this, 'formatClassLink'], $this->extensions));
+            $this->output->listing(array_map($this->formatClassLink(...), $this->extensions));
         }
     }
 
@@ -192,7 +192,7 @@ class TextDescriptor extends Descriptor
         return $options;
     }
 
-    private function formatClassLink(string $class, ?string $text = null): string
+    private function formatClassLink(string $class, string $text = null): string
     {
         if (null === $text) {
             $text = $class;
@@ -213,7 +213,7 @@ class TextDescriptor extends Descriptor
 
         try {
             $r = new \ReflectionClass($class);
-        } catch (\ReflectionException $e) {
+        } catch (\ReflectionException) {
             return '';
         }
 

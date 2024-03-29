@@ -33,6 +33,7 @@ return [
         'America/Port_of_Spain' => 'Saa za Atlantiki (Bandari ya Uhispania)',
         'America/Puerto_Rico' => 'Saa za Atlantiki (Pwetoriko)',
         'America/Recife' => 'Saa za Brazili (Recife)',
+        'America/Santa_Isabel' => 'Saa za Kaskazini Magharibi mwa Meksiko (Santa Isabel)',
         'America/Santarem' => 'Saa za Brazili (Santarem)',
         'America/Sao_Paulo' => 'Saa za Brazili (Sao Paulo)',
         'Antarctica/Casey' => 'Saa za Antaktika (Casey)',
@@ -81,5 +82,6 @@ return [
         'Pacific/Noumea' => 'Saa za Kaledonia Mpya (Noumea)',
         'Pacific/Port_Moresby' => 'Saa za Papua (Port Moresby)',
     ],
-    'Meta' => [],
+    'Meta' => [
+    ],
 ];

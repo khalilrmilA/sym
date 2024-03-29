@@ -3,12 +3,12 @@
 return [
     'Names' => [
         'FKP' => [
-            '£',
-            'Falkland Islands Pound',
+            0 => '£',
+            1 => 'Falkland Islands Pound',
         ],
         'GBP' => [
-            'GB£',
-            'British Pound',
+            0 => 'GB£',
+            1 => 'British Pound',
         ],
     ],
 ];

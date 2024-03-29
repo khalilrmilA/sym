@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'GYD' => [
-            '$',
-            'Guyanaese Dollar',
+            0 => '$',
+            1 => 'Guyanaese Dollar',
         ],
     ],
 ];

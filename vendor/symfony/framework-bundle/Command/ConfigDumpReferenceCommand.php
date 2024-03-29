@@ -14,6 +14,7 @@ namespace Symfony\Bundle\FrameworkBundle\Command;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Dumper\XmlReferenceDumper;
 use Symfony\Component\Config\Definition\Dumper\YamlReferenceDumper;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Completion\CompletionInput;
 use Symfony\Component\Console\Completion\CompletionSuggestions;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
@@ -22,6 +23,8 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\Yaml\Yaml;
 
 /**
@@ -33,11 +36,9 @@ use Symfony\Component\Yaml\Yaml;
  *
  * @final
  */
+#[AsCommand(name: 'config:dump-reference', description: 'Dump the default configuration for an extension')]
 class ConfigDumpReferenceCommand extends AbstractConfigCommand
 {
-    protected static $defaultName = 'config:dump-reference';
-    protected static $defaultDescription = 'Dump the default configuration for an extension';
-
     /**
      * {@inheritdoc}
      */
@@ -49,7 +50,6 @@ class ConfigDumpReferenceCommand extends AbstractConfigCommand
                 new InputArgument('path', InputArgument::OPTIONAL, 'The configuration option path'),
                 new InputOption('format', null, InputOption::VALUE_REQUIRED, 'The output format (yaml or xml)', 'yaml'),
             ])
-            ->setDescription(self::$defaultDescription)
             ->setHelp(<<<'EOF'
 The <info>%command.name%</info> command dumps the default configuration for an
 extension/bundle.
@@ -86,7 +86,14 @@ EOF
 
         if (null === $name = $input->getArgument('name')) {
             $this->listBundles($errorIo);
-            $this->listNonBundleExtensions($errorIo);
+
+            $kernel = $this->getApplication()->getKernel();
+            if ($kernel instanceof ExtensionInterface
+                && ($kernel instanceof ConfigurationInterface || $kernel instanceof ConfigurationExtensionInterface)
+                && $kernel->getAlias()
+            ) {
+                $errorIo->table(['Kernel Extension'], [[$kernel->getAlias()]]);
+            }
 
             $errorIo->comment([
                 'Provide the name of a bundle as the first argument of this command to dump its default configuration. (e.g. <comment>config:dump-reference FrameworkBundle</comment>)',
@@ -154,7 +161,6 @@ EOF
     public function complete(CompletionInput $input, CompletionSuggestions $suggestions): void
     {
         if ($input->mustSuggestArgumentValuesFor('name')) {
-            $suggestions->suggestValues($this->getAvailableExtensions());
             $suggestions->suggestValues($this->getAvailableBundles());
         }
 
@@ -163,24 +169,13 @@ EOF
         }
     }
 
-    private function getAvailableExtensions(): array
-    {
-        $kernel = $this->getApplication()->getKernel();
-
-        $extensions = [];
-        foreach ($this->getContainerBuilder($kernel)->getExtensions() as $alias => $extension) {
-            $extensions[] = $alias;
-        }
-
-        return $extensions;
-    }
-
     private function getAvailableBundles(): array
     {
         $bundles = [];
 
         foreach ($this->getApplication()->getKernel()->getBundles() as $bundle) {
             $bundles[] = $bundle->getName();
+            $bundles[] = $bundle->getContainerExtension()->getAlias();
         }
 
         return $bundles;

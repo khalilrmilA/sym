@@ -12,9 +12,11 @@ return [
         'nqo' => 'n’ko',
         'shi' => 'južni šilha',
         'si' => 'sinhalski',
+        'tzm' => 'centralnoatlaski tamašek',
         'xh' => 'isikosa',
         'zgh' => 'standardni marokanski tamašek',
         'zu' => 'isizulu',
     ],
-    'LocalizedNames' => [],
+    'LocalizedNames' => [
+    ],
 ];

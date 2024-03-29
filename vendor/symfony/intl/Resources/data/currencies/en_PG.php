@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'PGK' => [
-            'K',
-            'Papua New Guinean Kina',
+            0 => 'K',
+            1 => 'Papua New Guinean Kina',
         ],
     ],
 ];

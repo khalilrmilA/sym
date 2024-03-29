@@ -22,7 +22,7 @@ class FormConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): self
+    public function enabled($value): static
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -30,6 +30,9 @@ class FormConfig
         return $this;
     }
 
+    /**
+     * @default {"enabled":null,"field_name":"_token"}
+    */
     public function csrfProtection(array $value = []): \Symfony\Config\Framework\Form\CsrfProtectionConfig
     {
         if (null === $this->csrfProtection) {
@@ -43,11 +46,11 @@ class FormConfig
     }
 
     /**
-     * @default true
+     * @default null
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function legacyErrorMessages($value): self
+    public function legacyErrorMessages($value): static
     {
         $this->_usedProperties['legacyErrorMessages'] = true;
         $this->legacyErrorMessages = $value;

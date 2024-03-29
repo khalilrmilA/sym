@@ -29,22 +29,20 @@ use Symfony\Component\VarDumper\Cloner\Stub;
  */
 class DoctrineDataCollector extends DataCollector
 {
-    private $registry;
-    private $connections;
-    private $managers;
-    private $debugDataHolder;
+    private array $connections;
+    private array $managers;
 
     /**
-     * @var DebugStack[]
+     * @var array<string, DebugStack>
      */
-    private $loggers = [];
+    private array $loggers = [];
 
-    public function __construct(ManagerRegistry $registry, ?DebugDataHolder $debugDataHolder = null)
-    {
-        $this->registry = $registry;
+    public function __construct(
+        private ManagerRegistry $registry,
+        private ?DebugDataHolder $debugDataHolder = null,
+    ) {
         $this->connections = $registry->getConnectionNames();
         $this->managers = $registry->getManagerNames();
-        $this->debugDataHolder = $debugDataHolder;
     }
 
     /**
@@ -58,7 +56,7 @@ class DoctrineDataCollector extends DataCollector
     /**
      * {@inheritdoc}
      */
-    public function collect(Request $request, Response $response, ?\Throwable $exception = null)
+    public function collect(Request $request, Response $response, \Throwable $exception = null)
     {
         $this->data = [
             'queries' => $this->collectQueries(),
@@ -137,7 +135,7 @@ class DoctrineDataCollector extends DataCollector
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): string
     {
         return 'db';
     }
@@ -145,7 +143,7 @@ class DoctrineDataCollector extends DataCollector
     /**
      * {@inheritdoc}
      */
-    protected function getCasters()
+    protected function getCasters(): array
     {
         return parent::getCasters() + [
             ObjectParameter::class => static function (ObjectParameter $o, array $a, Stub $s): array {
@@ -236,7 +234,7 @@ class DoctrineDataCollector extends DataCollector
      * indicating if the original value was kept (allowing to use the sanitized
      * value to explain the query).
      */
-    private function sanitizeParam($var, ?\Throwable $error): array
+    private function sanitizeParam(mixed $var, ?\Throwable $error): array
     {
         if (\is_object($var)) {
             return [$o = new ObjectParameter($var, $error), false, $o->isStringable() && !$error];

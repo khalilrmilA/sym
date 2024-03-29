@@ -3,7 +3,6 @@
 return [
     'Names' => [
         'af' => 'Afreeki',
-        'bgc' => 'Hariyaanvi',
         'bn' => 'Bangla',
         'bo' => 'Tibbati',
         'ckb' => 'Kurdish, Sorani',
@@ -11,7 +10,6 @@ return [
         'fa' => 'Faarsi',
         'ff' => 'Fulah',
         'lah' => 'Lahnda',
-        'mic' => 'Mi\'kmaq',
         'mus' => 'Muscogee',
         'nan' => 'Min Nan',
         'nb' => 'Norwegian Bokmal',

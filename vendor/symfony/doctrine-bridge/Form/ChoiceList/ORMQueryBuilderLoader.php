@@ -11,7 +11,6 @@
 
 namespace Symfony\Bridge\Doctrine\Form\ChoiceList;
 
-use Doctrine\DBAL\ArrayParameterType;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
@@ -31,10 +30,8 @@ class ORMQueryBuilderLoader implements EntityLoaderInterface
      * entities.
      *
      * This property should only be accessed through queryBuilder.
-     *
-     * @var QueryBuilder
      */
-    private $queryBuilder;
+    private QueryBuilder $queryBuilder;
 
     public function __construct(QueryBuilder $queryBuilder)
     {
@@ -44,7 +41,7 @@ class ORMQueryBuilderLoader implements EntityLoaderInterface
     /**
      * {@inheritdoc}
      */
-    public function getEntities()
+    public function getEntities(): array
     {
         return $this->queryBuilder->getQuery()->execute();
     }
@@ -52,7 +49,7 @@ class ORMQueryBuilderLoader implements EntityLoaderInterface
     /**
      * {@inheritdoc}
      */
-    public function getEntitiesByIds(string $identifier, array $values)
+    public function getEntitiesByIds(string $identifier, array $values): array
     {
         if (null !== $this->queryBuilder->getMaxResults() || 0 < (int) $this->queryBuilder->getFirstResult()) {
             // an offset or a limit would apply on results including the where clause with submitted id values
@@ -79,7 +76,7 @@ class ORMQueryBuilderLoader implements EntityLoaderInterface
         $entity = current($qb->getRootEntities());
         $metadata = $qb->getEntityManager()->getClassMetadata($entity);
         if (\in_array($type = $metadata->getTypeOfField($identifier), ['integer', 'bigint', 'smallint'])) {
-            $parameterType = class_exists(ArrayParameterType::class) ? ArrayParameterType::INTEGER : Connection::PARAM_INT_ARRAY;
+            $parameterType = Connection::PARAM_INT_ARRAY;
 
             // Filter out non-integer values (e.g. ""). If we don't, some
             // databases such as PostgreSQL fail.
@@ -87,7 +84,7 @@ class ORMQueryBuilderLoader implements EntityLoaderInterface
                 return (string) $v === (string) (int) $v || ctype_digit($v);
             }));
         } elseif (\in_array($type, ['ulid', 'uuid', 'guid'])) {
-            $parameterType = class_exists(ArrayParameterType::class) ? ArrayParameterType::STRING : Connection::PARAM_STR_ARRAY;
+            $parameterType = Connection::PARAM_STR_ARRAY;
 
             // Like above, but we just filter out empty strings.
             $values = array_values(array_filter($values, function ($v) {
@@ -108,7 +105,7 @@ class ORMQueryBuilderLoader implements EntityLoaderInterface
                 unset($value);
             }
         } else {
-            $parameterType = class_exists(ArrayParameterType::class) ? ArrayParameterType::STRING : Connection::PARAM_STR_ARRAY;
+            $parameterType = Connection::PARAM_STR_ARRAY;
         }
         if (!$values) {
             return [];

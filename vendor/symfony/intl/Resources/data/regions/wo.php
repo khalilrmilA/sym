@@ -105,6 +105,7 @@ return [
         'IL' => 'Israyel',
         'IM' => 'Dunu Maan',
         'IN' => 'End',
+        'IO' => 'Terituwaaru Brëtaañ ci Oseyaa Enjeŋ',
         'IQ' => 'Irag',
         'IR' => 'Iraŋ',
         'IS' => 'Islànd',

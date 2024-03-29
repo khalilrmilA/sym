@@ -3,60 +3,60 @@
 return [
     'Names' => [
         'BMD' => [
-            'BMD',
-            'Bermudian Dollar',
+            0 => 'BMD',
+            1 => 'Bermudian Dollar',
         ],
         'BYB' => [
-            'BYB',
-            'Belarusian New Rouble (1994–1999)',
+            0 => 'BYB',
+            1 => 'Belarusian New Rouble (1994–1999)',
         ],
         'BYN' => [
-            'BYN',
-            'Belarusian Rouble',
+            0 => 'BYN',
+            1 => 'Belarusian Rouble',
         ],
         'BYR' => [
-            'BYR',
-            'Belarusian Rouble (2000–2016)',
+            0 => 'BYR',
+            1 => 'Belarusian Rouble (2000–2016)',
         ],
         'CAD' => [
-            '$',
-            'Canadian Dollar',
+            0 => '$',
+            1 => 'Canadian Dollar',
         ],
         'JPY' => [
-            'JP¥',
-            'Japanese Yen',
+            0 => 'JP¥',
+            1 => 'Japanese Yen',
         ],
         'LVR' => [
-            'LVR',
-            'Latvian Rouble',
+            0 => 'LVR',
+            1 => 'Latvian Rouble',
         ],
         'RUB' => [
-            'RUB',
-            'Russian Rouble',
+            0 => 'RUB',
+            1 => 'Russian Rouble',
         ],
         'RUR' => [
-            'RUR',
-            'Russian Rouble (1991–1998)',
+            0 => 'RUR',
+            1 => 'Russian Rouble (1991–1998)',
         ],
         'SHP' => [
-            'SHP',
-            'Saint Helena Pound',
+            0 => 'SHP',
+            1 => 'Saint Helena Pound',
         ],
         'STN' => [
-            'STN',
-            'São Tomé and Príncipe Dobra',
+            0 => 'STN',
+            1 => 'São Tomé and Príncipe Dobra',
         ],
         'TJR' => [
-            'TJR',
-            'Tajikistani Rouble',
+            0 => 'TJR',
+            1 => 'Tajikistani Rouble',
         ],
         'TTD' => [
-            'TTD',
-            'Trinidad and Tobago Dollar',
+            0 => 'TTD',
+            1 => 'Trinidad and Tobago Dollar',
         ],
         'USD' => [
-            'US$',
-            'US Dollar',
+            0 => 'US$',
+            1 => 'US Dollar',
         ],
     ],
 ];

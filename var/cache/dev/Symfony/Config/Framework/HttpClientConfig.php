@@ -25,7 +25,7 @@ class HttpClientConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): self
+    public function enabled($value): static
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -39,7 +39,7 @@ class HttpClientConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function maxHostConnections($value): self
+    public function maxHostConnections($value): static
     {
         $this->_usedProperties['maxHostConnections'] = true;
         $this->maxHostConnections = $value;
@@ -65,7 +65,7 @@ class HttpClientConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function mockResponseFactory($value): self
+    public function mockResponseFactory($value): static
     {
         $this->_usedProperties['mockResponseFactory'] = true;
         $this->mockResponseFactory = $value;
@@ -76,7 +76,7 @@ class HttpClientConfig
     /**
      * @return \Symfony\Config\Framework\HttpClient\ScopedClientConfig|$this
      */
-    public function scopedClient(string $name, $value = [])
+    public function scopedClient(string $name, mixed $value = []): \Symfony\Config\Framework\HttpClient\ScopedClientConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['scopedClients'] = true;

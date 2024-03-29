@@ -23,17 +23,14 @@ use Symfony\Component\Security\Core\Security;
  */
 class AuthenticationUtils
 {
-    private $requestStack;
+    private RequestStack $requestStack;
 
     public function __construct(RequestStack $requestStack)
     {
         $this->requestStack = $requestStack;
     }
 
-    /**
-     * @return AuthenticationException|null
-     */
-    public function getLastAuthenticationError(bool $clearSession = true)
+    public function getLastAuthenticationError(bool $clearSession = true): ?AuthenticationException
     {
         $request = $this->getRequest();
         $authenticationException = null;
@@ -51,18 +48,15 @@ class AuthenticationUtils
         return $authenticationException;
     }
 
-    /**
-     * @return string
-     */
-    public function getLastUsername()
+    public function getLastUsername(): string
     {
         $request = $this->getRequest();
 
         if ($request->attributes->has(Security::LAST_USERNAME)) {
-            return $request->attributes->get(Security::LAST_USERNAME) ?? '';
+            return $request->attributes->get(Security::LAST_USERNAME, '');
         }
 
-        return $request->hasSession() ? ($request->getSession()->get(Security::LAST_USERNAME) ?? '') : '';
+        return $request->hasSession() ? $request->getSession()->get(Security::LAST_USERNAME, '') : '';
     }
 
     /**

@@ -19,7 +19,7 @@ return [
         'Africa/Monrovia' => 'Гринвичы рӕстӕмбис рӕстӕг (Monrovia)',
         'Africa/Nouakchott' => 'Гринвичы рӕстӕмбис рӕстӕг (Nouakchott)',
         'Africa/Ouagadougou' => 'Гринвичы рӕстӕмбис рӕстӕг (Ouagadougou)',
-        'Africa/Sao_Tome' => 'Гринвичы рӕстӕмбис рӕстӕг (São Tomé)',
+        'Africa/Sao_Tome' => 'Гринвичы рӕстӕмбис рӕстӕг (Sao Tome)',
         'Africa/Tripoli' => 'Скӕсӕн Европӕйаг рӕстӕг (Tripoli)',
         'Africa/Tunis' => 'Астӕуккаг Европӕйаг рӕстӕг (Tunis)',
         'America/Adak' => 'АИШ рӕстӕг (Adak)',
@@ -154,6 +154,7 @@ return [
         'Europe/Tallinn' => 'Скӕсӕн Европӕйаг рӕстӕг (Tallinn)',
         'Europe/Tirane' => 'Астӕуккаг Европӕйаг рӕстӕг (Tirane)',
         'Europe/Ulyanovsk' => 'Мӕскуыйы рӕстӕг (Ulyanovsk)',
+        'Europe/Uzhgorod' => 'Скӕсӕн Европӕйаг рӕстӕг (Uzhgorod)',
         'Europe/Vaduz' => 'Астӕуккаг Европӕйаг рӕстӕг (Vaduz)',
         'Europe/Vatican' => 'Астӕуккаг Европӕйаг рӕстӕг (Vatican)',
         'Europe/Vienna' => 'Астӕуккаг Европӕйаг рӕстӕг (Vienna)',
@@ -161,8 +162,10 @@ return [
         'Europe/Volgograd' => 'Уӕрӕсе рӕстӕг (Volgograd)',
         'Europe/Warsaw' => 'Астӕуккаг Европӕйаг рӕстӕг (Warsaw)',
         'Europe/Zagreb' => 'Астӕуккаг Европӕйаг рӕстӕг (Zagreb)',
+        'Europe/Zaporozhye' => 'Скӕсӕн Европӕйаг рӕстӕг (Zaporozhye)',
         'Europe/Zurich' => 'Астӕуккаг Европӕйаг рӕстӕг (Zurich)',
         'Pacific/Honolulu' => 'АИШ рӕстӕг (Honolulu)',
     ],
-    'Meta' => [],
+    'Meta' => [
+    ],
 ];

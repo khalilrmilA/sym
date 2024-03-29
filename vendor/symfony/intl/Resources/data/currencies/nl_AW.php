@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'AWG' => [
-            'Afl.',
-            'Arubaanse gulden',
+            0 => 'Afl.',
+            1 => 'Arubaanse gulden',
         ],
     ],
 ];

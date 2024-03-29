@@ -21,9 +21,9 @@ use Symfony\Component\Form\Exception\TransformationFailedException;
  */
 class DateTimeToArrayTransformer extends BaseDateTimeTransformer
 {
-    private $pad;
-    private $fields;
-    private $referenceDate;
+    private bool $pad;
+    private array $fields;
+    private \DateTimeInterface $referenceDate;
 
     /**
      * @param string|null   $inputTimezone  The input timezone
@@ -31,7 +31,7 @@ class DateTimeToArrayTransformer extends BaseDateTimeTransformer
      * @param string[]|null $fields         The date fields
      * @param bool          $pad            Whether to use padding
      */
-    public function __construct(?string $inputTimezone = null, ?string $outputTimezone = null, ?array $fields = null, bool $pad = false, ?\DateTimeInterface $referenceDate = null)
+    public function __construct(string $inputTimezone = null, string $outputTimezone = null, array $fields = null, bool $pad = false, \DateTimeInterface $referenceDate = null)
     {
         parent::__construct($inputTimezone, $outputTimezone);
 
@@ -45,11 +45,9 @@ class DateTimeToArrayTransformer extends BaseDateTimeTransformer
      *
      * @param \DateTimeInterface $dateTime A DateTimeInterface object
      *
-     * @return array
-     *
      * @throws TransformationFailedException If the given value is not a \DateTimeInterface
      */
-    public function transform($dateTime)
+    public function transform(mixed $dateTime): array
     {
         if (null === $dateTime) {
             return array_intersect_key([
@@ -100,12 +98,10 @@ class DateTimeToArrayTransformer extends BaseDateTimeTransformer
      *
      * @param array $value Localized date
      *
-     * @return \DateTime|null
-     *
      * @throws TransformationFailedException If the given value is not an array,
      *                                       if the value could not be transformed
      */
-    public function reverseTransform($value)
+    public function reverseTransform(mixed $value): ?\DateTime
     {
         if (null === $value) {
             return null;

@@ -21,7 +21,7 @@ class SecretsConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): self
+    public function enabled($value): static
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -34,7 +34,7 @@ class SecretsConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function vaultDirectory($value): self
+    public function vaultDirectory($value): static
     {
         $this->_usedProperties['vaultDirectory'] = true;
         $this->vaultDirectory = $value;
@@ -47,7 +47,7 @@ class SecretsConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function localDotenvFile($value): self
+    public function localDotenvFile($value): static
     {
         $this->_usedProperties['localDotenvFile'] = true;
         $this->localDotenvFile = $value;
@@ -60,7 +60,7 @@ class SecretsConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function decryptionEnvVar($value): self
+    public function decryptionEnvVar($value): static
     {
         $this->_usedProperties['decryptionEnvVar'] = true;
         $this->decryptionEnvVar = $value;

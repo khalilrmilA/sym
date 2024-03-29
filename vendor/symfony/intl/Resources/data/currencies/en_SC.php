@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'SCR' => [
-            'SR',
-            'Seychellois Rupee',
+            0 => 'SR',
+            1 => 'Seychellois Rupee',
         ],
     ],
 ];

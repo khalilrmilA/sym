@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'PYG' => [
-            'Gs.',
-            'guaraní paraguayo',
+            0 => 'Gs.',
+            1 => 'guaraní paraguayo',
         ],
     ],
 ];

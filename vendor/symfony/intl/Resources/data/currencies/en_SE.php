@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'SEK' => [
-            'kr',
-            'Swedish Krona',
+            0 => 'kr',
+            1 => 'Swedish Krona',
         ],
     ],
 ];

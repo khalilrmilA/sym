@@ -48,5 +48,6 @@ return [
         'zh' => 'isi-China',
         'zu' => 'isi-Zulu',
     ],
-    'LocalizedNames' => [],
+    'LocalizedNames' => [
+    ],
 ];

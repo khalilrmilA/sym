@@ -3,12 +3,12 @@
 return [
     'Names' => [
         'VEF' => [
-            'Bs.',
-            'bolívar venezolano (2008–2018)',
+            0 => 'Bs.',
+            1 => 'bolívar venezolano (2008–2018)',
         ],
         'VES' => [
-            'Bs.S',
-            'bolívar soberano',
+            0 => 'Bs.S',
+            1 => 'bolívar soberano',
         ],
     ],
 ];

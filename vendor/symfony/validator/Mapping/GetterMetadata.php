@@ -39,7 +39,7 @@ class GetterMetadata extends MemberMetadata
      *
      * @throws ValidatorException
      */
-    public function __construct(string $class, string $property, ?string $method = null)
+    public function __construct(string $class, string $property, string $method = null)
     {
         if (null === $method) {
             $getMethod = 'get'.ucfirst($property);
@@ -65,7 +65,7 @@ class GetterMetadata extends MemberMetadata
     /**
      * {@inheritdoc}
      */
-    public function getPropertyValue($object)
+    public function getPropertyValue(mixed $object): mixed
     {
         return $this->newReflectionMember($object)->invoke($object);
     }
@@ -73,7 +73,7 @@ class GetterMetadata extends MemberMetadata
     /**
      * {@inheritdoc}
      */
-    protected function newReflectionMember($objectOrClassName)
+    protected function newReflectionMember(object|string $objectOrClassName): \ReflectionMethod|\ReflectionProperty
     {
         return new \ReflectionMethod($objectOrClassName, $this->getName());
     }

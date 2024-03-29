@@ -25,7 +25,7 @@ use Twig\TwigFunction;
  */
 final class WorkflowExtension extends AbstractExtension
 {
-    private $workflowRegistry;
+    private Registry $workflowRegistry;
 
     public function __construct(Registry $workflowRegistry)
     {
@@ -38,20 +38,20 @@ final class WorkflowExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('workflow_can', [$this, 'canTransition']),
-            new TwigFunction('workflow_transitions', [$this, 'getEnabledTransitions']),
-            new TwigFunction('workflow_transition', [$this, 'getEnabledTransition']),
-            new TwigFunction('workflow_has_marked_place', [$this, 'hasMarkedPlace']),
-            new TwigFunction('workflow_marked_places', [$this, 'getMarkedPlaces']),
-            new TwigFunction('workflow_metadata', [$this, 'getMetadata']),
-            new TwigFunction('workflow_transition_blockers', [$this, 'buildTransitionBlockerList']),
+            new TwigFunction('workflow_can', $this->canTransition(...)),
+            new TwigFunction('workflow_transitions', $this->getEnabledTransitions(...)),
+            new TwigFunction('workflow_transition', $this->getEnabledTransition(...)),
+            new TwigFunction('workflow_has_marked_place', $this->hasMarkedPlace(...)),
+            new TwigFunction('workflow_marked_places', $this->getMarkedPlaces(...)),
+            new TwigFunction('workflow_metadata', $this->getMetadata(...)),
+            new TwigFunction('workflow_transition_blockers', $this->buildTransitionBlockerList(...)),
         ];
     }
 
     /**
      * Returns true if the transition is enabled.
      */
-    public function canTransition(object $subject, string $transitionName, ?string $name = null): bool
+    public function canTransition(object $subject, string $transitionName, string $name = null): bool
     {
         return $this->workflowRegistry->get($subject, $name)->can($subject, $transitionName);
     }
@@ -61,12 +61,12 @@ final class WorkflowExtension extends AbstractExtension
      *
      * @return Transition[]
      */
-    public function getEnabledTransitions(object $subject, ?string $name = null): array
+    public function getEnabledTransitions(object $subject, string $name = null): array
     {
         return $this->workflowRegistry->get($subject, $name)->getEnabledTransitions($subject);
     }
 
-    public function getEnabledTransition(object $subject, string $transition, ?string $name = null): ?Transition
+    public function getEnabledTransition(object $subject, string $transition, string $name = null): ?Transition
     {
         return $this->workflowRegistry->get($subject, $name)->getEnabledTransition($subject, $transition);
     }
@@ -74,7 +74,7 @@ final class WorkflowExtension extends AbstractExtension
     /**
      * Returns true if the place is marked.
      */
-    public function hasMarkedPlace(object $subject, string $placeName, ?string $name = null): bool
+    public function hasMarkedPlace(object $subject, string $placeName, string $name = null): bool
     {
         return $this->workflowRegistry->get($subject, $name)->getMarking($subject)->has($placeName);
     }
@@ -84,7 +84,7 @@ final class WorkflowExtension extends AbstractExtension
      *
      * @return string[]|int[]
      */
-    public function getMarkedPlaces(object $subject, bool $placesNameOnly = true, ?string $name = null): array
+    public function getMarkedPlaces(object $subject, bool $placesNameOnly = true, string $name = null): array
     {
         $places = $this->workflowRegistry->get($subject, $name)->getMarking($subject)->getPlaces();
 
@@ -102,7 +102,7 @@ final class WorkflowExtension extends AbstractExtension
      *                                                Use a string (the place name) to get place metadata
      *                                                Use a Transition instance to get transition metadata
      */
-    public function getMetadata(object $subject, string $key, $metadataSubject = null, ?string $name = null)
+    public function getMetadata(object $subject, string $key, string|Transition $metadataSubject = null, string $name = null)
     {
         return $this
             ->workflowRegistry
@@ -112,7 +112,7 @@ final class WorkflowExtension extends AbstractExtension
         ;
     }
 
-    public function buildTransitionBlockerList(object $subject, string $transitionName, ?string $name = null): TransitionBlockerList
+    public function buildTransitionBlockerList(object $subject, string $transitionName, string $name = null): TransitionBlockerList
     {
         $workflow = $this->workflowRegistry->get($subject, $name);
 

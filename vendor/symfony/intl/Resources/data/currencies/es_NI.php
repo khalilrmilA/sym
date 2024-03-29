@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'NIO' => [
-            'C$',
-            'córdoba nicaragüense',
+            0 => 'C$',
+            1 => 'córdoba nicaragüense',
         ],
     ],
 ];

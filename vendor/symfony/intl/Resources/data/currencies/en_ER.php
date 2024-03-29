@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'ERN' => [
-            'Nfk',
-            'Eritrean Nakfa',
+            0 => 'Nfk',
+            1 => 'Eritrean Nakfa',
         ],
     ],
 ];

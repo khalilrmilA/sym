@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'DZD' => [
-            'DA',
-            'dinar algérien',
+            0 => 'DA',
+            1 => 'dinar algérien',
         ],
     ],
 ];

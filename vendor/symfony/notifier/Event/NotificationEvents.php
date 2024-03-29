@@ -18,13 +18,13 @@ use Symfony\Component\Notifier\Message\MessageInterface;
  */
 class NotificationEvents
 {
-    private $events = [];
-    private $transports = [];
+    private array $events = [];
+    private array $transports = [];
 
     public function add(MessageEvent $event): void
     {
         $this->events[] = $event;
-        $this->transports[(string) $event->getMessage()->getTransport()] = true;
+        $this->transports[$event->getMessage()->getTransport()] = true;
     }
 
     public function getTransports(): array
@@ -35,7 +35,7 @@ class NotificationEvents
     /**
      * @return MessageEvent[]
      */
-    public function getEvents(?string $name = null): array
+    public function getEvents(string $name = null): array
     {
         if (null === $name) {
             return $this->events;
@@ -43,7 +43,7 @@ class NotificationEvents
 
         $events = [];
         foreach ($this->events as $event) {
-            if ($name === (string) $event->getMessage()->getTransport()) {
+            if ($name === $event->getMessage()->getTransport()) {
                 $events[] = $event;
             }
         }
@@ -54,7 +54,7 @@ class NotificationEvents
     /**
      * @return MessageInterface[]
      */
-    public function getMessages(?string $name = null): array
+    public function getMessages(string $name = null): array
     {
         $events = $this->getEvents($name);
         $messages = [];

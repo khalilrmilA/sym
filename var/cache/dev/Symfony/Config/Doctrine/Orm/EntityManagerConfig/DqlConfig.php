@@ -16,10 +16,9 @@ class DqlConfig
     private $_usedProperties = [];
 
     /**
-     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function stringFunction(string $name, $value): self
+    public function stringFunction(string $name, mixed $value): static
     {
         $this->_usedProperties['stringFunctions'] = true;
         $this->stringFunctions[$name] = $value;
@@ -28,10 +27,9 @@ class DqlConfig
     }
 
     /**
-     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function numericFunction(string $name, $value): self
+    public function numericFunction(string $name, mixed $value): static
     {
         $this->_usedProperties['numericFunctions'] = true;
         $this->numericFunctions[$name] = $value;
@@ -40,10 +38,9 @@ class DqlConfig
     }
 
     /**
-     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function datetimeFunction(string $name, $value): self
+    public function datetimeFunction(string $name, mixed $value): static
     {
         $this->_usedProperties['datetimeFunctions'] = true;
         $this->datetimeFunctions[$name] = $value;

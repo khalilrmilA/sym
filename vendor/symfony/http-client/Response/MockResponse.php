@@ -30,24 +30,24 @@ class MockResponse implements ResponseInterface, StreamableInterface
         doDestruct as public __destruct;
     }
 
-    private $body;
-    private $requestOptions = [];
-    private $requestUrl;
-    private $requestMethod;
+    private string|iterable $body;
+    private array $requestOptions = [];
+    private string $requestUrl;
+    private string $requestMethod;
 
-    private static $mainMulti;
-    private static $idSequence = 0;
+    private static ClientState $mainMulti;
+    private static int $idSequence = 0;
 
     /**
-     * @param string|string[]|iterable $body The response body as a string or an iterable of strings,
-     *                                       yielding an empty string simulates an idle timeout,
-     *                                       throwing an exception yields an ErrorChunk
+     * @param string|iterable<string|\Throwable> $body The response body as a string or an iterable of strings,
+     *                                                 yielding an empty string simulates an idle timeout,
+     *                                                 throwing or yielding an exception yields an ErrorChunk
      *
      * @see ResponseInterface::getInfo() for possible info, e.g. "response_headers"
      */
-    public function __construct($body = '', array $info = [])
+    public function __construct(string|iterable $body = '', array $info = [])
     {
-        $this->body = is_iterable($body) ? $body : (string) $body;
+        $this->body = $body;
         $this->info = $info + ['http_code' => 200] + $this->info;
 
         if (!isset($info['response_headers'])) {
@@ -93,7 +93,7 @@ class MockResponse implements ResponseInterface, StreamableInterface
     /**
      * {@inheritdoc}
      */
-    public function getInfo(?string $type = null)
+    public function getInfo(string $type = null): mixed
     {
         return null !== $type ? $this->info[$type] ?? null : $this->info;
     }
@@ -106,14 +106,10 @@ class MockResponse implements ResponseInterface, StreamableInterface
         $this->info['canceled'] = true;
         $this->info['error'] = 'Response has been canceled.';
         try {
-            $this->body = null;
+            unset($this->body);
         } catch (TransportException $e) {
             // ignore errors when canceling
         }
-
-        $onProgress = $this->requestOptions['on_progress'] ?? static function () {};
-        $dlSize = isset($this->headers['content-encoding']) || 'HEAD' === ($this->info['http_method'] ?? null) || \in_array($this->info['http_code'], [204, 304], true) ? 0 : (int) ($this->headers['content-length'][0] ?? 0);
-        $onProgress($this->offset, $dlSize, $this->info);
     }
 
     /**
@@ -146,6 +142,7 @@ class MockResponse implements ResponseInterface, StreamableInterface
         $response->info['user_data'] = $options['user_data'] ?? null;
         $response->info['max_duration'] = $options['max_duration'] ?? null;
         $response->info['url'] = $url;
+        $response->info['original_url'] = $url;
 
         if ($mock instanceof self) {
             $mock->requestOptions = $response->requestOptions;
@@ -164,7 +161,7 @@ class MockResponse implements ResponseInterface, StreamableInterface
      */
     protected static function schedule(self $response, array &$runningResponses): void
     {
-        if (!$response->id) {
+        if (!isset($response->id)) {
             throw new InvalidArgumentException('MockResponse instances must be issued by MockHttpClient before processing.');
         }
 
@@ -185,7 +182,7 @@ class MockResponse implements ResponseInterface, StreamableInterface
         foreach ($responses as $response) {
             $id = $response->id;
 
-            if (null === $response->body) {
+            if (!isset($response->body)) {
                 // Canceled response
                 $response->body = [];
             } elseif ([] === $response->body) {
@@ -234,7 +231,7 @@ class MockResponse implements ResponseInterface, StreamableInterface
     /**
      * Simulates sending the request.
      */
-    private static function writeRequest(self $response, array $options, ResponseInterface $mock)
+    private static function writeRequest(self $response, array $options, ResponseInterface $mock): void
     {
         $onProgress = $options['on_progress'] ?? static function () {};
         $response->info += $mock->getInfo() ?: [];
@@ -277,7 +274,7 @@ class MockResponse implements ResponseInterface, StreamableInterface
     /**
      * Simulates reading the response.
      */
-    private static function readResponse(self $response, array $options, ResponseInterface $mock, int &$offset)
+    private static function readResponse(self $response, array $options, ResponseInterface $mock, int &$offset): void
     {
         $onProgress = $options['on_progress'] ?? static function () {};
 
@@ -311,6 +308,10 @@ class MockResponse implements ResponseInterface, StreamableInterface
         if (!\is_string($body)) {
             try {
                 foreach ($body as $chunk) {
+                    if ($chunk instanceof \Throwable) {
+                        throw $chunk;
+                    }
+
                     if ('' === $chunk = (string) $chunk) {
                         // simulate an idle timeout
                         $response->body[] = new ErrorChunk($offset, sprintf('Idle timeout reached for "%s".', $response->info['url']));

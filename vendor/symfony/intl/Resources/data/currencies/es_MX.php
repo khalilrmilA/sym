@@ -3,56 +3,56 @@
 return [
     'Names' => [
         'BDT' => [
-            'BDT',
-            'taka bangladesí',
+            0 => 'BDT',
+            1 => 'taka bangladesí',
         ],
         'BTN' => [
-            'BTN',
-            'ngultrum butanés',
+            0 => 'BTN',
+            1 => 'ngultrum butanés',
         ],
         'KGS' => [
-            'KGS',
-            'som kirguís',
+            0 => 'KGS',
+            1 => 'som kirguís',
         ],
         'KHR' => [
-            'KHR',
-            'riel camboyano',
+            0 => 'KHR',
+            1 => 'riel camboyano',
         ],
         'LAK' => [
-            'LAK',
-            'kip laosiano',
+            0 => 'LAK',
+            1 => 'kip laosiano',
         ],
         'MRO' => [
-            'MRU',
-            'uguiya (1973–2017)',
+            0 => 'MRU',
+            1 => 'uguiya (1973–2017)',
         ],
         'MRU' => [
-            'UM',
-            'uguiya',
+            0 => 'UM',
+            1 => 'uguiya',
         ],
         'MVR' => [
-            'MVR',
-            'rupia de Maldivas',
+            0 => 'MVR',
+            1 => 'rupia de Maldivas',
         ],
         'MXN' => [
-            '$',
-            'peso mexicano',
+            0 => '$',
+            1 => 'peso mexicano',
         ],
         'STN' => [
-            'STN',
-            'dobra santotomense',
+            0 => 'STN',
+            1 => 'dobra santotomense',
         ],
         'THB' => [
-            'THB',
-            'baht tailandés',
+            0 => 'THB',
+            1 => 'baht tailandés',
         ],
         'VND' => [
-            'VND',
-            'dong vietnamita',
+            0 => 'VND',
+            1 => 'dong vietnamita',
         ],
         'ZMW' => [
-            'ZMW',
-            'kwacha zambiano',
+            0 => 'ZMW',
+            1 => 'kwacha zambiano',
         ],
     ],
 ];

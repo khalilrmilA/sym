@@ -11,7 +11,6 @@
 
 namespace Symfony\Bridge\Doctrine\Messenger;
 
-use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Exception as DBALException;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Envelope;
@@ -34,28 +33,19 @@ class DoctrinePingConnectionMiddleware extends AbstractDoctrineMiddleware
         return $stack->next()->handle($envelope, $stack);
     }
 
-    private function pingConnection(EntityManagerInterface $entityManager): void
+    private function pingConnection(EntityManagerInterface $entityManager)
     {
         $connection = $entityManager->getConnection();
 
         try {
-            $this->executeDummySql($connection);
-        } catch (DBALException $e) {
+            $connection->executeQuery($connection->getDatabasePlatform()->getDummySelectSQL());
+        } catch (DBALException) {
             $connection->close();
-            // Attempt to reestablish the lazy connection by sending another query.
-            $this->executeDummySql($connection);
+            $connection->connect();
         }
 
         if (!$entityManager->isOpen()) {
             $this->managerRegistry->resetManager($this->entityManagerName);
         }
-    }
-
-    /**
-     * @throws DBALException
-     */
-    private function executeDummySql(Connection $connection): void
-    {
-        $connection->executeQuery($connection->getDatabasePlatform()->getDummySelectSQL());
     }
 }

@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'AOA' => [
-            'Kz',
-            'kwanza angolano',
+            0 => 'Kz',
+            1 => 'kwanza angolano',
         ],
     ],
 ];

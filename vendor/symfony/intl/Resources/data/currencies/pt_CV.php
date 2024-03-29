@@ -3,12 +3,12 @@
 return [
     'Names' => [
         'CVE' => [
-            '​',
-            'escudo cabo-verdiano',
+            0 => '​',
+            1 => 'escudo cabo-verdiano',
         ],
         'PTE' => [
-            'PTE',
-            'escudo português',
+            0 => 'PTE',
+            1 => 'escudo português',
         ],
     ],
 ];

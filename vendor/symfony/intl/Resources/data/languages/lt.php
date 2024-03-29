@@ -61,7 +61,6 @@ return [
         'bfd' => 'bafutų',
         'bfq' => 'badaga',
         'bg' => 'bulgarų',
-        'bgc' => 'harijanvi',
         'bgn' => 'vakarų beludžių',
         'bho' => 'baučpuri',
         'bi' => 'bislama',

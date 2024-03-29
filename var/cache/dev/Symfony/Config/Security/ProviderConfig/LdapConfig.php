@@ -26,7 +26,7 @@ class LdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function service($value): self
+    public function service($value): static
     {
         $this->_usedProperties['service'] = true;
         $this->service = $value;
@@ -39,7 +39,7 @@ class LdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function baseDn($value): self
+    public function baseDn($value): static
     {
         $this->_usedProperties['baseDn'] = true;
         $this->baseDn = $value;
@@ -52,7 +52,7 @@ class LdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function searchDn($value): self
+    public function searchDn($value): static
     {
         $this->_usedProperties['searchDn'] = true;
         $this->searchDn = $value;
@@ -65,7 +65,7 @@ class LdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function searchPassword($value): self
+    public function searchPassword($value): static
     {
         $this->_usedProperties['searchPassword'] = true;
         $this->searchPassword = $value;
@@ -74,10 +74,11 @@ class LdapConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
+     *
      * @return $this
      */
-    public function extraFields($value): self
+    public function extraFields(ParamConfigurator|array $value): static
     {
         $this->_usedProperties['extraFields'] = true;
         $this->extraFields = $value;
@@ -86,10 +87,11 @@ class LdapConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param mixed $value
+     *
      * @return $this
      */
-    public function defaultRoles($value): self
+    public function defaultRoles(mixed $value): static
     {
         $this->_usedProperties['defaultRoles'] = true;
         $this->defaultRoles = $value;
@@ -102,7 +104,7 @@ class LdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function uidKey($value): self
+    public function uidKey($value): static
     {
         $this->_usedProperties['uidKey'] = true;
         $this->uidKey = $value;
@@ -115,7 +117,7 @@ class LdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function filter($value): self
+    public function filter($value): static
     {
         $this->_usedProperties['filter'] = true;
         $this->filter = $value;
@@ -128,7 +130,7 @@ class LdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function passwordAttribute($value): self
+    public function passwordAttribute($value): static
     {
         $this->_usedProperties['passwordAttribute'] = true;
         $this->passwordAttribute = $value;

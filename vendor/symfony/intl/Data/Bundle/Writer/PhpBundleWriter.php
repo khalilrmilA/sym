@@ -11,8 +11,6 @@
 
 namespace Symfony\Component\Intl\Data\Bundle\Writer;
 
-use Symfony\Component\VarExporter\VarExporter;
-
 /**
  * Writes .php resource bundles.
  *
@@ -25,7 +23,7 @@ class PhpBundleWriter implements BundleWriterInterface
     /**
      * {@inheritdoc}
      */
-    public function write(string $path, string $locale, $data)
+    public function write(string $path, string $locale, mixed $data)
     {
         $template = <<<'TEMPLATE'
 <?php
@@ -44,6 +42,14 @@ TEMPLATE;
             }
         });
 
-        file_put_contents($path.'/'.$locale.'.php', sprintf($template, VarExporter::export($data)));
+        $data = var_export($data, true);
+        $data = preg_replace('/array \(/', '[', $data);
+        $data = preg_replace('/\n {1,10}\[/', '[', $data);
+        $data = preg_replace('/  /', '    ', $data);
+        $data = preg_replace('/\),$/m', '],', $data);
+        $data = preg_replace('/\)$/', ']', $data);
+        $data = sprintf($template, $data);
+
+        file_put_contents($path.'/'.$locale.'.php', $data);
     }
 }

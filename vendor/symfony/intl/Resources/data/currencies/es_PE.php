@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'PEN' => [
-            'S/',
-            'sol peruano',
+            0 => 'S/',
+            1 => 'sol peruano',
         ],
     ],
 ];

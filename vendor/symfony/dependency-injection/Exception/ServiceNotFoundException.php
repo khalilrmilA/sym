@@ -20,11 +20,11 @@ use Psr\Container\NotFoundExceptionInterface;
  */
 class ServiceNotFoundException extends InvalidArgumentException implements NotFoundExceptionInterface
 {
-    private $id;
-    private $sourceId;
-    private $alternatives;
+    private string $id;
+    private ?string $sourceId;
+    private array $alternatives;
 
-    public function __construct(string $id, ?string $sourceId = null, ?\Throwable $previous = null, array $alternatives = [], ?string $msg = null)
+    public function __construct(string $id, string $sourceId = null, \Throwable $previous = null, array $alternatives = [], string $msg = null)
     {
         if (null !== $msg) {
             // no-op

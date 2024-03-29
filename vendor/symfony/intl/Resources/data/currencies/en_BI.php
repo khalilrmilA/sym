@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'BIF' => [
-            'FBu',
-            'Burundian Franc',
+            0 => 'FBu',
+            1 => 'Burundian Franc',
         ],
     ],
 ];

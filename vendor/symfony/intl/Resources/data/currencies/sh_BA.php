@@ -3,20 +3,20 @@
 return [
     'Names' => [
         'BAM' => [
-            'KM',
-            'Bosanskohercegovačka konvertibilna marka',
+            0 => 'KM',
+            1 => 'Bosanskohercegovačka konvertibilna marka',
         ],
         'BYN' => [
-            'BYN',
-            'Bjeloruska rublja',
+            0 => 'BYN',
+            1 => 'Bjeloruska rublja',
         ],
         'KPW' => [
-            'KPW',
-            'Sjevernokorejski von',
+            0 => 'KPW',
+            1 => 'Sjevernokorejski von',
         ],
         'NIO' => [
-            'NIO',
-            'Nikaragvanska zlatna kordoba',
+            0 => 'NIO',
+            1 => 'Nikaragvanska zlatna kordoba',
         ],
     ],
 ];

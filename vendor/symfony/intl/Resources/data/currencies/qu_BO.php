@@ -3,12 +3,12 @@
 return [
     'Names' => [
         'BOB' => [
-            'Bs',
-            'Boliviano',
+            0 => 'Bs',
+            1 => 'Boliviano',
         ],
         'PEN' => [
-            'PEN',
-            'Sol Peruano',
+            0 => 'PEN',
+            1 => 'Sol Peruano',
         ],
     ],
 ];

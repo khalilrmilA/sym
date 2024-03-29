@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'LUF' => [
-            'F',
-            'Franco luxemburguês',
+            0 => 'F',
+            1 => 'Franco luxemburguês',
         ],
     ],
 ];

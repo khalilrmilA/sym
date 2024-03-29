@@ -4,8 +4,8 @@ return [
     'Names' => [
         'Arab' => 'Isi-Arabhu',
         'Cyrl' => 'IsiCyrillic',
-        'Hans' => 'IsiHans Esenziwe Lula',
-        'Hant' => 'IsiHant Esiqhelekileyo',
+        'Hans' => 'IsiHans',
+        'Hant' => 'IsiHant',
         'Jpan' => 'IsiJapanese',
         'Kore' => 'IsiKorean',
         'Latn' => 'IsiLatin',

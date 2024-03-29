@@ -21,7 +21,7 @@ class BusConfig
      * @param ParamConfigurator|true|false|'allow_no_handlers' $value
      * @return $this
      */
-    public function defaultMiddleware($value): self
+    public function defaultMiddleware($value): static
     {
         $this->_usedProperties['defaultMiddleware'] = true;
         $this->defaultMiddleware = $value;
@@ -32,7 +32,7 @@ class BusConfig
     /**
      * @return \Symfony\Config\Framework\Messenger\BusConfig\MiddlewareConfig|$this
      */
-    public function middleware($value = [])
+    public function middleware(mixed $value = []): \Symfony\Config\Framework\Messenger\BusConfig\MiddlewareConfig|static
     {
         $this->_usedProperties['middleware'] = true;
         if (!\is_array($value)) {

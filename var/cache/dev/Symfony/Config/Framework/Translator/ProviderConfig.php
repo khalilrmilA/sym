@@ -20,7 +20,7 @@ class ProviderConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function dsn($value): self
+    public function dsn($value): static
     {
         $this->_usedProperties['dsn'] = true;
         $this->dsn = $value;
@@ -29,10 +29,11 @@ class ProviderConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
+     *
      * @return $this
      */
-    public function domains($value): self
+    public function domains(ParamConfigurator|array $value): static
     {
         $this->_usedProperties['domains'] = true;
         $this->domains = $value;
@@ -41,10 +42,11 @@ class ProviderConfig
     }
 
     /**
-     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
+     *
      * @return $this
      */
-    public function locales($value): self
+    public function locales(ParamConfigurator|array $value): static
     {
         $this->_usedProperties['locales'] = true;
         $this->locales = $value;

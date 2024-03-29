@@ -23,7 +23,6 @@ use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Message\RequestFactory;
 use Http\Message\StreamFactory;
 use Http\Message\UriFactory;
-use Http\Promise\Promise;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7\Request;
 use Nyholm\Psr7\Uri;
@@ -47,7 +46,7 @@ if (!interface_exists(HttplugInterface::class)) {
 }
 
 if (!interface_exists(RequestFactory::class)) {
-    throw new \LogicException('You cannot use "Symfony\Component\HttpClient\HttplugClient" as the "php-http/message-factory" package is not installed. Try running "composer require php-http/message-factory".');
+    throw new \LogicException('You cannot use "Symfony\Component\HttpClient\HttplugClient" as the "php-http/message-factory" package is not installed. Try running "composer require nyholm/psr7".');
 }
 
 /**
@@ -60,38 +59,39 @@ if (!interface_exists(RequestFactory::class)) {
  */
 final class HttplugClient implements HttplugInterface, HttpAsyncClient, RequestFactory, StreamFactory, UriFactory, ResetInterface
 {
-    private $client;
-    private $responseFactory;
-    private $streamFactory;
+    private HttpClientInterface $client;
+    private ResponseFactoryInterface $responseFactory;
+    private StreamFactoryInterface $streamFactory;
 
     /**
      * @var \SplObjectStorage<ResponseInterface, array{RequestInterface, Promise}>|null
      */
-    private $promisePool;
+    private ?\SplObjectStorage $promisePool;
 
-    private $waitLoop;
+    private HttplugWaitLoop $waitLoop;
 
-    public function __construct(?HttpClientInterface $client = null, ?ResponseFactoryInterface $responseFactory = null, ?StreamFactoryInterface $streamFactory = null)
+    public function __construct(HttpClientInterface $client = null, ResponseFactoryInterface $responseFactory = null, StreamFactoryInterface $streamFactory = null)
     {
         $this->client = $client ?? HttpClient::create();
-        $this->responseFactory = $responseFactory;
-        $this->streamFactory = $streamFactory ?? ($responseFactory instanceof StreamFactoryInterface ? $responseFactory : null);
+        $streamFactory ??= $responseFactory instanceof StreamFactoryInterface ? $responseFactory : null;
         $this->promisePool = class_exists(Utils::class) ? new \SplObjectStorage() : null;
 
-        if (null === $this->responseFactory || null === $this->streamFactory) {
+        if (null === $responseFactory || null === $streamFactory) {
             if (!class_exists(Psr17Factory::class) && !class_exists(Psr17FactoryDiscovery::class)) {
                 throw new \LogicException('You cannot use the "Symfony\Component\HttpClient\HttplugClient" as no PSR-17 factories have been provided. Try running "composer require nyholm/psr7".');
             }
 
             try {
                 $psr17Factory = class_exists(Psr17Factory::class, false) ? new Psr17Factory() : null;
-                $this->responseFactory = $this->responseFactory ?? $psr17Factory ?? Psr17FactoryDiscovery::findResponseFactory();
-                $this->streamFactory = $this->streamFactory ?? $psr17Factory ?? Psr17FactoryDiscovery::findStreamFactory();
+                $responseFactory ??= $psr17Factory ?? Psr17FactoryDiscovery::findResponseFactory();
+                $streamFactory ??= $psr17Factory ?? Psr17FactoryDiscovery::findStreamFactory();
             } catch (NotFoundException $e) {
                 throw new \LogicException('You cannot use the "Symfony\Component\HttpClient\HttplugClient" as no PSR-17 factories have been found. Try running "composer require nyholm/psr7".', 0, $e);
             }
         }
 
+        $this->responseFactory = $responseFactory;
+        $this->streamFactory = $streamFactory;
         $this->waitLoop = new HttplugWaitLoop($this->client, $this->promisePool, $this->responseFactory, $this->streamFactory);
     }
 
@@ -101,7 +101,7 @@ final class HttplugClient implements HttplugInterface, HttpAsyncClient, RequestF
     public function sendRequest(RequestInterface $request): Psr7ResponseInterface
     {
         try {
-            return HttplugWaitLoop::createPsr7Response($this->responseFactory, $this->streamFactory, $this->client, $this->sendPsr7Request($request), true);
+            return $this->waitLoop->createPsr7Response($this->sendPsr7Request($request));
         } catch (TransportExceptionInterface $e) {
             throw new NetworkException($e->getMessage(), $request, $e);
         }
@@ -109,10 +109,8 @@ final class HttplugClient implements HttplugInterface, HttpAsyncClient, RequestF
 
     /**
      * {@inheritdoc}
-     *
-     * @return HttplugPromise
      */
-    public function sendAsyncRequest(RequestInterface $request): Promise
+    public function sendAsyncRequest(RequestInterface $request): HttplugPromise
     {
         if (!$promisePool = $this->promisePool) {
             throw new \LogicException(sprintf('You cannot use "%s()" as the "guzzlehttp/promises" package is not installed. Try running "composer require guzzlehttp/promises".', __METHOD__));
@@ -145,7 +143,7 @@ final class HttplugClient implements HttplugInterface, HttpAsyncClient, RequestF
      *
      * @return int The number of remaining pending promises
      */
-    public function wait(?float $maxDuration = null, ?float $idleTimeout = null): int
+    public function wait(float $maxDuration = null, float $idleTimeout = null): int
     {
         return $this->waitLoop->wait(null, $maxDuration, $idleTimeout);
     }
@@ -247,7 +245,7 @@ final class HttplugClient implements HttplugInterface, HttpAsyncClient, RequestF
         }
     }
 
-    private function sendPsr7Request(RequestInterface $request, ?bool $buffer = null): ResponseInterface
+    private function sendPsr7Request(RequestInterface $request, bool $buffer = null): ResponseInterface
     {
         try {
             $body = $request->getBody();

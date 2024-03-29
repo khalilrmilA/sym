@@ -21,7 +21,7 @@ class PublisherConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function id($value): self
+    public function id($value): static
     {
         $this->_usedProperties['id'] = true;
         $this->id = $value;
@@ -34,7 +34,7 @@ class PublisherConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function hostname($value): self
+    public function hostname($value): static
     {
         $this->_usedProperties['hostname'] = true;
         $this->hostname = $value;
@@ -47,7 +47,7 @@ class PublisherConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function port($value): self
+    public function port($value): static
     {
         $this->_usedProperties['port'] = true;
         $this->port = $value;
@@ -60,7 +60,7 @@ class PublisherConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function chunkSize($value): self
+    public function chunkSize($value): static
     {
         $this->_usedProperties['chunkSize'] = true;
         $this->chunkSize = $value;

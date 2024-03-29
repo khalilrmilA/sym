@@ -26,10 +26,10 @@ final class SodiumPasswordHasher implements PasswordHasherInterface
 {
     use CheckPasswordLengthTrait;
 
-    private $opsLimit;
-    private $memLimit;
+    private int $opsLimit;
+    private int $memLimit;
 
-    public function __construct(?int $opsLimit = null, ?int $memLimit = null)
+    public function __construct(int $opsLimit = null, int $memLimit = null)
     {
         if (!self::isSupported()) {
             throw new LogicException('Libsodium is not available. You should either install the sodium extension or use a different password hasher.');
@@ -79,8 +79,8 @@ final class SodiumPasswordHasher implements PasswordHasherInterface
             return false;
         }
 
-        if (0 !== strpos($hashedPassword, '$argon')) {
-            if (0 === strpos($hashedPassword, '$2') && (72 < \strlen($plainPassword) || false !== strpos($plainPassword, "\0"))) {
+        if (!str_starts_with($hashedPassword, '$argon')) {
+            if (str_starts_with($hashedPassword, '$2') && (72 < \strlen($plainPassword) || str_contains($plainPassword, "\0"))) {
                 $plainPassword = base64_encode(hash('sha512', $plainPassword, true));
             }
 

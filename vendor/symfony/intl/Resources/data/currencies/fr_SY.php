@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'SYP' => [
-            'LS',
-            'livre syrienne',
+            0 => 'LS',
+            1 => 'livre syrienne',
         ],
     ],
 ];

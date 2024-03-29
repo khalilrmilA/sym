@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'MYR' => [
-            'RM',
-            'Malaysian Ringgit',
+            0 => 'RM',
+            1 => 'Malaysian Ringgit',
         ],
     ],
 ];

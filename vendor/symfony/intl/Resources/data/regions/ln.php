@@ -96,6 +96,7 @@ return [
         'IE' => 'Irelandɛ',
         'IL' => 'Isirayelɛ',
         'IN' => 'Índɛ',
+        'IO' => 'Mabelé ya Angɛlɛtɛ́lɛ na mbú ya Indiya',
         'IQ' => 'Iraki',
         'IR' => 'Irâ',
         'IS' => 'Isilandɛ',

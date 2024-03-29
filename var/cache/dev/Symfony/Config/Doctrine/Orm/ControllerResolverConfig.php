@@ -20,7 +20,7 @@ class ControllerResolverConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): self
+    public function enabled($value): static
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -34,7 +34,7 @@ class ControllerResolverConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function autoMapping($value): self
+    public function autoMapping($value): static
     {
         $this->_usedProperties['autoMapping'] = true;
         $this->autoMapping = $value;
@@ -48,7 +48,7 @@ class ControllerResolverConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function evictCache($value): self
+    public function evictCache($value): static
     {
         $this->_usedProperties['evictCache'] = true;
         $this->evictCache = $value;

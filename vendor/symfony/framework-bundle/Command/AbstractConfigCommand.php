@@ -28,10 +28,7 @@ use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
  */
 abstract class AbstractConfigCommand extends ContainerDebugCommand
 {
-    /**
-     * @param OutputInterface|StyleInterface $output
-     */
-    protected function listBundles($output)
+    protected function listBundles(OutputInterface|StyleInterface $output)
     {
         $title = 'Available registered bundles with their extension alias if available';
         $headers = ['Bundle name', 'Extension alias'];
@@ -57,51 +54,7 @@ abstract class AbstractConfigCommand extends ContainerDebugCommand
         }
     }
 
-    /**
-     * @param OutputInterface|StyleInterface $output
-     */
-    protected function listNonBundleExtensions($output)
-    {
-        $title = 'Available registered non-bundle extension aliases';
-        $headers = ['Extension alias'];
-        $rows = [];
-
-        $kernel = $this->getApplication()->getKernel();
-
-        $bundleExtensions = [];
-        foreach ($kernel->getBundles() as $bundle) {
-            if ($extension = $bundle->getContainerExtension()) {
-                $bundleExtensions[\get_class($extension)] = true;
-            }
-        }
-
-        $extensions = $this->getContainerBuilder($kernel)->getExtensions();
-
-        foreach ($extensions as $alias => $extension) {
-            if (isset($bundleExtensions[\get_class($extension)])) {
-                continue;
-            }
-            $rows[] = [$alias];
-        }
-
-        if (!$rows) {
-            return;
-        }
-
-        if ($output instanceof StyleInterface) {
-            $output->title($title);
-            $output->table($headers, $rows);
-        } else {
-            $output->writeln($title);
-            $table = new Table($output);
-            $table->setHeaders($headers)->setRows($rows)->render();
-        }
-    }
-
-    /**
-     * @return ExtensionInterface
-     */
-    protected function findExtension(string $name)
+    protected function findExtension(string $name): ExtensionInterface
     {
         $bundles = $this->initializeBundles();
         $minScore = \INF;
@@ -167,7 +120,7 @@ abstract class AbstractConfigCommand extends ContainerDebugCommand
         throw new LogicException($message);
     }
 
-    public function validateConfiguration(ExtensionInterface $extension, $configuration)
+    public function validateConfiguration(ExtensionInterface $extension, mixed $configuration)
     {
         if (!$configuration) {
             throw new \LogicException(sprintf('The extension with alias "%s" does not have its getConfiguration() method setup.', $extension->getAlias()));

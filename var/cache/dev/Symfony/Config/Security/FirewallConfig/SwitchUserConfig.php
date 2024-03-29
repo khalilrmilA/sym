@@ -20,7 +20,7 @@ class SwitchUserConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function provider($value): self
+    public function provider($value): static
     {
         $this->_usedProperties['provider'] = true;
         $this->provider = $value;
@@ -33,7 +33,7 @@ class SwitchUserConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function parameter($value): self
+    public function parameter($value): static
     {
         $this->_usedProperties['parameter'] = true;
         $this->parameter = $value;
@@ -46,7 +46,7 @@ class SwitchUserConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function role($value): self
+    public function role($value): static
     {
         $this->_usedProperties['role'] = true;
         $this->role = $value;

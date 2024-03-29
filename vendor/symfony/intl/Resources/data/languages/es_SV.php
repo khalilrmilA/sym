@@ -10,5 +10,6 @@ return [
         'ss' => 'siswati',
         'wo' => 'wolof',
     ],
-    'LocalizedNames' => [],
+    'LocalizedNames' => [
+    ],
 ];

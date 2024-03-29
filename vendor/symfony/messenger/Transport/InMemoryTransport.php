@@ -27,31 +27,27 @@ class InMemoryTransport implements TransportInterface, ResetInterface
     /**
      * @var Envelope[]
      */
-    private $sent = [];
+    private array $sent = [];
 
     /**
      * @var Envelope[]
      */
-    private $acknowledged = [];
+    private array $acknowledged = [];
 
     /**
      * @var Envelope[]
      */
-    private $rejected = [];
+    private array $rejected = [];
 
     /**
      * @var Envelope[]
      */
-    private $queue = [];
+    private array $queue = [];
 
-    private $nextId = 1;
+    private int $nextId = 1;
+    private ?SerializerInterface $serializer;
 
-    /**
-     * @var SerializerInterface|null
-     */
-    private $serializer;
-
-    public function __construct(?SerializerInterface $serializer = null)
+    public function __construct(SerializerInterface $serializer = null)
     {
         $this->serializer = $serializer;
     }
@@ -135,10 +131,7 @@ class InMemoryTransport implements TransportInterface, ResetInterface
         return $this->decode($this->sent);
     }
 
-    /**
-     * @return Envelope|array
-     */
-    private function encode(Envelope $envelope)
+    private function encode(Envelope $envelope): Envelope|array
     {
         if (null === $this->serializer) {
             return $envelope;
@@ -158,9 +151,6 @@ class InMemoryTransport implements TransportInterface, ResetInterface
             return $messagesEncoded;
         }
 
-        return array_map(
-            [$this->serializer, 'decode'],
-            $messagesEncoded
-        );
+        return array_map($this->serializer->decode(...), $messagesEncoded);
     }
 }

@@ -23,7 +23,7 @@ class RetryStrategyConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function service($value): self
+    public function service($value): static
     {
         $this->_usedProperties['service'] = true;
         $this->service = $value;
@@ -36,7 +36,7 @@ class RetryStrategyConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function maxRetries($value): self
+    public function maxRetries($value): static
     {
         $this->_usedProperties['maxRetries'] = true;
         $this->maxRetries = $value;
@@ -50,7 +50,7 @@ class RetryStrategyConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function delay($value): self
+    public function delay($value): static
     {
         $this->_usedProperties['delay'] = true;
         $this->delay = $value;
@@ -64,7 +64,7 @@ class RetryStrategyConfig
      * @param ParamConfigurator|float $value
      * @return $this
      */
-    public function multiplier($value): self
+    public function multiplier($value): static
     {
         $this->_usedProperties['multiplier'] = true;
         $this->multiplier = $value;
@@ -78,7 +78,7 @@ class RetryStrategyConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function maxDelay($value): self
+    public function maxDelay($value): static
     {
         $this->_usedProperties['maxDelay'] = true;
         $this->maxDelay = $value;

@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'MZN' => [
-            'MTn',
-            'metical moçambicano',
+            0 => 'MTn',
+            1 => 'metical moçambicano',
         ],
     ],
 ];

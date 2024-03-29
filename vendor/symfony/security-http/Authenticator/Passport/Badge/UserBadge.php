@@ -27,9 +27,10 @@ use Symfony\Component\Security\Http\EventListener\UserProviderListener;
  */
 class UserBadge implements BadgeInterface
 {
-    private $userIdentifier;
+    private string $userIdentifier;
+    /** @var callable|null */
     private $userLoader;
-    private $user;
+    private UserInterface $user;
 
     /**
      * Initializes the user badge.
@@ -44,7 +45,7 @@ class UserBadge implements BadgeInterface
      * is thrown). If this is not set, the default user provider will be used with
      * $userIdentifier as username.
      */
-    public function __construct(string $userIdentifier, ?callable $userLoader = null)
+    public function __construct(string $userIdentifier, callable $userLoader = null)
     {
         $this->userIdentifier = $userIdentifier;
         $this->userLoader = $userLoader;
@@ -60,7 +61,7 @@ class UserBadge implements BadgeInterface
      */
     public function getUser(): UserInterface
     {
-        if (null !== $this->user) {
+        if (isset($this->user)) {
             return $this->user;
         }
 

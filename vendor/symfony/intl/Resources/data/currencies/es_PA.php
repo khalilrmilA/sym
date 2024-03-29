@@ -3,8 +3,8 @@
 return [
     'Names' => [
         'PAB' => [
-            'B/.',
-            'balboa panameño',
+            0 => 'B/.',
+            1 => 'balboa panameño',
         ],
     ],
 ];
