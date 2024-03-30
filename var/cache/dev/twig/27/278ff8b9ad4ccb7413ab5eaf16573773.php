@@ -65,49 +65,61 @@ class __TwigTemplate_437a96359c9991d42b2c6f8a1de26354 extends Template
 \t\t";
         // line 27
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 58
+        // line 78
         echo "\t</head>
 \t";
-        // line 59
-        $this->loadTemplate("parts/header.html.twig", "base.html.twig", 59)->display($context);
-        // line 60
+        // line 79
+        $this->loadTemplate("parts/header.html.twig", "base.html.twig", 79)->display($context);
+        // line 80
         echo "\t<body>
 \t\t";
-        // line 61
+        // line 81
         $this->displayBlock('body', $context, $blocks);
-        // line 62
-        echo "\t\t
-\t\t<script>
-\t\t  (function() {
-\t\t\tconst form = document.getElementById('form');
-\t\t\tconst submitButton = document.getElementById('submit-button');
+        // line 82
+        echo "
+<script>
+\t\t\t(function () {
+const form = document.getElementById('form');
+const submitButton = document.getElementById('submit-button');
+// Add a submit event listener to the form element
+form.addEventListener('submit', function (event) {
+event.preventDefault();
+// Check if the form is valid
+if (form.checkValidity()) {
+const formData = new FormData(form);
+fetch('/reclamation', {
+method: 'POST',
+body: formData
+}).then(response => response.text()).then(data => {
+Swal.fire({title: 'Success!', text: 'Your reclamation has been submitted.', icon: 'success', confirmButtonText: 'Cool'}).then(() => { // Clear all the form fields
+const inputs = form.querySelectorAll('input, textarea');
+inputs.forEach(input => {
+input.value = '';
+});
 
-\t\t\tsubmitButton.addEventListener('click', (e) => {
-\t\t\t  e.preventDefault();
+form.reset();
+});
+}).catch(error => {
 
-\t\t\t  const formData = new FormData(form);
+console.error(error);
+Swal.fire({title: 'Error!', text: error.message, icon: 'error', confirmButtonText: 'OK'});
+});
+}
+});
+submitButton.addEventListener('click', function (event) {
 
-\t\t\t  fetch('/reclamation', {
-\t\t\t\tmethod: 'POST',
-\t\t\t\tbody: formData,
-\t\t\t  })
-\t\t\t  .then(response => response.text())
-\t\t\t  .then(data => {
-\t\t\t\t// Handle the response from the server
-\t\t\t\tconsole.log(data);
-\t\t\t  })
-\t\t\t  .catch(error => {
-\t\t\t\t// Handle any errors that occur
-\t\t\t\tconsole.error(error);
-\t\t\t  });
-\t\t\t});
-\t\t  })();
+if (form.checkValidity()) {
+form.reportValidity();
+}
+});
+})();
 \t\t</script>
+\t
 \t</body>
 \t";
-        // line 90
-        $this->loadTemplate("parts/footer.html.twig", "base.html.twig", 90)->display($context);
-        // line 91
+        // line 122
+        $this->loadTemplate("parts/footer.html.twig", "base.html.twig", 122)->display($context);
+        // line 123
         echo "</html>
 ";
         
@@ -213,109 +225,141 @@ class __TwigTemplate_437a96359c9991d42b2c6f8a1de26354 extends Template
         echo "\t\t\t";
         echo twig_escape_filter($this->env, $this->env->getFunction('encore_entry_script_tags')->getCallable()("app"), "html", null, true);
         echo "
-\t\t\t<script src=\"";
-        // line 29
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/jquery.js"), "html", null, true);
-        echo "\"></script>
-\t\t\t<script src=\"";
-        // line 30
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/jquery.nice-select.min.js"), "html", null, true);
-        echo "\"></script>
-\t\t\t<script src=\"";
-        // line 31
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/jquery-ui.js"), "html", null, true);
-        echo "\"></script>
-\t\t\t<script src=\"";
-        // line 32
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/modernizer.min.js"), "html", null, true);
-        echo "\"></script>
-\t\t\t<script src=\"";
-        // line 33
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/feather.min.js"), "html", null, true);
-        echo "\"></script>
-\t\t\t<script src=\"";
-        // line 34
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/slick.min.js"), "html", null, true);
-        echo "\"></script>
-\t\t\t<script src=\"";
-        // line 35
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/bootstrap.min.js"), "html", null, true);
-        echo "\"></script>
-\t\t\t<script src=\"";
-        // line 36
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/sal.min.js"), "html", null, true);
-        echo "\"></script>
-\t\t\t<script src=\"";
-        // line 37
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/particles.js"), "html", null, true);
-        echo "\"></script>
-\t\t\t<script src=\"";
-        // line 38
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/jquery.style.swicher.js"), "html", null, true);
-        echo "\"></script>
-\t\t\t<script src=\"";
-        // line 39
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/js.cookie.js"), "html", null, true);
-        echo "\"></script>
-\t\t\t<script src=\"";
-        // line 40
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/count-down.js"), "html", null, true);
-        echo "\"></script>
+\t\t\t<!-- End Footer Area -->
+\t\t\t<div class=\"mouse-cursor cursor-outer\"></div>
+\t\t\t<div class=\"mouse-cursor cursor-inner\"></div>
+\t\t\t<!-- Start Top To Bottom Area  -->
+\t\t\t<div class=\"rn-progress-parent\">
+\t\t\t\t<svg class=\"rn-back-circle svg-inner\" width=\"100%\" height=\"100%\" viewbox=\"-1 -1 102 102\">
+\t\t\t\t\t<path d=\"M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98\"/>
+\t\t\t\t</svg>
+\t\t\t</div>
+\t\t\t<!-- End Top To Bottom Area  -->
+
+\t\t\t<!-- JS ============================================ -->
 \t\t\t<script src=\"";
         // line 41
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/isotop.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/jquery.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
         // line 42
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/imageloaded.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/jquery.nice-select.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
         // line 43
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/backtoTop.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/jquery-ui.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
         // line 44
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/odometer.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/modernizer.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
         // line 45
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/jquery-appear.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/feather.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
         // line 46
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/scrolltrigger.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/slick.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
         // line 47
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/jquery.custom-file-input.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
         // line 48
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/savePopup.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/sal.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
         // line 49
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/vanilla.tilt.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/particles.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 50
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/jquery.style.swicher.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 51
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/js.cookie.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 52
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/count-down.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 53
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/isotop.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 54
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/imageloaded.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 55
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/backtoTop.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 56
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/odometer.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 57
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/jquery-appear.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 58
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/scrolltrigger.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 59
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/jquery.custom-file-input.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 60
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/savePopup.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 61
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/vanilla.tilt.js"), "html", null, true);
         echo "\"></script>
 
 \t\t\t<!-- main JS -->
 \t\t\t<script src=\"";
-        // line 52
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/main.js"), "html", null, true);
+        // line 64
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/main.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<!-- Meta Mask  -->
 \t\t\t<script src=\"";
-        // line 54
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/web3.min.js"), "html", null, true);
+        // line 66
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/web3.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 55
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/maralis.js"), "html", null, true);
+        // line 67
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/maralis.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 56
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/js/vendor/nft.js"), "html", null, true);
+        // line 68
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/nft.js"), "html", null, true);
         echo "\"></script>
+
+
+\t\t\t<script src=\"";
+        // line 71
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assetsOfOutsiderElements/libs/swiper/swiper-bundle.min.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 72
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assetsOfOutsiderElements/js/pages/extended-swiper.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 73
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/loader.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 74
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/error_success.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"https://cdn.jsdelivr.net/npm/sweetalert2@11\"></script>
+
 \t\t";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -325,7 +369,7 @@ class __TwigTemplate_437a96359c9991d42b2c6f8a1de26354 extends Template
 
     }
 
-    // line 61
+    // line 81
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -364,7 +408,7 @@ class __TwigTemplate_437a96359c9991d42b2c6f8a1de26354 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  329 => 61,  317 => 56,  313 => 55,  309 => 54,  304 => 52,  298 => 49,  294 => 48,  290 => 47,  286 => 46,  282 => 45,  278 => 44,  274 => 43,  270 => 42,  266 => 41,  262 => 40,  258 => 39,  254 => 38,  250 => 37,  246 => 36,  242 => 35,  238 => 34,  234 => 33,  230 => 32,  226 => 31,  222 => 30,  218 => 29,  213 => 28,  203 => 27,  191 => 24,  186 => 22,  181 => 20,  177 => 19,  173 => 18,  169 => 17,  165 => 16,  161 => 15,  157 => 14,  152 => 13,  142 => 12,  122 => 6,  111 => 91,  109 => 90,  79 => 62,  77 => 61,  74 => 60,  72 => 59,  69 => 58,  67 => 27,  64 => 26,  61 => 12,  56 => 8,  54 => 6,  47 => 1,);
+        return array (  373 => 81,  359 => 74,  355 => 73,  351 => 72,  347 => 71,  341 => 68,  337 => 67,  333 => 66,  328 => 64,  322 => 61,  318 => 60,  314 => 59,  310 => 58,  306 => 57,  302 => 56,  298 => 55,  294 => 54,  290 => 53,  286 => 52,  282 => 51,  278 => 50,  274 => 49,  270 => 48,  266 => 47,  262 => 46,  258 => 45,  254 => 44,  250 => 43,  246 => 42,  242 => 41,  225 => 28,  215 => 27,  203 => 24,  198 => 22,  193 => 20,  189 => 19,  185 => 18,  181 => 17,  177 => 16,  173 => 15,  169 => 14,  164 => 13,  154 => 12,  134 => 6,  123 => 123,  121 => 122,  79 => 82,  77 => 81,  74 => 80,  72 => 79,  69 => 78,  67 => 27,  64 => 26,  61 => 12,  56 => 8,  54 => 6,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -397,69 +441,101 @@ class __TwigTemplate_437a96359c9991d42b2c6f8a1de26354 extends Template
 
 \t\t{% block javascripts %}
 \t\t\t{{ encore_entry_script_tags('app') }}
-\t\t\t<script src=\"{{asset('/assets/js/vendor/jquery.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/jquery.nice-select.min.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/jquery-ui.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/modernizer.min.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/feather.min.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/slick.min.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/bootstrap.min.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/sal.min.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/particles.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/jquery.style.swicher.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/js.cookie.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/count-down.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/isotop.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/imageloaded.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/backtoTop.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/odometer.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/jquery-appear.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/scrolltrigger.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/jquery.custom-file-input.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/savePopup.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/vanilla.tilt.js')}}\"></script>
+\t\t\t<!-- End Footer Area -->
+\t\t\t<div class=\"mouse-cursor cursor-outer\"></div>
+\t\t\t<div class=\"mouse-cursor cursor-inner\"></div>
+\t\t\t<!-- Start Top To Bottom Area  -->
+\t\t\t<div class=\"rn-progress-parent\">
+\t\t\t\t<svg class=\"rn-back-circle svg-inner\" width=\"100%\" height=\"100%\" viewbox=\"-1 -1 102 102\">
+\t\t\t\t\t<path d=\"M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98\"/>
+\t\t\t\t</svg>
+\t\t\t</div>
+\t\t\t<!-- End Top To Bottom Area  -->
+
+\t\t\t<!-- JS ============================================ -->
+\t\t\t<script src=\"{{ asset('assets/js/vendor/jquery.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/jquery.nice-select.min.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/jquery-ui.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/modernizer.min.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/feather.min.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/slick.min.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/bootstrap.min.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/sal.min.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/particles.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/jquery.style.swicher.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/js.cookie.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/count-down.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/isotop.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/imageloaded.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/backtoTop.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/odometer.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/jquery-appear.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/scrolltrigger.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/jquery.custom-file-input.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/savePopup.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/vanilla.tilt.js') }}\"></script>
 
 \t\t\t<!-- main JS -->
-\t\t\t<script src=\"{{asset('/assets/js/main.js')}}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/main.js') }}\"></script>
 \t\t\t<!-- Meta Mask  -->
-\t\t\t<script src=\"{{asset('/assets/js/vendor/web3.min.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/maralis.js')}}\"></script>
-\t\t\t<script src=\"{{asset('/assets/js/vendor/nft.js')}}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/web3.min.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/maralis.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/js/vendor/nft.js') }}\"></script>
+
+
+\t\t\t<script src=\"{{ asset('assetsOfOutsiderElements/libs/swiper/swiper-bundle.min.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assetsOfOutsiderElements/js/pages/extended-swiper.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('js/loader.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('js/error_success.js') }}\"></script>
+\t\t\t<script src=\"https://cdn.jsdelivr.net/npm/sweetalert2@11\"></script>
+
 \t\t{% endblock %}
 \t</head>
 \t{% include 'parts/header.html.twig' %}
 \t<body>
 \t\t{% block body %}{% endblock %}
-\t\t
-\t\t<script>
-\t\t  (function() {
-\t\t\tconst form = document.getElementById('form');
-\t\t\tconst submitButton = document.getElementById('submit-button');
 
-\t\t\tsubmitButton.addEventListener('click', (e) => {
-\t\t\t  e.preventDefault();
+<script>
+\t\t\t(function () {
+const form = document.getElementById('form');
+const submitButton = document.getElementById('submit-button');
+// Add a submit event listener to the form element
+form.addEventListener('submit', function (event) {
+event.preventDefault();
+// Check if the form is valid
+if (form.checkValidity()) {
+const formData = new FormData(form);
+fetch('/reclamation', {
+method: 'POST',
+body: formData
+}).then(response => response.text()).then(data => {
+Swal.fire({title: 'Success!', text: 'Your reclamation has been submitted.', icon: 'success', confirmButtonText: 'Cool'}).then(() => { // Clear all the form fields
+const inputs = form.querySelectorAll('input, textarea');
+inputs.forEach(input => {
+input.value = '';
+});
 
-\t\t\t  const formData = new FormData(form);
+form.reset();
+});
+}).catch(error => {
 
-\t\t\t  fetch('/reclamation', {
-\t\t\t\tmethod: 'POST',
-\t\t\t\tbody: formData,
-\t\t\t  })
-\t\t\t  .then(response => response.text())
-\t\t\t  .then(data => {
-\t\t\t\t// Handle the response from the server
-\t\t\t\tconsole.log(data);
-\t\t\t  })
-\t\t\t  .catch(error => {
-\t\t\t\t// Handle any errors that occur
-\t\t\t\tconsole.error(error);
-\t\t\t  });
-\t\t\t});
-\t\t  })();
+console.error(error);
+Swal.fire({title: 'Error!', text: error.message, icon: 'error', confirmButtonText: 'OK'});
+});
+}
+});
+submitButton.addEventListener('click', function (event) {
+
+if (form.checkValidity()) {
+form.reportValidity();
+}
+});
+})();
 \t\t</script>
+\t
 \t</body>
 \t{% include 'parts/footer.html.twig' %}
 </html>
-", "base.html.twig", "C:\\xampp\\htdocs\\projet\\templates\\base.html.twig");
+", "base.html.twig", "C:\\Users\\khali\\OneDrive - ESPRIT\\Documents\\citiezenHub_webapp\\templates\\base.html.twig");
     }
 }
