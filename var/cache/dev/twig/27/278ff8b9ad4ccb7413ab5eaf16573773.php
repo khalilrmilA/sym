@@ -60,22 +60,22 @@ class __TwigTemplate_437a96359c9991d42b2c6f8a1de26354 extends Template
         // line 12
         echo "\t\t";
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 26
+        // line 25
         echo "
 \t\t";
-        // line 27
+        // line 26
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 78
+        // line 77
         echo "\t</head>
 \t";
+        // line 78
+        $this->loadTemplate("parts/header.html.twig", "base.html.twig", 78)->display($context);
         // line 79
-        $this->loadTemplate("parts/header.html.twig", "base.html.twig", 79)->display($context);
-        // line 80
         echo "\t<body>
 \t\t";
-        // line 81
+        // line 80
         $this->displayBlock('body', $context, $blocks);
-        // line 82
+        // line 81
         echo "
 <script>
 \t\t\t(function () {
@@ -117,9 +117,9 @@ form.reportValidity();
 \t
 \t</body>
 \t";
+        // line 121
+        $this->loadTemplate("parts/footer.html.twig", "base.html.twig", 121)->display($context);
         // line 122
-        $this->loadTemplate("parts/footer.html.twig", "base.html.twig", 122)->display($context);
-        // line 123
         echo "</html>
 ";
         
@@ -192,14 +192,13 @@ form.reportValidity();
         // line 20
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/css/plugins/jquery-ui.min.css"), "html", null, true);
         echo "\">
-\t\t\t<link
-\t\t\trel=\"stylesheet\" href=\"";
-        // line 22
+\t\t\t<link rel=\"stylesheet\" href=\"";
+        // line 21
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/css/vendor/odometer.css"), "html", null, true);
         echo "\">
 \t\t\t<!-- Style css -->
 \t\t\t<link rel=\"stylesheet\" href=\"";
-        // line 24
+        // line 23
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/css/style.css"), "html", null, true);
         echo "\">
 \t\t";
@@ -211,7 +210,7 @@ form.reportValidity();
 
     }
 
-    // line 27
+    // line 26
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -221,7 +220,7 @@ form.reportValidity();
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 28
+        // line 27
         echo "\t\t\t";
         echo twig_escape_filter($this->env, $this->env->getFunction('encore_entry_script_tags')->getCallable()("app"), "html", null, true);
         echo "
@@ -238,124 +237,124 @@ form.reportValidity();
 
 \t\t\t<!-- JS ============================================ -->
 \t\t\t<script src=\"";
-        // line 41
+        // line 40
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/jquery.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 42
+        // line 41
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/jquery.nice-select.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 43
+        // line 42
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/jquery-ui.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 44
+        // line 43
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/modernizer.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 45
+        // line 44
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/feather.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 46
+        // line 45
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/slick.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 47
+        // line 46
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 48
+        // line 47
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/sal.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 49
+        // line 48
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/particles.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 50
+        // line 49
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/jquery.style.swicher.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 51
+        // line 50
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/js.cookie.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 52
+        // line 51
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/count-down.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 53
+        // line 52
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/isotop.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 54
+        // line 53
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/imageloaded.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 55
+        // line 54
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/backtoTop.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 56
+        // line 55
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/odometer.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 57
+        // line 56
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/jquery-appear.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 58
+        // line 57
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/scrolltrigger.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 59
+        // line 58
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/jquery.custom-file-input.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 60
+        // line 59
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/savePopup.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 61
+        // line 60
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/vanilla.tilt.js"), "html", null, true);
         echo "\"></script>
 
 \t\t\t<!-- main JS -->
 \t\t\t<script src=\"";
-        // line 64
+        // line 63
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/main.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<!-- Meta Mask  -->
 \t\t\t<script src=\"";
-        // line 66
+        // line 65
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/web3.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 67
+        // line 66
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/maralis.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 68
+        // line 67
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/vendor/nft.js"), "html", null, true);
         echo "\"></script>
 
 
 \t\t\t<script src=\"";
-        // line 71
+        // line 70
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assetsOfOutsiderElements/libs/swiper/swiper-bundle.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 72
+        // line 71
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assetsOfOutsiderElements/js/pages/extended-swiper.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 73
+        // line 72
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/loader.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 74
+        // line 73
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/error_success.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"https://cdn.jsdelivr.net/npm/sweetalert2@11\"></script>
@@ -369,7 +368,7 @@ form.reportValidity();
 
     }
 
-    // line 81
+    // line 80
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -408,7 +407,7 @@ form.reportValidity();
      */
     public function getDebugInfo()
     {
-        return array (  373 => 81,  359 => 74,  355 => 73,  351 => 72,  347 => 71,  341 => 68,  337 => 67,  333 => 66,  328 => 64,  322 => 61,  318 => 60,  314 => 59,  310 => 58,  306 => 57,  302 => 56,  298 => 55,  294 => 54,  290 => 53,  286 => 52,  282 => 51,  278 => 50,  274 => 49,  270 => 48,  266 => 47,  262 => 46,  258 => 45,  254 => 44,  250 => 43,  246 => 42,  242 => 41,  225 => 28,  215 => 27,  203 => 24,  198 => 22,  193 => 20,  189 => 19,  185 => 18,  181 => 17,  177 => 16,  173 => 15,  169 => 14,  164 => 13,  154 => 12,  134 => 6,  123 => 123,  121 => 122,  79 => 82,  77 => 81,  74 => 80,  72 => 79,  69 => 78,  67 => 27,  64 => 26,  61 => 12,  56 => 8,  54 => 6,  47 => 1,);
+        return array (  372 => 80,  358 => 73,  354 => 72,  350 => 71,  346 => 70,  340 => 67,  336 => 66,  332 => 65,  327 => 63,  321 => 60,  317 => 59,  313 => 58,  309 => 57,  305 => 56,  301 => 55,  297 => 54,  293 => 53,  289 => 52,  285 => 51,  281 => 50,  277 => 49,  273 => 48,  269 => 47,  265 => 46,  261 => 45,  257 => 44,  253 => 43,  249 => 42,  245 => 41,  241 => 40,  224 => 27,  214 => 26,  202 => 23,  197 => 21,  193 => 20,  189 => 19,  185 => 18,  181 => 17,  177 => 16,  173 => 15,  169 => 14,  164 => 13,  154 => 12,  134 => 6,  123 => 122,  121 => 121,  79 => 81,  77 => 80,  74 => 79,  72 => 78,  69 => 77,  67 => 26,  64 => 25,  61 => 12,  56 => 8,  54 => 6,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -433,8 +432,7 @@ form.reportValidity();
 \t\t\t<link rel=\"stylesheet\" href=\"{{asset('/assets/css/vendor/nice-select.css')}}\">
 \t\t\t<link rel=\"stylesheet\" href=\"{{asset('/assets/css/plugins/feature.css')}}\">
 \t\t\t<link rel=\"stylesheet\" href=\"{{asset('/assets/css/plugins/jquery-ui.min.css')}}\">
-\t\t\t<link
-\t\t\trel=\"stylesheet\" href=\"{{asset('/assets/css/vendor/odometer.css')}}\">
+\t\t\t<link rel=\"stylesheet\" href=\"{{asset('/assets/css/vendor/odometer.css')}}\">
 \t\t\t<!-- Style css -->
 \t\t\t<link rel=\"stylesheet\" href=\"{{asset('/assets/css/style.css')}}\">
 \t\t{% endblock %}

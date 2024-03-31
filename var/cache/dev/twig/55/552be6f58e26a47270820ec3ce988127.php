@@ -341,6 +341,6 @@ class __TwigTemplate_de2b1c19419d4e6e5929d872216c323f extends Template
             </div>
         </div>
     </header>
-    <!-- End Header Area -->", "parts/header.html.twig", "C:\\xampp\\htdocs\\projet\\templates\\parts\\header.html.twig");
+    <!-- End Header Area -->", "parts/header.html.twig", "C:\\Users\\khali\\OneDrive - ESPRIT\\Documents\\citiezenHub_webapp\\templates\\parts\\header.html.twig");
     }
 }

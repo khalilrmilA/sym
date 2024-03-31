@@ -276,6 +276,6 @@ class __TwigTemplate_1a038d3136e549b6291304dd2756de78 extends Template
     </div>
 {%- endblock -%}
 
-", "@VichUploader/Form/fields.html.twig", "C:\\xampp\\htdocs\\projet\\vendor\\vich\\uploader-bundle\\templates\\Form\\fields.html.twig");
+", "@VichUploader/Form/fields.html.twig", "C:\\Users\\khali\\OneDrive - ESPRIT\\Documents\\citiezenHub_webapp\\vendor\\vich\\uploader-bundle\\templates\\Form\\fields.html.twig");
     }
 }
