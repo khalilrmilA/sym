@@ -45,8 +45,14 @@ class __TwigTemplate_de2b1c19419d4e6e5929d872216c323f extends Template
             <div class=\"header-inner\">
                 <div class=\"header-left\">
                     <div class=\"logo-thumbnail logo-custom-css\">
-                        <a class=\"logo-light\" href=\"index.html\"><img src=\"/assets/images/logo/logo.png\" alt=\"nft-logo\"></a>
-                        <a class=\"logo-dark\" href=\"index.html\"><img src=\"/assets/images/logo/logo.png\" alt=\"nft-logo\"></a>
+                        <a class=\"logo-light\" href=\"index.html\"><img src=\"";
+        // line 6
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/images/logo/logo.png"), "html", null, true);
+        echo "\" alt=\"nft-logo\"></a>
+                        <a class=\"logo-dark\" href=\"index.html\"><img src=\"";
+        // line 7
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/images/logo/logo.png"), "html", null, true);
+        echo "\" alt=\"nft-logo\"></a>
                     </div>
                     <div class=\"mainmenu-wrapper\">
                         <nav id=\"sideNav\" class=\"mainmenu-nav d-none d-xl-block\">
@@ -84,8 +90,9 @@ class __TwigTemplate_de2b1c19419d4e6e5929d872216c323f extends Template
                                                 <div class=\"col-lg-3 single-mega-item\">
                                                     <ul class=\"mega-menu-item\">
                                                         <li>
-                                                            <a href=\"create.html\">Create
-                                                                NFT<i data-feather=\"file-plus\"></i>
+                                                            <a href=\"/reclamation\">
+                                                            Create Reclamation
+                                                            <i data-feather=\"file-plus\"></i>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -93,8 +100,9 @@ class __TwigTemplate_de2b1c19419d4e6e5929d872216c323f extends Template
                                                 <div class=\"col-lg-3 single-mega-item\">
                                                     <ul class=\"mega-menu-item\">
                                                         <li>
-                                                            <a href=\"about.html\">About
-                                                                Us<i data-feather=\"award\"></i>
+                                                            <a href=\"/\">
+                                                            Check Reclamation
+                                                            <i data-feather=\"award\"></i>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -166,10 +174,16 @@ class __TwigTemplate_de2b1c19419d4e6e5929d872216c323f extends Template
                     <div id=\"my_switcher\" class=\"my_switcher setting-option\">
                         <ul>
                             <li>
-                                <a href=\"javascript: void(0);\" data-theme=\"light\" class=\"setColor light\"><img class=\"sun-image\" src=\"/assets/images/icons/sun-01.svg\" alt=\"Sun images\"></a>
+                                <a href=\"javascript: void(0);\" data-theme=\"light\" class=\"setColor light\"><img class=\"sun-image\" src=\"";
+        // line 129
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/images/icons/sun-01.svg"), "html", null, true);
+        echo " \" alt=\"Sun images\"></a>
                             </li>
                             <li>
-                                <a href=\"javascript: void(0);\" data-theme=\"dark\" class=\"setColor dark\"><img class=\"Victor Image\" src=\"/assets/images/icons/vector.svg\" alt=\"Vector Images\"></a>
+                                <a href=\"javascript: void(0);\" data-theme=\"dark\" class=\"setColor dark\"><img class=\"Victor Image\" src=\"";
+        // line 132
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/images/icons/vector.svg"), "html", null, true);
+        echo "\" alt=\"Vector Images\"></a>
                             </li>
                         </ul>
                     </div>
@@ -197,9 +211,17 @@ class __TwigTemplate_de2b1c19419d4e6e5929d872216c323f extends Template
     /**
      * @codeCoverageIgnore
      */
+    public function isTraitable()
+    {
+        return false;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo()
     {
-        return array (  43 => 1,);
+        return array (  185 => 132,  179 => 129,  54 => 7,  50 => 6,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -209,8 +231,8 @@ class __TwigTemplate_de2b1c19419d4e6e5929d872216c323f extends Template
             <div class=\"header-inner\">
                 <div class=\"header-left\">
                     <div class=\"logo-thumbnail logo-custom-css\">
-                        <a class=\"logo-light\" href=\"index.html\"><img src=\"/assets/images/logo/logo.png\" alt=\"nft-logo\"></a>
-                        <a class=\"logo-dark\" href=\"index.html\"><img src=\"/assets/images/logo/logo.png\" alt=\"nft-logo\"></a>
+                        <a class=\"logo-light\" href=\"index.html\"><img src=\"{{ asset('/assets/images/logo/logo.png') }}\" alt=\"nft-logo\"></a>
+                        <a class=\"logo-dark\" href=\"index.html\"><img src=\"{{ asset('/assets/images/logo/logo.png') }}\" alt=\"nft-logo\"></a>
                     </div>
                     <div class=\"mainmenu-wrapper\">
                         <nav id=\"sideNav\" class=\"mainmenu-nav d-none d-xl-block\">
@@ -248,8 +270,9 @@ class __TwigTemplate_de2b1c19419d4e6e5929d872216c323f extends Template
                                                 <div class=\"col-lg-3 single-mega-item\">
                                                     <ul class=\"mega-menu-item\">
                                                         <li>
-                                                            <a href=\"create.html\">Create
-                                                                NFT<i data-feather=\"file-plus\"></i>
+                                                            <a href=\"/reclamation\">
+                                                            Create Reclamation
+                                                            <i data-feather=\"file-plus\"></i>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -257,8 +280,9 @@ class __TwigTemplate_de2b1c19419d4e6e5929d872216c323f extends Template
                                                 <div class=\"col-lg-3 single-mega-item\">
                                                     <ul class=\"mega-menu-item\">
                                                         <li>
-                                                            <a href=\"about.html\">About
-                                                                Us<i data-feather=\"award\"></i>
+                                                            <a href=\"/\">
+                                                            Check Reclamation
+                                                            <i data-feather=\"award\"></i>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -330,10 +354,10 @@ class __TwigTemplate_de2b1c19419d4e6e5929d872216c323f extends Template
                     <div id=\"my_switcher\" class=\"my_switcher setting-option\">
                         <ul>
                             <li>
-                                <a href=\"javascript: void(0);\" data-theme=\"light\" class=\"setColor light\"><img class=\"sun-image\" src=\"/assets/images/icons/sun-01.svg\" alt=\"Sun images\"></a>
+                                <a href=\"javascript: void(0);\" data-theme=\"light\" class=\"setColor light\"><img class=\"sun-image\" src=\"{{ asset('/assets/images/icons/sun-01.svg') }} \" alt=\"Sun images\"></a>
                             </li>
                             <li>
-                                <a href=\"javascript: void(0);\" data-theme=\"dark\" class=\"setColor dark\"><img class=\"Victor Image\" src=\"/assets/images/icons/vector.svg\" alt=\"Vector Images\"></a>
+                                <a href=\"javascript: void(0);\" data-theme=\"dark\" class=\"setColor dark\"><img class=\"Victor Image\" src=\"{{ asset('/assets/images/icons/vector.svg') }}\" alt=\"Vector Images\"></a>
                             </li>
                         </ul>
                     </div>
@@ -341,6 +365,6 @@ class __TwigTemplate_de2b1c19419d4e6e5929d872216c323f extends Template
             </div>
         </div>
     </header>
-    <!-- End Header Area -->", "parts/header.html.twig", "C:\\Users\\khali\\OneDrive - ESPRIT\\Documents\\citiezenHub_webapp\\templates\\parts\\header.html.twig");
+    <!-- End Header Area -->", "parts/header.html.twig", "C:\\xampp\\htdocs\\projet\\templates\\parts\\header.html.twig");
     }
 }

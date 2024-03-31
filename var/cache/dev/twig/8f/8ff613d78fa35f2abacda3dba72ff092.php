@@ -404,6 +404,6 @@ reader.readAsDataURL(input.files[0]);
 \t<!-- create new product area -->
 
 {% endblock %}
-", "reclamation/index.html.twig", "C:\\Users\\khali\\OneDrive - ESPRIT\\Documents\\citiezenHub_webapp\\templates\\reclamation\\index.html.twig");
+", "reclamation/index.html.twig", "C:\\xampp\\htdocs\\projet\\templates\\reclamation\\index.html.twig");
     }
 }

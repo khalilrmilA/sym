@@ -79,6 +79,6 @@ class __TwigTemplate_e79ec6d5c8a946e276b3a02227cdf8fa extends Template
     <path d=\"M9 15l3 -3l3 3\" />
     <path d=\"M12 12l0 9\" />
 </svg>
-", "@VichUploader/Collector/icon.svg", "C:\\Users\\khali\\OneDrive - ESPRIT\\Documents\\citiezenHub_webapp\\vendor\\vich\\uploader-bundle\\templates\\Collector\\icon.svg");
+", "@VichUploader/Collector/icon.svg", "C:\\xampp\\htdocs\\projet\\vendor\\vich\\uploader-bundle\\templates\\Collector\\icon.svg");
     }
 }

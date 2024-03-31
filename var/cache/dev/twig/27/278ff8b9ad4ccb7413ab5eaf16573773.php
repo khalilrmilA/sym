@@ -113,8 +113,8 @@ form.reportValidity();
 }
 });
 })();
+
 \t\t</script>
-\t
 \t</body>
 \t";
         // line 121
@@ -529,11 +529,11 @@ form.reportValidity();
 }
 });
 })();
+
 \t\t</script>
-\t
 \t</body>
 \t{% include 'parts/footer.html.twig' %}
 </html>
-", "base.html.twig", "C:\\Users\\khali\\OneDrive - ESPRIT\\Documents\\citiezenHub_webapp\\templates\\base.html.twig");
+", "base.html.twig", "C:\\xampp\\htdocs\\projet\\templates\\base.html.twig");
     }
 }

@@ -119,6 +119,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-", "@VichUploader/Collector/ICON_LICENSE.txt", "C:\\Users\\khali\\OneDrive - ESPRIT\\Documents\\citiezenHub_webapp\\vendor\\vich\\uploader-bundle\\templates\\Collector\\ICON_LICENSE.txt");
+", "@VichUploader/Collector/ICON_LICENSE.txt", "C:\\xampp\\htdocs\\projet\\vendor\\vich\\uploader-bundle\\templates\\Collector\\ICON_LICENSE.txt");
     }
 }

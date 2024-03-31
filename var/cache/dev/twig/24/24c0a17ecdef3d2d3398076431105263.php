@@ -169,6 +169,6 @@ class __TwigTemplate_551461a67ab85b9c5986fa0a027bf70b extends Template
             </div>
         </div>
     </div>
-    <!-- End Footer Area -->", "parts/footer.html.twig", "C:\\Users\\khali\\OneDrive - ESPRIT\\Documents\\citiezenHub_webapp\\templates\\parts\\footer.html.twig");
+    <!-- End Footer Area -->", "parts/footer.html.twig", "C:\\xampp\\htdocs\\projet\\templates\\parts\\footer.html.twig");
     }
 }
