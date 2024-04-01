@@ -3,7 +3,7 @@
         'name' => '__root__',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '414c75d49feab73cc8590cb0ea562e6a5dc27594',
+        'reference' => '3e86a958813e7a5c33cb89a26e2f67962f84d293',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,9 +13,18 @@
         '__root__' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '414c75d49feab73cc8590cb0ea562e6a5dc27594',
+            'reference' => '3e86a958813e7a5c33cb89a26e2f67962f84d293',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'carbonphp/carbon-doctrine-types' => array(
+            'pretty_version' => '2.1.0',
+            'version' => '2.1.0.0',
+            'reference' => '99f76ffa36cce3b70a4a6abce41dba15ca2e84cb',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../carbonphp/carbon-doctrine-types',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -199,6 +208,15 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
+        'nesbot/carbon' => array(
+            'pretty_version' => '3.2.3',
+            'version' => '3.2.3.0',
+            'reference' => '4d599a6e2351d6b6bf21737accdfe1a4ce3fdbb1',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../nesbot/carbon',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'nikic/php-parser' => array(
             'pretty_version' => 'v4.19.1',
             'version' => '4.19.1.0',
@@ -341,6 +359,21 @@
             'dev_requirement' => false,
             'provided' => array(
                 0 => '2.0|3.0',
+            ),
+        ),
+        'psr/clock' => array(
+            'pretty_version' => '1.0.0',
+            'version' => '1.0.0.0',
+            'reference' => 'e41a24703d4560fd0acb709162f73b8adfc3aa0d',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../psr/clock',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'psr/clock-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '1.0',
             ),
         ),
         'psr/container' => array(
@@ -601,6 +634,15 @@
             'provided' => array(
                 0 => '1.1|2.0|3.0',
             ),
+        ),
+        'symfony/clock' => array(
+            'pretty_version' => 'v7.0.5',
+            'version' => '7.0.5.0',
+            'reference' => '8b9d08887353d627d5f6c3bf3373b398b49051c2',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/clock',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'symfony/config' => array(
             'pretty_version' => 'v6.1.11',
@@ -1006,6 +1048,15 @@
             'replaced' => array(
                 0 => '*',
             ),
+        ),
+        'symfony/polyfill-php83' => array(
+            'pretty_version' => 'v1.29.0',
+            'version' => '1.29.0.0',
+            'reference' => '86fcae159633351e5fd145d1c47de6c528f8caff',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/polyfill-php83',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'symfony/polyfill-uuid' => array(
             'pretty_version' => 'v1.29.0',

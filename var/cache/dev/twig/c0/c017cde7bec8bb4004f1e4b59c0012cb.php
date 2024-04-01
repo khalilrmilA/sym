@@ -1,0 +1,1285 @@
+<?php
+
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Extension\SandboxExtension;
+use Twig\Markup;
+use Twig\Sandbox\SecurityError;
+use Twig\Sandbox\SecurityNotAllowedTagError;
+use Twig\Sandbox\SecurityNotAllowedFilterError;
+use Twig\Sandbox\SecurityNotAllowedFunctionError;
+use Twig\Source;
+use Twig\Template;
+
+/* reclamationsh/index.html.twig */
+class __TwigTemplate_644a1d4909bbb6848a9904b3bd887d63 extends Template
+{
+    private $source;
+    private $macros = [];
+
+    public function __construct(Environment $env)
+    {
+        parent::__construct($env);
+
+        $this->source = $this->getSourceContext();
+
+        $this->blocks = [
+            'title' => [$this, 'block_title'],
+            'body' => [$this, 'block_body'],
+        ];
+    }
+
+    protected function doGetParent(array $context)
+    {
+        // line 1
+        return "base.html.twig";
+    }
+
+    protected function doDisplay(array $context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "reclamationsh/index.html.twig"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "reclamationsh/index.html.twig"));
+
+        $this->parent = $this->loadTemplate("base.html.twig", "reclamationsh/index.html.twig", 1);
+        $this->parent->display($context, array_merge($this->blocks, $blocks));
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+    }
+
+    // line 3
+    public function block_title($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
+
+        // line 4
+        echo "\tshow reclamation!
+
+
+";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    // line 9
+    public function block_body($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
+        // line 10
+        echo "\t<link
+\trel=\"shortcut icon\" type=\"image/x-icon\" href=\"assets/images/favicon.png\">
+\t<!-- CSS ============================================ -->
+\t<link rel=\"stylesheet\" href=\"assets/css/vendor/bootstrap.min.css\">
+\t<link rel=\"stylesheet\" href=\"assets/css/vendor/slick.css\">
+\t<link rel=\"stylesheet\" href=\"assets/css/vendor/slick-theme.css\">
+\t<link rel=\"stylesheet\" href=\"assets/css/vendor/nice-select.css\">
+\t<link rel=\"stylesheet\" href=\"assets/css/plugins/feature.css\">
+\t<link rel=\"stylesheet\" href=\"assets/css/plugins/jquery-ui.min.css\">
+\t<link
+\trel=\"stylesheet\" href=\"assets/css/vendor/odometer.css\">
+
+\t<!-- Style css -->
+\t<link rel=\"stylesheet\" href=\"assets/css/style.css\">
+\t<div class=\"rn-about-banner-area rn-section-gapTop\">
+\t\t<div class=\"container mb--30\">
+\t\t\t<div class=\"row\">
+\t\t\t\t<div class=\"col-12\">
+\t\t\t\t\t<h2 class=\"title about-title-m\" data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\tDirect
+\t\t\t\t\t\t\t\t\t\t\t\t                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                            Teams.
+
+
+\t\t\t\t\t\t<br>
+\t\t\t\t\t\tHere's you last Reclamationnn
+
+\t\t\t\t\t</h2>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t</div>
+\t\t<div class=\"container-fluid about-fluidimg \">
+\t\t\t<div class=\"row\">
+\t\t\t\t<div class=\"img-wrapper\">
+\t\t\t\t\t<div class=\"bg_image--22 bg_image\"></div>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t</div>
+\t\t<div class=\"container\">
+\t\t\t<div class=\"row g-5\">
+\t\t\t\t<div class=\"col-lg-6\">
+\t\t\t\t\t<div class=\"h--100\">
+\t\t\t\t\t\t<div class=\"rn-about-card mt_dec--50 widge-wrapper rbt-sticky-top-adjust\">
+\t\t\t\t\t\t\t<div class=\"inner\">
+\t\t\t\t\t\t\t\t<h2 class=\"title\" data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\t\t\t\tWhy We Do This
+
+
+\t\t\t\t\t\t\t\t</h2>
+\t\t\t\t\t\t\t\t<p class=\"about-disc\" data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\t\t\t\tNFTs are virtual tokens that represent
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        ownership of something inherently
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        distinct and scarce, whether it be a
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        physical or digital item, such as
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        artwork, a soundtrack, a collectible, an
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        in-game item or real estate. Unlike
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        regular cryptocurrencies like
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        bitcoin or fiat money like the U.S.
+
+
+\t\t\t\t\t\t\t\t</p>
+\t\t\t\t\t\t\t\t<a href=\"blog.html\" class=\"btn btn-primary-alta btn-large sal-animate mt--20\" data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\t\t\t\tSee Our Blog
+
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t\t<div class=\"col-lg-6\">
+\t\t\t\t\t<div class=\"rn-about-card transparent-bg\">
+\t\t\t\t\t\t<div class=\"inner\">
+\t\t\t\t\t\t\t<h3 class=\"title\" data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\t\t\tHelping You
+
+
+\t\t\t\t\t\t\t\t<br>
+\t\t\t\t\t\t\t\tGrow In Every Stage.
+
+
+\t\t\t\t\t\t\t</h3>
+\t\t\t\t\t\t\t<p class=\"about-disc mb--0\" data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\t\t\tNFTs are virtual tokens that represent
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                    ownership of something inherently distinct
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                    and scarce, whether it be a physical or
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                    digital item, such as artwork, a soundtrack,
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                    a collectible, an in-game item or real
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                    estate. Unlike regular cryptocurrencies like
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                    bitcoin or fiat money like the U.S.
+
+
+\t\t\t\t\t\t\t</p>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t</div>
+\t</div>
+\t<!-- About banner area End -->
+
+\t<div class=\"rn-about-Quote-area rn-section-gapTop\">
+\t\t<div class=\"container\">
+\t\t\t<div class=\"row g-5 d-flex align-items-center\">
+\t\t\t\t<div class=\"col-lg-6\">
+\t\t\t\t\t<div class=\"rn-about-title-wrapper\">
+\t\t\t\t\t\t<h3 class=\"title\" data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\t\tCreate, Sell well & Collect
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                your Wonderful NFTs at Nuron Very Fast
+
+\t\t\t\t\t\t</h3>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t\t<div class=\"col-lg-6\">
+\t\t\t\t\t<div class=\"rn-about-wrapper\" data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\t<p>
+\t\t\t\t\t\t\tThe NFTs is a one-trick pony that climbed the
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                ladders of success in recent years. The growth
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                of NFTs is tremendous, and according to
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                Pymnts.com, the total sales volume of NFTs has
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                nearly crossed \$2.5 billion in the last six
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                months
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                of . Surprisingly, the total sales volume of
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                NFTs was \$13.7 million in 2020. On comparing
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                both the values,
+
+\t\t\t\t\t\t</p>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t</div>
+\t</div>
+
+\t<!-- rn stastic area -->
+\t<div class=\"rn-statistick-area rn-section-gapTop\">
+\t\t<div class=\"container\">
+\t\t\t<div class=\"row mb--30\">
+\t\t\t\t<div class=\"col-12 text-center\">
+\t\t\t\t\t<h3>
+\t\t\t\t\t\tNuron Statistics
+
+\t\t\t\t\t</h3>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t\t<div class=\"row g-5\">
+\t\t\t\t<div class=\"offset-lg-2 col-lg-4 col-md-6\">
+\t\t\t\t\t<div class=\"single-counter-up text-center\">
+\t\t\t\t\t\t<h3 class=\"counter\">
+\t\t\t\t\t\t\t<span class=\"odometer\" data-count=\"309\">
+\t\t\t\t\t\t\t\t00
+
+\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t</h3>
+\t\t\t\t\t\t<div class=\"botton-title\">
+\t\t\t\t\t\t\tNuron All NFT's
+
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t\t<div class=\"col-lg-4 col-md-6\">
+\t\t\t\t\t<div class=\"single-counter-up text-center\">
+\t\t\t\t\t\t<h3 class=\"counter\">
+\t\t\t\t\t\t\t<span class=\"odometer\" data-count=\"508\">
+\t\t\t\t\t\t\t\t00
+
+\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t</h3>
+\t\t\t\t\t\t<div class=\"botton-title\">
+\t\t\t\t\t\t\tAll Creators
+
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t\t<div class=\"offset-lg-2 col-lg-4 col-md-6\">
+\t\t\t\t\t<div class=\"single-counter-up text-center\">
+\t\t\t\t\t\t<h3 class=\"counter\">
+\t\t\t\t\t\t\t<span class=\"odometer\" data-count=\"1032\">
+\t\t\t\t\t\t\t\t00
+
+\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t</h3>
+\t\t\t\t\t\t<div class=\"botton-title\">
+\t\t\t\t\t\t\tNuron Earning
+
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t\t<div class=\"col-lg-4 col-md-6\">
+\t\t\t\t\t<div class=\"single-counter-up text-center\">
+\t\t\t\t\t\t<h3 class=\"counter\">
+\t\t\t\t\t\t\t<span class=\"odometer\" data-count=\"650\">
+\t\t\t\t\t\t\t\t00
+
+\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t</h3>
+\t\t\t\t\t\t<div class=\"botton-title\">
+\t\t\t\t\t\t\tLevel One Seller
+
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t</div>
+\t</div>
+\t<!-- rn stastic area -->
+
+\t<!-- call to action area -->
+\t<div class=\"rn-callto-action rn-section-gapTop\">
+\t\t<div class=\"container-fluid about-fluidimg-cta\">
+\t\t\t<div class=\"row\">
+\t\t\t\t<div class=\"col-lg-12\">
+\t\t\t\t\t<div class=\"bg_image--6 bg_image bg-image-border\" data-black-overlay=\"7\">
+\t\t\t\t\t\t<div class=\"row\">
+\t\t\t\t\t\t\t<div class=\"col-lg-12\">
+\t\t\t\t\t\t\t\t<div class=\"call-to-action-wrapper\">
+\t\t\t\t\t\t\t\t\t<h3 data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\t\t\t\t\tDiscover rare
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                            digital art
+
+
+\t\t\t\t\t\t\t\t\t\t<br>
+\t\t\t\t\t\t\t\t\t\tand collect
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                            NFTs
+
+\t\t\t\t\t\t\t\t\t</h3>
+\t\t\t\t\t\t\t\t\t<p data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\t\t\t\t\tThe NFTs is a
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                            one-trick pony that climbed the
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                            recent years. The growth of NFTs is
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                            tremendous, and according to
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                            Pymnts.com, the total sales volume
+
+
+\t\t\t\t\t\t\t\t\t</p>
+\t\t\t\t\t\t\t\t\t<div class=\"callto-action-btn-wrapper\" data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\t\t\t\t\t<a href=\"create.html\" class=\"btn btn-primary btn-large\">
+\t\t\t\t\t\t\t\t\t\t\tCreate
+
+\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t\t<a href=\"contact.html\" class=\"btn btn-primary-alta btn-large\">
+\t\t\t\t\t\t\t\t\t\t\tContact
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                Us
+
+\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t</div>
+\t</div>
+\t<!-- call to action area End -->
+
+\t<!-- Start BLog Area  -->
+\t<div class=\"rn-blog-area rn-section-gapTop\">
+\t\t<div class=\"container\">
+\t\t\t<div class=\"row mb--50 align-items-center\">
+\t\t\t\t<div class=\"col-lg-6 col-md-6 col-sm-6 col-12\">
+\t\t\t\t\t<h3 class=\"title mb--0\" data-sal-delay=\"150\" data-sal=\"slide-up\" data-sal-duration=\"800\">
+\t\t\t\t\t\tOur Recent Blog
+
+\t\t\t\t\t</h3>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t\t<div class=\"row g-5 d-flex flex-wrap\">
+
+            <!-- [:4]  -->
+            ";
+        // line 277
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(twig_slice($this->env, (isset($context["rec"]) || array_key_exists("rec", $context) ? $context["rec"] : (function () { throw new RuntimeError('Variable "rec" does not exist.', 277, $this->source); })()), 0, 4));
+        foreach ($context['_seq'] as $context["_key"] => $context["recl"]) {
+            echo " 
+                        <div class=\"inner flex-grow-1\" style=\"max-width: 300px; overflow-wrap: break-word;\">
+                            <div class=\"thumbnail\">
+                                <a href=\"blog-details.html\">
+                                    <img src=\"";
+            // line 281
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/reclamation/" . twig_get_attribute($this->env, $this->source, $context["recl"], "getImagePath", [], "method", false, false, false, 281))), "html", null, true);
+            echo "\" alt=\"Personal Portfolio Images\"></a>
+                            </div>
+                            <div class=\"content\">
+                                <div class=\"category-info\">
+                                    <div class=\"category-list\">
+                                        <a href=\"blog-details.html\">
+                                            ";
+            // line 287
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recl"], "subject", [], "any", false, false, false, 287), "html", null, true);
+            echo "
+                                        </a>
+                                    </div>
+                                    <div class=\"meta\">
+                                        <span>
+                                            <i class=\"feather-clock\"></i>
+                                            ";
+            // line 293
+            echo twig_escape_filter($this->env, $this->extensions['App\Twig\AppExtension']->timeAgoFilter(twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recl"], "createdAt", [], "any", false, false, false, 293), "Y-m-dTH:i:sP")), "html", null, true);
+            echo "
+                                        </span>
+
+                                    </div>
+                                </div>
+                                <h4 class=\"title\">
+                                    <a href=\"blog-details.html\">
+                                        ";
+            // line 300
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recl"], "description", [], "any", false, false, false, 300), "html", null, true);
+            echo "
+                                        <i class=\"feather-arrow-up-right\"></i>
+                                    </a>
+                                </h4>
+                            </div>
+                        </div>
+                    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['recl'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 307
+        echo "            
+                
+\t\t\t</div>
+\t\t</div>
+\t</div>
+
+\t<!-- End BLog Area  -->
+
+\t<!-- Start Footer Area -->
+\t<div class=\"rn-footer-one rn-section-gap bg-color--1 mt--100 mt_md--80 mt_sm--80\">
+\t\t<div class=\"container\">
+\t\t\t<div class=\"row gx-5\">
+\t\t\t\t<div class=\"col-lg-3 col-md-6 col-sm-6 col-12\">
+\t\t\t\t\t<div class=\"widget-content-wrapper\">
+\t\t\t\t\t\t<div class=\"footer-left\">
+\t\t\t\t\t\t\t<div class=\"logo-thumbnail logo-custom-css\">
+\t\t\t\t\t\t\t\t<a class=\"logo-light\" href=\"index.html\">
+\t\t\t\t\t\t\t\t\t<img src=\"assets/images/logo/logo-white.png\" alt=\"nft-logo\"></a>
+\t\t\t\t\t\t\t\t<a class=\"logo-dark\" href=\"index.html\">
+\t\t\t\t\t\t\t\t\t<img src=\"assets/images/logo/logo-dark.png\" alt=\"nft-logo\"></a>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<p class=\"rn-footer-describe\">
+\t\t\t\t\t\t\t\tCreated with the collaboration of over 60 of
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                    the world's best Nuron Artists.
+
+
+\t\t\t\t\t\t\t</p>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"widget-bottom mt--40 pt--40\">
+\t\t\t\t\t\t\t<h6 class=\"title\">
+\t\t\t\t\t\t\t\tGet The Latest Nuron Updates
+
+
+\t\t\t\t\t\t\t</h6>
+\t\t\t\t\t\t\t<div class=\"input-group\">
+\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control bg-color--2\" placeholder=\"Your username\" aria-label=\"Recipient's username\">
+\t\t\t\t\t\t\t\t<div class=\"input-group-append\">
+\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary-alta btn-outline-secondary\" type=\"button\">
+\t\t\t\t\t\t\t\t\t\tSubscribe
+
+\t\t\t\t\t\t\t\t\t</button>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<div class=\"newsletter-dsc\">
+\t\t\t\t\t\t\t\t<p>
+\t\t\t\t\t\t\t\t\tEmail is safe. We don't spam.
+
+\t\t\t\t\t\t\t\t</p>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+
+\t\t\t\t<div class=\"col-lg-3 col-md-6 col-sm-6 col-12 mt_md--40 mt_sm--40\">
+\t\t\t\t\t<div class=\"footer-widget widget-information\">
+\t\t\t\t\t\t<h6 class=\"widget-title\">
+\t\t\t\t\t\t\tInformation
+
+\t\t\t\t\t\t</h6>
+\t\t\t\t\t\t<ul class=\"footer-list-one\">
+\t\t\t\t\t\t\t<li class=\"single-list\">
+\t\t\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\t\t\t\tMarket
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        Explore
+
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"single-list\">
+\t\t\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\t\t\t\tReady
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        Token
+
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"single-list\">
+\t\t\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\t\t\t\tMain
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        Option
+
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"single-list\">
+\t\t\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\t\t\t\tProduct
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        Checking
+
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"single-list\">
+\t\t\t\t\t\t\t\t<a href=\"blog.html\">
+\t\t\t\t\t\t\t\t\tBlog
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        Grid
+
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"single-list\">
+\t\t\t\t\t\t\t\t<a href=\"about.html\">
+\t\t\t\t\t\t\t\t\tAbout Us
+
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"single-list\">
+\t\t\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\t\t\t\tFix Bug
+
+
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t</ul>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+
+\t\t\t\t<div class=\"col-lg-3 col-md-6 col-sm-6 col-12 mt_md--40 mt_sm--40\">
+\t\t\t\t\t<div class=\"footer-widget\">
+\t\t\t\t\t\t<h6 class=\"widget-title\">
+\t\t\t\t\t\t\tRecent Sold Out
+
+\t\t\t\t\t\t</h6>
+\t\t\t\t\t\t<ul class=\"footer-recent-post\">
+\t\t\t\t\t\t\t<li class=\"recent-post\">
+\t\t\t\t\t\t\t\t<div class=\"thumbnail\">
+\t\t\t\t\t\t\t\t\t<a href=\"product-details.html\">
+\t\t\t\t\t\t\t\t\t\t<img src=\"assets/images/portfolio/portfolio-01.jpg\" alt=\"Product Images\"></a>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t<div class=\"content\">
+\t\t\t\t\t\t\t\t\t<h6 class=\"title\">
+\t\t\t\t\t\t\t\t\t\t<a href=\"product-details.html\">
+\t\t\t\t\t\t\t\t\t\t\t#21
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                The Wonder
+
+\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t</h6>
+\t\t\t\t\t\t\t\t\t<p>
+\t\t\t\t\t\t\t\t\t\tHighest bid 1/20
+
+\t\t\t\t\t\t\t\t\t</p>
+\t\t\t\t\t\t\t\t\t<span class=\"price\">
+\t\t\t\t\t\t\t\t\t\t0.244wETH
+
+\t\t\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"recent-post\">
+\t\t\t\t\t\t\t\t<div class=\"thumbnail\">
+\t\t\t\t\t\t\t\t\t<a href=\"product-details.html\">
+\t\t\t\t\t\t\t\t\t\t<img src=\"assets/images/portfolio/portfolio-02.jpg\" alt=\"Product Images\"></a>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t<div class=\"content\">
+\t\t\t\t\t\t\t\t\t<h6 class=\"title\">
+\t\t\t\t\t\t\t\t\t\t<a href=\"product-details.html\">
+\t\t\t\t\t\t\t\t\t\t\tDiamond
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                Dog
+
+\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t</h6>
+\t\t\t\t\t\t\t\t\t<p>
+\t\t\t\t\t\t\t\t\t\tHighest bid 1/20
+
+\t\t\t\t\t\t\t\t\t</p>
+\t\t\t\t\t\t\t\t\t<span class=\"price\">
+\t\t\t\t\t\t\t\t\t\t0.022wETH
+
+\t\t\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"recent-post\">
+\t\t\t\t\t\t\t\t<div class=\"thumbnail\">
+\t\t\t\t\t\t\t\t\t<a href=\"product-details.html\">
+\t\t\t\t\t\t\t\t\t\t<img src=\"assets/images/portfolio/portfolio-03.jpg\" alt=\"Product Images\"></a>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t<div class=\"content\">
+\t\t\t\t\t\t\t\t\t<h6 class=\"title\">
+\t\t\t\t\t\t\t\t\t\t<a href=\"product-details.html\">
+\t\t\t\t\t\t\t\t\t\t\tMorgan11
+
+\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t</h6>
+\t\t\t\t\t\t\t\t\t<p>
+\t\t\t\t\t\t\t\t\t\tHighest bid 1/20
+
+\t\t\t\t\t\t\t\t\t</p>
+\t\t\t\t\t\t\t\t\t<span class=\"price\">
+\t\t\t\t\t\t\t\t\t\t0.892wETH
+
+\t\t\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t</ul>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t</div>
+\t</div>
+\t<!-- End Footer Area -->
+\t<!-- Start Footer Area -->
+\t<div class=\"copy-right-one ptb--20 bg-color--1\">
+\t\t<div class=\"container\">
+\t\t\t<div class=\"row align-items-center\">
+\t\t\t\t<div class=\"col-lg-6 col-md-12 col-sm-12\">
+\t\t\t\t\t<div class=\"copyright-left\">
+\t\t\t\t\t\t<span>
+\t\t\t\t\t\t\t©2022 Nuron, Inc. All rights reserved.
+
+\t\t\t\t\t\t</span>
+\t\t\t\t\t\t<ul class=\"privacy\">
+\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t<a href=\"terms-condition.html\">
+\t\t\t\t\t\t\t\t\tTerms
+
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t<a href=\"privacy-policy.html\">
+\t\t\t\t\t\t\t\t\tPrivacy
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        Policy
+
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t</ul>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t\t<div class=\"col-lg-6 col-md-12 col-sm-12\">
+\t\t\t\t\t<div class=\"copyright-right\">
+\t\t\t\t\t\t<ul class=\"social-copyright\">
+\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\t\t\t\t<i data-feather=\"facebook\"></i>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\t\t\t\t<i data-feather=\"twitter\"></i>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\t\t\t\t<i data-feather=\"instagram\"></i>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\t\t\t\t<i data-feather=\"linkedin\"></i>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\t\t\t\t<i data-feather=\"mail\"></i>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t</ul>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t</div>
+\t</div>
+\t<!-- End Footer Area -->
+\t<div class=\"mouse-cursor cursor-outer\"></div>
+\t<div class=\"mouse-cursor cursor-inner\"></div>
+\t<!-- Start Top To Bottom Area  -->
+\t<div class=\"rn-progress-parent\">
+\t\t<svg class=\"rn-back-circle svg-inner\" width=\"100%\" height=\"100%\" viewbox=\"-1 -1 102 102\">
+\t\t\t<path d=\"M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98\"/>
+\t\t</svg>
+\t</div>
+
+";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getTemplateName()
+    {
+        return "reclamationsh/index.html.twig";
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function isTraitable()
+    {
+        return false;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getDebugInfo()
+    {
+        return array (  411 => 307,  398 => 300,  388 => 293,  379 => 287,  370 => 281,  361 => 277,  92 => 10,  82 => 9,  69 => 4,  59 => 3,  36 => 1,);
+    }
+
+    public function getSourceContext()
+    {
+        return new Source("{% extends 'base.html.twig' %}
+
+{% block title %}
+\tshow reclamation!
+
+
+{% endblock %}
+
+{% block body %}
+\t<link
+\trel=\"shortcut icon\" type=\"image/x-icon\" href=\"assets/images/favicon.png\">
+\t<!-- CSS ============================================ -->
+\t<link rel=\"stylesheet\" href=\"assets/css/vendor/bootstrap.min.css\">
+\t<link rel=\"stylesheet\" href=\"assets/css/vendor/slick.css\">
+\t<link rel=\"stylesheet\" href=\"assets/css/vendor/slick-theme.css\">
+\t<link rel=\"stylesheet\" href=\"assets/css/vendor/nice-select.css\">
+\t<link rel=\"stylesheet\" href=\"assets/css/plugins/feature.css\">
+\t<link rel=\"stylesheet\" href=\"assets/css/plugins/jquery-ui.min.css\">
+\t<link
+\trel=\"stylesheet\" href=\"assets/css/vendor/odometer.css\">
+
+\t<!-- Style css -->
+\t<link rel=\"stylesheet\" href=\"assets/css/style.css\">
+\t<div class=\"rn-about-banner-area rn-section-gapTop\">
+\t\t<div class=\"container mb--30\">
+\t\t\t<div class=\"row\">
+\t\t\t\t<div class=\"col-12\">
+\t\t\t\t\t<h2 class=\"title about-title-m\" data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\tDirect
+\t\t\t\t\t\t\t\t\t\t\t\t                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                            Teams.
+
+
+\t\t\t\t\t\t<br>
+\t\t\t\t\t\tHere's you last Reclamationnn
+
+\t\t\t\t\t</h2>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t</div>
+\t\t<div class=\"container-fluid about-fluidimg \">
+\t\t\t<div class=\"row\">
+\t\t\t\t<div class=\"img-wrapper\">
+\t\t\t\t\t<div class=\"bg_image--22 bg_image\"></div>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t</div>
+\t\t<div class=\"container\">
+\t\t\t<div class=\"row g-5\">
+\t\t\t\t<div class=\"col-lg-6\">
+\t\t\t\t\t<div class=\"h--100\">
+\t\t\t\t\t\t<div class=\"rn-about-card mt_dec--50 widge-wrapper rbt-sticky-top-adjust\">
+\t\t\t\t\t\t\t<div class=\"inner\">
+\t\t\t\t\t\t\t\t<h2 class=\"title\" data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\t\t\t\tWhy We Do This
+
+
+\t\t\t\t\t\t\t\t</h2>
+\t\t\t\t\t\t\t\t<p class=\"about-disc\" data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\t\t\t\tNFTs are virtual tokens that represent
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        ownership of something inherently
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        distinct and scarce, whether it be a
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        physical or digital item, such as
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        artwork, a soundtrack, a collectible, an
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        in-game item or real estate. Unlike
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        regular cryptocurrencies like
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        bitcoin or fiat money like the U.S.
+
+
+\t\t\t\t\t\t\t\t</p>
+\t\t\t\t\t\t\t\t<a href=\"blog.html\" class=\"btn btn-primary-alta btn-large sal-animate mt--20\" data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\t\t\t\tSee Our Blog
+
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t\t<div class=\"col-lg-6\">
+\t\t\t\t\t<div class=\"rn-about-card transparent-bg\">
+\t\t\t\t\t\t<div class=\"inner\">
+\t\t\t\t\t\t\t<h3 class=\"title\" data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\t\t\tHelping You
+
+
+\t\t\t\t\t\t\t\t<br>
+\t\t\t\t\t\t\t\tGrow In Every Stage.
+
+
+\t\t\t\t\t\t\t</h3>
+\t\t\t\t\t\t\t<p class=\"about-disc mb--0\" data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\t\t\tNFTs are virtual tokens that represent
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                    ownership of something inherently distinct
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                    and scarce, whether it be a physical or
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                    digital item, such as artwork, a soundtrack,
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                    a collectible, an in-game item or real
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                    estate. Unlike regular cryptocurrencies like
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                    bitcoin or fiat money like the U.S.
+
+
+\t\t\t\t\t\t\t</p>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t</div>
+\t</div>
+\t<!-- About banner area End -->
+
+\t<div class=\"rn-about-Quote-area rn-section-gapTop\">
+\t\t<div class=\"container\">
+\t\t\t<div class=\"row g-5 d-flex align-items-center\">
+\t\t\t\t<div class=\"col-lg-6\">
+\t\t\t\t\t<div class=\"rn-about-title-wrapper\">
+\t\t\t\t\t\t<h3 class=\"title\" data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\t\tCreate, Sell well & Collect
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                your Wonderful NFTs at Nuron Very Fast
+
+\t\t\t\t\t\t</h3>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t\t<div class=\"col-lg-6\">
+\t\t\t\t\t<div class=\"rn-about-wrapper\" data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\t<p>
+\t\t\t\t\t\t\tThe NFTs is a one-trick pony that climbed the
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                ladders of success in recent years. The growth
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                of NFTs is tremendous, and according to
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                Pymnts.com, the total sales volume of NFTs has
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                nearly crossed \$2.5 billion in the last six
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                months
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                of . Surprisingly, the total sales volume of
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                NFTs was \$13.7 million in 2020. On comparing
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                both the values,
+
+\t\t\t\t\t\t</p>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t</div>
+\t</div>
+
+\t<!-- rn stastic area -->
+\t<div class=\"rn-statistick-area rn-section-gapTop\">
+\t\t<div class=\"container\">
+\t\t\t<div class=\"row mb--30\">
+\t\t\t\t<div class=\"col-12 text-center\">
+\t\t\t\t\t<h3>
+\t\t\t\t\t\tNuron Statistics
+
+\t\t\t\t\t</h3>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t\t<div class=\"row g-5\">
+\t\t\t\t<div class=\"offset-lg-2 col-lg-4 col-md-6\">
+\t\t\t\t\t<div class=\"single-counter-up text-center\">
+\t\t\t\t\t\t<h3 class=\"counter\">
+\t\t\t\t\t\t\t<span class=\"odometer\" data-count=\"309\">
+\t\t\t\t\t\t\t\t00
+
+\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t</h3>
+\t\t\t\t\t\t<div class=\"botton-title\">
+\t\t\t\t\t\t\tNuron All NFT's
+
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t\t<div class=\"col-lg-4 col-md-6\">
+\t\t\t\t\t<div class=\"single-counter-up text-center\">
+\t\t\t\t\t\t<h3 class=\"counter\">
+\t\t\t\t\t\t\t<span class=\"odometer\" data-count=\"508\">
+\t\t\t\t\t\t\t\t00
+
+\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t</h3>
+\t\t\t\t\t\t<div class=\"botton-title\">
+\t\t\t\t\t\t\tAll Creators
+
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t\t<div class=\"offset-lg-2 col-lg-4 col-md-6\">
+\t\t\t\t\t<div class=\"single-counter-up text-center\">
+\t\t\t\t\t\t<h3 class=\"counter\">
+\t\t\t\t\t\t\t<span class=\"odometer\" data-count=\"1032\">
+\t\t\t\t\t\t\t\t00
+
+\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t</h3>
+\t\t\t\t\t\t<div class=\"botton-title\">
+\t\t\t\t\t\t\tNuron Earning
+
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t\t<div class=\"col-lg-4 col-md-6\">
+\t\t\t\t\t<div class=\"single-counter-up text-center\">
+\t\t\t\t\t\t<h3 class=\"counter\">
+\t\t\t\t\t\t\t<span class=\"odometer\" data-count=\"650\">
+\t\t\t\t\t\t\t\t00
+
+\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t</h3>
+\t\t\t\t\t\t<div class=\"botton-title\">
+\t\t\t\t\t\t\tLevel One Seller
+
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t</div>
+\t</div>
+\t<!-- rn stastic area -->
+
+\t<!-- call to action area -->
+\t<div class=\"rn-callto-action rn-section-gapTop\">
+\t\t<div class=\"container-fluid about-fluidimg-cta\">
+\t\t\t<div class=\"row\">
+\t\t\t\t<div class=\"col-lg-12\">
+\t\t\t\t\t<div class=\"bg_image--6 bg_image bg-image-border\" data-black-overlay=\"7\">
+\t\t\t\t\t\t<div class=\"row\">
+\t\t\t\t\t\t\t<div class=\"col-lg-12\">
+\t\t\t\t\t\t\t\t<div class=\"call-to-action-wrapper\">
+\t\t\t\t\t\t\t\t\t<h3 data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\t\t\t\t\tDiscover rare
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                            digital art
+
+
+\t\t\t\t\t\t\t\t\t\t<br>
+\t\t\t\t\t\t\t\t\t\tand collect
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                            NFTs
+
+\t\t\t\t\t\t\t\t\t</h3>
+\t\t\t\t\t\t\t\t\t<p data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\t\t\t\t\tThe NFTs is a
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                            one-trick pony that climbed the
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                            recent years. The growth of NFTs is
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                            tremendous, and according to
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                            Pymnts.com, the total sales volume
+
+
+\t\t\t\t\t\t\t\t\t</p>
+\t\t\t\t\t\t\t\t\t<div class=\"callto-action-btn-wrapper\" data-sal=\"slide-up\" data-sal-duration=\"800\" data-sal-delay=\"150\">
+\t\t\t\t\t\t\t\t\t\t<a href=\"create.html\" class=\"btn btn-primary btn-large\">
+\t\t\t\t\t\t\t\t\t\t\tCreate
+
+\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t\t<a href=\"contact.html\" class=\"btn btn-primary-alta btn-large\">
+\t\t\t\t\t\t\t\t\t\t\tContact
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                Us
+
+\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t</div>
+\t</div>
+\t<!-- call to action area End -->
+
+\t<!-- Start BLog Area  -->
+\t<div class=\"rn-blog-area rn-section-gapTop\">
+\t\t<div class=\"container\">
+\t\t\t<div class=\"row mb--50 align-items-center\">
+\t\t\t\t<div class=\"col-lg-6 col-md-6 col-sm-6 col-12\">
+\t\t\t\t\t<h3 class=\"title mb--0\" data-sal-delay=\"150\" data-sal=\"slide-up\" data-sal-duration=\"800\">
+\t\t\t\t\t\tOur Recent Blog
+
+\t\t\t\t\t</h3>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t\t<div class=\"row g-5 d-flex flex-wrap\">
+
+            <!-- [:4]  -->
+            {% for recl in rec[:4] %} 
+                        <div class=\"inner flex-grow-1\" style=\"max-width: 300px; overflow-wrap: break-word;\">
+                            <div class=\"thumbnail\">
+                                <a href=\"blog-details.html\">
+                                    <img src=\"{{ asset(\"images/reclamation/\"~recl.getImagePath()) }}\" alt=\"Personal Portfolio Images\"></a>
+                            </div>
+                            <div class=\"content\">
+                                <div class=\"category-info\">
+                                    <div class=\"category-list\">
+                                        <a href=\"blog-details.html\">
+                                            {{ recl.subject }}
+                                        </a>
+                                    </div>
+                                    <div class=\"meta\">
+                                        <span>
+                                            <i class=\"feather-clock\"></i>
+                                            {{ recl.createdAt|date('Y-m-d\\TH:i:sP')|time_ago }}
+                                        </span>
+
+                                    </div>
+                                </div>
+                                <h4 class=\"title\">
+                                    <a href=\"blog-details.html\">
+                                        {{ recl.description }}
+                                        <i class=\"feather-arrow-up-right\"></i>
+                                    </a>
+                                </h4>
+                            </div>
+                        </div>
+                    {% endfor %}
+            
+                
+\t\t\t</div>
+\t\t</div>
+\t</div>
+
+\t<!-- End BLog Area  -->
+
+\t<!-- Start Footer Area -->
+\t<div class=\"rn-footer-one rn-section-gap bg-color--1 mt--100 mt_md--80 mt_sm--80\">
+\t\t<div class=\"container\">
+\t\t\t<div class=\"row gx-5\">
+\t\t\t\t<div class=\"col-lg-3 col-md-6 col-sm-6 col-12\">
+\t\t\t\t\t<div class=\"widget-content-wrapper\">
+\t\t\t\t\t\t<div class=\"footer-left\">
+\t\t\t\t\t\t\t<div class=\"logo-thumbnail logo-custom-css\">
+\t\t\t\t\t\t\t\t<a class=\"logo-light\" href=\"index.html\">
+\t\t\t\t\t\t\t\t\t<img src=\"assets/images/logo/logo-white.png\" alt=\"nft-logo\"></a>
+\t\t\t\t\t\t\t\t<a class=\"logo-dark\" href=\"index.html\">
+\t\t\t\t\t\t\t\t\t<img src=\"assets/images/logo/logo-dark.png\" alt=\"nft-logo\"></a>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<p class=\"rn-footer-describe\">
+\t\t\t\t\t\t\t\tCreated with the collaboration of over 60 of
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                    the world's best Nuron Artists.
+
+
+\t\t\t\t\t\t\t</p>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"widget-bottom mt--40 pt--40\">
+\t\t\t\t\t\t\t<h6 class=\"title\">
+\t\t\t\t\t\t\t\tGet The Latest Nuron Updates
+
+
+\t\t\t\t\t\t\t</h6>
+\t\t\t\t\t\t\t<div class=\"input-group\">
+\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control bg-color--2\" placeholder=\"Your username\" aria-label=\"Recipient's username\">
+\t\t\t\t\t\t\t\t<div class=\"input-group-append\">
+\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary-alta btn-outline-secondary\" type=\"button\">
+\t\t\t\t\t\t\t\t\t\tSubscribe
+
+\t\t\t\t\t\t\t\t\t</button>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<div class=\"newsletter-dsc\">
+\t\t\t\t\t\t\t\t<p>
+\t\t\t\t\t\t\t\t\tEmail is safe. We don't spam.
+
+\t\t\t\t\t\t\t\t</p>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+
+\t\t\t\t<div class=\"col-lg-3 col-md-6 col-sm-6 col-12 mt_md--40 mt_sm--40\">
+\t\t\t\t\t<div class=\"footer-widget widget-information\">
+\t\t\t\t\t\t<h6 class=\"widget-title\">
+\t\t\t\t\t\t\tInformation
+
+\t\t\t\t\t\t</h6>
+\t\t\t\t\t\t<ul class=\"footer-list-one\">
+\t\t\t\t\t\t\t<li class=\"single-list\">
+\t\t\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\t\t\t\tMarket
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        Explore
+
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"single-list\">
+\t\t\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\t\t\t\tReady
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        Token
+
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"single-list\">
+\t\t\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\t\t\t\tMain
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        Option
+
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"single-list\">
+\t\t\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\t\t\t\tProduct
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        Checking
+
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"single-list\">
+\t\t\t\t\t\t\t\t<a href=\"blog.html\">
+\t\t\t\t\t\t\t\t\tBlog
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        Grid
+
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"single-list\">
+\t\t\t\t\t\t\t\t<a href=\"about.html\">
+\t\t\t\t\t\t\t\t\tAbout Us
+
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"single-list\">
+\t\t\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\t\t\t\tFix Bug
+
+
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t</ul>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+
+\t\t\t\t<div class=\"col-lg-3 col-md-6 col-sm-6 col-12 mt_md--40 mt_sm--40\">
+\t\t\t\t\t<div class=\"footer-widget\">
+\t\t\t\t\t\t<h6 class=\"widget-title\">
+\t\t\t\t\t\t\tRecent Sold Out
+
+\t\t\t\t\t\t</h6>
+\t\t\t\t\t\t<ul class=\"footer-recent-post\">
+\t\t\t\t\t\t\t<li class=\"recent-post\">
+\t\t\t\t\t\t\t\t<div class=\"thumbnail\">
+\t\t\t\t\t\t\t\t\t<a href=\"product-details.html\">
+\t\t\t\t\t\t\t\t\t\t<img src=\"assets/images/portfolio/portfolio-01.jpg\" alt=\"Product Images\"></a>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t<div class=\"content\">
+\t\t\t\t\t\t\t\t\t<h6 class=\"title\">
+\t\t\t\t\t\t\t\t\t\t<a href=\"product-details.html\">
+\t\t\t\t\t\t\t\t\t\t\t#21
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                The Wonder
+
+\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t</h6>
+\t\t\t\t\t\t\t\t\t<p>
+\t\t\t\t\t\t\t\t\t\tHighest bid 1/20
+
+\t\t\t\t\t\t\t\t\t</p>
+\t\t\t\t\t\t\t\t\t<span class=\"price\">
+\t\t\t\t\t\t\t\t\t\t0.244wETH
+
+\t\t\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"recent-post\">
+\t\t\t\t\t\t\t\t<div class=\"thumbnail\">
+\t\t\t\t\t\t\t\t\t<a href=\"product-details.html\">
+\t\t\t\t\t\t\t\t\t\t<img src=\"assets/images/portfolio/portfolio-02.jpg\" alt=\"Product Images\"></a>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t<div class=\"content\">
+\t\t\t\t\t\t\t\t\t<h6 class=\"title\">
+\t\t\t\t\t\t\t\t\t\t<a href=\"product-details.html\">
+\t\t\t\t\t\t\t\t\t\t\tDiamond
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                                                                                    \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                Dog
+
+\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t</h6>
+\t\t\t\t\t\t\t\t\t<p>
+\t\t\t\t\t\t\t\t\t\tHighest bid 1/20
+
+\t\t\t\t\t\t\t\t\t</p>
+\t\t\t\t\t\t\t\t\t<span class=\"price\">
+\t\t\t\t\t\t\t\t\t\t0.022wETH
+
+\t\t\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"recent-post\">
+\t\t\t\t\t\t\t\t<div class=\"thumbnail\">
+\t\t\t\t\t\t\t\t\t<a href=\"product-details.html\">
+\t\t\t\t\t\t\t\t\t\t<img src=\"assets/images/portfolio/portfolio-03.jpg\" alt=\"Product Images\"></a>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t<div class=\"content\">
+\t\t\t\t\t\t\t\t\t<h6 class=\"title\">
+\t\t\t\t\t\t\t\t\t\t<a href=\"product-details.html\">
+\t\t\t\t\t\t\t\t\t\t\tMorgan11
+
+\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t</h6>
+\t\t\t\t\t\t\t\t\t<p>
+\t\t\t\t\t\t\t\t\t\tHighest bid 1/20
+
+\t\t\t\t\t\t\t\t\t</p>
+\t\t\t\t\t\t\t\t\t<span class=\"price\">
+\t\t\t\t\t\t\t\t\t\t0.892wETH
+
+\t\t\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t</ul>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t</div>
+\t</div>
+\t<!-- End Footer Area -->
+\t<!-- Start Footer Area -->
+\t<div class=\"copy-right-one ptb--20 bg-color--1\">
+\t\t<div class=\"container\">
+\t\t\t<div class=\"row align-items-center\">
+\t\t\t\t<div class=\"col-lg-6 col-md-12 col-sm-12\">
+\t\t\t\t\t<div class=\"copyright-left\">
+\t\t\t\t\t\t<span>
+\t\t\t\t\t\t\t©2022 Nuron, Inc. All rights reserved.
+
+\t\t\t\t\t\t</span>
+\t\t\t\t\t\t<ul class=\"privacy\">
+\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t<a href=\"terms-condition.html\">
+\t\t\t\t\t\t\t\t\tTerms
+
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t<a href=\"privacy-policy.html\">
+\t\t\t\t\t\t\t\t\tPrivacy
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                                                                                                                                            \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        Policy
+
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t</ul>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t\t<div class=\"col-lg-6 col-md-12 col-sm-12\">
+\t\t\t\t\t<div class=\"copyright-right\">
+\t\t\t\t\t\t<ul class=\"social-copyright\">
+\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\t\t\t\t<i data-feather=\"facebook\"></i>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\t\t\t\t<i data-feather=\"twitter\"></i>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\t\t\t\t<i data-feather=\"instagram\"></i>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\t\t\t\t<i data-feather=\"linkedin\"></i>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\t\t\t\t<i data-feather=\"mail\"></i>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t</ul>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t</div>
+\t</div>
+\t<!-- End Footer Area -->
+\t<div class=\"mouse-cursor cursor-outer\"></div>
+\t<div class=\"mouse-cursor cursor-inner\"></div>
+\t<!-- Start Top To Bottom Area  -->
+\t<div class=\"rn-progress-parent\">
+\t\t<svg class=\"rn-back-circle svg-inner\" width=\"100%\" height=\"100%\" viewbox=\"-1 -1 102 102\">
+\t\t\t<path d=\"M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98\"/>
+\t\t</svg>
+\t</div>
+
+{% endblock %}
+", "reclamationsh/index.html.twig", "C:\\Users\\khali\\OneDrive - ESPRIT\\Documents\\citiezenHub_webapp\\templates\\reclamationsh\\index.html.twig");
+    }
+}
