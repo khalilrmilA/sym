@@ -76,8 +76,7 @@ class __TwigTemplate_1c2cca524dab87612755b917eca2b188 extends Template
         // line 80
         $this->displayBlock('body', $context, $blocks);
         // line 81
-        echo "
-<script>
+        echo "<script>
 \t\t\t(function () {
 const form = document.getElementById('form');
 const submitButton = document.getElementById('submit-button');
@@ -117,9 +116,9 @@ form.reportValidity();
 \t\t</script>
 \t</body>
 \t";
+        // line 120
+        $this->loadTemplate("parts/footer.html.twig", "base.html.twig", 120)->display($context);
         // line 121
-        $this->loadTemplate("parts/footer.html.twig", "base.html.twig", 121)->display($context);
-        // line 122
         echo "</html>
 ";
         
@@ -407,7 +406,7 @@ form.reportValidity();
      */
     public function getDebugInfo()
     {
-        return array (  372 => 80,  358 => 73,  354 => 72,  350 => 71,  346 => 70,  340 => 67,  336 => 66,  332 => 65,  327 => 63,  321 => 60,  317 => 59,  313 => 58,  309 => 57,  305 => 56,  301 => 55,  297 => 54,  293 => 53,  289 => 52,  285 => 51,  281 => 50,  277 => 49,  273 => 48,  269 => 47,  265 => 46,  261 => 45,  257 => 44,  253 => 43,  249 => 42,  245 => 41,  241 => 40,  224 => 27,  214 => 26,  202 => 23,  197 => 21,  193 => 20,  189 => 19,  185 => 18,  181 => 17,  177 => 16,  173 => 15,  169 => 14,  164 => 13,  154 => 12,  134 => 6,  123 => 122,  121 => 121,  79 => 81,  77 => 80,  74 => 79,  72 => 78,  69 => 77,  67 => 26,  64 => 25,  61 => 12,  56 => 8,  54 => 6,  47 => 1,);
+        return array (  371 => 80,  357 => 73,  353 => 72,  349 => 71,  345 => 70,  339 => 67,  335 => 66,  331 => 65,  326 => 63,  320 => 60,  316 => 59,  312 => 58,  308 => 57,  304 => 56,  300 => 55,  296 => 54,  292 => 53,  288 => 52,  284 => 51,  280 => 50,  276 => 49,  272 => 48,  268 => 47,  264 => 46,  260 => 45,  256 => 44,  252 => 43,  248 => 42,  244 => 41,  240 => 40,  223 => 27,  213 => 26,  201 => 23,  196 => 21,  192 => 20,  188 => 19,  184 => 18,  180 => 17,  176 => 16,  172 => 15,  168 => 14,  163 => 13,  153 => 12,  133 => 6,  122 => 121,  120 => 120,  79 => 81,  77 => 80,  74 => 79,  72 => 78,  69 => 77,  67 => 26,  64 => 25,  61 => 12,  56 => 8,  54 => 6,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -492,7 +491,6 @@ form.reportValidity();
 \t{% include 'parts/header.html.twig' %}
 \t<body>
 \t\t{% block body %}{% endblock %}
-
 <script>
 \t\t\t(function () {
 const form = document.getElementById('form');

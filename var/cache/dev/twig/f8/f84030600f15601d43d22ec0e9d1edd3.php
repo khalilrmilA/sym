@@ -100,7 +100,7 @@ class __TwigTemplate_69362873e710e7cfbcda53dc3c807ff2 extends Template
                                                 <div class=\"col-lg-3 single-mega-item\">
                                                     <ul class=\"mega-menu-item\">
                                                         <li>
-                                                            <a href=\"/\">
+                                                            <a href=\"/b\">
                                                             Check Reclamation
                                                             <i data-feather=\"award\"></i>
                                                             </a>
@@ -280,7 +280,7 @@ class __TwigTemplate_69362873e710e7cfbcda53dc3c807ff2 extends Template
                                                 <div class=\"col-lg-3 single-mega-item\">
                                                     <ul class=\"mega-menu-item\">
                                                         <li>
-                                                            <a href=\"/\">
+                                                            <a href=\"/b\">
                                                             Check Reclamation
                                                             <i data-feather=\"award\"></i>
                                                             </a>

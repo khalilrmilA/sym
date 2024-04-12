@@ -373,22 +373,6 @@
       <tag name="controller.service_arguments"/>
       <tag name="routing.route_loader"/>
     </service>
-    <service id="App\Controller\Admin\DashboardController" class="App\Controller\Admin\DashboardController" public="true" autowire="true" autoconfigure="true">
-      <tag name="ea.dashboard_controller"/>
-      <tag name="controller.service_arguments"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.XmW3LYn.App\Controller\Admin\DashboardController"/>
-      </call>
-    </service>
-    <service id="App\Controller\Admin\ReeclamationCrudController" class="App\Controller\Admin\ReeclamationCrudController" public="true" autowire="true" autoconfigure="true">
-      <tag name="ea.crud_controller"/>
-      <tag name="controller.service_arguments"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.GymbEAg.App\Controller\Admin\ReeclamationCrudController"/>
-      </call>
-    </service>
     <service id="App\Controller\ReclamationController" class="App\Controller\ReclamationController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -6570,14 +6554,6 @@
       <tag name="assets.package" package="easyadmin.assets.package"/>
       <argument type="service" id="request_stack"/>
     </service>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Admin\DashboardController" class="App\Controller\Admin\DashboardController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Admin\DashboardController" class="App\Controller\Admin\DashboardController" autowire="true" abstract="true"/>
-    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Controller\DashboardControllerInterface.0.App\Controller\Admin\DashboardController" class="App\Controller\Admin\DashboardController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\Admin\DashboardController" class="App\Controller\Admin\DashboardController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Admin\ReeclamationCrudController" class="App\Controller\Admin\ReeclamationCrudController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Admin\ReeclamationCrudController" class="App\Controller\Admin\ReeclamationCrudController" autowire="true" abstract="true"/>
-    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Controller\CrudControllerInterface.0.App\Controller\Admin\ReeclamationCrudController" class="App\Controller\Admin\ReeclamationCrudController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\Admin\ReeclamationCrudController" class="App\Controller\Admin\ReeclamationCrudController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ReclamationController" class="App\Controller\ReclamationController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ReclamationController" class="App\Controller\ReclamationController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ReclamationController" class="App\Controller\ReclamationController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -7036,56 +7012,10 @@
         <argument key="loader" type="service_closure" id=".errored..service_locator.xUrKPVU.Symfony\Component\Config\Loader\LoaderInterface"/>
       </argument>
     </service>
-    <service id=".service_locator.st3ASTR" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.tgVVt0z" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="user" type="service_closure" id=".errored..service_locator.st3ASTR.Symfony\Component\Security\Core\User\UserInterface"/>
-      </argument>
-    </service>
-    <service id=".service_locator.XpfeRo6" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="crud" type="service_closure" id=".errored..service_locator.XpfeRo6.EasyCorp\Bundle\EasyAdminBundle\Config\Crud"/>
-      </argument>
-    </service>
-    <service id=".service_locator.XdMPwIJ" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="assets" type="service_closure" id=".errored..service_locator.XdMPwIJ.EasyCorp\Bundle\EasyAdminBundle\Config\Assets"/>
-      </argument>
-    </service>
-    <service id=".service_locator.R8Qy2_." class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="actions" type="service_closure" id=".errored..service_locator.R8Qy2_..EasyCorp\Bundle\EasyAdminBundle\Config\Actions"/>
-      </argument>
-    </service>
-    <service id=".service_locator.OGjUKCt" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="filters" type="service_closure" id=".errored..service_locator.OGjUKCt.EasyCorp\Bundle\EasyAdminBundle\Config\Filters"/>
-      </argument>
-    </service>
-    <service id=".service_locator.kEvhmk9" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="context" type="service_closure" id=".errored..service_locator.kEvhmk9.EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext"/>
-      </argument>
-    </service>
-    <service id=".service_locator.esmk6IF" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="batchActionDto" type="service_closure" id=".errored..service_locator.esmk6IF.EasyCorp\Bundle\EasyAdminBundle\Dto\BatchActionDto"/>
-        <argument key="context" type="service_closure" id=".errored..service_locator.esmk6IF.EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext"/>
-      </argument>
-    </service>
-    <service id=".service_locator.ENGuM7_" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="entityDto" type="service_closure" id=".errored..service_locator.ENGuM7_.EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto"/>
-        <argument key="fields" type="service_closure" id=".errored..service_locator.ENGuM7_.EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection"/>
-        <argument key="filters" type="service_closure" id=".errored..service_locator.ENGuM7_.EasyCorp\Bundle\EasyAdminBundle\Collection\FilterCollection"/>
-        <argument key="searchDto" type="service_closure" id=".errored..service_locator.ENGuM7_.EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto"/>
+        <argument key="manager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
     <service id=".service_locator.aKM6MDa" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -7094,81 +7024,19 @@
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.riFbGaB" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.Z1JkRHA" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="context" type="service_closure" id=".errored..service_locator.riFbGaB.EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext"/>
-        <argument key="entityDto" type="service_closure" id=".errored..service_locator.riFbGaB.EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto"/>
-        <argument key="formOptions" type="service_closure" id=".errored..service_locator.riFbGaB.EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore"/>
-      </argument>
-    </service>
-    <service id=".service_locator.W.c5h2_" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="responseParameters" type="service_closure" id=".errored..service_locator.W.c5h2_.EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore"/>
-      </argument>
-    </service>
-    <service id=".service_locator.tgVVt0z" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="manager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
-      </argument>
-    </service>
-    <service id=".service_locator.WV.hNjP" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="App\Controller\Admin\DashboardController::configureUserMenu" type="service_closure" id=".service_locator.st3ASTR"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController::autocomplete" type="service_closure" id=".service_locator.kEvhmk9"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController::batchDelete" type="service_closure" id=".service_locator.esmk6IF"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController::configureActions" type="service_closure" id=".service_locator.R8Qy2_."/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController::configureAssets" type="service_closure" id=".service_locator.XdMPwIJ"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController::configureCrud" type="service_closure" id=".service_locator.XpfeRo6"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController::configureFilters" type="service_closure" id=".service_locator.OGjUKCt"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController::configureResponseParameters" type="service_closure" id=".service_locator.W.c5h2_"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController::createEditForm" type="service_closure" id=".service_locator.riFbGaB"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController::createEditFormBuilder" type="service_closure" id=".service_locator.riFbGaB"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController::createIndexQueryBuilder" type="service_closure" id=".service_locator.ENGuM7_"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController::createNewForm" type="service_closure" id=".service_locator.riFbGaB"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController::createNewFormBuilder" type="service_closure" id=".service_locator.riFbGaB"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController::delete" type="service_closure" id=".service_locator.kEvhmk9"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController::deleteEntity" type="service_closure" id=".service_locator.aKM6MDa"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController::detail" type="service_closure" id=".service_locator.kEvhmk9"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController::edit" type="service_closure" id=".service_locator.kEvhmk9"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController::index" type="service_closure" id=".service_locator.kEvhmk9"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController::new" type="service_closure" id=".service_locator.kEvhmk9"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController::persistEntity" type="service_closure" id=".service_locator.aKM6MDa"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController::renderFilters" type="service_closure" id=".service_locator.kEvhmk9"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController::updateEntity" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\ReclamationController::index" type="service_closure" id=".service_locator.tgVVt0z"/>
         <argument key="App\Controller\ReclamationshController::index" type="service_closure" id=".service_locator.aKM6MDa"/>
+        <argument key="App\Controller\ReclamationshController::show" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.xUrKPVU"/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.xUrKPVU"/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.xUrKPVU"/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.xUrKPVU"/>
-        <argument key="App\Controller\Admin\DashboardController:configureUserMenu" type="service_closure" id=".service_locator.st3ASTR"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController:autocomplete" type="service_closure" id=".service_locator.kEvhmk9"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController:batchDelete" type="service_closure" id=".service_locator.esmk6IF"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController:configureActions" type="service_closure" id=".service_locator.R8Qy2_."/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController:configureAssets" type="service_closure" id=".service_locator.XdMPwIJ"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController:configureCrud" type="service_closure" id=".service_locator.XpfeRo6"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController:configureFilters" type="service_closure" id=".service_locator.OGjUKCt"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController:configureResponseParameters" type="service_closure" id=".service_locator.W.c5h2_"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController:createEditForm" type="service_closure" id=".service_locator.riFbGaB"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController:createEditFormBuilder" type="service_closure" id=".service_locator.riFbGaB"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController:createIndexQueryBuilder" type="service_closure" id=".service_locator.ENGuM7_"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController:createNewForm" type="service_closure" id=".service_locator.riFbGaB"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController:createNewFormBuilder" type="service_closure" id=".service_locator.riFbGaB"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController:delete" type="service_closure" id=".service_locator.kEvhmk9"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController:deleteEntity" type="service_closure" id=".service_locator.aKM6MDa"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController:detail" type="service_closure" id=".service_locator.kEvhmk9"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController:edit" type="service_closure" id=".service_locator.kEvhmk9"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController:index" type="service_closure" id=".service_locator.kEvhmk9"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController:new" type="service_closure" id=".service_locator.kEvhmk9"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController:persistEntity" type="service_closure" id=".service_locator.aKM6MDa"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController:renderFilters" type="service_closure" id=".service_locator.kEvhmk9"/>
-        <argument key="App\Controller\Admin\ReeclamationCrudController:updateEntity" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\ReclamationController:index" type="service_closure" id=".service_locator.tgVVt0z"/>
         <argument key="App\Controller\ReclamationshController:index" type="service_closure" id=".service_locator.aKM6MDa"/>
+        <argument key="App\Controller\ReclamationshController:show" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.xUrKPVU"/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.xUrKPVU"/>
       </argument>
@@ -7692,26 +7560,14 @@
     <service id="monolog.handler.null_internal" class="Monolog\Handler\NullHandler"/>
     <service id="EasyCorp\Bundle\EasyAdminBundle\Registry\DashboardControllerRegistry" class="EasyCorp\Bundle\EasyAdminBundle\Registry\DashboardControllerRegistry">
       <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\var\cache\dev</argument>
-      <argument type="collection">
-        <argument key="App\Controller\Admin\DashboardController">92793eb</argument>
-      </argument>
-      <argument type="collection">
-        <argument key="92793eb">App\Controller\Admin\DashboardController</argument>
-      </argument>
+      <argument type="collection"/>
+      <argument type="collection"/>
     </service>
     <service id="EasyCorp\Bundle\EasyAdminBundle\Registry\CrudControllerRegistry" class="EasyCorp\Bundle\EasyAdminBundle\Registry\CrudControllerRegistry">
-      <argument type="collection">
-        <argument key="App\Controller\Admin\ReeclamationCrudController">App\Entity\Reeclamation</argument>
-      </argument>
-      <argument type="collection">
-        <argument key="App\Controller\Admin\ReeclamationCrudController">bed15f3</argument>
-      </argument>
-      <argument type="collection">
-        <argument key="App\Entity\Reeclamation">App\Controller\Admin\ReeclamationCrudController</argument>
-      </argument>
-      <argument type="collection">
-        <argument key="bed15f3">App\Controller\Admin\ReeclamationCrudController</argument>
-      </argument>
+      <argument type="collection"/>
+      <argument type="collection"/>
+      <argument type="collection"/>
+      <argument type="collection"/>
     </service>
     <service id=".service_locator.yY.p4P7" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
@@ -7728,62 +7584,6 @@
         <argument key="translation.loader.xliff" type="service_closure" id="translation.loader.xliff"/>
         <argument key="translation.loader.yml" type="service_closure" id="translation.loader.yml"/>
       </argument>
-    </service>
-    <service id=".service_locator.XmW3LYn" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator" on-invalid="ignore"/>
-        <argument key="form.factory" type="service_closure" id="form.factory" on-invalid="ignore"/>
-        <argument key="http_kernel" type="service_closure" id="http_kernel" on-invalid="ignore"/>
-        <argument key="parameter_bag" type="service_closure" id="parameter_bag" on-invalid="ignore"/>
-        <argument key="request_stack" type="service_closure" id="request_stack" on-invalid="ignore"/>
-        <argument key="router" type="service_closure" id="router.default" on-invalid="ignore"/>
-        <argument key="security.authorization_checker" type="service_closure" id="security.authorization_checker" on-invalid="ignore"/>
-        <argument key="security.csrf.token_manager" type="service_closure" id="security.csrf.token_manager" on-invalid="ignore"/>
-        <argument key="security.token_storage" type="service_closure" id="security.token_storage" on-invalid="ignore"/>
-        <argument key="serializer" type="service_closure" id="debug.serializer" on-invalid="ignore"/>
-        <argument key="twig" type="service_closure" id="twig" on-invalid="ignore"/>
-      </argument>
-    </service>
-    <service id=".service_locator.XmW3LYn.App\Controller\Admin\DashboardController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\Admin\DashboardController"/>
-      <argument>App\Controller\Admin\DashboardController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.XmW3LYn" method="withContext"/>
-    </service>
-    <service id=".service_locator.GymbEAg" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="EasyCorp\Bundle\EasyAdminBundle\Factory\ActionFactory" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Factory\ActionFactory" on-invalid="ignore"/>
-        <argument key="EasyCorp\Bundle\EasyAdminBundle\Factory\ControllerFactory" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Factory\ControllerFactory" on-invalid="ignore"/>
-        <argument key="EasyCorp\Bundle\EasyAdminBundle\Factory\EntityFactory" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Factory\EntityFactory" on-invalid="ignore"/>
-        <argument key="EasyCorp\Bundle\EasyAdminBundle\Factory\FilterFactory" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Factory\FilterFactory" on-invalid="ignore"/>
-        <argument key="EasyCorp\Bundle\EasyAdminBundle\Factory\FormFactory" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Factory\FormFactory" on-invalid="ignore"/>
-        <argument key="EasyCorp\Bundle\EasyAdminBundle\Factory\PaginatorFactory" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Factory\PaginatorFactory" on-invalid="ignore"/>
-        <argument key="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityRepository" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityRepository" on-invalid="ignore"/>
-        <argument key="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityUpdater" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityUpdater" on-invalid="ignore"/>
-        <argument key="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider" on-invalid="ignore"/>
-        <argument key="EasyCorp\Bundle\EasyAdminBundle\Provider\FieldProvider" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Provider\FieldProvider" on-invalid="ignore"/>
-        <argument key="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator" on-invalid="ignore"/>
-        <argument key="doctrine" type="service_closure" id="doctrine" on-invalid="ignore"/>
-        <argument key="event_dispatcher" type="service_closure" id="debug.event_dispatcher" on-invalid="ignore"/>
-        <argument key="form.factory" type="service_closure" id="form.factory" on-invalid="ignore"/>
-        <argument key="http_kernel" type="service_closure" id="http_kernel" on-invalid="ignore"/>
-        <argument key="parameter_bag" type="service_closure" id="parameter_bag" on-invalid="ignore"/>
-        <argument key="request_stack" type="service_closure" id="request_stack" on-invalid="ignore"/>
-        <argument key="router" type="service_closure" id="router.default" on-invalid="ignore"/>
-        <argument key="security.authorization_checker" type="service_closure" id="security.authorization_checker" on-invalid="ignore"/>
-        <argument key="security.csrf.token_manager" type="service_closure" id="security.csrf.token_manager" on-invalid="ignore"/>
-        <argument key="security.token_storage" type="service_closure" id="security.token_storage" on-invalid="ignore"/>
-        <argument key="serializer" type="service_closure" id="debug.serializer" on-invalid="ignore"/>
-        <argument key="twig" type="service_closure" id="twig" on-invalid="ignore"/>
-      </argument>
-    </service>
-    <service id=".service_locator.GymbEAg.App\Controller\Admin\ReeclamationCrudController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\Admin\ReeclamationCrudController"/>
-      <argument>App\Controller\Admin\ReeclamationCrudController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.GymbEAg" method="withContext"/>
     </service>
     <service id=".service_locator.jIxfAsi" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
@@ -8078,12 +7878,12 @@
       <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.WV.hNjP"/>
+      <argument type="service" id=".service_locator.Z1JkRHA"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.WV.hNjP"/>
+      <argument type="service" id=".service_locator.Z1JkRHA"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -8107,22 +7907,6 @@
       </call>
     </service>
     <service id=".errored..service_locator.xUrKPVU.Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface"/>
-    <service id=".errored..service_locator.st3ASTR.Symfony\Component\Security\Core\User\UserInterface" class="Symfony\Component\Security\Core\User\UserInterface"/>
-    <service id=".errored..service_locator.XpfeRo6.EasyCorp\Bundle\EasyAdminBundle\Config\Crud" class="EasyCorp\Bundle\EasyAdminBundle\Config\Crud"/>
-    <service id=".errored..service_locator.XdMPwIJ.EasyCorp\Bundle\EasyAdminBundle\Config\Assets" class="EasyCorp\Bundle\EasyAdminBundle\Config\Assets"/>
-    <service id=".errored..service_locator.R8Qy2_..EasyCorp\Bundle\EasyAdminBundle\Config\Actions" class="EasyCorp\Bundle\EasyAdminBundle\Config\Actions"/>
-    <service id=".errored..service_locator.OGjUKCt.EasyCorp\Bundle\EasyAdminBundle\Config\Filters" class="EasyCorp\Bundle\EasyAdminBundle\Config\Filters"/>
-    <service id=".errored..service_locator.kEvhmk9.EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext" class="EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext"/>
-    <service id=".errored..service_locator.esmk6IF.EasyCorp\Bundle\EasyAdminBundle\Dto\BatchActionDto" class="EasyCorp\Bundle\EasyAdminBundle\Dto\BatchActionDto"/>
-    <service id=".errored..service_locator.esmk6IF.EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext" class="EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext"/>
-    <service id=".errored..service_locator.ENGuM7_.EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto" class="EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto"/>
-    <service id=".errored..service_locator.ENGuM7_.EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection" class="EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection"/>
-    <service id=".errored..service_locator.ENGuM7_.EasyCorp\Bundle\EasyAdminBundle\Collection\FilterCollection" class="EasyCorp\Bundle\EasyAdminBundle\Collection\FilterCollection"/>
-    <service id=".errored..service_locator.ENGuM7_.EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto" class="EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto"/>
-    <service id=".errored..service_locator.riFbGaB.EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext" class="EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext"/>
-    <service id=".errored..service_locator.riFbGaB.EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto" class="EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto"/>
-    <service id=".errored..service_locator.riFbGaB.EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore" class="EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore"/>
-    <service id=".errored..service_locator.W.c5h2_.EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore" class="EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore"/>
     <service id=".console.command.about.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>about</argument>
       <argument type="collection"/>
@@ -9176,7 +8960,7 @@
     <service id="EasyCorp\Bundle\EasyAdminBundle\Contracts\Orm\EntityPaginatorInterface" alias="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityPaginator"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.WV.hNjP"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.Z1JkRHA"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -9198,16 +8982,11 @@
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.Mo0FXEU" alias="service_locator_EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
     <service id=".service_locator.0GV1BZZ" alias=".service_locator.gSv9zYw"/>
-    <service id=".service_locator.nTL_G5r" alias=".service_locator.esmk6IF"/>
-    <service id=".service_locator.hNls88j" alias=".service_locator.ENGuM7_"/>
-    <service id=".service_locator.6rNHno." alias=".service_locator.riFbGaB"/>
-    <service id=".service_locator.kY86CWd" alias=".service_locator.WV.hNjP"/>
+    <service id=".service_locator.lSZKe2m" alias=".service_locator.Z1JkRHA"/>
     <service id=".service_locator.wKF4yn1" alias=".service_locator.19_mNxd"/>
     <service id=".service_locator.o.rF1we" alias=".service_locator.jpsG8wf"/>
     <service id=".service_locator.ghyll4k" alias=".service_locator.X3hn2dA"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
-    <service id=".service_locator.Cw5qYVH" alias=".service_locator.XmW3LYn"/>
-    <service id=".service_locator.MwlEl_B" alias=".service_locator.GymbEAg"/>
     <service id=".service_locator._eRAkJb" alias=".service_locator.jIxfAsi"/>
     <service id="validator" alias="debug.validator"/>
     <service id="http_client" alias=".debug.http_client"/>
@@ -9256,20 +9035,8 @@
     <service id="messenger.bus.default" alias="debug.traced.messenger.bus.default"/>
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
     <service id=".service_locator.uo5c0SP" alias=".service_locator.xUrKPVU"/>
-    <service id=".service_locator..Z_8zjg" alias=".service_locator.st3ASTR"/>
-    <service id=".service_locator.Wy8wQ7q" alias=".service_locator.XpfeRo6"/>
-    <service id=".service_locator.mZvIess" alias=".service_locator.XdMPwIJ"/>
-    <service id=".service_locator.Uj8JhjH" alias=".service_locator.R8Qy2_."/>
-    <service id=".service_locator.O2PHm7f" alias=".service_locator.OGjUKCt"/>
-    <service id=".service_locator.nmHbo7B" alias=".service_locator.kEvhmk9"/>
-    <service id=".service_locator.6l7iQLM" alias=".service_locator.esmk6IF"/>
-    <service id=".service_locator.NMJNzQ2" alias=".service_locator.ENGuM7_"/>
-    <service id=".service_locator.bInR.ll" alias=".service_locator.aKM6MDa"/>
-    <service id=".service_locator.UNSqNV2" alias=".service_locator.riFbGaB"/>
-    <service id=".service_locator.YGHh.DA" alias=".service_locator.W.c5h2_"/>
     <service id=".service_locator.2w_Chtm" alias=".service_locator.tgVVt0z"/>
-    <service id=".service_locator.t0V3OFl" alias=".service_locator.XmW3LYn"/>
-    <service id=".service_locator.LJ9KDVo" alias=".service_locator.GymbEAg"/>
+    <service id=".service_locator.bInR.ll" alias=".service_locator.aKM6MDa"/>
     <service id=".service_locator.eAaUVIw" alias=".service_locator.jIxfAsi"/>
     <service id=".service_locator.u6DWx23" alias=".service_locator.cXsfP3P"/>
     <service id=".service_locator.pFwChgS" alias=".service_locator.UkE3SaZ"/>
