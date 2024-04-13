@@ -27,16 +27,19 @@ class ResetAssetsEventListener implements EventSubscriberInterface
         $this->buildNames = $buildNames;
     }
 
-    public static function getSubscribedEvents(): array
+    public static function getSubscribedEvents()
     {
         return [
             KernelEvents::FINISH_REQUEST => 'resetAssets',
         ];
     }
 
-    public function resetAssets(FinishRequestEvent $event): void
+    public function resetAssets(FinishRequestEvent $event)
     {
-        if (!$event->isMainRequest()) {
+        // Handle deprecated `KernelEvent::isMasterRequest() - Can be removed when Symfony < 5.3 support is dropped.
+        $mainRequestMethod = method_exists($event, 'isMainRequest') ? 'isMainRequest' : 'isMasterRequest';
+
+        if (!$event->$mainRequestMethod()) {
             return;
         }
         foreach ($this->buildNames as $name) {

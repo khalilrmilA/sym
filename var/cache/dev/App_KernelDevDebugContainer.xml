@@ -373,6 +373,13 @@
       <tag name="controller.service_arguments"/>
       <tag name="routing.route_loader"/>
     </service>
+    <service id="App\Controller\ConferenceController" class="App\Controller\ConferenceController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.jIxfAsi.App\Controller\ConferenceController"/>
+      </call>
+    </service>
     <service id="App\Controller\ReclamationController" class="App\Controller\ReclamationController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -6554,6 +6561,9 @@
       <tag name="assets.package" package="easyadmin.assets.package"/>
       <argument type="service" id="request_stack"/>
     </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ConferenceController" class="App\Controller\ConferenceController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ConferenceController" class="App\Controller\ConferenceController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ConferenceController" class="App\Controller\ConferenceController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ReclamationController" class="App\Controller\ReclamationController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ReclamationController" class="App\Controller\ReclamationController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ReclamationController" class="App\Controller\ReclamationController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -7601,6 +7611,12 @@
         <argument key="serializer" type="service_closure" id="debug.serializer" on-invalid="ignore"/>
         <argument key="twig" type="service_closure" id="twig" on-invalid="ignore"/>
       </argument>
+    </service>
+    <service id=".service_locator.jIxfAsi.App\Controller\ConferenceController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\ConferenceController"/>
+      <argument>App\Controller\ConferenceController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.jIxfAsi" method="withContext"/>
     </service>
     <service id=".service_locator.jIxfAsi.App\Controller\ReclamationController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\ReclamationController"/>

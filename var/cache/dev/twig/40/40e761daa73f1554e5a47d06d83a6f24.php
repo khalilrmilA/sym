@@ -228,7 +228,38 @@ reader.readAsDataURL(input.files[0]);
 \t\t</div>
 \t\t<input type=\"hidden\" id=\"reclamation__token\" name=\"reclamation[_token]\" value=\"edfefdd8a408443a012c.c_gIArByPEgON4s4Sv8_WXHe6FRKy7Ah9XqrA6GoLmk.PcxBY9cWTX9gBthxC8tSCQHp0SAsifMRmBvTNtDwTCA3sHt7xB9lJUF23g\"/>
 \t</form>
+<script>
+\tconst nameRegex = /^[A-Za-z\\s]+\$/;  
+\tconst lastNameRegex = /^[A-Za-z\\s]+\$/; 
+\t
+\t
+\tfunction validateName() {
+\t\tconst nameInput = document.getElementById('reclamation_privateKey');
+\t\tconst name = nameInput.value.trim();
+\t\tif (nameRegex.test(name)) {
+\t\t\tnameInput.style.borderColor = 'green';
+\t\t\treturn true;
+\t\t} else {
+\t\t\tnameInput.style.borderColor = 'red';
+\t\t\treturn false;
+\t\t}
+\t}
+\t
+\tfunction validateLastName() {
+\t\tconst lastNameInput = document.getElementById('reclamation_privateKey');
+\t\tconst lastName = lastNameInput.value.trim();
+\t\tif (lastNameRegex.test(lastName)) {
+\t\t\tlastNameInput.style.borderColor = 'green';
+\t\t\treturn true;
+\t\t} else {
+\t\t\tlastNameInput.style.borderColor = 'red';
+\t\t\treturn false;
+\t\t}
+\t}// Add event listeners for input fields
+\tdocument.getElementById('reclamation_privateKey').addEventListener('input', validateName);
+\tdocument.getElementById('reclamation_privateKey').addEventListener('input', validateLastName);
 
+</script>
 
 \t<!-- create new product area -->
 
@@ -399,7 +430,38 @@ reader.readAsDataURL(input.files[0]);
 \t\t</div>
 \t\t<input type=\"hidden\" id=\"reclamation__token\" name=\"reclamation[_token]\" value=\"edfefdd8a408443a012c.c_gIArByPEgON4s4Sv8_WXHe6FRKy7Ah9XqrA6GoLmk.PcxBY9cWTX9gBthxC8tSCQHp0SAsifMRmBvTNtDwTCA3sHt7xB9lJUF23g\"/>
 \t</form>
+<script>
+\tconst nameRegex = /^[A-Za-z\\s]+\$/;  
+\tconst lastNameRegex = /^[A-Za-z\\s]+\$/; 
+\t
+\t
+\tfunction validateName() {
+\t\tconst nameInput = document.getElementById('reclamation_privateKey');
+\t\tconst name = nameInput.value.trim();
+\t\tif (nameRegex.test(name)) {
+\t\t\tnameInput.style.borderColor = 'green';
+\t\t\treturn true;
+\t\t} else {
+\t\t\tnameInput.style.borderColor = 'red';
+\t\t\treturn false;
+\t\t}
+\t}
+\t
+\tfunction validateLastName() {
+\t\tconst lastNameInput = document.getElementById('reclamation_privateKey');
+\t\tconst lastName = lastNameInput.value.trim();
+\t\tif (lastNameRegex.test(lastName)) {
+\t\t\tlastNameInput.style.borderColor = 'green';
+\t\t\treturn true;
+\t\t} else {
+\t\t\tlastNameInput.style.borderColor = 'red';
+\t\t\treturn false;
+\t\t}
+\t}// Add event listeners for input fields
+\tdocument.getElementById('reclamation_privateKey').addEventListener('input', validateName);
+\tdocument.getElementById('reclamation_privateKey').addEventListener('input', validateLastName);
 
+</script>
 
 \t<!-- create new product area -->
 

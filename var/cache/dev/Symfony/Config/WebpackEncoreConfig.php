@@ -26,7 +26,7 @@ class WebpackEncoreConfig implements \Symfony\Component\Config\Builder\ConfigBui
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function outputPath($value): self
+    public function outputPath($value): static
     {
         $this->_usedProperties['outputPath'] = true;
         $this->outputPath = $value;
@@ -40,7 +40,7 @@ class WebpackEncoreConfig implements \Symfony\Component\Config\Builder\ConfigBui
      * @param ParamConfigurator|false|'anonymous'|'use-credentials' $value
      * @return $this
      */
-    public function crossorigin($value): self
+    public function crossorigin($value): static
     {
         $this->_usedProperties['crossorigin'] = true;
         $this->crossorigin = $value;
@@ -54,7 +54,7 @@ class WebpackEncoreConfig implements \Symfony\Component\Config\Builder\ConfigBui
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function preload($value): self
+    public function preload($value): static
     {
         $this->_usedProperties['preload'] = true;
         $this->preload = $value;
@@ -68,7 +68,7 @@ class WebpackEncoreConfig implements \Symfony\Component\Config\Builder\ConfigBui
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function cache($value): self
+    public function cache($value): static
     {
         $this->_usedProperties['cache'] = true;
         $this->cache = $value;
@@ -82,7 +82,7 @@ class WebpackEncoreConfig implements \Symfony\Component\Config\Builder\ConfigBui
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function strictMode($value): self
+    public function strictMode($value): static
     {
         $this->_usedProperties['strictMode'] = true;
         $this->strictMode = $value;
@@ -91,10 +91,9 @@ class WebpackEncoreConfig implements \Symfony\Component\Config\Builder\ConfigBui
     }
 
     /**
-     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function builds(string $name, $value): self
+    public function builds(string $name, mixed $value): static
     {
         $this->_usedProperties['builds'] = true;
         $this->builds[$name] = $value;
@@ -103,10 +102,9 @@ class WebpackEncoreConfig implements \Symfony\Component\Config\Builder\ConfigBui
     }
 
     /**
-     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function scriptAttributes(string $name, $value): self
+    public function scriptAttributes(string $name, mixed $value): static
     {
         $this->_usedProperties['scriptAttributes'] = true;
         $this->scriptAttributes[$name] = $value;
@@ -115,10 +113,9 @@ class WebpackEncoreConfig implements \Symfony\Component\Config\Builder\ConfigBui
     }
 
     /**
-     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function linkAttributes(string $name, $value): self
+    public function linkAttributes(string $name, mixed $value): static
     {
         $this->_usedProperties['linkAttributes'] = true;
         $this->linkAttributes[$name] = $value;

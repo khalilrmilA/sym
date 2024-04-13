@@ -137,11 +137,16 @@ class __TwigTemplate_8e91f87e3c477f4348bc56b149bbf63f extends Template
 \t\t\t\t\t<form id=\"form\" name=\"reclamation\" method=\"post\" enctype=\"multipart/form-data\">
 \t\t\t\t\t\t<div class=\"upload-area\">
 \t\t\t\t\t\t\t<div class=\"brows-file-wrapper\">
-\t\t\t\t\t\t\t\t<input type=\"file\" name=\"reclamation[imageFile]\" id=\"reclamation_imageFile_file\"  accept=\"image/*\" class=\"inputfile\"/>
-\t\t\t\t\t\t\t\t<img id=\"createfileImage\" src=\"";
-        // line 46
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/reclamation/" . twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 46, $this->source); })()), "getImageFile", [], "method", false, false, false, 46))), "html", null, true);
+\t\t\t\t\t\t\t<img id=\"createfileImage\" src=\"";
+        // line 45
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/reclamation/" . twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 45, $this->source); })()), "getImagePath", [], "method", false, false, false, 45))), "html", null, true);
         echo "\" alt data-black-overlay=\"6\">
+\t\t\t\t\t\t\t\t<input type=\"file\" name=\"reclamation[imageFile]\" id=\"reclamation_imageFile_file\"  accept=\"image/*\" class=\"inputfile\"/>
+\t\t\t\t\t\t\t\t<!--";
+        // line 47
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\DumpExtension']->dump($this->env, $context, ("images/reclamation/" . twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 47, $this->source); })()), "getImageFile", [], "method", false, false, false, 47)));
+        echo "-->
+
 \t\t\t\t\t\t\t\t<label for=\"reclamation_imageFile_file\" title=\"No File Choosen\">
 \t\t\t\t\t\t\t\t\t<span class=\"text-center color-white\">
 \t\t\t\t\t\t\t\t<i class=\"feather-edit\"></i>
@@ -182,8 +187,8 @@ reader.readAsDataURL(input.files[0]);
 \t\t\t\t\t\t\t\t\t<div>
 \t\t\t\t\t\t\t\t\t\t<label for=\"reclamation_privateKey\" class=\"required\">Private Key</label>
 \t\t\t\t\t\t\t\t\t\t<input type=\"text\" value=\"";
-        // line 86
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 86, $this->source); })()), "privateKey", [], "any", false, false, false, 86), "html", null, true);
+        // line 88
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 88, $this->source); })()), "privateKey", [], "any", false, false, false, 88), "html", null, true);
         echo "\" id=\"reclamation_privateKey\" name=\"reclamation[privateKey]\" required pattern=\"^[0-9]+\$\"/>
 
 \t\t\t\t\t\t\t\t\t</div>
@@ -194,8 +199,8 @@ reader.readAsDataURL(input.files[0]);
 \t\t\t\t\t\t\t\t\t<div>
 \t\t\t\t\t\t\t\t\t\t<label for=\"reclamation_subject\" class=\"required\">Subject</label>
 \t\t\t\t\t\t\t\t\t\t<input type=\"text\" value=\"";
-        // line 95
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 95, $this->source); })()), "subject", [], "any", false, false, false, 95), "html", null, true);
+        // line 97
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 97, $this->source); })()), "subject", [], "any", false, false, false, 97), "html", null, true);
         echo "\" id=\"reclamation_subject\" name=\"reclamation[subject]\" />
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
@@ -205,8 +210,8 @@ reader.readAsDataURL(input.files[0]);
 \t\t\t\t\t\t\t\t\t<div>
 \t\t\t\t\t\t\t\t\t\t<label for=\"reclamation_description\" class=\"required\">Description</label>
 \t\t\t\t\t\t\t\t\t\t<textarea id=\"reclamation_description\" name=\"reclamation[description]\"  required>";
-        // line 103
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 103, $this->source); })()), "description", [], "any", false, false, false, 103), "html", null, true);
+        // line 105
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 105, $this->source); })()), "description", [], "any", false, false, false, 105), "html", null, true);
         echo " </textarea>
 
 \t\t\t\t\t\t\t\t\t</div>
@@ -260,7 +265,7 @@ reader.readAsDataURL(input.files[0]);
      */
     public function getDebugInfo()
     {
-        return array (  209 => 103,  198 => 95,  186 => 86,  143 => 46,  124 => 29,  115 => 26,  112 => 25,  108 => 24,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
+        return array (  214 => 105,  203 => 97,  191 => 88,  147 => 47,  142 => 45,  124 => 29,  115 => 26,  112 => 25,  108 => 24,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -309,8 +314,10 @@ reader.readAsDataURL(input.files[0]);
 \t\t\t\t\t<form id=\"form\" name=\"reclamation\" method=\"post\" enctype=\"multipart/form-data\">
 \t\t\t\t\t\t<div class=\"upload-area\">
 \t\t\t\t\t\t\t<div class=\"brows-file-wrapper\">
+\t\t\t\t\t\t\t<img id=\"createfileImage\" src=\"{{ asset('images/reclamation/'~reclamation.getImagePath()) }}\" alt data-black-overlay=\"6\">
 \t\t\t\t\t\t\t\t<input type=\"file\" name=\"reclamation[imageFile]\" id=\"reclamation_imageFile_file\"  accept=\"image/*\" class=\"inputfile\"/>
-\t\t\t\t\t\t\t\t<img id=\"createfileImage\" src=\"{{ asset('images/reclamation/'~reclamation.getImageFile()) }}\" alt data-black-overlay=\"6\">
+\t\t\t\t\t\t\t\t<!--{{ dump('images/reclamation/'~reclamation.getImageFile()) }}-->
+
 \t\t\t\t\t\t\t\t<label for=\"reclamation_imageFile_file\" title=\"No File Choosen\">
 \t\t\t\t\t\t\t\t\t<span class=\"text-center color-white\">
 \t\t\t\t\t\t\t\t<i class=\"feather-edit\"></i>
