@@ -65,7 +65,8 @@ class __TwigTemplate_8e91f87e3c477f4348bc56b149bbf63f extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        echo "Create Collection";
+        echo "Modifier rec !
+";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -74,7 +75,7 @@ class __TwigTemplate_8e91f87e3c477f4348bc56b149bbf63f extends Template
 
     }
 
-    // line 5
+    // line 6
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -84,89 +85,138 @@ class __TwigTemplate_8e91f87e3c477f4348bc56b149bbf63f extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 6
-        echo "<div class=\"creat-collection-area pt--80\">
+        // line 7
+        echo "\t<!-- start page title area -->
+\t<div class=\"rn-breadcrumb-inner ptb--30\">
 \t\t<div class=\"container\">
-\t\t\t<div class=\"row g-5 \">
-\t\t\t\t<div class=\"col-lg-3 offset-1 ml_md--0 ml_sm--0\">
-\t\t\t\t\t<div class=\"collection-single-wized banner\">
-\t\t\t\t\t\t<label class=\"title required\">Logo image</label>
+\t\t\t<div class=\"row align-items-center\">
+\t\t\t\t<div class=\"col-lg-6 col-md-6 col-12\">
+\t\t\t\t\t<h5 class=\"title text-center text-md-start\">Modifier Reclamation
+\t\t\t\t\t</h5>
+\t\t\t\t</div>
+\t\t\t\t<div class=\"col-lg-6 col-md-6 col-12\">
+\t\t\t\t\t<ul class=\"breadcrumb-list\">
+\t\t\t\t\t\t<li class=\"item\">
+\t\t\t\t\t\t\t<a href=\"index.html\">Home</a>
+\t\t\t\t\t\t</li>
+\t\t\t\t\t\t<li class=\"separator\">
+\t\t\t\t\t\t\t<i class=\"feather-chevron-right\"></i>
+\t\t\t\t\t\t</li>
+\t\t\t\t\t\t<li class=\"item current\">Reclamation</li>
+\t\t\t\t\t\t";
+        // line 24
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 24, $this->source); })()), "flashes", ["success"], "method", false, false, false, 24));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 25
+            echo "\t\t\t\t\t\t\t<div class=\"alert alert-success\">
+\t\t\t\t\t\t\t\t";
+            // line 26
+            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
+            echo "
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 29
+        echo "
+\t\t\t\t\t</ul>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t</div>
+\t</div>
+\t<!-- end page title area -->
 
-\t\t\t\t\t\t<div class=\"create-collection-input logo-image\">
-\t\t\t\t\t\t\t<div class=\"logo-c-image logo\">
-\t\t\t\t\t\t\t\t<img id=\"rbtinput1\" src=\"";
-        // line 15
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/reclamation/" . twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 15, $this->source); })()), "getImagePath", [], "method", false, false, false, 15))), "html", null, true);
-        echo "\" alt=\"Profile-NFT\">
-\t\t\t\t\t\t\t\t<label for=\"fatima\" title=\"No File Choosen\">
+\t<!-- create new product area -->
+\t<div class=\"create-area rn-section-gapTop\">
+\t\t<div class=\"container\">
+\t\t\t<div class=\"row g-5\">
+\t\t\t\t<div class=\"col-lg-3 offset-1 ml_md--0 ml_sm--0\">
+\t\t\t\t\t<form id=\"form\" name=\"reclamation\" method=\"post\" enctype=\"multipart/form-data\">
+\t\t\t\t\t\t<div class=\"upload-area\">
+\t\t\t\t\t\t\t<div class=\"brows-file-wrapper\">
+\t\t\t\t\t\t\t\t<input type=\"file\" name=\"reclamation[imageFile]\" id=\"reclamation_imageFile_file\"  accept=\"image/*\" class=\"inputfile\"/>
+\t\t\t\t\t\t\t\t<img id=\"createfileImage\" src=\"";
+        // line 46
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/reclamation/" . twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 46, $this->source); })()), "getImageFile", [], "method", false, false, false, 46))), "html", null, true);
+        echo "\" alt data-black-overlay=\"6\">
+\t\t\t\t\t\t\t\t<label for=\"reclamation_imageFile_file\" title=\"No File Choosen\">
 \t\t\t\t\t\t\t\t\t<span class=\"text-center color-white\">
-\t\t\t\t\t\t\t\t\t\t<i class=\"feather-edit\"></i>
-\t\t\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t\t\t<i class=\"feather-edit\"></i>
+\t\t\t\t\t\t\t</span>
 \t\t\t\t\t\t\t\t</label>
 \t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"button-area\">
-\t\t\t\t\t\t\t\t<div
-\t\t\t\t\t\t\t\t\tclass=\"brows-file-wrapper\">
-\t\t\t\t\t\t\t\t\t<!-- actual upload which is hidden -->
-\t\t\t\t\t\t\t\t\t<input
-\t\t\t\t\t\t\t\t\tname=\"fatiaaama\" id=\"fataaaima\" type=\"file\">
-\t\t\t\t\t\t\t\t<!-- our custom upload button -->
+\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<script>
+\t\t\t\t\t\t\tconst input = document.getElementById('reclamation_imageFile_file');
+const img = document.getElementById('createfileImage');
 
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</div>
+input.addEventListener('change', function () {
+if (input.files && input.files[0]) {
+const reader = new FileReader();
+
+reader.onload = function (e) {
+img.setAttribute('src', e.target.result);
+}
+
+reader.readAsDataURL(input.files[0]);
+}
+});
+\t\t\t\t\t\t</script>
+\t\t\t\t\t\t<div class=\"mt--100 mt_sm--30 mt_md--30 d-none d-lg-block\">
+\t\t\t\t\t\t\t<h5>Note:
+\t\t\t\t\t\t\t</h5>
+\t\t\t\t\t\t\t<span>enjoy our Service
+\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t\t<br>
+\t\t\t\t\t\t\t<span>You will receive our reponse soon
+\t\t\t\t\t\t\t</span>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"col-lg-7\">
-\t\t\t\t\t<div class=\"create-collection-form-wrapper\">
-\t\t\t\t\t\t<div class=\"row\">
-\t\t\t\t\t\t\t<div class=\"col-lg-6\">
-\t\t\t\t\t\t\t\t<div class=\"collection-single-wized\">
-\t\t\t\t\t\t\t\t\t<label for=\"name\" class=\"title required\">Private key</label>
-\t\t\t\t\t\t\t\t\t<div class=\"create-collection-input\">
-\t\t\t\t\t\t\t\t\t\t<input id=\"name\" class=\"name\" type=\"text\" value=\"";
-        // line 42
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 42, $this->source); })()), "privateKey", [], "any", false, false, false, 42), "html", null, true);
-        echo "\" required readonly>
+\t\t\t\t\t<div class=\"col-lg-7\">
+\t\t\t\t\t\t<div class=\"form-wrapper-one\">
+\t\t\t\t\t\t\t<div class=\"col-md-12\">
+\t\t\t\t\t\t\t\t<div class=\"input-box pb--20\">
+\t\t\t\t\t\t\t\t\t<div>
+\t\t\t\t\t\t\t\t\t\t<label for=\"reclamation_privateKey\" class=\"required\">Private Key</label>
+\t\t\t\t\t\t\t\t\t\t<input type=\"text\" value=\"";
+        // line 86
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 86, $this->source); })()), "privateKey", [], "any", false, false, false, 86), "html", null, true);
+        echo "\" id=\"reclamation_privateKey\" name=\"reclamation[privateKey]\" required pattern=\"^[0-9]+\$\"/>
+
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"col-lg-6\">
-\t\t\t\t\t\t\t\t<div class=\"collection-single-wized\">
-\t\t\t\t\t\t\t\t\t<label for=\"name\" class=\"title required\">subject</label>
-\t\t\t\t\t\t\t\t\t<div class=\"create-collection-input\">
-\t\t\t\t\t\t\t\t\t\t<input id=\"name\" class=\"name\" type=\"text\" value=\"";
-        // line 50
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 50, $this->source); })()), "subject", [], "any", false, false, false, 50), "html", null, true);
-        echo "\" required>
+\t\t\t\t\t\t\t<div class=\"col-md-12\">
+\t\t\t\t\t\t\t\t<div class=\"input-box pb--20\">
+\t\t\t\t\t\t\t\t\t<div>
+\t\t\t\t\t\t\t\t\t\t<label for=\"reclamation_subject\" class=\"required\">Subject</label>
+\t\t\t\t\t\t\t\t\t\t<input type=\"text\" value=\"";
+        // line 95
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 95, $this->source); })()), "subject", [], "any", false, false, false, 95), "html", null, true);
+        echo "\" id=\"reclamation_subject\" name=\"reclamation[subject]\" />
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"col-lg-12\">
-\t\t\t\t\t\t\t\t<div class=\"collection-single-wized\">
-\t\t\t\t\t\t\t\t\t<label for=\"description\" class=\"title\">Description</label>
-\t\t\t\t\t\t\t\t\t<div class=\"create-collection-input\">
-\t\t\t\t\t\t\t\t\t\t<textarea id=\"description\" class=\"text-area\">";
-        // line 58
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 58, $this->source); })()), "description", [], "any", false, false, false, 58), "html", null, true);
-        echo "</textarea>
+\t\t\t\t\t\t\t<div class=\"col-md-12\">
+\t\t\t\t\t\t\t\t<div class=\"input-box pb--20\">
+\t\t\t\t\t\t\t\t\t<div>
+\t\t\t\t\t\t\t\t\t\t<label for=\"reclamation_description\" class=\"required\">Description</label>
+\t\t\t\t\t\t\t\t\t\t<textarea id=\"reclamation_description\" name=\"reclamation[description]\"  required>";
+        // line 103
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 103, $this->source); })()), "description", [], "any", false, false, false, 103), "html", null, true);
+        echo " </textarea>
+
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"col-lg-12\">
-\t\t\t\t\t\t\t\t<div
-\t\t\t\t\t\t\t\t\tclass=\"button-wrapper\">
-\t\t\t\t\t\t\t\t\t<form action=\"";
-        // line 65
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("reclamationsh.modifer", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 65, $this->source); })()), "id", [], "any", false, false, false, 65)]), "html", null, true);
-        echo "\" method=\"post\">
-\t\t\t\t\t\t\t\t\t";
-        // line 66
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 66, $this->source); })()), "_token", [], "any", false, false, false, 66), 'widget');
-        echo "
-\t\t\t\t\t\t\t\t\t\t<input type=\"hidden\" name=\"_method\" value=\"PUT\">
-\t\t\t\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-primary-alta btn-large\">Update</button>
-\t\t\t\t\t\t\t\t\t</form>
+\t\t\t\t\t\t\t<span></span>
+\t\t\t\t\t\t\t<span></span>
+\t\t\t\t\t\t\t<div class=\"col-md-12\">
+\t\t\t\t\t\t\t\t<div class=\"input-box\">
+\t\t\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-primary\" id=\"submit-button\">Submit</button>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
@@ -174,7 +224,12 @@ class __TwigTemplate_8e91f87e3c477f4348bc56b149bbf63f extends Template
 \t\t\t\t</div>
 \t\t\t</div>
 \t\t</div>
-\t</div>
+\t\t<input type=\"hidden\" id=\"reclamation__token\" name=\"reclamation[_token]\" value=\"edfefdd8a408443a012c.c_gIArByPEgON4s4Sv8_WXHe6FRKy7Ah9XqrA6GoLmk.PcxBY9cWTX9gBthxC8tSCQHp0SAsifMRmBvTNtDwTCA3sHt7xB9lJUF23g\"/>
+\t</form>
+
+
+\t<!-- create new product area -->
+
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -205,80 +260,123 @@ class __TwigTemplate_8e91f87e3c477f4348bc56b149bbf63f extends Template
      */
     public function getDebugInfo()
     {
-        return array (  165 => 66,  161 => 65,  151 => 58,  140 => 50,  129 => 42,  99 => 15,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  209 => 103,  198 => 95,  186 => 86,  143 => 46,  124 => 29,  115 => 26,  112 => 25,  108 => 24,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block title %}Create Collection{% endblock %}
+{% block title %}Modifier rec !
+{% endblock %}
 
 {% block body %}
-<div class=\"creat-collection-area pt--80\">
+\t<!-- start page title area -->
+\t<div class=\"rn-breadcrumb-inner ptb--30\">
 \t\t<div class=\"container\">
-\t\t\t<div class=\"row g-5 \">
-\t\t\t\t<div class=\"col-lg-3 offset-1 ml_md--0 ml_sm--0\">
-\t\t\t\t\t<div class=\"collection-single-wized banner\">
-\t\t\t\t\t\t<label class=\"title required\">Logo image</label>
+\t\t\t<div class=\"row align-items-center\">
+\t\t\t\t<div class=\"col-lg-6 col-md-6 col-12\">
+\t\t\t\t\t<h5 class=\"title text-center text-md-start\">Modifier Reclamation
+\t\t\t\t\t</h5>
+\t\t\t\t</div>
+\t\t\t\t<div class=\"col-lg-6 col-md-6 col-12\">
+\t\t\t\t\t<ul class=\"breadcrumb-list\">
+\t\t\t\t\t\t<li class=\"item\">
+\t\t\t\t\t\t\t<a href=\"index.html\">Home</a>
+\t\t\t\t\t\t</li>
+\t\t\t\t\t\t<li class=\"separator\">
+\t\t\t\t\t\t\t<i class=\"feather-chevron-right\"></i>
+\t\t\t\t\t\t</li>
+\t\t\t\t\t\t<li class=\"item current\">Reclamation</li>
+\t\t\t\t\t\t{% for message in app.flashes('success') %}
+\t\t\t\t\t\t\t<div class=\"alert alert-success\">
+\t\t\t\t\t\t\t\t{{message}}
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t{% endfor %}
 
-\t\t\t\t\t\t<div class=\"create-collection-input logo-image\">
-\t\t\t\t\t\t\t<div class=\"logo-c-image logo\">
-\t\t\t\t\t\t\t\t<img id=\"rbtinput1\" src=\"{{ asset('images/reclamation/' ~ reclamation.getImagePath()) }}\" alt=\"Profile-NFT\">
-\t\t\t\t\t\t\t\t<label for=\"fatima\" title=\"No File Choosen\">
+\t\t\t\t\t</ul>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t</div>
+\t</div>
+\t<!-- end page title area -->
+
+\t<!-- create new product area -->
+\t<div class=\"create-area rn-section-gapTop\">
+\t\t<div class=\"container\">
+\t\t\t<div class=\"row g-5\">
+\t\t\t\t<div class=\"col-lg-3 offset-1 ml_md--0 ml_sm--0\">
+\t\t\t\t\t<form id=\"form\" name=\"reclamation\" method=\"post\" enctype=\"multipart/form-data\">
+\t\t\t\t\t\t<div class=\"upload-area\">
+\t\t\t\t\t\t\t<div class=\"brows-file-wrapper\">
+\t\t\t\t\t\t\t\t<input type=\"file\" name=\"reclamation[imageFile]\" id=\"reclamation_imageFile_file\"  accept=\"image/*\" class=\"inputfile\"/>
+\t\t\t\t\t\t\t\t<img id=\"createfileImage\" src=\"{{ asset('images/reclamation/'~reclamation.getImageFile()) }}\" alt data-black-overlay=\"6\">
+\t\t\t\t\t\t\t\t<label for=\"reclamation_imageFile_file\" title=\"No File Choosen\">
 \t\t\t\t\t\t\t\t\t<span class=\"text-center color-white\">
-\t\t\t\t\t\t\t\t\t\t<i class=\"feather-edit\"></i>
-\t\t\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t\t\t<i class=\"feather-edit\"></i>
+\t\t\t\t\t\t\t</span>
 \t\t\t\t\t\t\t\t</label>
 \t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"button-area\">
-\t\t\t\t\t\t\t\t<div
-\t\t\t\t\t\t\t\t\tclass=\"brows-file-wrapper\">
-\t\t\t\t\t\t\t\t\t<!-- actual upload which is hidden -->
-\t\t\t\t\t\t\t\t\t<input
-\t\t\t\t\t\t\t\t\tname=\"fatiaaama\" id=\"fataaaima\" type=\"file\">
-\t\t\t\t\t\t\t\t<!-- our custom upload button -->
+\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<script>
+\t\t\t\t\t\t\tconst input = document.getElementById('reclamation_imageFile_file');
+const img = document.getElementById('createfileImage');
 
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</div>
+input.addEventListener('change', function () {
+if (input.files && input.files[0]) {
+const reader = new FileReader();
+
+reader.onload = function (e) {
+img.setAttribute('src', e.target.result);
+}
+
+reader.readAsDataURL(input.files[0]);
+}
+});
+\t\t\t\t\t\t</script>
+\t\t\t\t\t\t<div class=\"mt--100 mt_sm--30 mt_md--30 d-none d-lg-block\">
+\t\t\t\t\t\t\t<h5>Note:
+\t\t\t\t\t\t\t</h5>
+\t\t\t\t\t\t\t<span>enjoy our Service
+\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t\t<br>
+\t\t\t\t\t\t\t<span>You will receive our reponse soon
+\t\t\t\t\t\t\t</span>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"col-lg-7\">
-\t\t\t\t\t<div class=\"create-collection-form-wrapper\">
-\t\t\t\t\t\t<div class=\"row\">
-\t\t\t\t\t\t\t<div class=\"col-lg-6\">
-\t\t\t\t\t\t\t\t<div class=\"collection-single-wized\">
-\t\t\t\t\t\t\t\t\t<label for=\"name\" class=\"title required\">Private key</label>
-\t\t\t\t\t\t\t\t\t<div class=\"create-collection-input\">
-\t\t\t\t\t\t\t\t\t\t<input id=\"name\" class=\"name\" type=\"text\" value=\"{{ reclamation.privateKey }}\" required readonly>
+\t\t\t\t\t<div class=\"col-lg-7\">
+\t\t\t\t\t\t<div class=\"form-wrapper-one\">
+\t\t\t\t\t\t\t<div class=\"col-md-12\">
+\t\t\t\t\t\t\t\t<div class=\"input-box pb--20\">
+\t\t\t\t\t\t\t\t\t<div>
+\t\t\t\t\t\t\t\t\t\t<label for=\"reclamation_privateKey\" class=\"required\">Private Key</label>
+\t\t\t\t\t\t\t\t\t\t<input type=\"text\" value=\"{{ reclamation.privateKey }}\" id=\"reclamation_privateKey\" name=\"reclamation[privateKey]\" required pattern=\"^[0-9]+\$\"/>
+
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"col-lg-6\">
-\t\t\t\t\t\t\t\t<div class=\"collection-single-wized\">
-\t\t\t\t\t\t\t\t\t<label for=\"name\" class=\"title required\">subject</label>
-\t\t\t\t\t\t\t\t\t<div class=\"create-collection-input\">
-\t\t\t\t\t\t\t\t\t\t<input id=\"name\" class=\"name\" type=\"text\" value=\"{{ reclamation.subject }}\" required>
+\t\t\t\t\t\t\t<div class=\"col-md-12\">
+\t\t\t\t\t\t\t\t<div class=\"input-box pb--20\">
+\t\t\t\t\t\t\t\t\t<div>
+\t\t\t\t\t\t\t\t\t\t<label for=\"reclamation_subject\" class=\"required\">Subject</label>
+\t\t\t\t\t\t\t\t\t\t<input type=\"text\" value=\"{{ reclamation.subject }}\" id=\"reclamation_subject\" name=\"reclamation[subject]\" />
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"col-lg-12\">
-\t\t\t\t\t\t\t\t<div class=\"collection-single-wized\">
-\t\t\t\t\t\t\t\t\t<label for=\"description\" class=\"title\">Description</label>
-\t\t\t\t\t\t\t\t\t<div class=\"create-collection-input\">
-\t\t\t\t\t\t\t\t\t\t<textarea id=\"description\" class=\"text-area\">{{ reclamation.description }}</textarea>
+\t\t\t\t\t\t\t<div class=\"col-md-12\">
+\t\t\t\t\t\t\t\t<div class=\"input-box pb--20\">
+\t\t\t\t\t\t\t\t\t<div>
+\t\t\t\t\t\t\t\t\t\t<label for=\"reclamation_description\" class=\"required\">Description</label>
+\t\t\t\t\t\t\t\t\t\t<textarea id=\"reclamation_description\" name=\"reclamation[description]\"  required>{{ reclamation.description }} </textarea>
+
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"col-lg-12\">
-\t\t\t\t\t\t\t\t<div
-\t\t\t\t\t\t\t\t\tclass=\"button-wrapper\">
-\t\t\t\t\t\t\t\t\t<form action=\"{{ path('reclamationsh.modifer', {'id': reclamation.id}) }}\" method=\"post\">
-\t\t\t\t\t\t\t\t\t{{ form_widget(form._token) }}
-\t\t\t\t\t\t\t\t\t\t<input type=\"hidden\" name=\"_method\" value=\"PUT\">
-\t\t\t\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-primary-alta btn-large\">Update</button>
-\t\t\t\t\t\t\t\t\t</form>
+\t\t\t\t\t\t\t<span></span>
+\t\t\t\t\t\t\t<span></span>
+\t\t\t\t\t\t\t<div class=\"col-md-12\">
+\t\t\t\t\t\t\t\t<div class=\"input-box\">
+\t\t\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-primary\" id=\"submit-button\">Submit</button>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
@@ -286,7 +384,12 @@ class __TwigTemplate_8e91f87e3c477f4348bc56b149bbf63f extends Template
 \t\t\t\t</div>
 \t\t\t</div>
 \t\t</div>
-\t</div>
+\t\t<input type=\"hidden\" id=\"reclamation__token\" name=\"reclamation[_token]\" value=\"edfefdd8a408443a012c.c_gIArByPEgON4s4Sv8_WXHe6FRKy7Ah9XqrA6GoLmk.PcxBY9cWTX9gBthxC8tSCQHp0SAsifMRmBvTNtDwTCA3sHt7xB9lJUF23g\"/>
+\t</form>
+
+
+\t<!-- create new product area -->
+
 {% endblock %}
 ", "reclamationsh/create-collection.html.twig", "C:\\Users\\khali\\OneDrive - ESPRIT\\Documents\\citiezenHub_webapp\\templates\\reclamationsh\\create-collection.html.twig");
     }

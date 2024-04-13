@@ -19,4 +19,5 @@ return [
     'app_reclamation' => [[], ['_controller' => 'App\\Controller\\ReclamationController::index'], [], [['text', '/reclamation']], [], [], []],
     'reclamationsh' => [[], ['_controller' => 'App\\Controller\\ReclamationshController::index'], [], [['text', '/b']], [], [], []],
     'reclamationsh.modifer' => [['id'], ['_controller' => 'App\\Controller\\ReclamationshController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/a']], [], [], []],
+    'reclamationsh.del' => [['id'], ['_controller' => 'App\\Controller\\ReclamationshController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/b']], [], [], []],
 ];

@@ -65,18 +65,18 @@ class __TwigTemplate_1c2cca524dab87612755b917eca2b188 extends Template
 \t\t";
         // line 26
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 77
+        // line 78
         echo "\t</head>
 \t";
-        // line 78
-        $this->loadTemplate("parts/header.html.twig", "base.html.twig", 78)->display($context);
         // line 79
+        $this->loadTemplate("parts/header.html.twig", "base.html.twig", 79)->display($context);
+        // line 80
         echo "\t<body>
 \t\t";
-        // line 80
-        $this->displayBlock('body', $context, $blocks);
         // line 81
-        echo "<script>
+        $this->displayBlock('body', $context, $blocks);
+        // line 82
+        echo "\t\t<script>
 \t\t\t(function () {
 const form = document.getElementById('form');
 const submitButton = document.getElementById('submit-button');
@@ -116,9 +116,9 @@ form.reportValidity();
 \t\t</script>
 \t</body>
 \t";
-        // line 120
-        $this->loadTemplate("parts/footer.html.twig", "base.html.twig", 120)->display($context);
         // line 121
+        $this->loadTemplate("parts/footer.html.twig", "base.html.twig", 121)->display($context);
+        // line 122
         echo "</html>
 ";
         
@@ -356,7 +356,14 @@ form.reportValidity();
         // line 73
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/error_success.js"), "html", null, true);
         echo "\"></script>
-\t\t\t<script src=\"https://cdn.jsdelivr.net/npm/sweetalert2@11\"></script>
+\t\t\t<script src=\"";
+        // line 74
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/error_success.js"), "html", null, true);
+        echo "\"></script>
+\t\t\t<script src=\"";
+        // line 75
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("https://cdn.jsdelivr.net/npm/sweetalert2@11"), "html", null, true);
+        echo "\"></script>
 
 \t\t";
         
@@ -367,7 +374,7 @@ form.reportValidity();
 
     }
 
-    // line 80
+    // line 81
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -406,7 +413,7 @@ form.reportValidity();
      */
     public function getDebugInfo()
     {
-        return array (  371 => 80,  357 => 73,  353 => 72,  349 => 71,  345 => 70,  339 => 67,  335 => 66,  331 => 65,  326 => 63,  320 => 60,  316 => 59,  312 => 58,  308 => 57,  304 => 56,  300 => 55,  296 => 54,  292 => 53,  288 => 52,  284 => 51,  280 => 50,  276 => 49,  272 => 48,  268 => 47,  264 => 46,  260 => 45,  256 => 44,  252 => 43,  248 => 42,  244 => 41,  240 => 40,  223 => 27,  213 => 26,  201 => 23,  196 => 21,  192 => 20,  188 => 19,  184 => 18,  180 => 17,  176 => 16,  172 => 15,  168 => 14,  163 => 13,  153 => 12,  133 => 6,  122 => 121,  120 => 120,  79 => 81,  77 => 80,  74 => 79,  72 => 78,  69 => 77,  67 => 26,  64 => 25,  61 => 12,  56 => 8,  54 => 6,  47 => 1,);
+        return array (  378 => 81,  365 => 75,  361 => 74,  357 => 73,  353 => 72,  349 => 71,  345 => 70,  339 => 67,  335 => 66,  331 => 65,  326 => 63,  320 => 60,  316 => 59,  312 => 58,  308 => 57,  304 => 56,  300 => 55,  296 => 54,  292 => 53,  288 => 52,  284 => 51,  280 => 50,  276 => 49,  272 => 48,  268 => 47,  264 => 46,  260 => 45,  256 => 44,  252 => 43,  248 => 42,  244 => 41,  240 => 40,  223 => 27,  213 => 26,  201 => 23,  196 => 21,  192 => 20,  188 => 19,  184 => 18,  180 => 17,  176 => 16,  172 => 15,  168 => 14,  163 => 13,  153 => 12,  133 => 6,  122 => 122,  120 => 121,  79 => 82,  77 => 81,  74 => 80,  72 => 79,  69 => 78,  67 => 26,  64 => 25,  61 => 12,  56 => 8,  54 => 6,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -484,14 +491,15 @@ form.reportValidity();
 \t\t\t<script src=\"{{ asset('assetsOfOutsiderElements/js/pages/extended-swiper.js') }}\"></script>
 \t\t\t<script src=\"{{ asset('js/loader.js') }}\"></script>
 \t\t\t<script src=\"{{ asset('js/error_success.js') }}\"></script>
-\t\t\t<script src=\"https://cdn.jsdelivr.net/npm/sweetalert2@11\"></script>
+\t\t\t<script src=\"{{ asset('js/error_success.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('https://cdn.jsdelivr.net/npm/sweetalert2@11') }}\"></script>
 
 \t\t{% endblock %}
 \t</head>
 \t{% include 'parts/header.html.twig' %}
 \t<body>
 \t\t{% block body %}{% endblock %}
-<script>
+\t\t<script>
 \t\t\t(function () {
 const form = document.getElementById('form');
 const submitButton = document.getElementById('submit-button');
