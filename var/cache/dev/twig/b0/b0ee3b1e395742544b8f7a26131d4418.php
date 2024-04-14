@@ -90,7 +90,8 @@ fetch('/reclamation', {
 method: 'POST',
 body: formData
 }).then(response => response.text()).then(data => {
-Swal.fire({title: 'Success!', text: 'Your reclamation has been submitted.', icon: 'success', confirmButtonText: 'Cool'}).then(() => { // Clear all the form fields
+Swal.fire({title: 'Success!', text: 'Your reclamation has been submitted.', icon: 'success', confirmButtonText: 'Thank You'}).then(() => {
+\t // Clear all the form fields
 const inputs = form.querySelectorAll('input, textarea');
 inputs.forEach(input => {
 input.value = '';
@@ -116,9 +117,9 @@ form.reportValidity();
 \t\t</script>
 \t</body>
 \t";
-        // line 121
-        $this->loadTemplate("parts/footer.html.twig", "base.html.twig", 121)->display($context);
         // line 122
+        $this->loadTemplate("parts/footer.html.twig", "base.html.twig", 122)->display($context);
+        // line 123
         echo "</html>
 ";
         
@@ -413,7 +414,7 @@ form.reportValidity();
      */
     public function getDebugInfo()
     {
-        return array (  378 => 81,  365 => 75,  361 => 74,  357 => 73,  353 => 72,  349 => 71,  345 => 70,  339 => 67,  335 => 66,  331 => 65,  326 => 63,  320 => 60,  316 => 59,  312 => 58,  308 => 57,  304 => 56,  300 => 55,  296 => 54,  292 => 53,  288 => 52,  284 => 51,  280 => 50,  276 => 49,  272 => 48,  268 => 47,  264 => 46,  260 => 45,  256 => 44,  252 => 43,  248 => 42,  244 => 41,  240 => 40,  223 => 27,  213 => 26,  201 => 23,  196 => 21,  192 => 20,  188 => 19,  184 => 18,  180 => 17,  176 => 16,  172 => 15,  168 => 14,  163 => 13,  153 => 12,  133 => 6,  122 => 122,  120 => 121,  79 => 82,  77 => 81,  74 => 80,  72 => 79,  69 => 78,  67 => 26,  64 => 25,  61 => 12,  56 => 8,  54 => 6,  47 => 1,);
+        return array (  379 => 81,  366 => 75,  362 => 74,  358 => 73,  354 => 72,  350 => 71,  346 => 70,  340 => 67,  336 => 66,  332 => 65,  327 => 63,  321 => 60,  317 => 59,  313 => 58,  309 => 57,  305 => 56,  301 => 55,  297 => 54,  293 => 53,  289 => 52,  285 => 51,  281 => 50,  277 => 49,  273 => 48,  269 => 47,  265 => 46,  261 => 45,  257 => 44,  253 => 43,  249 => 42,  245 => 41,  241 => 40,  224 => 27,  214 => 26,  202 => 23,  197 => 21,  193 => 20,  189 => 19,  185 => 18,  181 => 17,  177 => 16,  173 => 15,  169 => 14,  164 => 13,  154 => 12,  134 => 6,  123 => 123,  121 => 122,  79 => 82,  77 => 81,  74 => 80,  72 => 79,  69 => 78,  67 => 26,  64 => 25,  61 => 12,  56 => 8,  54 => 6,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -513,7 +514,8 @@ fetch('/reclamation', {
 method: 'POST',
 body: formData
 }).then(response => response.text()).then(data => {
-Swal.fire({title: 'Success!', text: 'Your reclamation has been submitted.', icon: 'success', confirmButtonText: 'Cool'}).then(() => { // Clear all the form fields
+Swal.fire({title: 'Success!', text: 'Your reclamation has been submitted.', icon: 'success', confirmButtonText: 'Thank You'}).then(() => {
+\t // Clear all the form fields
 const inputs = form.querySelectorAll('input, textarea');
 inputs.forEach(input => {
 input.value = '';

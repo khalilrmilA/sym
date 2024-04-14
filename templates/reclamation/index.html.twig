@@ -94,8 +94,12 @@ reader.readAsDataURL(input.files[0]);
 								<div class="input-box pb--20">
 									<div>
 										<label for="reclamation_privateKey" class="required">Private Key</label>
-										<input type="text" id="reclamation_privateKey" name="reclamation[privateKey]" required pattern="^[0-9]+$"/>
-
+										<input type="text" id="reclamation_privateKey" name="reclamation[privateKey]" />
+										<span class="error-message">{{ form_errors(form.privateKey) }}</span>
+										<div class="tooltip">
+											<i class="fas fa-info-circle"></i>
+											<span class="tooltiptext">Must be a number</span>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -103,7 +107,12 @@ reader.readAsDataURL(input.files[0]);
 								<div class="input-box pb--20">
 									<div>
 										<label for="reclamation_subject" class="required">Subject</label>
-										<input type="text" id="reclamation_subject" name="reclamation[subject]" required pattern="^[a-zA-Z]+$"/>
+										<input type="text" id="reclamation_subject" name="reclamation[subject]" />
+										<span class="error-message">{{ form_errors(form.subject) }}</span>
+										<div class="tooltip">
+											<i class="fas fa-info-circle"></i>
+											<span class="tooltiptext">Must be a string</span>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -111,8 +120,12 @@ reader.readAsDataURL(input.files[0]);
 								<div class="input-box pb--20">
 									<div>
 										<label for="reclamation_description" class="required">Description</label>
-										<textarea id="reclamation_description" name="reclamation[description]" required></textarea>
-
+										<textarea id="reclamation_description" name="reclamation[description]" ></textarea>
+										<span class="error-message">{{ form_errors(form.description) }}</span>
+										<div class="tooltip">
+											<i class="fas fa-info-circle"></i>
+											<span class="tooltiptext">Must be a string</span>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -131,36 +144,64 @@ reader.readAsDataURL(input.files[0]);
 		<input type="hidden" id="reclamation__token" name="reclamation[_token]" value="edfefdd8a408443a012c.c_gIArByPEgON4s4Sv8_WXHe6FRKy7Ah9XqrA6GoLmk.PcxBY9cWTX9gBthxC8tSCQHp0SAsifMRmBvTNtDwTCA3sHt7xB9lJUF23g"/>
 	</form>
 <script>
+	const primarykey = /^[0-9]+$/; 
 	const nameRegex = /^[A-Za-z\s]+$/;  
 	const lastNameRegex = /^[A-Za-z\s]+$/; 
 	
 	
 	function validateName() {
-		const nameInput = document.getElementById('reclamation_privateKey');
+		const nameInput = document.getElementById('reclamation_subject');
 		const name = nameInput.value.trim();
 		if (nameRegex.test(name)) {
 			nameInput.style.borderColor = 'green';
 			return true;
 		} else {
 			nameInput.style.borderColor = 'red';
+			nameInput.setCustomValidity('Subject is not valid');
 			return false;
 		}
 	}
 	function validateLastName() {
-		const lastNameInput = document.getElementById('reclamation_privateKey');
+		const lastNameInput = document.getElementById('reclamation_description');
 		const lastName = lastNameInput.value.trim();
 		if (lastNameRegex.test(lastName)) {
 			lastNameInput.style.borderColor = 'green';
 			return true;
 		} else {
 			lastNameInput.style.borderColor = 'red';
+			
 			return false;
 		}
-	}// Add event listeners for input fields
-	document.getElementById('reclamation_privateKey').addEventListener('input', validateName);
-	document.getElementById('reclamation_privateKey').addEventListener('input', validateLastName);
+	}
+	function validatePrimaryKey() {
+		const primaryKeyInput = document.getElementById('reclamation_privateKey');
+		const primaryKey = primaryKeyInput.value.trim();
+		if (primarykey.test(primaryKey)) {
+			primaryKeyInput.style.borderColor = 'green';
+			return true;
+		} else {
+			primaryKeyInput.style.borderColor = 'red';
+			
+			return false;
+		}
+	}
+	// Add event listeners for input fields
+	document.getElementById('reclamation_subject').addEventListener('input', validateName);
+	document.getElementById('reclamation_description').addEventListener('input', validateLastName);
+	document.getElementById('reclamation_privateKey').addEventListener('input', validatePrimaryKey);
+	
+	// Add tooltips to input fields
+	const tooltips = document.querySelectorAll('.tooltip');
+	tooltips.forEach(tooltip => {
+		tooltip.addEventListener('mouseover', () => {
+			tooltip.querySelector('.tooltiptext').style.display = 'block';
+		});
+		tooltip.addEventListener('mouseout', () => {
+			tooltip.querySelector('.tooltiptext').style.display = 'none';
+		});
+	});
 </script>
 
-	<!-- create new product area -->
-
 {% endblock %}
+
+
