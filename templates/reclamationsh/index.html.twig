@@ -10,37 +10,43 @@
     <div class="container">
       <div class="row mb--50 align-items-center">
         <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-          <h1>Here you can find all your reclamation hope you find it good</h1>
+          <h5>Here you can find all your reclamation hope you find it good</h5>
         </div>
+        
       </div>
+      {% for message in app.flashes('success') %}
+							<div class="alert alert-success">
+								{{message}}
+							</div>
+						{% endfor %}
       <div class="row g-5 d-flex flex-wrap">
         <!-- [:4] -->
-        {% for recl in rec %}
+        {% for recll in recc %}
           <div class="inner flex-grow-1" style="max-width: 300px; overflow-wrap: break-word;">
             <div class="thumbnail">
-              <a href="{{ path('reclamationsh.modifer', { id: recl.id }) }}"><img src="{{ asset('images/reclamation/' ~ recl.getImagePath()) }}" alt="Personal Portfolio Images" /><span class="text-center color-white"><i class="feather-edit"></i></span></a>
+              <a href="{{ path('reclamationsh.modifer', { id: recll.id }) }}"><img src="{{ asset('images/reclamation/' ~ recll.getImagePath()) }}" alt="Personal Portfolio Images" /><span class="text-center color-white"><i class="feather-edit"></i></span></a>
             </div>
             <div class="content">
               <div class="category-info">
                 <div class="category-list">
-                  <a href="blog-details.html">{{ recl.subject }}</a>
+              <a href="javascript:void(0);" class="reclamation-subject" data-id="{{ recll.id }}">{{ recll.subject }}</a>
                 </div>
                 <div class="meta">
                   <span>
                     <i class="feather-clock"></i>
-                    {{ recl.createdAt|date('Y-m-d\TH:i:sP')|time_ago }}
+                    {{ recll.createdAt|date('Y-m-d\TH:i:sP')|time_ago }}
                   </span>
                 </div>
               </div>
               <h4 class="title">
-                            <form action="{{ path('reclamationsh.del', { id: recl.id }) }}" method="post" onsubmit="return confirm('Are you sure?');">
-                              {% if (recl.description|length) > 10 %}
-                                {{ recl.description|slice(0, 10) }}...
+                           
+                              {% if (recll.description|length) > 10 %}
+                                {{ recll.description|slice(0, 10) }}...
                               {% else %}
-                                {{ recl.description }}
+                                {{ recll.description }}
                               {% endif %}
-                              <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
+                            <button class="btn btn-danger delete-reclamation" data-id="{{ recll.id }}">Delete</button>
+                          
                           </h4>
             </div>
           </div>
@@ -58,4 +64,97 @@
       <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
     </svg>
   </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const deleteButtons = document.querySelectorAll('.delete-reclamation');
+    
+      deleteButtons.forEach(function(button) {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          const reclamationId = this.getAttribute('data-id');
+          
+          if (confirm('Are you sure?')) {
+            fetch(`{{ path('reclamationsh.del', {'id': 'ID_PLACEHOLDER'}) }}`.replace('ID_PLACEHOLDER', reclamationId), {
+              method: 'POST',
+              // Include any necessary headers, CSRF tokens, etc.
+            }).then(response => {
+              if (response.ok) {
+                document.getElementById(`reclamation-${reclamationId}`).remove();
+              } else {
+                alert('Could not delete the reclamation.');
+              }
+            }).catch(error => console.error('Error:', error));
+          }
+        });
+      });
+    });
+    </script>
+
+
+<!-- Modal Structure -->
+<div class="modal fade" id="reclamationModal" tabindex="-1" aria-labelledby="reclamationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="reclamationModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img id="modalReclamationImage" src="" alt="Reclamation Image" class="img-fluid mb-2">
+        <h3 id="modalReclamationSubject"></h3>
+        <div><strong>Description:</strong> <span id="modalReclamationDescription"></span></div>
+        <div><strong>Created At:</strong> <span id="modalReclamationDate"></span></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const subjectLinks = document.querySelectorAll('.reclamation-subject');
+
+    subjectLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        const id = this.getAttribute('data-id');
+
+        // Fetch reclamation details using the ID
+        fetch(`/reclamation/details/${id}`)
+          .then(response => response.json())
+          .then(data => {
+            // Set the image path
+            document.getElementById('modalReclamationImage').src = `{{ asset('images/reclamation/') }}${data.imagePath}`;
+            // Set the subject as the title of the modal
+            const modalTitle = document.getElementById('reclamationModalLabel');
+            modalTitle.textContent = data.subject;
+            // Populate the description
+            document.getElementById('modalReclamationDescription').textContent = data.description;
+            // Format and populate the creation date
+            document.getElementById('modalReclamationDate').textContent = new Date(data.createdAt).toLocaleString();
+
+            // Show the modal
+            new bootstrap.Modal(document.getElementById('reclamationModal')).show();
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while fetching the reclamation details.');
+          });
+      });
+    });
+  });
+</script>
+
+  
+
+  
+
+  
+  
+  
+    
 {% endblock %}
