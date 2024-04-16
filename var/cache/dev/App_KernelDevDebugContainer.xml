@@ -74,6 +74,7 @@
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">App_KernelDevDebugContainer</parameter>
+    <parameter key="reclamation_images_directory">C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp/public/images/reclamation</parameter>
     <parameter key="event_dispatcher.event_aliases" type="collection">
       <parameter key="Symfony\Component\Console\Event\ConsoleCommandEvent">console.command</parameter>
       <parameter key="Symfony\Component\Console\Event\ConsoleErrorEvent">console.error</parameter>
@@ -7034,11 +7035,12 @@
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.F7WqIAA" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.gVqVy9e" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\ReclamationController::index" type="service_closure" id=".service_locator.tgVVt0z"/>
         <argument key="App\Controller\ReclamationshController::delete" type="service_closure" id=".service_locator.aKM6MDa"/>
+        <argument key="App\Controller\ReclamationshController::getReclamationDetails" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\ReclamationshController::index" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\ReclamationshController::show" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.xUrKPVU"/>
@@ -7047,6 +7049,7 @@
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.xUrKPVU"/>
         <argument key="App\Controller\ReclamationController:index" type="service_closure" id=".service_locator.tgVVt0z"/>
         <argument key="App\Controller\ReclamationshController:delete" type="service_closure" id=".service_locator.aKM6MDa"/>
+        <argument key="App\Controller\ReclamationshController:getReclamationDetails" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\ReclamationshController:index" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\ReclamationshController:show" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.xUrKPVU"/>
@@ -7896,12 +7899,12 @@
       <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.F7WqIAA"/>
+      <argument type="service" id=".service_locator.gVqVy9e"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.F7WqIAA"/>
+      <argument type="service" id=".service_locator.gVqVy9e"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -8978,7 +8981,7 @@
     <service id="EasyCorp\Bundle\EasyAdminBundle\Contracts\Orm\EntityPaginatorInterface" alias="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityPaginator"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.F7WqIAA"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.gVqVy9e"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -9000,7 +9003,7 @@
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.Mo0FXEU" alias="service_locator_EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
     <service id=".service_locator.0GV1BZZ" alias=".service_locator.gSv9zYw"/>
-    <service id=".service_locator.Hsut_98" alias=".service_locator.F7WqIAA"/>
+    <service id=".service_locator.tJVhXhQ" alias=".service_locator.gVqVy9e"/>
     <service id=".service_locator.wKF4yn1" alias=".service_locator.19_mNxd"/>
     <service id=".service_locator.o.rF1we" alias=".service_locator.jpsG8wf"/>
     <service id=".service_locator.ghyll4k" alias=".service_locator.X3hn2dA"/>

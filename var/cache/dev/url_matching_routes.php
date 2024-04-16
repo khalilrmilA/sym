@@ -37,6 +37,7 @@ return [
                 .')'
                 .'|/a/([^/]++)(*:180)'
                 .'|/b/([^/]++)(*:199)'
+                .'|/reclamation/details/([^/]++)(*:236)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -48,8 +49,9 @@ return [
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
         180 => [[['_route' => 'reclamationsh.modifer', '_controller' => 'App\\Controller\\ReclamationshController::show'], ['id'], null, null, false, true, null]],
-        199 => [
-            [['_route' => 'reclamationsh.del', '_controller' => 'App\\Controller\\ReclamationshController::delete'], ['id'], null, null, false, true, null],
+        199 => [[['_route' => 'reclamationsh.del', '_controller' => 'App\\Controller\\ReclamationshController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        236 => [
+            [['_route' => 'reclamation_details', '_controller' => 'App\\Controller\\ReclamationshController::getReclamationDetails'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],
