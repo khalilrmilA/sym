@@ -152,25 +152,24 @@ class __TwigTemplate_644a1d4909bbb6848a9904b3bd887d63 extends Template
                 </div>
               </div>
               <h4 class=\"title\">
-                           
                               ";
-            // line 43
-            if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recll"], "description", [], "any", false, false, false, 43)) > 10)) {
-                // line 44
+            // line 42
+            if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recll"], "description", [], "any", false, false, false, 42)) > 10)) {
+                // line 43
                 echo "                                ";
-                echo twig_escape_filter($this->env, twig_slice($this->env, twig_get_attribute($this->env, $this->source, $context["recll"], "description", [], "any", false, false, false, 44), 0, 10), "html", null, true);
+                echo twig_escape_filter($this->env, twig_slice($this->env, twig_get_attribute($this->env, $this->source, $context["recll"], "description", [], "any", false, false, false, 43), 0, 10), "html", null, true);
                 echo "...
                               ";
             } else {
-                // line 46
+                // line 45
                 echo "                                ";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recll"], "description", [], "any", false, false, false, 46), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recll"], "description", [], "any", false, false, false, 45), "html", null, true);
                 echo "
                               ";
             }
-            // line 48
+            // line 47
             echo "                            <button class=\"btn btn-danger delete-reclamation\" data-id=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recll"], "id", [], "any", false, false, false, 48), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recll"], "id", [], "any", false, false, false, 47), "html", null, true);
             echo "\">Delete</button>
                           
                           </h4>
@@ -181,7 +180,7 @@ class __TwigTemplate_644a1d4909bbb6848a9904b3bd887d63 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['recll'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 54
+        // line 53
         echo "      </div>
     </div>
   </div>
@@ -195,34 +194,34 @@ class __TwigTemplate_644a1d4909bbb6848a9904b3bd887d63 extends Template
       <path d=\"M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98\" />
     </svg>
   </div>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const deleteButtons = document.querySelectorAll('.delete-reclamation');
-    
-      deleteButtons.forEach(function(button) {
-        button.addEventListener('click', function(e) {
-          e.preventDefault();
-          const reclamationId = this.getAttribute('data-id');
-          
-          if (confirm('Are you sure?')) {
-            fetch(`";
-        // line 77
+  <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const deleteButtons = document.querySelectorAll('.delete-reclamation');
+      
+        deleteButtons.forEach(function(button) {
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const reclamationId = this.getAttribute('data-id');
+            
+            if (confirm('Are you sure?')) {
+              fetch(`";
+        // line 76
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("reclamationsh.del", ["id" => "ID_PLACEHOLDER"]);
         echo "`.replace('ID_PLACEHOLDER', reclamationId), {
-              method: 'POST',
-              // Include any necessary headers, CSRF tokens, etc.
-            }).then(response => {
-              if (response.ok) {
-                document.getElementById(`reclamation-\${reclamationId}`).remove();
-              } else {
-                //alert('Could not delete the reclamation.');
-              }
-            }).catch(error => console.error('Error:', error));
-          }
+                method: 'POST',
+                // Include any necessary headers, CSRF tokens, etc.
+              }).then(response => {
+                if (response.ok) {
+                  document.getElementById(`reclamation-\${reclamationId}`).remove();
+                } else {
+                  window.location.reload();
+                }
+              }).catch(error => console.error('Error:', error));
+            }
+          });
         });
       });
-    });
-    </script>
+      </script>
 
 
 <!-- Modal Structure -->
@@ -238,7 +237,8 @@ class __TwigTemplate_644a1d4909bbb6848a9904b3bd887d63 extends Template
         <h3 id=\"modalReclamationSubject\"></h3>
       <div><strong>Created At:</strong> <span id=\"modalReclamationDate\"></span></div>  
       <div><strong>Description:</strong> <span id=\"modalReclamationDescription\"></span></div>
-        
+      <div><strong>Response:</strong> <span id=\"modalReclamationResponse\"></span></div>
+
       </div>
       <div class=\"modal-footer\">
         <button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Close</button>
@@ -276,6 +276,8 @@ class __TwigTemplate_644a1d4909bbb6848a9904b3bd887d63 extends Template
 
             // Populate the description
             document.getElementById('modalReclamationDescription').textContent = data.description;
+// Populate the response
+document.getElementById('modalReclamationResponse').textContent = data.reponse ? data.reponse.repReclamation : 'Pending';
 
 
             // Show the modal
@@ -353,7 +355,7 @@ class __TwigTemplate_644a1d4909bbb6848a9904b3bd887d63 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  269 => 133,  210 => 77,  185 => 54,  172 => 48,  166 => 46,  160 => 44,  158 => 43,  149 => 37,  139 => 32,  129 => 27,  125 => 25,  121 => 24,  117 => 22,  108 => 19,  105 => 18,  101 => 17,  90 => 8,  80 => 7,  69 => 4,  59 => 3,  36 => 1,);
+        return array (  269 => 133,  209 => 76,  184 => 53,  171 => 47,  165 => 45,  159 => 43,  157 => 42,  149 => 37,  139 => 32,  129 => 27,  125 => 25,  121 => 24,  117 => 22,  108 => 19,  105 => 18,  101 => 17,  90 => 8,  80 => 7,  69 => 4,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -399,7 +401,6 @@ class __TwigTemplate_644a1d4909bbb6848a9904b3bd887d63 extends Template
                 </div>
               </div>
               <h4 class=\"title\">
-                           
                               {% if (recll.description|length) > 10 %}
                                 {{ recll.description|slice(0, 10) }}...
                               {% else %}
@@ -424,31 +425,31 @@ class __TwigTemplate_644a1d4909bbb6848a9904b3bd887d63 extends Template
       <path d=\"M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98\" />
     </svg>
   </div>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const deleteButtons = document.querySelectorAll('.delete-reclamation');
-    
-      deleteButtons.forEach(function(button) {
-        button.addEventListener('click', function(e) {
-          e.preventDefault();
-          const reclamationId = this.getAttribute('data-id');
-          
-          if (confirm('Are you sure?')) {
-            fetch(`{{ path('reclamationsh.del', {'id': 'ID_PLACEHOLDER'}) }}`.replace('ID_PLACEHOLDER', reclamationId), {
-              method: 'POST',
-              // Include any necessary headers, CSRF tokens, etc.
-            }).then(response => {
-              if (response.ok) {
-                document.getElementById(`reclamation-\${reclamationId}`).remove();
-              } else {
-                //alert('Could not delete the reclamation.');
-              }
-            }).catch(error => console.error('Error:', error));
-          }
+  <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const deleteButtons = document.querySelectorAll('.delete-reclamation');
+      
+        deleteButtons.forEach(function(button) {
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const reclamationId = this.getAttribute('data-id');
+            
+            if (confirm('Are you sure?')) {
+              fetch(`{{ path('reclamationsh.del', {'id': 'ID_PLACEHOLDER'}) }}`.replace('ID_PLACEHOLDER', reclamationId), {
+                method: 'POST',
+                // Include any necessary headers, CSRF tokens, etc.
+              }).then(response => {
+                if (response.ok) {
+                  document.getElementById(`reclamation-\${reclamationId}`).remove();
+                } else {
+                  window.location.reload();
+                }
+              }).catch(error => console.error('Error:', error));
+            }
+          });
         });
       });
-    });
-    </script>
+      </script>
 
 
 <!-- Modal Structure -->
@@ -464,7 +465,8 @@ class __TwigTemplate_644a1d4909bbb6848a9904b3bd887d63 extends Template
         <h3 id=\"modalReclamationSubject\"></h3>
       <div><strong>Created At:</strong> <span id=\"modalReclamationDate\"></span></div>  
       <div><strong>Description:</strong> <span id=\"modalReclamationDescription\"></span></div>
-        
+      <div><strong>Response:</strong> <span id=\"modalReclamationResponse\"></span></div>
+
       </div>
       <div class=\"modal-footer\">
         <button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Close</button>
@@ -499,6 +501,8 @@ class __TwigTemplate_644a1d4909bbb6848a9904b3bd887d63 extends Template
 
             // Populate the description
             document.getElementById('modalReclamationDescription').textContent = data.description;
+// Populate the response
+document.getElementById('modalReclamationResponse').textContent = data.reponse ? data.reponse.repReclamation : 'Pending';
 
 
             // Show the modal

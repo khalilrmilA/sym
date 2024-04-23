@@ -14,8 +14,9 @@ return [
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/xdebug' => [[['_route' => '_profiler_xdebug', '_controller' => 'web_profiler.controller.profiler::xdebugAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
-        '/conference' => [[['_route' => 'app_conference', '_controller' => 'App\\Controller\\ConferenceController::index'], null, null, null, false, false, null]],
-        '/reclamation' => [[['_route' => 'app_reclamation', '_controller' => 'App\\Controller\\ReclamationController::index'], null, null, null, false, false, null]],
+        '/conference' => [[['_route' => 'app_conference', '_controller' => 'App\\Controller\\ConferenceController::showReclamations'], null, null, null, false, false, null]],
+        '/get-latest-reclamations' => [[['_route' => 'get_latest_reclamations', '_controller' => 'App\\Controller\\ConferenceController::getLatestReclamations'], null, null, null, false, false, null]],
+        '/reclamation' => [[['_route' => 'app_reclamation', '_controller' => 'App\\Controller\\ReclamationController::addReclamation'], null, null, null, false, false, null]],
         '/b' => [[['_route' => 'reclamationsh', '_controller' => 'App\\Controller\\ReclamationshController::index'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
@@ -35,9 +36,15 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
-                .'|/a/([^/]++)(*:180)'
-                .'|/b/([^/]++)(*:199)'
-                .'|/reclamation/details/([^/]++)(*:236)'
+                .'|/reclamation/(?'
+                    .'|([^/]++)/(?'
+                        .'|add\\-response(*:210)'
+                        .'|get\\-responses(*:232)'
+                    .')'
+                    .'|details/([^/]++)(*:257)'
+                .')'
+                .'|/a/([^/]++)(*:277)'
+                .'|/b/([^/]++)(*:296)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -48,10 +55,12 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        180 => [[['_route' => 'reclamationsh.modifer', '_controller' => 'App\\Controller\\ReclamationshController::show'], ['id'], null, null, false, true, null]],
-        199 => [[['_route' => 'reclamationsh.del', '_controller' => 'App\\Controller\\ReclamationshController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        236 => [
-            [['_route' => 'reclamation_details', '_controller' => 'App\\Controller\\ReclamationshController::getReclamationDetails'], ['id'], null, null, false, true, null],
+        210 => [[['_route' => 'add_response_to_reclamation', '_controller' => 'App\\Controller\\ConferenceController::addResponseToReclamation'], ['id'], ['POST' => 0], null, false, false, null]],
+        232 => [[['_route' => 'get_responses_for_reclamation', '_controller' => 'App\\Controller\\ConferenceController::getResponsesForReclamation'], ['id'], ['GET' => 0], null, false, false, null]],
+        257 => [[['_route' => 'reclamation_details', '_controller' => 'App\\Controller\\ReclamationshController::getReclamationDetails'], ['id'], null, null, false, true, null]],
+        277 => [[['_route' => 'reclamationsh.modifer', '_controller' => 'App\\Controller\\ReclamationshController::show'], ['id'], null, null, false, true, null]],
+        296 => [
+            [['_route' => 'reclamationsh.del', '_controller' => 'App\\Controller\\ReclamationshController::delete'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

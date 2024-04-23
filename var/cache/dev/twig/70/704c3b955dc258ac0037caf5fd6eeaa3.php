@@ -103,7 +103,7 @@ class __TwigTemplate_8e91f87e3c477f4348bc56b149bbf63f extends Template
 \t\t\t\t\t\t\t<i class=\"feather-chevron-right\"></i>
 \t\t\t\t\t\t</li>
 \t\t\t\t\t\t<li class=\"item current\">Reclamation</li>
-\t\t\t\t\t\t
+
 
 \t\t\t\t\t</ul>
 \t\t\t\t</div>
@@ -115,44 +115,55 @@ class __TwigTemplate_8e91f87e3c477f4348bc56b149bbf63f extends Template
 \t<!-- create new product area -->
 \t<div class=\"create-area rn-section-gapTop\">
 \t\t<div class=\"container\">
-\t\t\t<div class=\"row g-5\">
-\t\t\t\t<div class=\"col-lg-3 offset-1 ml_md--0 ml_sm--0\">
-\t\t\t\t<form id=\"formm\" name=\"reclamation\" method=\"post\" enctype=\"multipart/form-data\" action=\"";
-        // line 38
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("reclamationsh.modifer", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 38, $this->source); })()), "id", [], "any", false, false, false, 38)]), "html", null, true);
+\t\t\t<div
+\t\t\t\tclass=\"row g-5\">
+\t\t\t\t<!-- Errors display area -->
+\t\t\t\t";
+        // line 39
+        if (((array_key_exists("errors", $context)) ? (_twig_default_filter((isset($context["errors"]) || array_key_exists("errors", $context) ? $context["errors"] : (function () { throw new RuntimeError('Variable "errors" does not exist.', 39, $this->source); })()), false)) : (false))) {
+            // line 40
+            echo "\t\t\t\t\t<div class=\"alert alert-danger\" role=\"alert\">
+\t\t\t\t\t\t<ul>
+\t\t\t\t\t\t\t";
+            // line 42
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable((isset($context["errors"]) || array_key_exists("errors", $context) ? $context["errors"] : (function () { throw new RuntimeError('Variable "errors" does not exist.', 42, $this->source); })()));
+            foreach ($context['_seq'] as $context["_key"] => $context["error"]) {
+                // line 43
+                echo "\t\t\t\t\t\t\t\t<li>";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["error"], "message", [], "any", false, false, false, 43), "html", null, true);
+                echo "</li>
+\t\t\t\t\t\t\t";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['error'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 45
+            echo "\t\t\t\t\t\t</ul>
+\t\t\t\t\t</div>
+\t\t\t\t";
+        }
+        // line 48
+        echo "\t\t\t\t<div class=\"col-lg-3 offset-1 ml_md--0 ml_sm--0\">
+\t\t\t\t\t<form id=\"formm\" name=\"reclamation\" method=\"post\" enctype=\"multipart/form-data\" action=\"";
+        // line 49
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("reclamationsh.modifer", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 49, $this->source); })()), "id", [], "any", false, false, false, 49)]), "html", null, true);
         echo "\">
-\t\t\t\t<div class=\"upload-area\">
+\t\t\t\t\t\t<div class=\"upload-area\">
 \t\t\t\t\t\t\t<div class=\"brows-file-wrapper\">
-\t\t\t\t\t\t\t<img id=\"createfileImage\" src=\"";
-        // line 41
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/reclamation/" . twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 41, $this->source); })()), "getImagePath", [], "method", false, false, false, 41))), "html", null, true);
+\t\t\t\t\t\t\t\t<img id=\"createfileImage\" src=\"";
+        // line 52
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/reclamation/" . twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 52, $this->source); })()), "getImagePath", [], "method", false, false, false, 52))), "html", null, true);
         echo "\" alt data-black-overlay=\"6\">
-\t\t\t\t\t\t\t\t<input type=\"file\"  id=\"reclamation_imageFile_file\"  accept=\"image/*\" class=\"inputfile\"/>
+\t\t\t\t\t\t\t\t<input type=\"file\" id=\"reclamation_imageFile_file\" accept=\"image/*\" class=\"inputfile\"/>
 
 \t\t\t\t\t\t\t\t<label for=\"reclamation_imageFile_file\" title=\"No File Choosen\">
 \t\t\t\t\t\t\t\t\t<span class=\"text-center color-white\">
-\t\t\t\t\t\t\t\t<i class=\"feather-edit\"></i>
-\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t\t\t\t\t<i class=\"feather-edit\"></i>
+\t\t\t\t\t\t\t\t\t</span>
 \t\t\t\t\t\t\t\t</label>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
-\t\t\t\t\t\t
-\t\t\t\t\t\t<script>
-\t\t\t\t\t\t\tconst input = document.getElementById('reclamation_imageFile_file');
-const img = document.getElementById('createfileImage');
-
-input.addEventListener('change', function () {
-if (input.files && input.files[0]) {
-const reader = new FileReader();
-
-reader.onload = function (e) {
-img.setAttribute('src', e.target.result);
-}
-
-reader.readAsDataURL(input.files[0]);
-}
-});
-\t\t\t\t\t\t</script>
 \t\t\t\t\t\t<div class=\"mt--100 mt_sm--30 mt_md--30 d-none d-lg-block\">
 \t\t\t\t\t\t\t<h5>Note:
 \t\t\t\t\t\t\t</h5>
@@ -166,12 +177,25 @@ reader.readAsDataURL(input.files[0]);
 \t\t\t\t\t<div class=\"col-lg-7\">
 \t\t\t\t\t\t<div class=\"form-wrapper-one\">
 \t\t\t\t\t\t\t<div class=\"col-md-12\">
+
+\t\t\t\t\t\t\t\t<div class=\"input-box pb--20\">
+\t\t\t\t\t\t\t\t\t<label for=\"privateKey\" class=\"required\">Private Key</label>
+\t\t\t\t\t\t\t\t\t<input type=\"text\" id=\"privateKey\" name=\"privateKey\" value=\"";
+        // line 78
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 78, $this->source); })()), "privateKey", [], "any", false, false, false, 78), "html", null, true);
+        echo "\" readonly>
+\t\t\t\t\t\t\t\t\t<small id=\"privateKeyHelp\" class=\"form-text text-muted\">You can't edit this field.</small>
+\t\t\t\t\t\t\t\t</div>
+
+
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<div class=\"col-md-12\">
 \t\t\t\t\t\t\t\t<div class=\"input-box pb--20\">
 \t\t\t\t\t\t\t\t\t<div>
-\t\t\t\t\t\t\t\t\t<label for=\"privateKey\" class=\"required\">Private Key</label>
-\t\t\t\t\t\t\t\t\t<input type=\"text\" id=\"privateKey\" name=\"privateKey\" required pattern=\"^[0-9]+\$\" value=\"";
-        // line 84
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 84, $this->source); })()), "privateKey", [], "any", false, false, false, 84), "html", null, true);
+\t\t\t\t\t\t\t\t\t\t<label for=\"subject\" class=\"required\">Subject</label>
+\t\t\t\t\t\t\t\t\t\t<input type=\"text\" id=\"subject\" name=\"subject\" value=\"";
+        // line 88
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 88, $this->source); })()), "subject", [], "any", false, false, false, 88), "html", null, true);
         echo "\"/>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
@@ -179,21 +203,10 @@ reader.readAsDataURL(input.files[0]);
 \t\t\t\t\t\t\t<div class=\"col-md-12\">
 \t\t\t\t\t\t\t\t<div class=\"input-box pb--20\">
 \t\t\t\t\t\t\t\t\t<div>
-\t\t\t\t\t\t\t\t\t<label for=\"subject\" class=\"required\">Subject</label>
-\t\t\t\t\t\t\t\t\t<input type=\"text\" id=\"subject\" name=\"subject\" value=\"";
-        // line 92
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 92, $this->source); })()), "subject", [], "any", false, false, false, 92), "html", null, true);
-        echo "\" />
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"col-md-12\">
-\t\t\t\t\t\t\t\t<div class=\"input-box pb--20\">
-\t\t\t\t\t\t\t\t\t<div>
-\t\t\t\t\t\t\t\t\t<label for=\"description\" class=\"required\">Description</label>
-\t\t\t\t\t\t\t\t<textarea id=\"description\" name=\"description\" required>";
-        // line 100
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 100, $this->source); })()), "description", [], "any", false, false, false, 100), "html", null, true);
+\t\t\t\t\t\t\t\t\t\t<label for=\"description\" class=\"required\">Description</label>
+\t\t\t\t\t\t\t\t\t\t<textarea id=\"description\" name=\"description\" required>";
+        // line 96
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["reclamation"]) || array_key_exists("reclamation", $context) ? $context["reclamation"] : (function () { throw new RuntimeError('Variable "reclamation" does not exist.', 96, $this->source); })()), "description", [], "any", false, false, false, 96), "html", null, true);
         echo "</textarea>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
@@ -201,9 +214,9 @@ reader.readAsDataURL(input.files[0]);
 \t\t\t\t\t\t\t<span></span>
 \t\t\t\t\t\t\t<span></span>
 \t\t\t\t\t\t\t<div class=\"col-md-12\">
-\t\t\t\t\t\t\t<div class=\"input-box\">
-\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-primary\" id=\"submit-button\">Submit</button>
-\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t<div class=\"input-box\">
+\t\t\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-primary\" id=\"submit-button\">Submit</button>
+\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
@@ -214,7 +227,22 @@ reader.readAsDataURL(input.files[0]);
 
 
 \t<!-- create new product area -->
+\t<script>
+\t\tconst input = document.getElementById('reclamation_imageFile_file');
+const img = document.getElementById('createfileImage');
 
+input.addEventListener('change', function () {
+if (input.files && input.files[0]) {
+const reader = new FileReader();
+
+reader.onload = function (e) {
+img.setAttribute('src', e.target.result);
+}
+
+reader.readAsDataURL(input.files[0]);
+}
+});
+\t</script>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -245,7 +273,7 @@ reader.readAsDataURL(input.files[0]);
      */
     public function getDebugInfo()
     {
-        return array (  196 => 100,  185 => 92,  174 => 84,  128 => 41,  122 => 38,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
+        return array (  209 => 96,  198 => 88,  185 => 78,  156 => 52,  150 => 49,  147 => 48,  142 => 45,  133 => 43,  129 => 42,  125 => 40,  123 => 39,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -273,7 +301,7 @@ reader.readAsDataURL(input.files[0]);
 \t\t\t\t\t\t\t<i class=\"feather-chevron-right\"></i>
 \t\t\t\t\t\t</li>
 \t\t\t\t\t\t<li class=\"item current\">Reclamation</li>
-\t\t\t\t\t\t
+
 
 \t\t\t\t\t</ul>
 \t\t\t\t</div>
@@ -285,38 +313,32 @@ reader.readAsDataURL(input.files[0]);
 \t<!-- create new product area -->
 \t<div class=\"create-area rn-section-gapTop\">
 \t\t<div class=\"container\">
-\t\t\t<div class=\"row g-5\">
+\t\t\t<div
+\t\t\t\tclass=\"row g-5\">
+\t\t\t\t<!-- Errors display area -->
+\t\t\t\t{% if errors|default(false) %}
+\t\t\t\t\t<div class=\"alert alert-danger\" role=\"alert\">
+\t\t\t\t\t\t<ul>
+\t\t\t\t\t\t\t{% for error in errors %}
+\t\t\t\t\t\t\t\t<li>{{ error.message }}</li>
+\t\t\t\t\t\t\t{% endfor %}
+\t\t\t\t\t\t</ul>
+\t\t\t\t\t</div>
+\t\t\t\t{% endif %}
 \t\t\t\t<div class=\"col-lg-3 offset-1 ml_md--0 ml_sm--0\">
-\t\t\t\t<form id=\"formm\" name=\"reclamation\" method=\"post\" enctype=\"multipart/form-data\" action=\"{{ path('reclamationsh.modifer', {'id': reclamation.id}) }}\">
-\t\t\t\t<div class=\"upload-area\">
+\t\t\t\t\t<form id=\"formm\" name=\"reclamation\" method=\"post\" enctype=\"multipart/form-data\" action=\"{{ path('reclamationsh.modifer', {'id': reclamation.id}) }}\">
+\t\t\t\t\t\t<div class=\"upload-area\">
 \t\t\t\t\t\t\t<div class=\"brows-file-wrapper\">
-\t\t\t\t\t\t\t<img id=\"createfileImage\" src=\"{{ asset('images/reclamation/'~reclamation.getImagePath()) }}\" alt data-black-overlay=\"6\">
-\t\t\t\t\t\t\t\t<input type=\"file\"  id=\"reclamation_imageFile_file\"  accept=\"image/*\" class=\"inputfile\"/>
+\t\t\t\t\t\t\t\t<img id=\"createfileImage\" src=\"{{ asset('images/reclamation/'~reclamation.getImagePath()) }}\" alt data-black-overlay=\"6\">
+\t\t\t\t\t\t\t\t<input type=\"file\" id=\"reclamation_imageFile_file\" accept=\"image/*\" class=\"inputfile\"/>
 
 \t\t\t\t\t\t\t\t<label for=\"reclamation_imageFile_file\" title=\"No File Choosen\">
 \t\t\t\t\t\t\t\t\t<span class=\"text-center color-white\">
-\t\t\t\t\t\t\t\t<i class=\"feather-edit\"></i>
-\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t\t\t\t\t<i class=\"feather-edit\"></i>
+\t\t\t\t\t\t\t\t\t</span>
 \t\t\t\t\t\t\t\t</label>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
-\t\t\t\t\t\t
-\t\t\t\t\t\t<script>
-\t\t\t\t\t\t\tconst input = document.getElementById('reclamation_imageFile_file');
-const img = document.getElementById('createfileImage');
-
-input.addEventListener('change', function () {
-if (input.files && input.files[0]) {
-const reader = new FileReader();
-
-reader.onload = function (e) {
-img.setAttribute('src', e.target.result);
-}
-
-reader.readAsDataURL(input.files[0]);
-}
-});
-\t\t\t\t\t\t</script>
 \t\t\t\t\t\t<div class=\"mt--100 mt_sm--30 mt_md--30 d-none d-lg-block\">
 \t\t\t\t\t\t\t<h5>Note:
 \t\t\t\t\t\t\t</h5>
@@ -330,35 +352,37 @@ reader.readAsDataURL(input.files[0]);
 \t\t\t\t\t<div class=\"col-lg-7\">
 \t\t\t\t\t\t<div class=\"form-wrapper-one\">
 \t\t\t\t\t\t\t<div class=\"col-md-12\">
+
 \t\t\t\t\t\t\t\t<div class=\"input-box pb--20\">
-\t\t\t\t\t\t\t\t\t<div>
 \t\t\t\t\t\t\t\t\t<label for=\"privateKey\" class=\"required\">Private Key</label>
-\t\t\t\t\t\t\t\t\t<input type=\"text\" id=\"privateKey\" name=\"privateKey\" required pattern=\"^[0-9]+\$\" value=\"{{ reclamation.privateKey }}\"/>
+\t\t\t\t\t\t\t\t\t<input type=\"text\" id=\"privateKey\" name=\"privateKey\" value=\"{{ reclamation.privateKey }}\" readonly>
+\t\t\t\t\t\t\t\t\t<small id=\"privateKeyHelp\" class=\"form-text text-muted\">You can't edit this field.</small>
+\t\t\t\t\t\t\t\t</div>
+
+
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<div class=\"col-md-12\">
+\t\t\t\t\t\t\t\t<div class=\"input-box pb--20\">
+\t\t\t\t\t\t\t\t\t<div>
+\t\t\t\t\t\t\t\t\t\t<label for=\"subject\" class=\"required\">Subject</label>
+\t\t\t\t\t\t\t\t\t\t<input type=\"text\" id=\"subject\" name=\"subject\" value=\"{{ reclamation.subject }}\"/>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t<div class=\"col-md-12\">
 \t\t\t\t\t\t\t\t<div class=\"input-box pb--20\">
 \t\t\t\t\t\t\t\t\t<div>
-\t\t\t\t\t\t\t\t\t<label for=\"subject\" class=\"required\">Subject</label>
-\t\t\t\t\t\t\t\t\t<input type=\"text\" id=\"subject\" name=\"subject\" value=\"{{ reclamation.subject }}\" />
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"col-md-12\">
-\t\t\t\t\t\t\t\t<div class=\"input-box pb--20\">
-\t\t\t\t\t\t\t\t\t<div>
-\t\t\t\t\t\t\t\t\t<label for=\"description\" class=\"required\">Description</label>
-\t\t\t\t\t\t\t\t<textarea id=\"description\" name=\"description\" required>{{ reclamation.description }}</textarea>
+\t\t\t\t\t\t\t\t\t\t<label for=\"description\" class=\"required\">Description</label>
+\t\t\t\t\t\t\t\t\t\t<textarea id=\"description\" name=\"description\" required>{{ reclamation.description }}</textarea>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t<span></span>
 \t\t\t\t\t\t\t<span></span>
 \t\t\t\t\t\t\t<div class=\"col-md-12\">
-\t\t\t\t\t\t\t<div class=\"input-box\">
-\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-primary\" id=\"submit-button\">Submit</button>
-\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t<div class=\"input-box\">
+\t\t\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-primary\" id=\"submit-button\">Submit</button>
+\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
@@ -369,7 +393,22 @@ reader.readAsDataURL(input.files[0]);
 
 
 \t<!-- create new product area -->
+\t<script>
+\t\tconst input = document.getElementById('reclamation_imageFile_file');
+const img = document.getElementById('createfileImage');
 
+input.addEventListener('change', function () {
+if (input.files && input.files[0]) {
+const reader = new FileReader();
+
+reader.onload = function (e) {
+img.setAttribute('src', e.target.result);
+}
+
+reader.readAsDataURL(input.files[0]);
+}
+});
+\t</script>
 {% endblock %}
 ", "reclamationsh/create-collection.html.twig", "C:\\Users\\khali\\OneDrive - ESPRIT\\Documents\\citiezenHub_webapp\\templates\\reclamationsh\\create-collection.html.twig");
     }
