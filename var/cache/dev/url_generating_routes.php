@@ -25,4 +25,5 @@ return [
     'reclamationsh.modifer' => [['id'], ['_controller' => 'App\\Controller\\ReclamationshController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/a']], [], [], []],
     'reclamationsh.del' => [['id'], ['_controller' => 'App\\Controller\\ReclamationshController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/b']], [], [], []],
     'reclamation_details' => [['id'], ['_controller' => 'App\\Controller\\ReclamationshController::getReclamationDetails'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/reclamation/details']], [], [], []],
+    'process_text' => [[], ['_controller' => 'App\\Controller\\TextProcessController'], [], [['text', '/process-text']], [], [], []],
 ];

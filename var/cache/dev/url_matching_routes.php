@@ -18,6 +18,7 @@ return [
         '/get-latest-reclamations' => [[['_route' => 'get_latest_reclamations', '_controller' => 'App\\Controller\\ConferenceController::getLatestReclamations'], null, null, null, false, false, null]],
         '/reclamation' => [[['_route' => 'app_reclamation', '_controller' => 'App\\Controller\\ReclamationController::addReclamation'], null, null, null, false, false, null]],
         '/b' => [[['_route' => 'reclamationsh', '_controller' => 'App\\Controller\\ReclamationshController::index'], null, null, null, false, false, null]],
+        '/process-text' => [[['_route' => 'process_text', '_controller' => 'App\\Controller\\TextProcessController'], null, ['POST' => 0], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

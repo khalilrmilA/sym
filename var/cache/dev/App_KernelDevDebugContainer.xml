@@ -21,6 +21,7 @@
       <parameter key="MakerBundle">Symfony\Bundle\MakerBundle\MakerBundle</parameter>
       <parameter key="VichUploaderBundle">Vich\UploaderBundle\VichUploaderBundle</parameter>
       <parameter key="EasyAdminBundle">EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle</parameter>
+      <parameter key="SymfonyCastsVerifyEmailBundle">SymfonyCasts\Bundle\VerifyEmail\SymfonyCastsVerifyEmailBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -70,6 +71,10 @@
       <parameter key="EasyAdminBundle" type="collection">
         <parameter key="path">C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src</parameter>
         <parameter key="namespace">EasyCorp\Bundle\EasyAdminBundle</parameter>
+      </parameter>
+      <parameter key="SymfonyCastsVerifyEmailBundle" type="collection">
+        <parameter key="path">C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src</parameter>
+        <parameter key="namespace">SymfonyCasts\Bundle\VerifyEmail</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
@@ -393,6 +398,14 @@
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.jIxfAsi.App\Controller\ReclamationshController"/>
+      </call>
+    </service>
+    <service id="App\Controller\TextProcessController" class="App\Controller\TextProcessController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="parameter_bag"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.jIxfAsi.App\Controller\TextProcessController"/>
       </call>
     </service>
     <service id="App\Form\ReclamationType" class="App\Form\ReclamationType" autowire="true" autoconfigure="true">
@@ -1539,6 +1552,11 @@
       <argument type="service" id="assets.empty_version_strategy"/>
       <argument type="service" id="assets.context"/>
     </service>
+    <service id="psr18.http_client" class="Symfony\Component\HttpClient\Psr18Client">
+      <argument type="service" id=".debug.http_client"/>
+      <argument>null</argument>
+      <argument>null</argument>
+    </service>
     <service id="http_client.abstract_retry_strategy" class="Symfony\Component\HttpClient\Retry\GenericRetryStrategy" abstract="true">
       <argument type="abstract">http codes</argument>
       <argument type="abstract">delay ms</argument>
@@ -1664,6 +1682,7 @@
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.ar.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\vich\uploader-bundle/translations\messages.ar.yaml</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.ar.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.ar.xlf</argument>
           </argument>
           <argument key="az" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.az.xlf</argument>
@@ -1693,6 +1712,7 @@
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.ca.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\vich\uploader-bundle/translations\messages.ca.yaml</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.ca.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.ca.xlf</argument>
           </argument>
           <argument key="cs" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.cs.xlf</argument>
@@ -1700,6 +1720,7 @@
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.cs.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\vich\uploader-bundle/translations\messages.cs.yaml</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.cs.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.cs.xlf</argument>
           </argument>
           <argument key="cy" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.cy.xlf</argument>
@@ -1716,12 +1737,14 @@
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.de.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\vich\uploader-bundle/translations\messages.de.yaml</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.de.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.de.xlf</argument>
           </argument>
           <argument key="el" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.el.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\form/Resources/translations\validators.el.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.el.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.el.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.el.xlf</argument>
           </argument>
           <argument key="en" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.en.xlf</argument>
@@ -1729,6 +1752,7 @@
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.en.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\vich\uploader-bundle/translations\messages.en.yaml</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.en.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.en.xlf</argument>
           </argument>
           <argument key="es" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.es.xlf</argument>
@@ -1736,6 +1760,7 @@
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.es.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\vich\uploader-bundle/translations\messages.es.yaml</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.es.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.es.xlf</argument>
           </argument>
           <argument key="et" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.et.xlf</argument>
@@ -1753,6 +1778,7 @@
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\form/Resources/translations\validators.fa.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.fa.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.fa.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.fa.xlf</argument>
           </argument>
           <argument key="fi" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.fi.xlf</argument>
@@ -1760,6 +1786,7 @@
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.fi.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\vich\uploader-bundle/translations\messages.fi.yaml</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.fi.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.fi.xlf</argument>
           </argument>
           <argument key="fr" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.fr.xlf</argument>
@@ -1767,6 +1794,7 @@
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.fr.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\vich\uploader-bundle/translations\messages.fr.yaml</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.fr.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.fr.xlf</argument>
           </argument>
           <argument key="gl" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.gl.xlf</argument>
@@ -1792,6 +1820,7 @@
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.hu.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\vich\uploader-bundle/translations\messages.hu.yaml</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.hu.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.hu.xlf</argument>
           </argument>
           <argument key="hy" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.hy.xlf</argument>
@@ -1804,6 +1833,7 @@
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\form/Resources/translations\validators.id.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.id.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.id.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.id.xlf</argument>
           </argument>
           <argument key="it" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.it.xlf</argument>
@@ -1811,11 +1841,13 @@
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.it.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\vich\uploader-bundle/translations\messages.it.yaml</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.it.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.it.xlf</argument>
           </argument>
           <argument key="ja" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.ja.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\form/Resources/translations\validators.ja.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.ja.xlf</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.ja.xlf</argument>
           </argument>
           <argument key="lb" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.lb.xlf</argument>
@@ -1839,6 +1871,7 @@
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.mn.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\form/Resources/translations\validators.mn.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.mn.xlf</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.mn.xlf</argument>
           </argument>
           <argument key="my" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.my.xlf</argument>
@@ -1856,6 +1889,7 @@
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.nl.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\vich\uploader-bundle/translations\messages.nl.yaml</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.nl.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle+intl-icu.nl.xlf</argument>
           </argument>
           <argument key="nn" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.nn.xlf</argument>
@@ -1874,6 +1908,7 @@
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.pl.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\vich\uploader-bundle/translations\messages.pl.yaml</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.pl.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.pl.xlf</argument>
           </argument>
           <argument key="pt" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.pt.xlf</argument>
@@ -1881,6 +1916,7 @@
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.pt.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\vich\uploader-bundle/translations\messages.pt.yaml</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.pt.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.pt.xlf</argument>
           </argument>
           <argument key="pt_BR" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.pt_BR.xlf</argument>
@@ -1893,6 +1929,7 @@
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\form/Resources/translations\validators.ro.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.ro.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.ro.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.ro.xlf</argument>
           </argument>
           <argument key="ru" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.ru.xlf</argument>
@@ -1900,12 +1937,14 @@
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.ru.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\vich\uploader-bundle/translations\messages.ru.yaml</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.ru.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.ru.xlf</argument>
           </argument>
           <argument key="sk" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.sk.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\form/Resources/translations\validators.sk.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.sk.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.sk.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.sk.xlf</argument>
           </argument>
           <argument key="sl" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.sl.xlf</argument>
@@ -1951,6 +1990,7 @@
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.tr.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\vich\uploader-bundle/translations\messages.tr.yaml</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.tr.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.tr.xlf</argument>
           </argument>
           <argument key="uk" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.uk.xlf</argument>
@@ -1958,6 +1998,7 @@
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations\security.uk.xlf</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\vich\uploader-bundle/translations\messages.uk.yaml</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.uk.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.uk.xlf</argument>
           </argument>
           <argument key="ur" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\validator/Resources/translations\validators.ur.xlf</argument>
@@ -1990,9 +2031,13 @@
           </argument>
           <argument key="mk" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.mk.php</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.mk.xlf</argument>
           </argument>
           <argument key="sr_RS" type="collection">
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.sr_RS.php</argument>
+          </argument>
+          <argument key="sr" type="collection">
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.sr.xlf</argument>
           </argument>
         </argument>
         <argument key="scanned_directories" type="collection">
@@ -2001,6 +2046,7 @@
           <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations</argument>
           <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\vich\uploader-bundle/translations</argument>
           <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations</argument>
+          <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations</argument>
           <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp/translations</argument>
           <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\framework-bundle/translations</argument>
           <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\doctrine\doctrine-bundle/translations</argument>
@@ -2020,6 +2066,7 @@
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\security-core/Resources/translations</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\vich\uploader-bundle/translations</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\easycorp\easyadmin-bundle\src/Resources/translations</argument>
+            <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfonycasts\verify-email-bundle\src/Resources/translations</argument>
             <argument>translations</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\symfony\framework-bundle/translations</argument>
             <argument>C:\Users\khali\OneDrive - ESPRIT\Documents\citiezenHub_webapp\vendor\doctrine\doctrine-bundle/translations</argument>
@@ -6562,6 +6609,24 @@
       <tag name="assets.package" package="easyadmin.assets.package"/>
       <argument type="service" id="request_stack"/>
     </service>
+    <service id="symfonycasts.verify_email.token_generator" class="SymfonyCasts\Bundle\VerifyEmail\Generator\VerifyEmailTokenGenerator">
+      <argument>%env(APP_SECRET)%</argument>
+    </service>
+    <service id="symfonycasts.verify_email.query_utility" class="SymfonyCasts\Bundle\VerifyEmail\Util\VerifyEmailQueryUtility"/>
+    <service id="symfonycasts.verify_email.uri_signer_factory" class="SymfonyCasts\Bundle\VerifyEmail\Factory\UriSignerFactory">
+      <argument>%env(APP_SECRET)%</argument>
+      <argument>signature</argument>
+    </service>
+    <service id="symfonycasts.verify_email.uri_signer" class="Symfony\Component\HttpFoundation\UriSigner">
+      <factory service="symfonycasts.verify_email.uri_signer_factory" method="createUriSigner"/>
+    </service>
+    <service id="symfonycasts.verify_email.helper" class="SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelper">
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="symfonycasts.verify_email.uri_signer"/>
+      <argument type="service" id="symfonycasts.verify_email.query_utility"/>
+      <argument type="service" id="symfonycasts.verify_email.token_generator"/>
+      <argument>3600</argument>
+    </service>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ConferenceController" class="App\Controller\ConferenceController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ConferenceController" class="App\Controller\ConferenceController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ConferenceController" class="App\Controller\ConferenceController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6571,6 +6636,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ReclamationshController" class="App\Controller\ReclamationshController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ReclamationshController" class="App\Controller\ReclamationshController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ReclamationshController" class="App\Controller\ReclamationshController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\TextProcessController" class="App\Controller\TextProcessController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\TextProcessController" class="App\Controller\TextProcessController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\TextProcessController" class="App\Controller\TextProcessController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ReclamationType" class="App\Form\ReclamationType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ReclamationType" class="App\Form\ReclamationType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ReeclamationRepository" class="App\Repository\ReeclamationRepository" autowire="true" abstract="true"/>
@@ -7029,6 +7097,15 @@
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
+    <service id=".service_locator.uuNOwP3" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="mailer" type="service_closure" id="mailer.mailer"/>
+        <argument key="validator" type="service_closure" id="debug.validator"/>
+        <argument key="verifyEmailHelper" type="service_closure" id="symfonycasts.verify_email.helper"/>
+      </argument>
+    </service>
     <service id=".service_locator.MYMgWQW" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7036,10 +7113,10 @@
         <argument key="validator" type="service_closure" id="debug.validator"/>
       </argument>
     </service>
-    <service id=".service_locator.UulnlPC" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.0mZ_zHX" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Controller\ConferenceController::addResponseToReclamation" type="service_closure" id=".service_locator.MYMgWQW"/>
+        <argument key="App\Controller\ConferenceController::addResponseToReclamation" type="service_closure" id=".service_locator.uuNOwP3"/>
         <argument key="App\Controller\ConferenceController::getLatestReclamations" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\ConferenceController::getResponsesForReclamation" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\ConferenceController::showReclamations" type="service_closure" id=".service_locator.aKM6MDa"/>
@@ -7052,7 +7129,7 @@
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.xUrKPVU"/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.xUrKPVU"/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.xUrKPVU"/>
-        <argument key="App\Controller\ConferenceController:addResponseToReclamation" type="service_closure" id=".service_locator.MYMgWQW"/>
+        <argument key="App\Controller\ConferenceController:addResponseToReclamation" type="service_closure" id=".service_locator.uuNOwP3"/>
         <argument key="App\Controller\ConferenceController:getLatestReclamations" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\ConferenceController:getResponsesForReclamation" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\ConferenceController:showReclamations" type="service_closure" id=".service_locator.aKM6MDa"/>
@@ -7642,6 +7719,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.jIxfAsi" method="withContext"/>
     </service>
+    <service id=".service_locator.jIxfAsi.App\Controller\TextProcessController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\TextProcessController"/>
+      <argument>App\Controller\TextProcessController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.jIxfAsi" method="withContext"/>
+    </service>
     <service id=".service_locator.wSgjnB6" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7908,12 +7991,12 @@
       <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.UulnlPC"/>
+      <argument type="service" id=".service_locator.0mZ_zHX"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.UulnlPC"/>
+      <argument type="service" id=".service_locator.0mZ_zHX"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -8860,6 +8943,7 @@
     <service id="Symfony\Contracts\Translation\TranslatorInterface" alias="translator.data_collector"/>
     <service id="Symfony\Component\Asset\Packages" alias="assets.packages"/>
     <service id="Symfony\Contracts\HttpClient\HttpClientInterface" alias=".debug.http_client"/>
+    <service id="Psr\Http\Client\ClientInterface" alias="psr18.http_client"/>
     <service id="mailer" alias="mailer.mailer"/>
     <service id="Symfony\Component\Mailer\MailerInterface" alias="mailer.mailer"/>
     <service id="Symfony\Component\Mailer\Transport\TransportInterface" alias="mailer.default_transport"/>
@@ -8988,9 +9072,10 @@
     <service id="Vich\UploaderBundle\Form\Type\VichImageType" alias="vich_uploader.form.type.image"/>
     <service id="EasyCorp\Bundle\EasyAdminBundle\Contracts\Menu\MenuItemMatcherInterface" alias="EasyCorp\Bundle\EasyAdminBundle\Menu\MenuItemMatcher"/>
     <service id="EasyCorp\Bundle\EasyAdminBundle\Contracts\Orm\EntityPaginatorInterface" alias="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityPaginator"/>
+    <service id="SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface" alias="symfonycasts.verify_email.helper"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.UulnlPC"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.0mZ_zHX"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -9012,7 +9097,8 @@
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.Mo0FXEU" alias="service_locator_EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
     <service id=".service_locator.0GV1BZZ" alias=".service_locator.gSv9zYw"/>
-    <service id=".service_locator.AxRy1Cc" alias=".service_locator.UulnlPC"/>
+    <service id=".service_locator.JEhW.LG" alias=".service_locator.uuNOwP3"/>
+    <service id=".service_locator.VUH6TSj" alias=".service_locator.0mZ_zHX"/>
     <service id=".service_locator.wKF4yn1" alias=".service_locator.19_mNxd"/>
     <service id=".service_locator.o.rF1we" alias=".service_locator.jpsG8wf"/>
     <service id=".service_locator.ghyll4k" alias=".service_locator.X3hn2dA"/>
@@ -9066,6 +9152,7 @@
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
     <service id=".service_locator.uo5c0SP" alias=".service_locator.xUrKPVU"/>
     <service id=".service_locator.bInR.ll" alias=".service_locator.aKM6MDa"/>
+    <service id=".service_locator.gLx9RCe" alias=".service_locator.uuNOwP3"/>
     <service id=".service_locator.jjMYWI_" alias=".service_locator.MYMgWQW"/>
     <service id=".service_locator.eAaUVIw" alias=".service_locator.jIxfAsi"/>
     <service id=".service_locator.u6DWx23" alias=".service_locator.cXsfP3P"/>

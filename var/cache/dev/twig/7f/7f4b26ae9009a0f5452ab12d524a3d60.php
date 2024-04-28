@@ -368,55 +368,41 @@ updateTable(newReclamations);
 }
 
 function updateTable(reclamations) {
-const tableBody = document.getElementById('products-table-body');
-reclamations.sort((a, b) => b.id - a.id).forEach(reclamation => {
-const row = document.createElement('tr');
-row.className = 'position-static';
-let responseStatusHTML = reclamation.response ? `<span class=\"badge badge-phoenix fs-10 mb-4 badge-phoenix-success\">Done</span>` : `<span class=\"badge badge-phoenix fs-10 mb-4 badge-phoenix-danger\">Still pending</span>`;
+    const tableBody = document.getElementById('products-table-body');
+    reclamations.sort((a, b) => b.id - a.id).forEach(reclamation => {
+        const row = document.createElement('tr');
+        row.className = 'position-static';
+        let responseStatusHTML = reclamation.response ? `<span class=\"badge badge-phoenix fs-10 mb-4 badge-phoenix-success\">Done</span>` : `<span class=\"badge badge-phoenix fs-10 mb-4 badge-phoenix-danger\">Still pending</span>`;
 
-row.innerHTML = `
-        <td class=\"align-middle ps-4\">
-          <img src=\"/images/reclamation/\${
-reclamation.imagePath
-}\" alt=\"Reclamation Image\" width=\"200\" height=\"200\"/>
-        </td>
-        <td class=\"align-middle ps-4\">\${
-reclamation.privateKey
-}</td>
-        <td class=\"align-middle ps-4\">\${
-reclamation.createdAt
-}</td>
-        <td class=\"align-middle ps-4\">\${
-reclamation.subject
-}</td>
-        <td class=\"align-middle ps-4\">\${
-reclamation.description
-}</td>
-        <td class=\"align-middle ps-4\">\${responseStatusHTML}</td>
-        <td class=\"align-middle white-space-nowrap text-end pe-0 ps-4\">
-          <div class=\"btn-reveal-trigger position-static\">
-            <button class=\"btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10\" type=\"button\" data-bs-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
-              <span class=\"fas fa-ellipsis-h fs-10\"></span>
-            </button>
-            <div class=\"dropdown-menu dropdown-menu-end py-2\">
-              <a class=\"dropdown-item add-response\" href=\"#\" data-bs-toggle=\"modal\" data-bs-target=\"#addResponseModal\" data-reclamation-id=\"\${
-reclamation.id
-}\" data-reclamation-subject=\"\${
-reclamation.subject
-}\" data-reclamation-description=\"\${
-reclamation.description
-}\">Add Response</a>
-              <a class=\"dropdown-item\" href=\"#\">Reclamation</a>
-              <div class=\"dropdown-divider\"></div>
-              <a class=\"dropdown-item text-danger delete-reclamation\" href=\"#\" data-id=\"\${
-reclamation.id
-}\">Delete Reclamation</a>
-            </div>
-          </div>
-        </td>
-      `;
-tableBody.prepend(row);
-});
+        row.innerHTML = `
+            <td class=\"align-middle ps-4\">
+              <img src=\"/images/reclamation/\${reclamation.imagePath}\" alt=\"Reclamation Image\" width=\"200\" height=\"200\"/>
+            </td>
+            <td class=\"align-middle ps-4\">\${reclamation.privateKey}</td>
+            <td class=\"align-middle ps-4\">\${reclamation.createdAt}</td>
+            <td class=\"align-middle ps-4\">\${reclamation.subject}</td>
+            <td class=\"align-middle ps-4\">\${reclamation.description}</td>
+            <td class=\"align-middle ps-4\">\${responseStatusHTML}</td>
+            <td class=\"align-middle white-space-nowrap text-end pe-0 ps-4\">
+              <div class=\"btn-reveal-trigger position-static\">
+                <button class=\"btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10\" type=\"button\" data-bs-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                  <span class=\"fas fa-ellipsis-h fs-10\"></span>
+                </button>
+                <div class=\"dropdown-menu dropdown-menu-end py-2\">
+                  <a class=\"dropdown-item add-response\" href=\"#\" data-bs-toggle=\"modal\" data-bs-target=\"#addResponseModal\" data-reclamation-id=\"\${reclamation.id}\" data-reclamation-subject=\"\${reclamation.subject}\" data-reclamation-description=\"\${reclamation.description}\">Add Response</a>
+                  <a class=\"dropdown-item\" href=\"#\">Reclamation</a>
+                  <div class=\"dropdown-divider\"></div>
+                  <a class=\"dropdown-item text-danger delete-reclamation\" href=\"#\" data-id=\"\${reclamation.id}\">Delete Reclamation</a>
+                </div>
+              </div>
+            </td>
+          `;
+        tableBody.prepend(row);
+    });
+    // Check if there are new reclamations to notify
+    if (reclamations.length > 0) {
+        alert('New reclamation added!');
+    }
 }
 
 document.addEventListener('click', function(event) {
@@ -706,55 +692,41 @@ updateTable(newReclamations);
 }
 
 function updateTable(reclamations) {
-const tableBody = document.getElementById('products-table-body');
-reclamations.sort((a, b) => b.id - a.id).forEach(reclamation => {
-const row = document.createElement('tr');
-row.className = 'position-static';
-let responseStatusHTML = reclamation.response ? `<span class=\"badge badge-phoenix fs-10 mb-4 badge-phoenix-success\">Done</span>` : `<span class=\"badge badge-phoenix fs-10 mb-4 badge-phoenix-danger\">Still pending</span>`;
+    const tableBody = document.getElementById('products-table-body');
+    reclamations.sort((a, b) => b.id - a.id).forEach(reclamation => {
+        const row = document.createElement('tr');
+        row.className = 'position-static';
+        let responseStatusHTML = reclamation.response ? `<span class=\"badge badge-phoenix fs-10 mb-4 badge-phoenix-success\">Done</span>` : `<span class=\"badge badge-phoenix fs-10 mb-4 badge-phoenix-danger\">Still pending</span>`;
 
-row.innerHTML = `
-        <td class=\"align-middle ps-4\">
-          <img src=\"/images/reclamation/\${
-reclamation.imagePath
-}\" alt=\"Reclamation Image\" width=\"200\" height=\"200\"/>
-        </td>
-        <td class=\"align-middle ps-4\">\${
-reclamation.privateKey
-}</td>
-        <td class=\"align-middle ps-4\">\${
-reclamation.createdAt
-}</td>
-        <td class=\"align-middle ps-4\">\${
-reclamation.subject
-}</td>
-        <td class=\"align-middle ps-4\">\${
-reclamation.description
-}</td>
-        <td class=\"align-middle ps-4\">\${responseStatusHTML}</td>
-        <td class=\"align-middle white-space-nowrap text-end pe-0 ps-4\">
-          <div class=\"btn-reveal-trigger position-static\">
-            <button class=\"btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10\" type=\"button\" data-bs-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
-              <span class=\"fas fa-ellipsis-h fs-10\"></span>
-            </button>
-            <div class=\"dropdown-menu dropdown-menu-end py-2\">
-              <a class=\"dropdown-item add-response\" href=\"#\" data-bs-toggle=\"modal\" data-bs-target=\"#addResponseModal\" data-reclamation-id=\"\${
-reclamation.id
-}\" data-reclamation-subject=\"\${
-reclamation.subject
-}\" data-reclamation-description=\"\${
-reclamation.description
-}\">Add Response</a>
-              <a class=\"dropdown-item\" href=\"#\">Reclamation</a>
-              <div class=\"dropdown-divider\"></div>
-              <a class=\"dropdown-item text-danger delete-reclamation\" href=\"#\" data-id=\"\${
-reclamation.id
-}\">Delete Reclamation</a>
-            </div>
-          </div>
-        </td>
-      `;
-tableBody.prepend(row);
-});
+        row.innerHTML = `
+            <td class=\"align-middle ps-4\">
+              <img src=\"/images/reclamation/\${reclamation.imagePath}\" alt=\"Reclamation Image\" width=\"200\" height=\"200\"/>
+            </td>
+            <td class=\"align-middle ps-4\">\${reclamation.privateKey}</td>
+            <td class=\"align-middle ps-4\">\${reclamation.createdAt}</td>
+            <td class=\"align-middle ps-4\">\${reclamation.subject}</td>
+            <td class=\"align-middle ps-4\">\${reclamation.description}</td>
+            <td class=\"align-middle ps-4\">\${responseStatusHTML}</td>
+            <td class=\"align-middle white-space-nowrap text-end pe-0 ps-4\">
+              <div class=\"btn-reveal-trigger position-static\">
+                <button class=\"btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10\" type=\"button\" data-bs-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                  <span class=\"fas fa-ellipsis-h fs-10\"></span>
+                </button>
+                <div class=\"dropdown-menu dropdown-menu-end py-2\">
+                  <a class=\"dropdown-item add-response\" href=\"#\" data-bs-toggle=\"modal\" data-bs-target=\"#addResponseModal\" data-reclamation-id=\"\${reclamation.id}\" data-reclamation-subject=\"\${reclamation.subject}\" data-reclamation-description=\"\${reclamation.description}\">Add Response</a>
+                  <a class=\"dropdown-item\" href=\"#\">Reclamation</a>
+                  <div class=\"dropdown-divider\"></div>
+                  <a class=\"dropdown-item text-danger delete-reclamation\" href=\"#\" data-id=\"\${reclamation.id}\">Delete Reclamation</a>
+                </div>
+              </div>
+            </td>
+          `;
+        tableBody.prepend(row);
+    });
+    // Check if there are new reclamations to notify
+    if (reclamations.length > 0) {
+        alert('New reclamation added!');
+    }
 }
 
 document.addEventListener('click', function(event) {
